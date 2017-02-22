@@ -58,10 +58,17 @@
 
             path () {
                 if (this.iconData) {
+                    let reg = /<(path|rect|circle|polygon|line|polyline)\s/gi
+                    let id = 1
+
+                    this.iconData.data = this.iconData.data.replace(reg, function(match) {
+                        return match + `pid="${id++}" `
+                    })
+
                     if (this.colors && this.colors.length > 0) {
                         let i = 0
                         let colors = this.colors
-                        return this.iconData.data.replace(/<(path|rect|circle|polygon|line|polyline)\s/gi, function(match) {
+                        return this.iconData.data.replace(reg, function(match) {
                             return match + `style="color: ${colors[i++]}" `
                         })
                     } else {

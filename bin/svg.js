@@ -59,19 +59,37 @@ let svgo = new Svgo({
     ]
 })
 
+// generate index.js, which import all icons
+function generateIndex (files) {
+    let content = ''
+    files.forEach((filename) => {
+        let name = path.basename(filename).split('.')[0]
+        content += `require('./${name}')\n`
+    })
+
+    fs.writeFile(path.join(targetPath, 'index.js'), content, 'utf-8', (err) => {
+        if (err) {
+            console.log(err)
+            return false
+        }
+
+        console.log('Generated index.js')
+    })
+}
+
 golb(filepath, function(err, files) {
     if (err) {
         console.log(err)
         return false
     }
 
-    files.forEach((filename) => {
+    files.forEach((filename, ix) => {
         let name = path.basename(filename).split('.')[0]
         let content = fs.readFileSync(filename, 'utf-8')
         svgo.optimize(content, (result) => {
             let data = result.data.replace(/<svg[^>]+>/gi, '').replace(/<\/svg>/gi, '')
             let viewBox = result.data.match(/viewBox="(\d+\s\d+\s\d+\s\d+)"/)
-
+            console.log(viewBox)
             if (viewBox && viewBox.length > 1) {
                 viewBox = viewBox[1]
             }
@@ -87,6 +105,9 @@ icon.register({
     }
 })`
             fs.writeFile(path.join(targetPath, name + '.js'), content, 'utf-8', function (err) {
+                if (ix === files.length - 1) {
+                    generateIndex(files)
+                }
                 if (err) {
                     console.log(err)
                     return false

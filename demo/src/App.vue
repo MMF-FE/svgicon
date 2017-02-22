@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <p>
-      <svgicon icon="vue" width="15rem" height="15rem" color="#42b983 #35495e"></svgicon>
+      <svgicon class="vue-logo" icon="vue" width="15rem" height="15rem"></svgicon>
     </p>
     <h1>Vue Svg Icon</h1>
     <div>
@@ -53,6 +53,7 @@ export default {
       colors: '#FBAD20 #F5EB13 #B8D433 #6BC9C6 #058BC5 #34469D #7E4D9F #C63D96 #ED1944'
     }
   }
+
 }
 </script>
 
@@ -70,17 +71,11 @@ h1, h2 {
   font-weight: normal;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+.vue-logo path[pid="1"] {
+    color: #42b983
 }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
+.vue-logo path[pid="2"] {
+    color: #35495e
 }
 </style>

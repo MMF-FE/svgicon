@@ -8,7 +8,7 @@ Install
 # install global
 npm install vue-svgicon -g
 # install for project
-npm install vue-svgicon -d
+npm install vue-svgicon --save-dev
 ```
 Command
 ```bash
@@ -70,6 +70,10 @@ export default {
 }
 </script>
 ```
+You can import all icons at once
+```javascript
+import 'icons'
+```
 
 ## Props
 
@@ -115,3 +119,17 @@ If the icon is mutil path/shape, you can use mutil color. It is defined in the o
 ```html
 <svgicon icon="vue" width="100" height="100" color="#42b983 #35495e"></svgicon>
 ```
+Also, you can use css to add colors.
+```html
+<svgicon class="vue-icon" icon="vue" width="100" height="100"></svgicon>
+```
+```css
+.vue-icon path[pid="1"] {
+    color: #42b983
+}
+
+.vue-icon path[pid="2"] {
+    color: #35495e
+}
+```
+> You can't use scoped css.
