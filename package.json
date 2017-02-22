@@ -1,7 +1,7 @@
 {
   "name": "vue-svgicon",
   "version": "1.0.1",
-  "description": "A tool that create Vue svg icon components",
+  "description": "A tool to create svg icon components. (vue 2.x)",
   "main": "index.js",
   "bin": {
     "vsvg": "bin/svg.js"

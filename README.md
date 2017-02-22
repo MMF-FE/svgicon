@@ -1,5 +1,5 @@
 # vue-svgicon
-A tool that create Vue svg icon components.
+A tool to create svg icon components. (vue 2.x)
 
 ## Usage
 ### Generate icon
