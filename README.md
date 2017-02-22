@@ -113,5 +113,5 @@ Specify the color of icon. Default value is **inherit**.
 ```
 If the icon is mutil path/shape, you can use mutil color. It is defined in the order of path/shape.
 ```html
-<svgicon icon="vue" width="100" height="100" color="red green"></svgicon>
+<svgicon icon="vue" width="100" height="100" color="#42b983 #35495e"></svgicon>
 ```
