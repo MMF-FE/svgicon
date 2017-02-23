@@ -1,6 +1,9 @@
 # vue-svgicon
 A tool to create svg icon components. (vue 2.x)
 
+## demo
+https://mmf-fe.github.io/vue-svgicon/
+
 ## Usage
 ### Generate icon
 Install
