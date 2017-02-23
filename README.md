@@ -124,11 +124,11 @@ Also, you can use css to add colors.
 <svgicon class="vue-icon" icon="vue" width="100" height="100"></svgicon>
 ```
 ```css
-.vue-icon path[pid="1"] {
+.vue-icon path[pid="0"] {
     color: #42b983
 }
 
-.vue-icon path[pid="2"] {
+.vue-icon path[pid="1"] {
     color: #35495e
 }
 ```
