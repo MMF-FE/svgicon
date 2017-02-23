@@ -86,10 +86,11 @@ golb(filepath, function(err, files) {
     files.forEach((filename, ix) => {
         let name = path.basename(filename).split('.')[0]
         let content = fs.readFileSync(filename, 'utf-8')
+
         svgo.optimize(content, (result) => {
             let data = result.data.replace(/<svg[^>]+>/gi, '').replace(/<\/svg>/gi, '')
             let viewBox = result.data.match(/viewBox="(\d+\s\d+\s\d+\s\d+)"/)
-            console.log(viewBox)
+
             if (viewBox && viewBox.length > 1) {
                 viewBox = viewBox[1]
             }

@@ -59,7 +59,7 @@
             path () {
                 if (this.iconData) {
                     let reg = /<(path|rect|circle|polygon|line|polyline)\s/gi
-                    let id = 1
+                    let id = 0
 
                     this.iconData.data = this.iconData.data.replace(reg, function(match) {
                         return match + `pid="${id++}" `
