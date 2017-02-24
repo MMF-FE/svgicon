@@ -2,7 +2,7 @@
   "name": "vue-svgicon",
   "version": "1.0.3",
   "description": "A tool to create svg icon components. (vue 2.x)",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "bin": {
     "vsvg": "bin/svg.js"
   },
@@ -45,6 +45,7 @@
     "vue-loader": "^10.0.0",
     "vue-template-compiler": "^2.1.0",
     "webpack": "^2.2.0",
-    "webpack-dev-server": "^2.2.0"
+    "webpack-dev-server": "^2.2.0",
+    "webpack-merge": "^3.0.0"
   }
 }

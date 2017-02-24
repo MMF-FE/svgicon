@@ -1,6 +1,9 @@
 # vue-svgicon
 A tool to create svg icon components. (vue 2.x)
 
+## Inspiration
+https://github.com/Justineo/vue-awesome
+
 ## demo
 https://mmf-fe.github.io/vue-svgicon/
 
@@ -33,15 +36,18 @@ npm run svg
 ```
 
 ### Use generated icon
-Register global component
-``` javascript
+Use plugin
+
+```javascript
 // main.js
 import Vue from 'vue'
 import App from './App.vue'
-import svgicon from 'vue-svgicon/component/svgicon.vue'
+import svgicon from 'vue-svgicon'
 
-// register svgicon global
-Vue.component('svgicon', svgicon)
+// Default tag name is 'svgicon'
+Vue.use(svgicon, {
+    tagName: 'svgicon'
+})
 
 new Vue({
   el: '#app',

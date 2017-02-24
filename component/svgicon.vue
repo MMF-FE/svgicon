@@ -101,6 +101,11 @@
             }
         },
 
+        install (Vue, options = {}) {
+            let tagName = options.tagName || 'svgicon'
+            Vue.component(tagName, this)
+        },
+
         // register icons
         register (data) {
             for (let name in data) {

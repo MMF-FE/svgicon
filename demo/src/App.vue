@@ -70,11 +70,11 @@ h1, h2 {
   font-weight: normal;
 }
 
-.vue-logo path[pid="1"] {
+.vue-logo path[pid="0"] {
     color: #42b983
 }
 
-.vue-logo path[pid="2"] {
+.vue-logo path[pid="1"] {
     color: #35495e
 }
 </style>

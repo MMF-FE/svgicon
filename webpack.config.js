@@ -1,12 +1,13 @@
 var path = require('path')
 var webpack = require('webpack')
+var merge = require('webpack-merge')
+var isBuild = process.env.NODE_ENV === 'production'
 
-module.exports = {
-  entry: './demo/src/main.js',
+var config = {
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'build.js'
+    filename: '[name].js'
   },
   module: {
     rules: [
@@ -54,10 +55,11 @@ module.exports = {
   devtool: '#eval-source-map'
 }
 
-if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map'
+
+if (isBuild) {
+  config.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
-  module.exports.plugins = (module.exports.plugins || []).concat([
+  config.plugins = (config.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
@@ -73,4 +75,26 @@ if (process.env.NODE_ENV === 'production') {
       minimize: true
     })
   ])
+}
+
+var demo = merge(config, {
+  entry: {
+    'demo': './demo/src/main.js'
+  },
+})
+
+var build = merge(config, {
+  entry: {
+    'index': './index.js'
+  },
+  output: {
+    library: 'VueSvgIcon',
+    libraryTarget: 'umd'
+  }
+})
+
+if (isBuild) {
+  module.exports = [demo, build]
+} else {
+  module.exports = demo
 }
