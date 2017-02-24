@@ -12,11 +12,11 @@
             icon: String,
             width: {
                 type: String,
-                default: '16'
+                default: ''
             },
             height: {
                 type: String,
-                default: '16'
+                default: ''
             },
             dir: String,
             fill: {

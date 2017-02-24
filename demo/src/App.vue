@@ -17,8 +17,9 @@
         <svgicon icon="arrow" width="50" height="50"></svgicon>
         <svgicon icon="arrow" width="50" height="50" :fill="false"></svgicon>
       </p>
-      <h2>Size (defalt: px)</h2>
+      <h2>Size (defalt unit: px, defalt size: 16px / 16px)</h2>
       <p>
+        <svgicon icon="arrow"></svgicon>
         <svgicon icon="arrow" width="50" height="50"></svgicon>
         <svgicon icon="arrow" width="10em" height="10em"></svgicon>
       </p>

@@ -96,7 +96,7 @@ golb(filepath, function(err, files) {
             }
 
             let content = `
-let icon = require('vue-svgicon')
+var icon = require('vue-svgicon')
 icon.register({
     '${name}': {
         width: ${result.info.width},
