@@ -68,8 +68,9 @@
                     if (this.colors && this.colors.length > 0) {
                         let i = 0
                         let colors = this.colors
+                        let style = this.fill ? 'fill' : 'stroke'
                         return this.iconData.data.replace(reg, function(match) {
-                            return match + `style="color: ${colors[i++]}" `
+                            return match + `${style}="${colors[i++]}" `
                         })
                     } else {
                         return this.iconData.data

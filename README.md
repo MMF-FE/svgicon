@@ -134,11 +134,11 @@ Also, you can use css to add colors.
 ```
 ```css
 .vue-icon path[pid="0"] {
-    color: #42b983
+    fill: #42b983
 }
 
 .vue-icon path[pid="1"] {
-    color: #35495e
+    fill: #35495e
 }
 ```
 > You can't use scoped css.

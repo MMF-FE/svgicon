@@ -72,10 +72,10 @@ h1, h2 {
 }
 
 .vue-logo path[pid="0"] {
-    color: #42b983
+    fill: #42b983
 }
 
 .vue-logo path[pid="1"] {
-    color: #35495e
+    fill: #35495e
 }
 </style>
