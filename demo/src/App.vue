@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <svg>
+    <svg style="width: 0; position: absolute; opacity: 0">
        <defs>
           <linearGradient id="gradient-1" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%"  stop-color="#57f0c2"/>
