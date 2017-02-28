@@ -29,6 +29,11 @@
         <svgicon icon="arrow" width="50" height="50"></svgicon>
         <svgicon icon="arrow" width="50" height="50" :fill="false"></svgicon>
       </p>
+      <h2>r-color (reverse fill property)</h2>
+      <p>
+        <svgicon icon="clock" color="#8A99B2 r-#1C2330" width="100" height="100"></svgicon>
+        <div>circle is fill, path is stroke</div>
+      </p>
       <h2>Size (defalt unit: px, defalt size: 16px / 16px)</h2>
       <p>
         <svgicon icon="arrow"></svgicon>
@@ -58,9 +63,7 @@
 </template>
 
 <script>
-import 'icons/arrow'
-import 'icons/vue'
-import 'icons/colorwheel'
+import 'icons'
 
 export default {
   name: 'app',
@@ -87,6 +90,11 @@ h1, h2 {
   font-weight: normal;
 }
 
+h2 {
+  padding-top: 20px;
+  border-top: 1px solid #dcdcdc;
+}
+
 .vue-logo path[pid="0"] {
     fill: #42b983
 }
@@ -94,4 +102,5 @@ h1, h2 {
 .vue-logo path[pid="1"] {
     fill: #35495e
 }
+
 </style>

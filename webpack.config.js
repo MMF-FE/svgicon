@@ -42,7 +42,7 @@ var config = {
     alias: {
       'vue$': 'vue/dist/vue.common.js',
       'src': path.join(__dirname, './demo/src'),
-      'vue-svgicon': path.join(__dirname, './')
+      'vue-svgicon': path.join(__dirname, './index.js')
     }
   },
   devServer: {

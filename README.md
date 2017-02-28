@@ -107,6 +107,14 @@ Whether to fill the path/shape. Default value is **true**
 <svgicon icon="arrow" width="50" height="50"></svgicon>
 <svgicon icon="arrow" width="50" height="50" :fill="false"></svgicon>
 ```
+You can use **r-color** to reverse the fill property
+```html
+<!-- the first one is fill(default), the second use stroke -->
+<svgicon icon="clock" color="#8A99B2 r-#1C2330" width="100" height="100"></svgicon>
+<!-- the first one is stoke, the second is fill -->
+<svgicon icon="clock" color="#8A99B2 r-#1C2330" width="100" height="100" :fill="false"></svgicon>
+```
+
 
 ### width / height
 Specify the size of icon. Default value is **16px / 16px**. Default unit is **px**

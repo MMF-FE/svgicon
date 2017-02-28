@@ -3,120 +3,130 @@
 </template>
 
 <script>
-    let icons = {}
-    export default {
-        data () {
-            return {}
-        },
-        props: {
-            icon: String,
-            width: {
-                type: String,
-                default: ''
-            },
-            height: {
-                type: String,
-                default: ''
-            },
-            dir: String,
-            fill: {
-                type: Boolean,
-                default: true
-            },
-            color: String
-        },
+  let icons = {}
 
-        computed: {
-            clazz () {
-                let clazz = 'svg-icon'
+  export default {
+    data() {
+      return {}
+    },
+    props: {
+      icon: String,
+      width: {
+        type: String,
+        default: ''
+      },
+      height: {
+        type: String,
+        default: ''
+      },
+      dir: String,
+      fill: {
+        type: Boolean,
+        default: true
+      },
+      color: String
+    },
 
-                if (this.fill) {
-                    clazz += ' svg-fill'
-                }
+    computed: {
+      clazz() {
+        let clazz = 'svg-icon'
 
-                if (this.dir) {
-                    clazz += ' svg-' + this.dir
-                }
+        if (this.fill) {
+          clazz += ' svg-fill'
+        }
 
-                return clazz
-            },
+        if (this.dir) {
+          clazz += ' svg-' + this.dir
+        }
 
-            iconData () {
-                if (this.icon) {
-                    return icons[this.icon]
-                }
+        return clazz
+      },
 
-                return null
-            },
+      iconData() {
+        if (this.icon) {
+          return icons[this.icon]
+        }
 
-            colors () {
-                if (this.color) {
-                    return this.color.split(' ')
-                }
-                return ''
-            },
+        return null
+      },
 
-            path () {
-                if (this.iconData) {
-                    let reg = /<(path|rect|circle|polygon|line|polyline)\s/gi
-                    let id = 0
+      colors() {
+        if (this.color) {
+          return this.color.split(' ')
+        }
+        return ''
+      },
 
-                    this.iconData.data = this.iconData.data.replace(reg, function(match) {
-                        return match + `pid="${id++}" `
-                    })
+      path() {
+        if (this.iconData) {
+          let reg = /<(path|rect|circle|polygon|line|polyline)\s/gi
 
-                    if (this.colors && this.colors.length > 0) {
-                        let i = 0
-                        let colors = this.colors
-                        let style = this.fill ? 'fill' : 'stroke'
-                        return this.iconData.data.replace(reg, function(match) {
-                            return match + `${style}="${colors[i++]}" `
-                        })
-                    } else {
-                        return this.iconData.data
-                    }
-                }
-                return ''
-            },
+          if (this.colors && this.colors.length > 0) {
+            let i = 0
 
-            box () {
-                if (this.iconData) {
-                    if (this.iconData.viewBox) {
-                        return this.iconData.viewBox
-                    }
-                    return `0 0 ${this.iconData.width} ${this.iconData.height}`
-                }
+            return this.iconData.data.replace(reg, (match) => {
+              let color = this.colors[i++] || this.colors[this.colors.length - 1]
+              let fill = this.fill
 
-                return `0 0 ${parseFloat(this.width)} ${parseFloat(this.height)}`
-            },
+              // if color start with 'r-', reverse the fill value
+              if (color && color.indexOf('r-') === 0) {
+                fill = !fill
+                color = color.split('r-')[1]
+              }
 
-            style () {
-                let digitReg = /^\d+$/
-                let width = digitReg.test(this.width) ? this.width + 'px' : this.width
-                let height = digitReg.test(this.height) ? this.height + 'px' : this.height
+              let style = fill ? 'fill' : 'stroke'
+              let reverseStyle = fill ? 'stroke' : 'fill'
+              return match + `${style}="${color}" ${reverseStyle}="none"`
+            })
+          } else {
+            return this.iconData.data
+          }
+        }
+        return ''
+      },
 
-                return {
-                    width: width,
-                    height: height
-                }
-            }
-        },
+      box() {
+        let width = this.width || 16
+        let height = this.width || 16
 
-        install (Vue, options = {}) {
-            let tagName = options.tagName || 'svgicon'
-            Vue.component(tagName, this)
-        },
+        if (this.iconData) {
+          if (this.iconData.viewBox) {
+            return this.iconData.viewBox
+          }
+          return `0 0 ${this.iconData.width} ${this.iconData.height}`
+        }
+        console.log('fff')
+        return `0 0 ${parseFloat(width)} ${parseFloat(height)}`
+      },
 
-        // register icons
-        register (data) {
-            for (let name in data) {
-                if (!icons[name]) {
-                    icons[name] = data[name]
-                }
-            }
-        },
-        icons
-    }
+      style() {
+        let digitReg = /^\d+$/
+        let width = digitReg.test(this.width) ? this.width + 'px' : this.width
+        let height = digitReg.test(this.height) ? this.height + 'px' : this.height
+
+        return {
+          width: width,
+          height: height
+        }
+      }
+    },
+
+    install(Vue, options = {}) {
+      let tagName = options.tagName || 'svgicon'
+      Vue.component(tagName, this)
+    },
+
+    // register icons
+    register(data) {
+      for (let name in data) {
+        if (!icons[name]) {
+          icons[name] = data[name]
+        }
+      }
+    },
+    icons
+  }
+
 </script>
 
 <style scoped>

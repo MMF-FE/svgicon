@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.1 (35376) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 22</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="画板" transform="translate(-31.000000, -180.000000)">
+            <g id="Group-22" transform="translate(31.000000, 180.000000)">
+                <circle id="Oval-6" fill="#8A99B2" cx="8" cy="8" r="8"></circle>
+                <g id="Group-9" transform="translate(4.500000, 4.500000)" stroke="#1C2330" stroke-linecap="round">
+                    <path d="M2.75714286,-0.874902344 L2.75714286,4.53980754" id="Line"></path>
+                    <path d="M5.15305109,2.23656247 L5.15305109,7.01922715" id="Line" transform="translate(5.153051, 4.627895) rotate(-90.000000) translate(-5.153051, -4.627895) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

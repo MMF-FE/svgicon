@@ -24,13 +24,14 @@ let filepath = path.join(process.cwd(), args.s, '**/*.svg')
 // generated icon path
 let targetPath = path.join(process.cwd(), args.t)
 
-// console.log(filepath, targetPath)
+// delete previous icons
+fs.removeSync(targetPath)
 
 let svgo = new Svgo({
     plugins: [
         {
             removeAttrs: {
-                attrs: ['fill', 'stroke', 'sketch:type', 'id', 'opacity', 'fill-rule']
+                attrs: ['(path|rect|circle|polygon|line|polyline|g):(fill|stroke)']
             }
         },
         {
@@ -50,7 +51,8 @@ let svgo = new Svgo({
         },
         {
             cleanupIDs: {
-                remove: true
+                remove: true,
+                prefix: 'svgicon-'
             }
         },
         {
@@ -95,12 +97,19 @@ golb(filepath, function(err, files) {
                 viewBox = viewBox[1]
             }
 
+            // add pid attr, for css
+            let reg = /<(path|rect|circle|polygon|line|polyline)\s/gi
+            let id = 0
+            data = data.replace(reg, function (match) {
+              return match + `pid="${id++}" `
+            })
+
             let content = `
 var icon = require('vue-svgicon')
 icon.register({
     '${name}': {
-        width: ${result.info.width},
-        height: ${result.info.height},
+        width: ${parseFloat(result.info.width) || 16},
+        height: ${parseFloat(result.info.height) || 16},
         viewBox: '${viewBox}',
         data: '${data}'
     }
