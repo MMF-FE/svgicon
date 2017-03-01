@@ -95,7 +95,7 @@
           }
           return `0 0 ${this.iconData.width} ${this.iconData.height}`
         }
-        console.log('fff')
+
         return `0 0 ${parseFloat(width)} ${parseFloat(height)}`
       },
 
