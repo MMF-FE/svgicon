@@ -1,0 +1,6 @@
+language: node_js
+node_js:
+ - 'node'
+
+script: npm run cover
+after_success: cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
