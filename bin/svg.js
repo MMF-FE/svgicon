@@ -88,13 +88,15 @@ golb(filepath, function(err, files) {
     files.forEach((filename, ix) => {
         let name = path.basename(filename).split('.')[0]
         let content = fs.readFileSync(filename, 'utf-8')
-
+        const prefix = filename.replace(path.resolve(args.s), '').replace(path.basename(filename), '').replace(new RegExp('\/', 'g'), '')
+        const prefixName = prefix.length > 0 ? `${prefix}-`:''
+        
         svgo.optimize(content, (result) => {
             let data = result.data.replace(/<svg[^>]+>/gi, '').replace(/<\/svg>/gi, '')
-            let viewBox = result.data.match(/viewBox="(\d+\s\d+\s\d+\s\d+)"/)
+            let viewBox = result.data.match(/viewBox="([\d\.]+\s[\d\.]+\s[\d\.]+\s[\d\.]+)"/)
 
             if (viewBox && viewBox.length > 1) {
-                viewBox = viewBox[1]
+                viewBox = `'${viewBox[1]}'`
             }
 
             // add pid attr, for css
@@ -107,14 +109,14 @@ golb(filepath, function(err, files) {
             let content = `
 var icon = require('vue-svgicon')
 icon.register({
-    '${name}': {
+    '${prefixName}${name}': {
         width: ${parseFloat(result.info.width) || 16},
         height: ${parseFloat(result.info.height) || 16},
-        viewBox: '${viewBox}',
+        viewBox: ${viewBox},
         data: '${data}'
     }
 })`
-            fs.writeFile(path.join(targetPath, name + '.js'), content, 'utf-8', function (err) {
+            fs.writeFile(path.join(targetPath, prefix, name + '.js'), content, 'utf-8', function (err) {
                 if (ix === files.length - 1) {
                     generateIndex(files)
                 }
