@@ -177,13 +177,12 @@ Use gradient
 
 ### Multiple directory (Namespace)
 You can use multiple directory to discriminate the icons which has the same name.
-```txt
-|-- src
-    arrow.svg
-    |-- sora
-        arrow.svg
-        |-- fit
-            arrow.svg
+```
+├── arrow.svg
+├── sora
+│   ├── arrow.svg
+│   └── fit
+│       └── arrow.svg
 
 ```
 
