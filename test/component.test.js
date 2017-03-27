@@ -1,7 +1,7 @@
 /**
- * 
+ *
  * @author vfasky<vfasky@gmail.com>
- * 
+ *
  **/
 'use strict'
 

@@ -58,6 +58,12 @@
       <p>
         <svgicon icon="vue" width="15rem" height="15rem" color="url(#gradient-1) url(#gradient-2)"></svgicon>
       </p>
+      <h2>Namespace</h2>
+      <p>
+        <svgicon icon="arrow" width="50" height="50"></svgicon>
+        <svgicon icon="sora/arrow" width="50" height="50"></svgicon>
+        <svgicon icon="sora/fit/arrow" width="50" height="50"></svgicon>
+      </p>
     </div>
   </div>
 </template>
