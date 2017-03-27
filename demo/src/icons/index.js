@@ -1,4 +1,6 @@
 require('./arrow')
 require('./clock')
 require('./colorwheel')
+require('./sora/arrow')
+require('./sora/fit/arrow')
 require('./vue')
