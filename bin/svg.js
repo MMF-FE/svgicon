@@ -64,7 +64,7 @@ let svgo = new Svgo({
 // get file path by filename
 function getFilePath (filename) {
   let filePath = filename.replace(path.resolve(args.s), '').replace(path.basename(filename), '')
-  if (filePath.indexOf('/') === 0) {
+  if ( /^[\/\\]/.test(filePath) ) {
     filePath = filePath.substr(1)
   }
 
@@ -95,6 +95,8 @@ golb(filepath, function (err, files) {
     console.log(err)
     return false
   }
+
+  files = files.map((filepath) => path.normalize(filepath));
 
   files.forEach((filename, ix) => {
     let name = path.basename(filename).split('.')[0]
