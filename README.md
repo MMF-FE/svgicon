@@ -192,3 +192,19 @@ You can use multiple directory to discriminate the icons which has the same name
 <svgicon icon="sora/fit/arrow" width="50" height="50"></svgicon>
 
 ```
+
+### Work on server-side render (SSR)
+The component will insert the css style code to the **document** Object, so it will throw an error in SSR. The solution is defind an alias for vue-svgicon module if you use webpack.
+
+```javascript
+var config = {
+    module: {
+        resolve: {
+            alias: {
+                'vue-svgicon$': 'vue-svgicon/component/svgicon.vue'
+            }
+        }
+    }
+}
+```
+If you are use other build system..., I think you can find a solution like wepack way.
