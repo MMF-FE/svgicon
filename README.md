@@ -233,3 +233,6 @@ var config = {
 }
 ```
 If you are use other build system..., I think you can find a solution like wepack way.
+
+### Work on IE
+This component doesn't work on IE because IE don't support innerHTML in SVGElement. You can use this polyfill to make it work. https://github.com/dnozay/innersvg-polyfill
