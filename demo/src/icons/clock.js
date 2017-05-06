@@ -1,4 +1,3 @@
-
 var icon = require('vue-svgicon')
 icon.register({
   'clock': {

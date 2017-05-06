@@ -14,20 +14,20 @@ https://mmf-fe.github.io/vue-svgicon/
 
 ## Usage
 ### Generate icon
-Install
+#### Install
 ```bash
 # install global
 npm install vue-svgicon -g
 # install for project
 npm install vue-svgicon --save-dev
 ```
-Command
+#### Command
 ```bash
 # generate svg icon components
 vsvg -s /path/to/svg/source -t /path/for/generated/components
 ```
 
-Use as npm scripts
+#### Use as npm scripts
 ```json
 {
     "scripts": {
@@ -35,10 +35,35 @@ Use as npm scripts
     }
 }
 ```
+
 ```bash
 # bash
 npm run svg
 ```
+
+It will generate icons to the specified path.
+
+#### Custom icon content format
+
+```bash
+# specify templdate path
+vsvg -s /path/to/svg/source -t /path/for/generated/components --tpl /path/for/icon-template
+```
+Default tempdate is:
+```javascript
+var icon = require('vue-svgicon')
+icon.register({
+  '${name}': {
+    width: ${width},
+    height: ${height},
+    viewBox: ${viewBox},
+    data: '${data}'
+  }
+})
+
+```
+
+
 
 ### Use generated icon
 Use plugin

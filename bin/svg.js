@@ -15,6 +15,7 @@ const args = require('yargs')
   .demandOption(['s', 't'])
   .describe('s', 'svg file path')
   .describe('t', 'generate icon path')
+  .describe('tpl', 'the template file which to generate icon files')
   .help('help')
   .alias('h', 'help')
   .argv
@@ -23,6 +24,10 @@ const args = require('yargs')
 let filepath = path.join(process.cwd(), args.s, '**/*.svg')
 // generated icon path
 let targetPath = path.join(process.cwd(), args.t)
+
+// the template file which to generate icon files
+let tplPath = args.tpl ? path.join(process.cwd(), args.tpl) : path.join(__dirname, '../icon.tpl.txt')
+let tpl = fs.readFileSync(tplPath, 'utf8')
 
 // delete previous icons
 fs.removeSync(targetPath)
@@ -60,6 +65,13 @@ let svgo = new Svgo({
     }
   ]
 })
+
+// simple template compile
+function compile (content, data) {
+    return content.replace(/\${(\w+)}/gi, function (match, name) {
+        return data[name] ? data[name] : ''
+    })
+}
 
 // get file path by filename
 function getFilePath (filename) {
@@ -118,16 +130,14 @@ golb(filepath, function (err, files) {
         return match + `pid="${id++}" `
       })
 
-      let content = `
-var icon = require('vue-svgicon')
-icon.register({
-  '${filePath}${name}': {
-    width: ${parseFloat(result.info.width) || 16},
-    height: ${parseFloat(result.info.height) || 16},
-    viewBox: ${viewBox},
-    data: '${data}'
-  }
-})`
+      let content = compile(tpl, {
+          name: `${filePath}${name}`,
+          width: parseFloat(result.info.width) || 16,
+          height: parseFloat(result.info.height) || 16,
+          viewBox: viewBox,
+          data: data
+      })
+
       fs.writeFile(path.join(targetPath, filePath, name + '.js'), content, 'utf-8', function (err) {
         if (ix === files.length - 1) {
           generateIndex(files)
