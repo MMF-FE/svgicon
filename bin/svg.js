@@ -117,7 +117,7 @@ golb(filepath, function (err, files) {
 
     svgo.optimize(content, (result) => {
       let data = result.data.replace(/<svg[^>]+>/gi, '').replace(/<\/svg>/gi, '')
-      let viewBox = result.data.match(/viewBox="([\d\.]+\s[\d\.]+\s[\d\.]+\s[\d\.]+)"/)
+      let viewBox = result.data.match(/viewBox="([-\d\.]+\s[-\d\.]+\s[-\d\.]+\s[-\d\.]+)"/)
 
       if (viewBox && viewBox.length > 1) {
         viewBox = `'${viewBox[1]}'`
