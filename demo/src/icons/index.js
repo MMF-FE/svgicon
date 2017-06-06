@@ -1,4 +1,5 @@
 require('./arrow')
+require('./check')
 require('./clock')
 require('./colorwheel')
 require('./sora/arrow')

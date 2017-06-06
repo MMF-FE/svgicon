@@ -49,7 +49,7 @@
       </p>
       <h2>Multi Color (define by path/shape order)</h2>
       <p>
-        <svgicon icon="vue" width="100" height="100" color="red green"></svgicon>
+        <svgicon icon="check" :fill="false" width="100" height="100" color="r-#42b983 white"></svgicon>
       </p>
       <p>
         <svgicon icon="colorwheel" width="200" height="200" :color="colors"></svgicon>

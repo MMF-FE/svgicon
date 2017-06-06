@@ -36,7 +36,7 @@ let svgo = new Svgo({
   plugins: [
     {
       removeAttrs: {
-        attrs: ['(path|rect|circle|polygon|line|polyline|g):(fill|stroke)']
+        attrs: ['(path|rect|circle|polygon|line|polyline|g|ellipse):(fill|stroke)']
       }
     },
     {
@@ -124,7 +124,7 @@ golb(filepath, function (err, files) {
       }
 
       // add pid attr, for css
-      let reg = /<(path|rect|circle|polygon|line|polyline)\s/gi
+      let reg = /<(path|rect|circle|polygon|line|polyline|ellipse)\s/gi
       let id = 0
       data = data.replace(reg, function (match) {
         return match + `pid="${id++}" `

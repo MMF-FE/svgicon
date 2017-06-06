@@ -59,7 +59,7 @@
 
       path() {
         if (this.iconData) {
-          let reg = /<(path|rect|circle|polygon|line|polyline)\s/gi
+          let reg = /<(path|rect|circle|polygon|line|polyline|ellipse)\s/gi
 
           if (this.colors && this.colors.length > 0) {
             let i = 0
