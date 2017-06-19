@@ -1,5 +1,5 @@
 <template>
-    <svg version="1.1" :class="clazz" :viewBox="box" v-html="path" :style="style"></svg>
+    <div v-html="svgString" :class="clazz" :style="style"></div>
 </template>
 
 <script>
@@ -28,6 +28,13 @@
     },
 
     computed: {
+      svgString () {
+        let styleString = ''
+        for (let property in this.style) 
+          styleString += `${ property }: ${ this.style[property] }; `
+        return `<svg version="1.1" viewBox="${ this.box }" style="width: 100%; height: 100%;"> ${ this.path } </svg>`
+      },
+
       clazz() {
         let clazz = 'svg-icon'
 
