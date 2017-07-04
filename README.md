@@ -6,6 +6,8 @@
 
 A tool to create svg icon components. (vue 2.x)
 
+This is a fork of https://github.com/MMF-FE/vue-svgicon with TypeScript support. Created this package temporarily till the PR on the original is accepted and merged.
+
 ## Inspiration
 https://github.com/Justineo/vue-awesome
 
