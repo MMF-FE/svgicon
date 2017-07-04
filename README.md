@@ -63,7 +63,14 @@ icon.register({
 
 ```
 
+#### TypeScript Support
 
+```bash
+# Add the typescript flag '--ts'
+vsvg -s /path/to/svg/source -t /path/for/generated/components --ts
+```
+
+This will cause the icon files generated as well as the `index` file to be TypeScript files for use in those projects.
 
 ### Use generated icon
 Use plugin
