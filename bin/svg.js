@@ -16,6 +16,7 @@ const args = require('yargs')
   .describe('s', 'svg file path')
   .describe('t', 'generate icon path')
   .describe('tpl', 'the template file which to generate icon files')
+  .describe('ts', 'generate typescript files')
   .help('help')
   .alias('h', 'help')
   .argv
@@ -28,6 +29,11 @@ let targetPath = path.join(process.cwd(), args.t)
 // the template file which to generate icon files
 let tplPath = args.tpl ? path.join(process.cwd(), args.tpl) : path.join(__dirname, '../icon.tpl.txt')
 let tpl = fs.readFileSync(tplPath, 'utf8')
+
+// Check if the typescript is passed in.
+const loadTypeScript = (args.ts === undefined ? false : true);
+const extension = (loadTypeScript ? 'ts' : 'js')
+
 
 // delete previous icons
 fs.removeSync(targetPath)
@@ -83,22 +89,26 @@ function getFilePath (filename) {
   return filePath
 }
 
-// generate index.js, which import all icons
+// generate index, which import all icons
 function generateIndex(files) {
   let content = ''
   files.forEach((filename) => {
     let name = path.basename(filename).split('.')[0]
     const filePath = getFilePath(filename)
-    content += `require('./${filePath}${name}')\n`
+    if (loadTypeScript) {
+      content += `import './${filePath}${name}';\n`
+    } else {
+      content += `require('./${filePath}${name}')\n`
+    }
   })
 
-  fs.writeFile(path.join(targetPath, 'index.js'), content, 'utf-8', (err) => {
+  fs.writeFile(path.join(targetPath, `index.${extension}`), content, 'utf-8', (err) => {
     if (err) {
       console.log(err)
       return false
     }
 
-    console.log('Generated index.js')
+    console.log('Generated index file')
   })
 }
 
@@ -138,7 +148,7 @@ golb(filepath, function (err, files) {
           data: data
       })
 
-      fs.writeFile(path.join(targetPath, filePath, name + '.js'), content, 'utf-8', function (err) {
+      fs.writeFile(path.join(targetPath, filePath, name + `.${extension}`), content, 'utf-8', function (err) {
         if (ix === files.length - 1) {
           generateIndex(files)
         }
@@ -152,4 +162,3 @@ golb(filepath, function (err, files) {
     })
   })
 })
-
