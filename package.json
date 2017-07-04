@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "svg": "node ./bin/svg.js -s ./demo/svg -t ./demo/src/icons",
+    "svg": "node ./bin/svg.js -s ./demo/svg -t ./demo/src/icons --ts",
     "test-watch": "mocha-webpack --watch",
     "test": "mocha-webpack",
     "cover": "cross-env NODE_ENV=coverage nyc --reporter=lcov --reporter=text npm run test"

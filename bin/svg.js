@@ -26,14 +26,14 @@ let filepath = path.join(process.cwd(), args.s, '**/*.svg')
 // generated icon path
 let targetPath = path.join(process.cwd(), args.t)
 
-// the template file which to generate icon files
-let tplPath = args.tpl ? path.join(process.cwd(), args.tpl) : path.join(__dirname, '../icon.tpl.txt')
-let tpl = fs.readFileSync(tplPath, 'utf8')
-
-// Check if the typescript is passed in.
+// Check if the typescript build is passed in.
 const loadTypeScript = (args.ts === undefined ? false : true);
 const extension = (loadTypeScript ? 'ts' : 'js')
+const defaultTemplate = (loadTypeScript ? '../icon.ts.tpl.txt' : '../icon.tpl.txt');
 
+// the template file which to generate icon files
+let tplPath = args.tpl ? path.join(process.cwd(), args.tpl) : path.join(__dirname, defaultTemplate);
+let tpl = fs.readFileSync(tplPath, 'utf8')
 
 // delete previous icons
 fs.removeSync(targetPath)
