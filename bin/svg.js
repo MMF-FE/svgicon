@@ -96,7 +96,7 @@ function generateIndex(files) {
     let name = path.basename(filename).split('.')[0]
     const filePath = getFilePath(filename)
     if (loadTypeScript) {
-      content += `export ${name} from './${filePath}${name}';\n`
+      content += `import './${filePath}${name}';\n`
     } else {
       content += `require('./${filePath}${name}')\n`
     }
