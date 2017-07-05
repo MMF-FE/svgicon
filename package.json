@@ -1,6 +1,6 @@
 {
   "name": "vue-svgicon-ts",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "A tool to create svg icon components. Fork of https://github.com/MMF-FE/vue-svgicon with TS support. Needed to use this mod so created a separate package, will swap back to main once the PR is merged.",
   "main": "./dist/index.js",
   "bin": {
