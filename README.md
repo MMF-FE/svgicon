@@ -74,6 +74,15 @@ vsvg -s /path/to/svg/source -t /path/for/generated/components --ts
 
 This will cause the icon files generated as well as the `index` file to be TypeScript files for use in those projects.
 
+#### Colored Icons
+
+In the cases were you have an SVG Logo which already has color and strokes, then to be able to retain that information in the bundled SVG, just be sure to end the filename with `-color`;
+
+Example: `company-logo-color.svg`
+
+This file will retain the fills and stroke from the SVG file.
+
+
 ### Use generated icon
 Use plugin
 

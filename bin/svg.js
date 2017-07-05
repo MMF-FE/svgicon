@@ -38,7 +38,7 @@ let tpl = fs.readFileSync(tplPath, 'utf8')
 // delete previous icons
 fs.removeSync(targetPath)
 
-const svgo = new Svgo({
+const svgoOptions = {
   plugins: [
     {
       removeAttrs: {
@@ -70,42 +70,11 @@ const svgo = new Svgo({
       convertShapeToPath: true
     }
   ]
-});
+};
+const svgo = new Svgo(svgoOptions);
 
-const svgoColor = new Svgo({
-  plugins: [
-    {
-      removeAttrs: {
-        attrs: ['(path|rect|circle|polygon|line|polyline|g|ellipse)']
-      }
-    },
-    {
-      removeTitle: true
-    },
-    {
-      removeStyleElement: true
-    },
-    {
-      removeComments: true
-    },
-    {
-      removeDesc: true
-    },
-    {
-      removeUselessDefs: true
-    },
-    {
-      cleanupIDs: {
-        remove: true,
-        prefix: 'svgicon-'
-      }
-    },
-    {
-      convertShapeToPath: true
-    }
-  ]
-});
-
+const colorOptions = svgoOptions.plugins[0].removeAttrs.attrs[0] = '(path|rect|circle|polygon|line|polyline|g|ellipse)';
+const svgoColor = new Svgo(colorOptions);
 
 // simple template compile
 function compile (content, data) {
