@@ -38,7 +38,41 @@ let tpl = fs.readFileSync(tplPath, 'utf8')
 // delete previous icons
 fs.removeSync(targetPath)
 
-let svgo = new Svgo({
+const svgo = new Svgo({
+  plugins: [
+    {
+      removeAttrs: {
+        attrs: ['(path|rect|circle|polygon|line|polyline|g|ellipse):(fill|stroke)']
+      }
+    },
+    {
+      removeTitle: true
+    },
+    {
+      removeStyleElement: true
+    },
+    {
+      removeComments: true
+    },
+    {
+      removeDesc: true
+    },
+    {
+      removeUselessDefs: true
+    },
+    {
+      cleanupIDs: {
+        remove: true,
+        prefix: 'svgicon-'
+      }
+    },
+    {
+      convertShapeToPath: true
+    }
+  ]
+});
+
+const svgoColor = new Svgo({
   plugins: [
     {
       removeAttrs: {
@@ -70,7 +104,8 @@ let svgo = new Svgo({
       convertShapeToPath: true
     }
   ]
-})
+});
+
 
 // simple template compile
 function compile (content, data) {
@@ -125,7 +160,14 @@ golb(filepath, function (err, files) {
     let content = fs.readFileSync(filename, 'utf-8')
     let filePath = getFilePath(filename)
 
-    svgo.optimize(content, (result) => {
+    let svgoInstance;
+    if (name.endsWith('-color')) {
+        svgoInstance = svgoColor;
+    } else {
+        svgoInstance = svgo;
+    }
+
+    svgoInstance.optimize(content, (result) => {
       let data = result.data.replace(/<svg[^>]+>/gi, '').replace(/<\/svg>/gi, '')
       let viewBox = result.data.match(/viewBox="([-\d\.]+\s[-\d\.]+\s[-\d\.]+\s[-\d\.]+)"/)
 
