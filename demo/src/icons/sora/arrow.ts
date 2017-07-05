@@ -1,4 +1,4 @@
-import icon from 'vue-svgicon';
+import icon from 'vue-svgicon-ts';
 icon.register({
   'sora/arrow': {
     width: 200,

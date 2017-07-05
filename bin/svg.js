@@ -42,7 +42,7 @@ let svgo = new Svgo({
   plugins: [
     {
       removeAttrs: {
-        attrs: ['(path|rect|circle|polygon|line|polyline|g|ellipse):(fill|stroke)']
+        attrs: ['(path|rect|circle|polygon|line|polyline|g|ellipse)']
       }
     },
     {
