@@ -30,7 +30,7 @@ describe('vue-svgion Test Case', () => {
 
         assert.equal(
             vm.$el.innerHTML,
-            '<path fill="#42b983" stroke="none" pid="0" d="M0 0l128 220.8L256 0h-51.2L128 132.48 50.56 0H0z"></path><path fill="#35495e" stroke="none" pid="1" d="M50.56 0L128 133.12 204.8 0h-47.36L128 51.2 97.92 0H50.56z"></path>'
+            '<svg version="1.1" viewBox="0 0 256 221" style="width: 100%; height: 100%;"> <path fill="#42b983" stroke="none" pid="0" d="M0 0l128 220.8L256 0h-51.2L128 132.48 50.56 0H0z"></path><path fill="#35495e" stroke="none" pid="1" d="M50.56 0L128 133.12 204.8 0h-47.36L128 51.2 97.92 0H50.56z"></path> </svg>'
         )
     })
 

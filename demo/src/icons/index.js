@@ -1,7 +1,0 @@
-require('./arrow')
-require('./check')
-require('./clock')
-require('./colorwheel')
-require('./sora/arrow')
-require('./sora/fit/arrow')
-require('./vue')

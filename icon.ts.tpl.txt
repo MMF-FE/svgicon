@@ -1,4 +1,4 @@
-var icon = require('vue-svgicon-ts')
+import icon from 'vue-svgicon-ts';
 icon.register({
   '${name}': {
     width: ${width},
@@ -6,4 +6,4 @@ icon.register({
     viewBox: ${viewBox},
     data: '${data}'
   }
-})
+});

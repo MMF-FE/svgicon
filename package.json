@@ -1,7 +1,7 @@
 {
-  "name": "vue-svgicon",
-  "version": "1.1.9",
-  "description": "A tool to create svg icon components. (vue 2.x)",
+  "name": "vue-svgicon-ts",
+  "version": "1.2.3",
+  "description": "A tool to create svg icon components. Fork of https://github.com/MMF-FE/vue-svgicon with TS support. Needed to use this mod so created a separate package, will swap back to main once the PR is merged.",
   "main": "./dist/index.js",
   "bin": {
     "vsvg": "bin/svg.js"
@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "svg": "node ./bin/svg.js -s ./demo/svg -t ./demo/src/icons",
+    "svg": "node ./bin/svg.js -s ./demo/svg -t ./demo/src/icons --ts",
     "test-watch": "mocha-webpack --watch",
     "test": "mocha-webpack",
     "cover": "cross-env NODE_ENV=coverage nyc --reporter=lcov --reporter=text npm run test"
@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MMF-FE/vue-svgicon.git"
+    "url": "git+https://github.com/cajames/vue-svgicon.git"
   },
   "keywords": [
     "vue",

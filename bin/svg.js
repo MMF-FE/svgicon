@@ -16,6 +16,7 @@ const args = require('yargs')
   .describe('s', 'svg file path')
   .describe('t', 'generate icon path')
   .describe('tpl', 'the template file which to generate icon files')
+  .describe('ts', 'generate typescript files')
   .help('help')
   .alias('h', 'help')
   .argv
@@ -25,14 +26,19 @@ let filepath = path.join(process.cwd(), args.s, '**/*.svg')
 // generated icon path
 let targetPath = path.join(process.cwd(), args.t)
 
+// Check if the typescript build is passed in.
+const loadTypeScript = (args.ts === undefined ? false : true);
+const extension = (loadTypeScript ? 'ts' : 'js')
+const defaultTemplate = (loadTypeScript ? '../icon.ts.tpl.txt' : '../icon.tpl.txt');
+
 // the template file which to generate icon files
-let tplPath = args.tpl ? path.join(process.cwd(), args.tpl) : path.join(__dirname, '../icon.tpl.txt')
+let tplPath = args.tpl ? path.join(process.cwd(), args.tpl) : path.join(__dirname, defaultTemplate);
 let tpl = fs.readFileSync(tplPath, 'utf8')
 
 // delete previous icons
 fs.removeSync(targetPath)
 
-let svgo = new Svgo({
+const svgoOptions = {
   plugins: [
     {
       removeAttrs: {
@@ -64,7 +70,11 @@ let svgo = new Svgo({
       convertShapeToPath: true
     }
   ]
-})
+};
+const svgo = new Svgo(svgoOptions);
+
+const colorOptions = svgoOptions.plugins[0].removeAttrs.attrs[0] = '(path|rect|circle|polygon|line|polyline|g|ellipse)';
+const svgoColor = new Svgo(colorOptions);
 
 // simple template compile
 function compile (content, data) {
@@ -83,22 +93,26 @@ function getFilePath (filename) {
   return filePath
 }
 
-// generate index.js, which import all icons
+// generate index, which import all icons
 function generateIndex(files) {
   let content = ''
   files.forEach((filename) => {
     let name = path.basename(filename).split('.')[0]
     const filePath = getFilePath(filename)
-    content += `require('./${filePath}${name}')\n`
+    if (loadTypeScript) {
+      content += `import './${filePath}${name}';\n`
+    } else {
+      content += `require('./${filePath}${name}')\n`
+    }
   })
 
-  fs.writeFile(path.join(targetPath, 'index.js'), content, 'utf-8', (err) => {
+  fs.writeFile(path.join(targetPath, `index.${extension}`), content, 'utf-8', (err) => {
     if (err) {
       console.log(err)
       return false
     }
 
-    console.log('Generated index.js')
+    console.log('Generated index file')
   })
 }
 
@@ -115,7 +129,14 @@ golb(filepath, function (err, files) {
     let content = fs.readFileSync(filename, 'utf-8')
     let filePath = getFilePath(filename)
 
-    svgo.optimize(content, (result) => {
+    let svgoInstance;
+    if (name.endsWith('-color')) {
+        svgoInstance = svgoColor;
+    } else {
+        svgoInstance = svgo;
+    }
+
+    svgoInstance.optimize(content, (result) => {
       let data = result.data.replace(/<svg[^>]+>/gi, '').replace(/<\/svg>/gi, '')
       let viewBox = result.data.match(/viewBox="([-\d\.]+\s[-\d\.]+\s[-\d\.]+\s[-\d\.]+)"/)
 
@@ -138,7 +159,7 @@ golb(filepath, function (err, files) {
           data: data
       })
 
-      fs.writeFile(path.join(targetPath, filePath, name + '.js'), content, 'utf-8', function (err) {
+      fs.writeFile(path.join(targetPath, filePath, name + `.${extension}`), content, 'utf-8', function (err) {
         if (ix === files.length - 1) {
           generateIndex(files)
         }
@@ -152,4 +173,3 @@ golb(filepath, function (err, files) {
     })
   })
 })
-
