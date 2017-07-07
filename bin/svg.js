@@ -9,25 +9,30 @@
 const fs = require('fs-plus')
 const path = require('path')
 const Svgo = require('svgo')
-const golb = require('glob')
+const glob = require('glob')
 const args = require('yargs')
   .usage('Usage: $0 -s svgSourcePath -t targetPath')
   .demandOption(['s', 't'])
-  .describe('s', 'svg file path')
+  .describe('s', 'svg source path')
   .describe('t', 'generate icon path')
+  .describe('ext', 'generated file\'s extension')
+  .default('ext', 'js')
   .describe('tpl', 'the template file which to generate icon files')
   .help('help')
   .alias('h', 'help')
   .argv
 
 // svg fle path
-let filepath = path.join(process.cwd(), args.s, '**/*.svg')
+const filepath = path.join(process.cwd(), args.s, '**/*.svg')
 // generated icon path
-let targetPath = path.join(process.cwd(), args.t)
+console.log(args.t)
+const targetPath = path.join(process.cwd(), args.t)
 
 // the template file which to generate icon files
-let tplPath = args.tpl ? path.join(process.cwd(), args.tpl) : path.join(__dirname, '../icon.tpl.txt')
-let tpl = fs.readFileSync(tplPath, 'utf8')
+const tplPath = args.tpl ? path.join(process.cwd(), args.tpl) : path.join(__dirname, '../icon.tpl.txt')
+const tpl = fs.readFileSync(tplPath, 'utf8')
+
+const ext = args.ext
 
 // delete previous icons
 fs.removeSync(targetPath)
@@ -92,17 +97,17 @@ function generateIndex(files) {
     content += `require('./${filePath}${name}')\n`
   })
 
-  fs.writeFile(path.join(targetPath, 'index.js'), content, 'utf-8', (err) => {
+  fs.writeFile(path.join(targetPath, `index.${ext}`), content, 'utf-8', (err) => {
     if (err) {
       console.log(err)
       return false
     }
 
-    console.log('Generated index.js')
+    console.log(`Generated index.${ext}`)
   })
 }
 
-golb(filepath, function (err, files) {
+glob(filepath, function (err, files) {
   if (err) {
     console.log(err)
     return false
@@ -138,7 +143,7 @@ golb(filepath, function (err, files) {
           data: data
       })
 
-      fs.writeFile(path.join(targetPath, filePath, name + '.js'), content, 'utf-8', function (err) {
+      fs.writeFile(path.join(targetPath, filePath, name + `.${ext}`), content, 'utf-8', function (err) {
         if (ix === files.length - 1) {
           generateIndex(files)
         }
