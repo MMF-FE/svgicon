@@ -63,7 +63,10 @@ icon.register({
 
 ```
 
-
+#### Custom icon file extension
+```bash
+vsvg -s /path/to/svg/source -t /path/for/generated/components --ext ts
+```
 
 ### Use generated icon
 Use plugin
