@@ -42,7 +42,8 @@ var config = {
     alias: {
       'vue$': 'vue/dist/vue.common.js',
       'src': path.join(__dirname, './demo/src'),
-      'vue-svgicon': path.join(__dirname, './index.js')
+      'vue-svgicon': path.join(__dirname, './index.js'),
+      'polyfill': path.join(__dirname, './polyfill/index.js')
     }
   },
   devServer: {
@@ -57,7 +58,7 @@ var config = {
 
 
 if (isBuild) {
-  config.devtool = '#source-map'
+  config.devtool = ''
   // http://vue-loader.vuejs.org/en/workflow/production.html
   config.plugins = (config.plugins || []).concat([
     new webpack.DefinePlugin({
@@ -93,8 +94,18 @@ var build = merge(config, {
   }
 })
 
+var polyfill = merge(config, {
+  entry: {
+    'polyfill': './polyfill/index.js'
+  },
+  output: {
+    library: 'VueSvgIconPolyfill',
+    libraryTarget: 'umd'
+  }
+})
+
 if (isBuild) {
-  module.exports = [demo, build]
+  module.exports = [demo, build, polyfill]
 } else {
   module.exports = demo
 }

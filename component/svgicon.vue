@@ -76,7 +76,7 @@
 
               let style = fill ? 'fill' : 'stroke'
               let reverseStyle = fill ? 'stroke' : 'fill'
-              return match + `${style}="${color}" ${reverseStyle}="none"`
+              return match + `${style}="${color}" ${reverseStyle}="none" `
             })
           } else {
             return this.iconData.data

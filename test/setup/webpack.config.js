@@ -1,7 +1,7 @@
 /**
- * 
+ *
  * @author vfasky<vfasky@gmail.com>
- * 
+ *
  **/
 const path = require('path')
 const webpack = require('webpack')
@@ -42,7 +42,7 @@ var config = {
         ])
     },
     plugins: [],
-    target: 'node', // in order to ignore built-in modules like path, fs, etc.
+    // target: 'node', // in order to ignore built-in modules like path, fs, etc.
     externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
     devtool: "#inline-cheap-module-source-map"
 }

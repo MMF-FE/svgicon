@@ -60,9 +60,9 @@
     "mocha-webpack": "next",
     "nyc": "^10.1.2",
     "vue": "^2.1.0",
-    "vue-loader": "^10.0.0",
+    "vue-loader": "^12.2.2",
     "vue-template-compiler": "^2.1.0",
-    "webpack": "^2.2.0",
+    "webpack": "^3.2.0",
     "webpack-dev-server": "^2.2.0",
     "webpack-merge": "^3.0.0",
     "webpack-node-externals": "^1.5.4"
