@@ -11,6 +11,7 @@
     },
     props: {
       icon: String,
+      name: String,
       width: {
         type: String,
         default: ''
@@ -19,6 +20,7 @@
         type: String,
         default: ''
       },
+      scale: String,
       dir: String,
       fill: {
         type: Boolean,
@@ -42,9 +44,13 @@
         return clazz
       },
 
+      iconName () {
+        return this.name || this.icon
+      },
+
       iconData() {
-        if (this.icon) {
-          return icons[this.icon]
+        if (this.iconName) {
+          return icons[this.iconName]
         }
 
         return null
@@ -101,8 +107,18 @@
 
       style() {
         let digitReg = /^\d+$/
-        let width = digitReg.test(this.width) ? this.width + 'px' : this.width
-        let height = digitReg.test(this.height) ? this.height + 'px' : this.height
+        let scale = Number(this.scale)
+        let width
+        let height
+
+        // apply scale
+        if (!isNaN(scale) && this.iconData) {
+          width = (Number(this.iconData.width) * scale) + 'px'
+          height = (Number(this.iconData.height) * scale) + 'px'
+        } else {
+          width = digitReg.test(this.width) ? this.width + 'px' : this.width
+          height = digitReg.test(this.height) ? this.height + 'px' : this.height
+        }
 
         return {
           width: width,

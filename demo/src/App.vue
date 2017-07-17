@@ -20,7 +20,7 @@
       <h2>Direction (default: right)</h2>
       <p>
         <svgicon icon="arrow" width="50" height="50" dir="left"></svgicon>
-        <svgicon icon="arrow" width="50" height="50" dir="up"></svgicon>
+        <svgicon name="arrow" width="50" height="50" dir="up"></svgicon>
         <svgicon icon="arrow" width="50" height="50"></svgicon>
         <svgicon icon="arrow" width="50" height="50" dir="down"></svgicon>
       </p>
@@ -38,6 +38,7 @@
       <p>
         <svgicon icon="arrow"></svgicon>
         <svgicon icon="arrow" width="50" height="50"></svgicon>
+        <svgicon icon="arrow" scale="15"></svgicon>
         <svgicon icon="arrow" width="10em" height="10em"></svgicon>
       </p>
       <h2>Color (defalt: inherit)</h2>

@@ -24,8 +24,8 @@ const args = require('yargs')
 
 // svg fle path
 const filepath = path.join(process.cwd(), args.s, '**/*.svg')
+
 // generated icon path
-console.log(args.t)
 const targetPath = path.join(process.cwd(), args.t)
 
 // the template file which to generate icon files
