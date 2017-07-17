@@ -12,6 +12,10 @@ https://github.com/Justineo/vue-awesome
 ## demo
 https://mmf-fe.github.io/vue-svgicon/
 
+## Some issues
+- [Work on server-side render (SSR)](#work-on-server-side-render-ssr)
+- [Work on IE and old browser](#work-on-ie-and-old-browser)
+
 ## Usage
 ### Generate icon
 #### Install
@@ -75,7 +79,7 @@ Use plugin
 // main.js
 import Vue from 'vue'
 import App from './App.vue'
-import svgicon from 'vue-svgicon'
+import * as svgicon from 'vue-svgicon'
 
 // Default tag name is 'svgicon'
 Vue.use(svgicon, {
@@ -119,10 +123,11 @@ import 'icons'
 
 ## Props
 
-### icon
+### icon / name
 icon name
 ```html
 <svgicon icon="vue"></svgicon>
+<svgicon name="vue"></svgicon>
 ```
 
 ### dir
@@ -155,6 +160,13 @@ Specify the size of icon. Default value is **16px / 16px**. Default unit is **px
 <svgicon icon="arrow" width="50" height="50"></svgicon>
 <svgicon icon="arrow" width="10em" height="10em"></svgicon>
 ```
+### scale
+Scale icon size, it will overwrite width/height prop
+```html
+<svgicon icon="arrow" scale="10"></svgicon>
+<svgicon icon="arrow" scale="10" width="10em" height="10em"></svgicon>
+```
+
 ### Color
 Specify the color of icon. Default value is **inherit**.
 ```html
@@ -237,5 +249,10 @@ var config = {
 ```
 If you are using other build systems..., I think you can find a similar solution to how webpack does it.
 
-### Work on IE
-This component doesn't work on IE because IE don't support `innerHTML` in SVGElement. You can use this polyfill to make it work. https://github.com/dnozay/innersvg-polyfill
+### Work on IE and old browser
+This component doesn't work on IE because IE don't support `innerHTML` in SVGElement. You can use [innersvg-polyfill](innersvg-polyfill) to make it work. You can also use the polyfill provided by this component.
+```js
+// in main.js first line
+import 'vue-svgicon/dist/polyfill'
+```
+This polyfill is a wrapper of [innersvg-polyfill](https://github.com/dnozay/innersvg-polyfill).
