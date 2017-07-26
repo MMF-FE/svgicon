@@ -10,6 +10,7 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "svg": "node ./bin/svg.js -s ./demo/svg -t ./demo/src/icons",
+    "debug": "node --nolazy --inspect-brk=5858 ./bin/svg.js -s ./demo/svg -t ./demo/src/icons",
     "svg:ts": "node ./bin/svg.js -s ./demo/svg -t ./demo/src/icons --ext ts",
     "test-watch": "mocha-webpack --watch",
     "test": "mocha-webpack",
@@ -66,5 +67,9 @@
     "webpack-dev-server": "^2.2.0",
     "webpack-merge": "^3.0.0",
     "webpack-node-externals": "^1.5.4"
+  },
+  "engines": {
+    "node": ">= 5.0.0",
+    "npm": ">= 3.0.0"
   }
 }

@@ -23,7 +23,7 @@ const args = require('yargs')
   .argv
 
 // svg fle path
-const filepath = path.join(process.cwd(), args.s, '**/*.svg')
+const sourcePath = path.join(process.cwd(), args.s, '**/*.svg')
 
 // generated icon path
 const targetPath = path.join(process.cwd(), args.t)
@@ -79,8 +79,13 @@ function compile (content, data) {
 }
 
 // get file path by filename
-function getFilePath (filename) {
+function getFilePath (filename, subDir = '') {
   let filePath = filename.replace(path.resolve(args.s), '').replace(path.basename(filename), '')
+
+  if (subDir) {
+    filePath = filePath.replace(subDir + path.sep, '')
+  }
+
   if ( /^[\/\\]/.test(filePath) ) {
     filePath = filePath.substr(1)
   }
@@ -89,31 +94,43 @@ function getFilePath (filename) {
 }
 
 // generate index.js, which import all icons
-function generateIndex(files) {
+function generateIndex(files, subDir = '') {
   let content = ''
-  files.forEach((filename) => {
-    let name = path.basename(filename).split('.')[0]
-    const filePath = getFilePath(filename)
-    content += `require('./${filePath}${name}')\n`
-  })
+  let dirMap = {}
 
-  fs.writeFile(path.join(targetPath, `index.${ext}`), content, 'utf-8', (err) => {
-    if (err) {
-      console.log(err)
-      return false
+  files.forEach((file) => {
+    let name = path.basename(file).split('.')[0]
+    let filePath = getFilePath(file, subDir)
+    let dir = filePath.split(path.sep)[0]
+
+    if (dir) {
+      if (!dirMap[dir]) {
+        dirMap[dir] = []
+        content += `require('./${dir}')\n`
+      }
+      dirMap[dir].push(file)
+    } else {
+      content += `require('./${filePath}${name}')\n`
     }
-
-    console.log(`Generated index.${ext}`)
   })
+
+  fs.writeFileSync(path.join(targetPath, subDir, `index.${ext}`), content, 'utf-8')
+  console.log(`Generated ${subDir ? subDir + path.sep : ''}index.${ext}`)
+
+  // generate subDir index.js
+  for (let dir in dirMap) {
+    generateIndex(dirMap[dir], path.join(subDir, dir))
+  }
 }
 
-glob(filepath, function (err, files) {
+
+glob(sourcePath, function (err, files) {
   if (err) {
     console.log(err)
     return false
   }
 
-  files = files.map((filepath) => path.normalize(filepath));
+  files = files.map((f) => path.normalize(f))
 
   files.forEach((filename, ix) => {
     let name = path.basename(filename).split('.')[0]
@@ -143,17 +160,13 @@ glob(filepath, function (err, files) {
           data: data
       })
 
-      fs.writeFile(path.join(targetPath, filePath, name + `.${ext}`), content, 'utf-8', function (err) {
-        if (ix === files.length - 1) {
-          generateIndex(files)
-        }
-        if (err) {
-          console.log(err)
-          return false
-        }
+      fs.writeFileSync(path.join(targetPath, filePath, name + `.${ext}`), content, 'utf-8')
+      console.log(`Generated icon: ${filePath}${name}`)
 
-        console.log(`Generated icon: ${filePath}${name}`)
-      })
+      if (ix === files.length - 1) {
+        generateIndex(files)
+      }
+
     })
   })
 })
