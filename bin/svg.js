@@ -91,7 +91,7 @@ function getFilePath (filename, subDir = '') {
     filePath = filePath.substr(1)
   }
 
-  return filePath
+  return filePath.replace(/\\/g, '/', 'g')
 }
 
 // generate index.js, which import all icons
@@ -102,7 +102,7 @@ function generateIndex(files, subDir = '') {
   files.forEach((file) => {
     let name = path.basename(file).split('.')[0]
     let filePath = getFilePath(file, subDir)
-    let dir = filePath.split(path.sep)[0]
+    let dir = filePath.split('/')[0]
 
     if (dir) {
       if (!dirMap[dir]) {
