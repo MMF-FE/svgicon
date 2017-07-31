@@ -16,6 +16,10 @@
       <icon class="vue-logo" name="vue" width="15rem" height="15rem"></icon>
     </p>
     <h1>Vue Svg Icon</h1>
+    <p>
+      <!-- Place this tag where you want the button to render. -->
+      <a class="github-button" href="https://github.com/MMF-FE/vue-svgicon" data-size="large" data-show-count="true" aria-label="Star MMF-FE/vue-svgicon on GitHub">Star</a>
+    </p>
     <div>
       <h2>Direction (default: right)</h2>
       <demo code="dir"></demo>
