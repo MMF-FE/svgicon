@@ -98,7 +98,7 @@ Use icon in component
 <template>
   <div id="app">
     <p>
-      <svgicon icon="vue" width="200" height="200" color="#42b983 #35495e"></svgicon>
+      <svgicon name="vue" width="200" height="200" color="#42b983 #35495e"></svgicon>
     </p>
   </div>
 </template>
@@ -124,7 +124,7 @@ import 'icons'
 ## Props
 
 ### icon / name
-icon name
+icon name.
 ```html
 <svgicon icon="vue"></svgicon>
 <svgicon name="vue"></svgicon>
@@ -133,57 +133,57 @@ icon name
 ### dir
 The direction of icon. Default value is **right**
 ```html
-<svgicon icon="arrow" width="50" height="50" dir="left"></svgicon>
-<svgicon icon="arrow" width="50" height="50" dir="up"></svgicon>
-<svgicon icon="arrow" width="50" height="50"></svgicon>
-<svgicon icon="arrow" width="50" height="50" dir="down"></svgicon>
+<svgicon name="arrow" width="50" height="50" dir="left"></svgicon>
+<svgicon name="arrow" width="50" height="50" dir="up"></svgicon>
+<svgicon name="arrow" width="50" height="50"></svgicon>
+<svgicon name="arrow" width="50" height="50" dir="down"></svgicon>
 ```
 
 ### fill
 Whether to fill the path/shape. Default value is **true**
 ```html
-<svgicon icon="arrow" width="50" height="50"></svgicon>
-<svgicon icon="arrow" width="50" height="50" :fill="false"></svgicon>
+<svgicon name="arrow" width="50" height="50"></svgicon>
+<svgicon name="arrow" width="50" height="50" :fill="false"></svgicon>
 ```
 You can use **r-color** to reverse the fill property
 ```html
 <!-- the first one is fill(default), the second use stroke -->
-<svgicon icon="clock" color="#8A99B2 r-#1C2330" width="100" height="100"></svgicon>
+<svgicon name="clock" color="#8A99B2 r-#1C2330" width="100" height="100"></svgicon>
 <!-- the first one is stoke, the second is fill -->
-<svgicon icon="clock" color="#8A99B2 r-#1C2330" width="100" height="100" :fill="false"></svgicon>
+<svgicon name="clock" color="#8A99B2 r-#1C2330" width="100" height="100" :fill="false"></svgicon>
 ```
 
 
 ### width / height
 Specify the size of icon. Default value is **16px / 16px**. Default unit is **px**
 ```html
-<svgicon icon="arrow" width="50" height="50"></svgicon>
-<svgicon icon="arrow" width="10em" height="10em"></svgicon>
+<svgicon name="arrow" width="50" height="50"></svgicon>
+<svgicon name="arrow" width="10em" height="10em"></svgicon>
 ```
 ### scale
 Scale icon size, it will overwrite width/height prop
 ```html
-<svgicon icon="arrow" scale="10"></svgicon>
-<svgicon icon="arrow" scale="10" width="10em" height="10em"></svgicon>
+<svgicon name="arrow" scale="10"></svgicon>
+<svgicon name="arrow" scale="10" width="10em" height="10em"></svgicon>
 ```
 
 ### Color
 Specify the color of icon. Default value is **inherit**.
 ```html
 <p style="color: darkorange">
-    <svgicon icon="arrow" width="50" height="50"></svgicon>
-    <svgicon icon="arrow" width="50" height="50" color="red"></svgicon>
-    <svgicon icon="arrow" width="50" height="50" color="green"></svgicon>
-    <svgicon icon="arrow" width="50" height="50" color="blue"></svgicon>
+    <svgicon name="arrow" width="50" height="50"></svgicon>
+    <svgicon name="arrow" width="50" height="50" color="red"></svgicon>
+    <svgicon name="arrow" width="50" height="50" color="green"></svgicon>
+    <svgicon name="arrow" width="50" height="50" color="blue"></svgicon>
 </p>
 ```
 If the icon is mutil path/shape, you can use mutil color. It is defined in the order of path/shape.
 ```html
-<svgicon icon="vue" width="100" height="100" color="#42b983 #35495e"></svgicon>
+<svgicon name="vue" width="100" height="100" color="#42b983 #35495e"></svgicon>
 ```
 Also, you can use CSS to add colors.
 ```html
-<svgicon class="vue-icon" icon="vue" width="100" height="100"></svgicon>
+<svgicon class="vue-icon" name="vue" width="100" height="100"></svgicon>
 ```
 ```css
 .vue-icon path[pid="0"] {
@@ -211,7 +211,7 @@ Use gradient
           </linearGradient>
       </defs>
     </svg>
-    <svgicon icon="vue" width="15rem" height="15rem" color="url(#gradient-1) url(#gradient-2)"></svgicon>
+    <svgicon name="vue" width="15rem" height="15rem" color="url(#gradient-1) url(#gradient-2)"></svgicon>
 </template>
 ```
 
@@ -227,9 +227,9 @@ You can use multiple directory to discriminate the icons which has the same name
 ```
 
 ```html
-<svgicon icon="arrow" width="50" height="50"></svgicon>
-<svgicon icon="sora/arrow" width="50" height="50"></svgicon>
-<svgicon icon="sora/fit/arrow" width="50" height="50"></svgicon>
+<svgicon name="arrow" width="50" height="50"></svgicon>
+<svgicon name="sora/arrow" width="50" height="50"></svgicon>
+<svgicon name="sora/fit/arrow" width="50" height="50"></svgicon>
 
 ```
 

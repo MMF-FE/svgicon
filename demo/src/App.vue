@@ -13,72 +13,59 @@
       </defs>
     </svg>
     <p>
-      <svgicon class="vue-logo" icon="vue" width="15rem" height="15rem"></svgicon>
+      <icon class="vue-logo" name="vue" width="15rem" height="15rem"></icon>
     </p>
     <h1>Vue Svg Icon</h1>
     <div>
       <h2>Direction (default: right)</h2>
-      <p>
-        <svgicon icon="arrow" width="50" height="50" dir="left"></svgicon>
-        <svgicon name="arrow" width="50" height="50" dir="up"></svgicon>
-        <svgicon icon="arrow" width="50" height="50"></svgicon>
-        <svgicon icon="arrow" width="50" height="50" dir="down"></svgicon>
-      </p>
-      <h2>Fill (default: fill)</h2>
-      <p>
-        <svgicon icon="arrow" width="50" height="50"></svgicon>
-        <svgicon icon="arrow" width="50" height="50" :fill="false"></svgicon>
-      </p>
-      <h2>r-color (reverse fill property)</h2>
-      <p>
-        <svgicon icon="clock" color="#8A99B2 r-#1C2330" width="100" height="100"></svgicon>
-        <div>circle is fill, path is stroke</div>
-      </p>
+      <demo code="dir"></demo>
+
       <h2>Size (defalt unit: px, defalt size: 16px / 16px)</h2>
       <p>
-        <svgicon icon="arrow"></svgicon>
-        <svgicon icon="arrow" width="50" height="50"></svgicon>
-        <svgicon icon="arrow" scale="15"></svgicon>
-        <svgicon icon="arrow" width="10em" height="10em"></svgicon>
+        <demo code="size"></demo>
       </p>
+
+      <h2>Fill (default: fill)</h2>
+      <demo code="fill"></demo>
+
+      <h2>r-color (reverse fill property)</h2>
+      <demo code="r-color"></demo>
+      <div>circle is fill, path is stroke</div>
+
       <h2>Color (defalt: inherit)</h2>
       <p style="color: darkorange">
-        <svgicon icon="arrow" width="50" height="50"></svgicon>
-        <svgicon icon="arrow" width="50" height="50" color="red"></svgicon>
-        <svgicon icon="arrow" width="50" height="50" color="green"></svgicon>
-        <svgicon icon="arrow" width="50" height="50" color="blue"></svgicon>
+        <demo code="color"></demo>
       </p>
+
       <h2>Multi Color (define by path/shape order)</h2>
       <p>
-        <svgicon icon="check" :fill="false" width="100" height="100" color="r-#42b983 white"></svgicon>
+        <demo code="multi-color"></demo>
       </p>
       <p>
-        <svgicon icon="colorwheel" width="200" height="200" :color="colors"></svgicon>
+        <demo code="multi-color2" :datas="[colors]"></demo>
       </p>
+
       <h2>Gradient</h2>
-      <p>
-        <svgicon icon="vue" width="15rem" height="15rem" color="url(#gradient-1) url(#gradient-2)"></svgicon>
-      </p>
+      <demo code="gradient"></demo>
+
       <h2>Namespace</h2>
-      <p>
-        <svgicon icon="arrow" width="50" height="50"></svgicon>
-        <svgicon icon="sora/arrow" width="50" height="50"></svgicon>
-        <svgicon icon="sora/fit/arrow" width="50" height="50"></svgicon>
-      </p>
+      <demo code="namespace"></demo>
+
       <h2>Unique Id</h2>
-      <p>
-        <svgicon name="mask" width="100" height="100"></svgicon>
-        <svgicon name="sora/fit/mask" width="100" height="100" color="url(#svgicon-sora-fit-mask-a) red green" ></svgicon>
-      </p>
+      <demo code="uid"></demo>
     </div>
   </div>
 </template>
 
 <script>
 import 'icons'
+import Demo from './demo.vue'
 
 export default {
   name: 'app',
+  components: {
+    Demo
+  },
   data () {
     return {
       colors: '#FBAD20 #F5EB13 #B8D433 #6BC9C6 #058BC5 #34469D #7E4D9F #C63D96 #ED1944'

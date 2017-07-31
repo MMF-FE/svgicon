@@ -4,7 +4,7 @@ import App from './App.vue'
 import * as svgicon from 'vue-svgicon'
 
 // register svgicon global
-Vue.component('svgicon', svgicon)
+Vue.component('icon', svgicon)
 
 new Vue({
   el: '#app',
