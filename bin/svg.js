@@ -10,6 +10,7 @@ const fs = require('fs-plus')
 const path = require('path')
 const Svgo = require('svgo')
 const glob = require('glob')
+const colors = require('colors')
 const args = require('yargs')
   .usage('Usage: $0 -s svgSourcePath -t targetPath')
   .demandOption(['s', 't'])
@@ -115,14 +116,13 @@ function generateIndex(files, subDir = '') {
   })
 
   fs.writeFileSync(path.join(targetPath, subDir, `index.${ext}`), content, 'utf-8')
-  console.log(`Generated ${subDir ? subDir + path.sep : ''}index.${ext}`)
+  console.log(colors.green(`Generated ${subDir ? subDir + path.sep : ''}index.${ext}`))
 
   // generate subDir index.js
   for (let dir in dirMap) {
     generateIndex(dirMap[dir], path.join(subDir, dir))
   }
 }
-
 
 glob(sourcePath, function (err, files) {
   if (err) {
@@ -143,13 +143,21 @@ glob(sourcePath, function (err, files) {
 
       if (viewBox && viewBox.length > 1) {
         viewBox = `'${viewBox[1]}'`
+      } else {
+        viewBox = `'0, 0, 200, 200'`
       }
 
       // add pid attr, for css
-      let reg = /<(path|rect|circle|polygon|line|polyline|ellipse)\s/gi
+      let shapeReg = /<(path|rect|circle|polygon|line|polyline|ellipse)\s/gi
       let id = 0
-      data = data.replace(reg, function (match) {
+      data = data.replace(shapeReg, function (match) {
         return match + `pid="${id++}" `
+      })
+
+      // replace element id, make sure ID is unique. fix #16
+      let idReg = /svgicon-(\w)/g
+      data = data.replace(idReg, function (match, elId) {
+        return `svgicon-${filePath.replace(/[\\\/]/g, '-')}${name}-${elId}`
       })
 
       let content = compile(tpl, {
@@ -161,7 +169,7 @@ glob(sourcePath, function (err, files) {
       })
 
       fs.writeFileSync(path.join(targetPath, filePath, name + `.${ext}`), content, 'utf-8')
-      console.log(`Generated icon: ${filePath}${name}`)
+      console.log(colors.yellow(`Generated icon: ${filePath}${name}`))
 
       if (ix === files.length - 1) {
         generateIndex(files)

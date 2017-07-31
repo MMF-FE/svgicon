@@ -65,6 +65,11 @@
         <svgicon icon="sora/arrow" width="50" height="50"></svgicon>
         <svgicon icon="sora/fit/arrow" width="50" height="50"></svgicon>
       </p>
+      <h2>Unique Id</h2>
+      <p>
+        <svgicon name="mask" width="100" height="100"></svgicon>
+        <svgicon name="sora/fit/mask" width="100" height="100" color="url(#svgicon-sora-fit-mask-a) red green" ></svgicon>
+      </p>
     </div>
   </div>
 </template>

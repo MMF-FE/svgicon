@@ -134,4 +134,28 @@ describe('vue-svgion Test Case', function () {
       assert.equal('70px', $el.style.height)
     })
   })
+
+  describe('unique id', function () {
+    let idVue = require('./id.vue')
+    let vm = new Vue(idVue).$mount()
+
+    it('should not have same ids', function () {
+      let $icon1 = vm.$refs.icon1.$el
+      let $icon2 = vm.$refs.icon2.$el
+
+      const html1 = $icon1.innerHTML
+      const html2 = $icon2.innerHTML
+
+      function findIds (html) {
+        let ids = []
+        let reg = /\sid=\"([\w-])+\"/g
+        return html.match(reg) || []
+      }
+
+      let ids1 = findIds(html1)
+      let ids2 = findIds(html2)
+
+      assert.ok(ids1.every(v => ids2.indexOf(v) < 0))
+    })
+  })
 })
