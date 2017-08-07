@@ -142,7 +142,11 @@ glob(sourcePath, function (err, files) {
       let viewBox = result.data.match(/viewBox="([-\d\.]+\s[-\d\.]+\s[-\d\.]+\s[-\d\.]+)"/)
 
       if (viewBox && viewBox.length > 1) {
-        viewBox = `'${viewBox[1]}'`
+        viewBox = viewBox[1]
+      } else if (result.info.height && result.info.width){
+        viewBox = `0, 0, ${result.info.height}, ${result.info.width}`
+      } else {
+        viewBox = '0, 0, 200, 200'
       }
 
       // add pid attr, for css
@@ -162,7 +166,7 @@ glob(sourcePath, function (err, files) {
           name: `${filePath}${name}`,
           width: parseFloat(result.info.width) || 16,
           height: parseFloat(result.info.height) || 16,
-          viewBox: `${viewBox}`,
+          viewBox: `'${viewBox}'`,
           data: data
       })
 
