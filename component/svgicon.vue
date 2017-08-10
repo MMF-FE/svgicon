@@ -4,6 +4,8 @@
 
 <script>
   let icons = {}
+  let defaultWidth = ''
+  let defaultHeight = ''
 
   export default {
     data() {
@@ -121,14 +123,19 @@
         }
 
         return {
-          width: width,
-          height: height
+          width: width || defaultWidth,
+          height: height || defaultHeight
         }
       }
     },
 
     install(Vue, options = {}) {
       let tagName = options.tagName || 'svgicon'
+
+      // default size
+      options.defaultWidth && (defaultWidth = options.defaultWidth)
+      options.defaultHeight && (defaultHeight = options.defaultHeight)
+
       Vue.component(tagName, this)
     },
 
