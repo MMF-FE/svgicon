@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 var icon = require('vue-svgicon')
 icon.register({
   'vue': {

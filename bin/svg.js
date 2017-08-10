@@ -96,7 +96,7 @@ function getFilePath (filename, subDir = '') {
 
 // generate index.js, which import all icons
 function generateIndex(files, subDir = '') {
-  let content = ''
+  let content = ext === 'js' ? '/* eslint-disable */\n' : ''
   let dirMap = {}
 
   files.forEach((file) => {

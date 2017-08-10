@@ -1,3 +1,4 @@
+/* eslint-disable */
 require('./arrow')
 require('./check')
 require('./clock')
