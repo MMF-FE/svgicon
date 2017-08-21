@@ -61,7 +61,7 @@ icon.register({
     width: ${width},
     height: ${height},
     viewBox: ${viewBox},
-    data: '${data}'
+    data: `${data}`
   }
 })
 
