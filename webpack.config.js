@@ -6,7 +6,7 @@ var isBuild = process.env.NODE_ENV === 'production'
 var config = {
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
+    publicPath: 'dist/',
     filename: '[name].js'
   },
   module: {
