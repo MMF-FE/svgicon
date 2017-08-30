@@ -82,6 +82,9 @@ var demo = merge(config, {
   entry: {
     'demo': './demo/src/main.js'
   },
+  output: {
+    chunkFilename: '[name].js'
+  }
 })
 
 var build = merge(config, {

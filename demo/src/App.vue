@@ -57,6 +57,9 @@
 
       <h2>Unique Id</h2>
       <demo code="uid"></demo>
+
+      <h2>Async</h2>
+      <demo code="async"></demo>
     </div>
   </div>
 </template>
@@ -74,6 +77,12 @@ export default {
     return {
       colors: '#FBAD20 #F5EB13 #B8D433 #6BC9C6 #058BC5 #34469D #7E4D9F #C63D96 #ED1944'
     }
+  },
+
+  mounted () {
+    require.ensure([], () => {
+      require('icons-async')
+    }, 'async-icons')
   }
 
 }
@@ -104,6 +113,25 @@ h2 {
 
 .vue-logo path[pid="1"] {
     fill: #35495e
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  50% {
+    transform: rotateZ(-30deg);
+  }
+
+  100% {
+    transform: rotateZ(0deg);
+  }
+}
+
+.good {
+  animation: rotate 1s linear infinite;
+  transform-origin: left bottom;
 }
 
 </style>

@@ -89,5 +89,13 @@ export default {
     <icon name="mask" width="100" height="100"></icon>
     <icon name="sora/fit/mask" width="100" height="100" color="url(#svgicon-sora-fit-mask-a) red green" ></icon>
     `
+  ],
+  'async': [
+    `
+    <icon name="download" width="40" height="40" color="red" ></icon>
+    <icon name="download" width="40" height="40" color="green" ></icon>
+    <icon name="download" width="40" height="40" color="blue" ></icon>
+    <icon name="good" width="40" height="40" class="good"></icon>
+    `
   ]
 }

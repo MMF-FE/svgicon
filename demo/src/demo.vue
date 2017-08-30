@@ -78,6 +78,13 @@
           return {
             datas: this.datas || []
           }
+        },
+        methods: {
+          loaded () {
+            if (this.$refs.asyncIcon) {
+              this.$refs.asyncIcon.markLoaded()
+            }
+          }
         }
       }
 
