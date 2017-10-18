@@ -13,7 +13,6 @@ https://github.com/Justineo/vue-awesome
 https://mmf-fe.github.io/vue-svgicon/
 
 ## Some issues
-- [Work on server-side render (SSR)](#work-on-server-side-render-ssr)
 - [Work on IE and old browser](#work-on-ie-and-old-browser)
 
 ## Usage
@@ -308,22 +307,6 @@ You can use multiple directory to discriminate the icons which has the same name
 <svgicon name="sora/fit/arrow" width="50" height="50"></svgicon>
 
 ```
-
-### Work on server-side render (SSR)
-The component will insert the CSS style to the **document** object, so it will throw an error in SSR. The solution is to define an alias for vue-svgicon module if you use webpack.
-
-> More info: https://github.com/MMF-FE/vue-svgicon/issues/2
-
-```javascript
-var config = {
-    resolve: {
-        alias: {
-            'vue-svgicon$': 'vue-svgicon/component/svgicon.vue'
-        }
-    }
-}
-```
-If you are using other build systems..., I think you can find a similar solution to how webpack does it.
 
 ### Work on IE and old browser
 This component doesn't work on IE because IE don't support `innerHTML` in SVGElement. You can use [innersvg-polyfill](innersvg-polyfill) to make it work. You can also use the polyfill provided by this component.
