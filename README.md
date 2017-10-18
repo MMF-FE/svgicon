@@ -271,6 +271,7 @@ Also, you can use CSS to add colors.
 ```
 > You can't use this feature in scoped block.
 
+
 Use gradient
 ```html
 <template>
@@ -288,6 +289,14 @@ Use gradient
     </svg>
     <svgicon name="vue" width="15rem" height="15rem" color="url(#gradient-1) url(#gradient-2)"></svgicon>
 </template>
+```
+
+### original
+use original color
+```
+<icon name="colorwheel" width="100" height="100" :original="true"></icon>
+<!-- overwrite original color -->
+<icon name="colorwheel" width="100" height="100" :original="true" color="_ black _ black _"></icon>
 ```
 
 ### Multiple directory (Namespace)
