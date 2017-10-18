@@ -32,7 +32,11 @@
         type: Boolean,
         default: true
       },
-      color: String
+      color: String,
+      original: {
+        type: Boolean,
+        default: false
+      }
     },
 
     computed: {
@@ -70,29 +74,51 @@
       },
 
       path() {
-        if (this.iconData) {
+        let _this = this
+        function addColor (data) {
           let reg = /<(path|rect|circle|polygon|line|polyline|ellipse)\s/gi
+          let i = 0
+          return data.replace(reg, (match) => {
+            let color = _this.colors[i++] || _this.colors[_this.colors.length - 1]
+            let fill = _this.fill
+
+            // if color is '_', ignore it
+            if (color && color === '_') {
+              return match
+            }
+
+            // if color start with 'r-', reverse the fill value
+            if (color && color.indexOf('r-') === 0) {
+              fill = !fill
+              color = color.split('r-')[1]
+            }
+
+            let style = fill ? 'fill' : 'stroke'
+            let reverseStyle = fill ? 'stroke' : 'fill'
+            return match + `${style}="${color}" ${reverseStyle}="none" `
+          })
+        }
+
+        function addOriginalColor (data) {
+          let styleReg = /_fill=\"|_stroke="/gi
+          return data.replace(styleReg, (styleName) => {
+            return styleName && styleName.slice(1)
+          })
+        }
+
+        let pathData = ''
+        if (this.iconData) {
+          pathData = this.iconData.data
+
+          // use original color
+          if (this.original) {
+            pathData = addOriginalColor(pathData)
+          }
 
           if (this.colors && this.colors.length > 0) {
-            let i = 0
-
-            return this.iconData.data.replace(reg, (match) => {
-              let color = this.colors[i++] || this.colors[this.colors.length - 1]
-              let fill = this.fill
-
-              // if color start with 'r-', reverse the fill value
-              if (color && color.indexOf('r-') === 0) {
-                fill = !fill
-                color = color.split('r-')[1]
-              }
-
-              let style = fill ? 'fill' : 'stroke'
-              let reverseStyle = fill ? 'stroke' : 'fill'
-              return match + `${style}="${color}" ${reverseStyle}="none" `
-            })
-          } else {
-            return this.iconData.data
+            pathData = addColor(pathData)
           }
+
         } else {
           // if no iconData, push to notLoadedIcons
           notLoadedIcons.push({
@@ -101,7 +127,7 @@
           })
         }
 
-        return ''
+        return pathData
       },
 
       box() {

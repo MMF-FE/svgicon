@@ -49,6 +49,11 @@
         <demo code="multi-color2" :datas="[colors]"></demo>
       </p>
 
+      <h2>Use original colors</h2>
+      <p>
+        <demo code="original-color"></demo>
+      </p>
+
       <h2>Gradient</h2>
       <demo code="gradient"></demo>
 

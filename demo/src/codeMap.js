@@ -56,6 +56,13 @@ export default {
     </script>
     `
   ],
+  'original-color': [
+    `
+      <icon name="colorwheel" width="100" height="100" :original="true"></icon>
+      <!-- overwrite original color -->
+      <icon name="colorwheel" width="100" height="100" :original="true" color="_ black _ black _"></icon>
+    `
+  ],
   'gradient': [
     `<icon name="vue" width="15rem" height="15rem" color="url(#gradient-1) url(#gradient-2)"></icon>`,
     `

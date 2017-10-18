@@ -42,7 +42,6 @@ let svgo = new Svgo({
   plugins: [
     {
       removeAttrs: {
-        attrs: ['(path|rect|circle|polygon|line|polyline|g|ellipse):(fill|stroke)']
       }
     },
     {
@@ -154,6 +153,15 @@ glob(sourcePath, function (err, files) {
       let id = 0
       data = data.replace(shapeReg, function (match) {
         return match + `pid="${id++}" `
+      })
+
+      // rename fill and stroke. (It can restroe in vue-svgicon)
+      let styleShaeReg = /<(path|rect|circle|polygon|line|polyline|g|ellipse).+>/gi
+      let styleReg = /fill=\"|stroke="/gi
+      data = data.replace(styleShaeReg, function (shape) {
+        return shape.replace(styleReg, function (styleName) {
+          return '_' + styleName
+        })
       })
 
       // replace element id, make sure ID is unique. fix #16
