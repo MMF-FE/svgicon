@@ -24,7 +24,7 @@
       <h2>Direction (default: right)</h2>
       <demo code="dir"></demo>
 
-      <h2>Size (defalt unit: px, defalt size: 16px / 16px)</h2>
+      <h2>Size (defalt unit: px)</h2>
       <p>
         <demo code="size"></demo>
       </p>
@@ -89,6 +89,38 @@ export default {
 </script>
 
 <style>
+.svg-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    color: inherit;
+    vertical-align: middle;
+    fill: none;
+    stroke: currentColor;
+}
+
+.svg-fill {
+    fill: currentColor;
+    stroke: none;
+}
+
+.svg-up {
+    transform: rotate(-90deg);
+}
+
+.svg-right {
+    /*default*/
+    transform: rotate(0deg);
+}
+
+.svg-down {
+    transform: rotate(90deg);
+}
+
+.svg-left {
+    transform: rotate(180deg);
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

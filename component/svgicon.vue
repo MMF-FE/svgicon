@@ -7,6 +7,7 @@
   let notLoadedIcons = []
   let defaultWidth = ''
   let defaultHeight = ''
+  let classPrefix = 'svg'
 
   export default {
     data() {
@@ -36,14 +37,14 @@
 
     computed: {
       clazz() {
-        let clazz = 'svg-icon'
+        let clazz = `${classPrefix}-icon`
 
         if (this.fill) {
-          clazz += ' svg-fill'
+          clazz += ` ${classPrefix}-fill`
         }
 
         if (this.dir) {
-          clazz += ' svg-' + this.dir
+          clazz += ` ${classPrefix}-${this.dir}`
         }
 
         return clazz
@@ -148,6 +149,10 @@
     install(Vue, options = {}) {
       let tagName = options.tagName || 'svgicon'
 
+      if (options.classPrefix) {
+        classPrefix = options.classPrefix
+      }
+
       // default size
       options.defaultWidth && (defaultWidth = options.defaultWidth)
       options.defaultHeight && (defaultHeight = options.defaultHeight)
@@ -177,38 +182,3 @@
   }
 
 </script>
-
-<style scoped>
-    .svg-icon {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        color: inherit;
-        vertical-align: middle;
-        fill: none;
-        stroke: currentColor;
-    }
-
-    .svg-fill {
-        fill: currentColor;
-        stroke: none;
-    }
-
-    .svg-up {
-        transform: rotate(-90deg);
-    }
-
-    .svg-right {
-         /*default*/
-         transform: rotate(0deg);
-    }
-
-    .svg-down {
-        transform: rotate(90deg);
-    }
-
-    .svg-left {
-        transform: rotate(180deg);
-    }
-
-</style>

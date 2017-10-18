@@ -73,6 +73,44 @@ vsvg -s /path/to/svg/source -t /path/for/generated/components --ext ts
 ```
 
 ### Use generated icon
+First of all, your should write some css code for `vue-svgicon` in global scope. Recommended code is below:
+```css
+/* recommended css code for vue-svgicon */
+.svg-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    color: inherit;
+    vertical-align: middle;
+    fill: none;
+    stroke: currentColor;
+}
+
+.svg-fill {
+    fill: currentColor;
+    stroke: none;
+}
+
+.svg-up {
+    transform: rotate(-90deg);
+}
+
+.svg-right {
+     /*default*/
+     transform: rotate(0deg);
+}
+
+.svg-down {
+    transform: rotate(90deg);
+}
+
+.svg-left {
+    transform: rotate(180deg);
+}
+
+```
+> your can use `classPrefix` option to set the default class name. The default prefix is `svg`
+
 Use plugin
 
 ```javascript
@@ -134,6 +172,21 @@ Vue.use(svgicon, {
 <svgicon name="vue"></svgicon>
 ```
 
+### classPrefix
+your can use `classPrefix` option to set the default class name. The default prefix is `svg`
+
+```js
+Vue.use(svgicon, {
+  classPrefix: 'vue-svg'
+})
+```
+It will be generated like this:
+```html
+<svg version="1.1" viewBox="0 0 4 7" class="vue-svg-icon vue-svg-fill vue-svg-up">
+<!-- svg code -->
+</svg>
+```
+
 ### defaultWidth / defaultHeight
 Set default size if size props not set.
 ```js
@@ -142,6 +195,7 @@ Vue.use(svgicon, {
   defaultHeight: '1em'
 })
 ```
+
 
 ## Props
 
