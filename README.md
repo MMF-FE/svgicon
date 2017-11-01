@@ -91,20 +91,20 @@ First of all, your should write some css code for `vue-svgicon` in global scope.
 }
 
 .svg-up {
-    transform: rotate(-90deg);
+    /*default*/
+    transform: rotate(0deg);
 }
 
 .svg-right {
-     /*default*/
-     transform: rotate(0deg);
+     transform: rotate(90deg);
 }
 
 .svg-down {
-    transform: rotate(90deg);
+    transform: rotate(180deg);
 }
 
 .svg-left {
-    transform: rotate(180deg);
+    transform: rotate(-90deg);
 }
 
 ```
