@@ -62,7 +62,7 @@ let svgo = new Svgo({
     {
       cleanupIDs: {
         remove: true,
-        prefix: 'svgicon-'
+        prefix: 'svgicon_'
       }
     },
     {
@@ -167,7 +167,7 @@ glob(sourcePath, function (err, files) {
       // replace element id, make sure ID is unique. fix #16
       let idReg = /svgicon-(\w)/g
       data = data.replace(idReg, function (match, elId) {
-        return `svgicon-${filePath.replace(/[\\\/]/g, '-')}${name}-${elId}`
+        return `svgicon_${filePath.replace(/[\\\/]/g, '__')}${name.replace(/[^\w\d]/gi, '_')}_${elId}`
       })
 
       let content = compile(tpl, {
