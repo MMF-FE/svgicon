@@ -16,8 +16,10 @@ const args = require('yargs')
   .demandOption(['s', 't'])
   .describe('s', 'svg source path')
   .describe('t', 'generate icon path')
+  .describe('p', 'prefix for the icon lib default is empty')
   .describe('ext', 'generated file\'s extension')
   .default('ext', 'js')
+  .default('p', '')
   .describe('tpl', 'the template file which to generate icon files')
   .help('help')
   .alias('h', 'help')
@@ -34,6 +36,7 @@ const tplPath = args.tpl ? path.join(process.cwd(), args.tpl) : path.join(__dirn
 const tpl = fs.readFileSync(tplPath, 'utf8')
 
 const ext = args.ext
+const prefix = args.p
 
 // delete previous icons
 fs.removeSync(targetPath)
@@ -99,7 +102,7 @@ function generateIndex(files, subDir = '') {
   let dirMap = {}
 
   files.forEach((file) => {
-    let name = path.basename(file).split('.')[0]
+    let name = prefix + path.basename(file).split('.')[0]
     let filePath = getFilePath(file, subDir)
     let dir = filePath.split('/')[0]
 
@@ -132,7 +135,7 @@ glob(sourcePath, function (err, files) {
   files = files.map((f) => path.normalize(f))
 
   files.forEach((filename, ix) => {
-    let name = path.basename(filename).split('.')[0]
+    let name = prefix + path.basename(filename).split('.')[0]
     let content = fs.readFileSync(filename, 'utf-8')
     let filePath = getFilePath(filename)
 
