@@ -293,7 +293,7 @@ Use gradient
 
 ### original
 use original color
-```
+```html
 <icon name="colorwheel" width="100" height="100" :original="true"></icon>
 <!-- overwrite original color -->
 <icon name="colorwheel" width="100" height="100" :original="true" color="_ black _ black _"></icon>
