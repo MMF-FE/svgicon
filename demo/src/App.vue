@@ -21,21 +21,6 @@
       <a class="github-button" href="https://github.com/MMF-FE/vue-svgicon" data-size="large" data-show-count="true" aria-label="Star MMF-FE/vue-svgicon on GitHub">Star</a>
     </p>
     <div>
-      <h2>Direction (default: right)</h2>
-      <demo code="dir"></demo>
-
-      <h2>Size (defalt unit: px)</h2>
-      <p>
-        <demo code="size"></demo>
-      </p>
-
-      <h2>Fill (default: fill)</h2>
-      <demo code="fill"></demo>
-
-      <h2>r-color (reverse fill property)</h2>
-      <demo code="r-color"></demo>
-      <div>circle is fill, path is stroke</div>
-
       <h2>Color (defalt: inherit)</h2>
       <p style="color: darkorange">
         <demo code="color"></demo>
@@ -57,6 +42,21 @@
       <h2>Gradient</h2>
       <demo code="gradient"></demo>
 
+      <h2>Size (defalt unit: px)</h2>
+      <p>
+        <demo code="size"></demo>
+      </p>
+
+      <h2>Fill (default: fill)</h2>
+      <demo code="fill"></demo>
+
+      <h2>r-color (reverse fill property)</h2>
+      <demo code="r-color"></demo>
+      <div>circle is fill, path is stroke</div>
+
+      <h2>Direction (default: right)</h2>
+      <demo code="dir"></demo>
+
       <h2>Namespace</h2>
       <demo code="namespace"></demo>
 
@@ -70,64 +70,68 @@
 </template>
 
 <script>
-import 'icons'
-import Demo from './demo.vue'
+import "icons";
+import Demo from "./demo.vue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
     Demo
   },
-  data () {
+  data() {
     return {
-      colors: '#FBAD20 #F5EB13 #B8D433 #6BC9C6 #058BC5 #34469D #7E4D9F #C63D96 #ED1944'
-    }
+      colors:
+        "#FBAD20 #F5EB13 #B8D433 #6BC9C6 #058BC5 #34469D #7E4D9F #C63D96 #ED1944"
+    };
   },
 
-  mounted () {
-    require.ensure([], () => {
-      require('icons-async')
-    }, 'async-icons')
+  mounted() {
+    require.ensure(
+      [],
+      () => {
+        require("icons-async");
+      },
+      "async-icons"
+    );
   }
-
-}
+};
 </script>
 
 <style>
 .svg-icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    color: inherit;
-    vertical-align: middle;
-    fill: none;
-    stroke: currentColor;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  color: inherit;
+  vertical-align: middle;
+  fill: none;
+  stroke: currentColor;
 }
 
 .svg-fill {
-    fill: currentColor;
-    stroke: none;
+  fill: currentColor;
+  stroke: none;
 }
 
 .svg-up {
-    transform: rotate(-90deg);
+  transform: rotate(-90deg);
 }
 
 .svg-right {
-    /*default*/
-    transform: rotate(0deg);
+  /*default*/
+  transform: rotate(0deg);
 }
 
 .svg-down {
-    transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 .svg-left {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -135,7 +139,8 @@ export default {
   margin-top: 60px;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 
@@ -144,12 +149,42 @@ h2 {
   border-top: 1px solid #dcdcdc;
 }
 
+@keyframes color1 {
+  0% {
+    fill: #42b983;
+  }
+
+  50% {
+    fill: #35495e;
+  }
+
+  100% {
+    fill: #42b983;
+  }
+}
+
+@keyframes color2 {
+  0% {
+    fill: #35495e;
+  }
+
+  50% {
+    fill: #42b983;
+  }
+
+  100% {
+    fill: #35495e;
+  }
+}
+
 .vue-logo path[pid="0"] {
-    fill: #42b983
+  /* fill: #42b983; */
+  animation: color1 6s ease-in-out infinite;
 }
 
 .vue-logo path[pid="1"] {
-    fill: #35495e
+  /* fill: #35495e; */
+  animation: color2 6s ease-in-out infinite;
 }
 
 @keyframes rotate {
@@ -170,5 +205,4 @@ h2 {
   animation: rotate 1s linear infinite;
   transform-origin: left bottom;
 }
-
 </style>
