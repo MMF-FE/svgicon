@@ -61,6 +61,7 @@ export default {
       <icon name="colorwheel" width="100" height="100" :original="true"></icon>
       <!-- overwrite original color -->
       <icon name="colorwheel" width="100" height="100" :original="true" color="_ black _ black _"></icon>
+      <icon name="colorwheel" width="100" height="100" :original="true" color="_ r-black _ r-red _"></icon>
     `
   ],
   'gradient': [

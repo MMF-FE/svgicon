@@ -70,53 +70,21 @@
         if (this.color) {
           return this.color.split(' ')
         }
-        return ''
+        return []
       },
 
       path() {
-        let _this = this
-        function addColor (data) {
-          let reg = /<(path|rect|circle|polygon|line|polyline|ellipse)\s/gi
-          let i = 0
-          return data.replace(reg, (match) => {
-            let color = _this.colors[i++] || _this.colors[_this.colors.length - 1]
-            let fill = _this.fill
-
-            // if color is '_', ignore it
-            if (color && color === '_') {
-              return match
-            }
-
-            // if color start with 'r-', reverse the fill value
-            if (color && color.indexOf('r-') === 0) {
-              fill = !fill
-              color = color.split('r-')[1]
-            }
-
-            let style = fill ? 'fill' : 'stroke'
-            let reverseStyle = fill ? 'stroke' : 'fill'
-            return match + `${style}="${color}" ${reverseStyle}="none" `
-          })
-        }
-
-        function addOriginalColor (data) {
-          let styleReg = /_fill=\"|_stroke="/gi
-          return data.replace(styleReg, (styleName) => {
-            return styleName && styleName.slice(1)
-          })
-        }
-
         let pathData = ''
         if (this.iconData) {
           pathData = this.iconData.data
 
           // use original color
           if (this.original) {
-            pathData = addOriginalColor(pathData)
+            pathData = this.addOriginalColor(pathData)
           }
 
-          if (this.colors && this.colors.length > 0) {
-            pathData = addColor(pathData)
+          if (this.colors.length > 0) {
+            pathData = this.addColor(pathData)
           }
 
         } else {
@@ -127,7 +95,7 @@
           })
         }
 
-        return pathData
+        return this.getValidPathData(pathData)
       },
 
       box() {
@@ -169,6 +137,49 @@
     created () {
       if (icons[this.iconName]) {
         this.loaded = true
+      }
+    },
+
+    methods: {
+      addColor(data) {
+        let reg = /<(path|rect|circle|polygon|line|polyline|ellipse)\s/gi
+        let i = 0
+        return data.replace(reg, (match) => {
+          let color = this.colors[i++] || this.colors[this.colors.length - 1]
+          let fill = this.fill
+
+          // if color is '_', ignore it
+          if (color && color === '_') {
+            return match
+          }
+
+          // if color start with 'r-', reverse the fill value
+          if (color && color.indexOf('r-') === 0) {
+            fill = !fill
+            color = color.split('r-')[1]
+          }
+
+          let style = fill ? 'fill' : 'stroke'
+          let reverseStyle = fill ? 'stroke' : 'fill'
+          return match + `${style}="${color}" ${reverseStyle}="none" `
+        })
+      },
+      addOriginalColor(data) {
+        let styleReg = /_fill="|_stroke="/gi
+        return data.replace(styleReg, (styleName) => {
+          return styleName && styleName.slice(1)
+        })
+      },
+      getValidPathData(pathData) {
+        // If use original and colors, clear double fill or stroke
+        if (this.original && this.colors.length > 0) {
+          let reg = /<(path|rect|circle|polygon|line|polyline|ellipse)(\sfill|\sstroke)([="\w\s\.\-\+#\$\&>]+)(fill|stroke)/gi
+          pathData = pathData.replace(reg, (match, p1, p2, p3, p4) => {
+            return `<${p1}${p2}${p3}_${p4}`
+          })
+        }
+
+        return pathData
       }
     },
 
