@@ -115,7 +115,10 @@
             pathData = addOriginalColor(pathData)
           }
 
-          if (this.colors && this.colors.length > 0) {
+          if (!/ fill="| stroke="/.test(pathData) && 
+            this.colors &&
+            this.colors.length > 0
+          ) {
             pathData = addColor(pathData)
           }
 
