@@ -143,7 +143,7 @@ glob(sourcePath, function (err, files) {
       if (viewBox && viewBox.length > 1) {
         viewBox = viewBox[1]
       } else if (result.info.height && result.info.width){
-        viewBox = `0, 0, ${result.info.height}, ${result.info.width}`
+        viewBox = `0, 0, ${result.info.width}, ${result.info.height}`
       } else {
         viewBox = '0, 0, 200, 200'
       }
