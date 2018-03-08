@@ -14,11 +14,12 @@ const colors = require('colors')
 const args = require('yargs')
   .usage('Usage: $0 -s svgSourcePath -t targetPath')
   .demandOption(['s', 't'])
-  .describe('s', 'svg source path')
-  .describe('t', 'generate icon path')
-  .describe('ext', 'generated file\'s extension')
+  .describe('s', 'Svg source path')
+  .describe('t', 'Generate icon path')
+  .describe('ext', 'Generated file\'s extension')
   .default('ext', 'js')
   .describe('tpl', 'the template file which to generate icon files')
+  .describe('es6', 'Use ES6 module')
   .help('help')
   .alias('h', 'help')
   .argv
@@ -30,7 +31,10 @@ const sourcePath = path.join(process.cwd(), args.s, '**/*.svg')
 const targetPath = path.join(process.cwd(), args.t)
 
 // the template file which to generate icon files
-const tplPath = args.tpl ? path.join(process.cwd(), args.tpl) : path.join(__dirname, '../icon.tpl.txt')
+const tplPath = args.tpl ?
+  path.join(process.cwd(), args.tpl) :
+  path.join(__dirname, `../icon.tpl${args.es6 ? '.es6' : ''}.txt`)
+
 const tpl = fs.readFileSync(tplPath, 'utf8')
 
 const ext = args.ext
@@ -95,6 +99,7 @@ function getFilePath (filename, subDir = '') {
 
 // generate index.js, which import all icons
 function generateIndex(files, subDir = '') {
+  let isES6 = args.es6
   let content = ext === 'js' ? '/* eslint-disable */\n' : ''
   let dirMap = {}
 
@@ -106,11 +111,11 @@ function generateIndex(files, subDir = '') {
     if (dir) {
       if (!dirMap[dir]) {
         dirMap[dir] = []
-        content += `require('./${dir}')\n`
+        content += isES6 ? `import './${dir}'\n` : `require('./${dir}')\n`
       }
       dirMap[dir].push(file)
     } else {
-      content += `require('./${filePath}${name}')\n`
+      content += isES6 ? `import './${filePath}${name}'\n` : `require('./${filePath}${name}')\n`
     }
   })
 
@@ -169,6 +174,9 @@ glob(sourcePath, function (err, files) {
       data = data.replace(idReg, function (match, elId) {
         return `svgicon-${filePath.replace(/[\\\/]/g, '-')}${name}-${elId}`
       })
+
+      // escape single quotes
+      data = data.replace(/\'/g, '\\\'')
 
       let content = compile(tpl, {
           name: `${filePath}${name}`,

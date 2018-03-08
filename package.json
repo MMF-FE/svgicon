@@ -12,7 +12,8 @@
     "debug": "node --nolazy --inspect-brk=5858 ./bin/svg.js -s ./demo/svg -t ./demo/src/icons",
     "svg": "node ./bin/svg.js -s ./demo/svg -t ./demo/src/icons",
     "svg:async": "node ./bin/svg.js -s ./demo/svg-async -t ./demo/src/icons-async",
-    "svg:ts": "node ./bin/svg.js -s ./demo/svg -t ./demo/src/icons --ext ts",
+    "svg:ts": "node ./bin/svg.js -s ./demo/svg -t ./demo/src/icons --ext ts --es6",
+    "svg:es6": "node ./bin/svg.js -s ./demo/svg -t ./demo/src/icons --es6",
     "test-watch": "mocha-webpack --watch",
     "test": "mocha-webpack",
     "cover": "cross-env NODE_ENV=coverage nyc --reporter=lcov --reporter=text npm run test"
