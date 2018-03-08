@@ -71,6 +71,11 @@ icon.register({
 vsvg -s /path/to/svg/source -t /path/for/generated/components --ext ts
 ```
 
+### Suport ES6 modules
+```bash
+vsvg -s /path/to/svg/source -t /path/for/generated/components --ext ts --es6
+```
+
 ### Use generated icon
 First of all, your should write some css code for `vue-svgicon` in global scope. Recommended code is below:
 ```css
