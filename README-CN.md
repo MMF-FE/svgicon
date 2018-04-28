@@ -4,33 +4,34 @@
 [![Coverage Status](https://img.shields.io/coveralls/MMF-FE/vue-svgicon.svg?style=flat-square)](https://coveralls.io/r/MMF-FE/vue-svgicon?branch=master)
 
 
-A tool to create svg icon components. (vue 2.x) [中文](./README-CN.md)
+A tool to create svg icon components. (vue 2.x)
+一个创建 svg 图标组件的工具。(vue 2.x)
 
-## Inspiration
+## 灵感
 https://github.com/Justineo/vue-awesome
 
 ## demo
 https://mmf-fe.github.io/vue-svgicon/
 
-## Some issues
-- [Work on IE and old browser](#work-on-ie-and-old-browser)
+## 一些坑
+- [在 IE 或旧浏览器中使用](#work-on-ie-and-old-browser)
 
-## Usage
-### Generate icon
-#### Install
+## 使用方式
+### 生成图标
+#### 安装
 ```bash
-# install global
+# 安装到全局
 npm install vue-svgicon -g
-# install for project
+# 安装到项目
 npm install vue-svgicon --save-dev
 ```
-#### Command
+#### 命令
 ```bash
-# generate svg icon components
+# 生成 svg 图标组件, -s: svg 源文件，-t: 图标组件生成路径
 vsvg -s /path/to/svg/source -t /path/for/generated/components
 ```
 
-#### Use as npm scripts
+#### 使用 npm scripts
 ```json
 {
     "scripts": {
@@ -44,40 +45,41 @@ vsvg -s /path/to/svg/source -t /path/for/generated/components
 npm run svg
 ```
 
-It will generate icons to the specified path.
+以上命令会在指定目录下生成图标
 
-#### Custom icon content format
+#### 自定义生成的图标组件代码
 
 ```bash
-# specify template path
+# 指定模板路径
 vsvg -s /path/to/svg/source -t /path/for/generated/components --tpl /path/for/icon-template
 ```
-Default template is:
+默认模板是
 ```javascript
+/* eslint-disable */
 var icon = require('vue-svgicon')
 icon.register({
   '${name}': {
     width: ${width},
     height: ${height},
     viewBox: ${viewBox},
-    data: `${data}`
+    data: '${data}'
   }
 })
 
 ```
 
-#### Custom icon file extension
+#### 自定义生成的图标文件后缀名
 ```bash
 vsvg -s /path/to/svg/source -t /path/for/generated/components --ext ts
 ```
 
-### Suport ES6 modules
+### 支持 ES6 模块
 ```bash
 vsvg -s /path/to/svg/source -t /path/for/generated/components --ext ts --es6
 ```
 
-### Use generated icon
-First of all, your should write some css code for `vue-svgicon` in global scope. Recommended code is below:
+### 使用生成的图标
+首先，你需要为 `vue-svgicon` 在全局写一些样式代码。推荐的代码如下：
 ```css
 /* recommended css code for vue-svgicon */
 .svg-icon {
@@ -96,7 +98,7 @@ First of all, your should write some css code for `vue-svgicon` in global scope.
 }
 
 .svg-up {
-    /* default */
+    /* 默认 */
     transform: rotate(0deg);
 }
 
@@ -113,9 +115,9 @@ First of all, your should write some css code for `vue-svgicon` in global scope.
 }
 
 ```
-> you can use `classPrefix` option to set the default class name. The default prefix is `svg`
+> 你可以使用 `classPrefix` 选项设置默认的 class 的前缀。默认的前缀是 `svg`
 
-Use plugin
+注册 `vue-svgicon` 组件
 
 ```javascript
 // main.js
@@ -123,7 +125,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import * as svgicon from 'vue-svgicon'
 
-// Default tag name is 'svgicon'
+// 默认的标签名是 'svgicon'
 Vue.use(svgicon, {
     tagName: 'svgicon'
 })
@@ -134,7 +136,7 @@ new Vue({
 })
 ```
 
-Use icon in component
+在组件中使用图标组件
 ```html
 <!-- App.vue -->
 <template>
@@ -146,6 +148,7 @@ Use icon in component
 </template>
 
 <script>
+// 使用之前需要引入生成的图标
 import 'icons/vue'
 
 export default {
@@ -158,15 +161,15 @@ export default {
 }
 </script>
 ```
-You can import all icons at once
+你可以一次将所有图标引入进来
 ```javascript
 import 'icons'
 ```
 
-## Options
+## plugin 选项
 
 ### tagName
-Custom component tag name. Default is **svgicon**
+自定义标签名. 默认是 **svgicon**
 ```js
 Vue.use(svgicon, {
   tagName: 'svgicon'
@@ -177,14 +180,14 @@ Vue.use(svgicon, {
 ```
 
 ### classPrefix
-your can use `classPrefix` option to set the default class name. The default prefix is `svg`
+你可以使用 `classPrefix` 选项设置默认的 class 的前缀。默认的前缀是 `svg`
 
 ```js
 Vue.use(svgicon, {
   classPrefix: 'vue-svg'
 })
 ```
-It will be generated like this:
+这样会生成像以下那样的代码
 ```html
 <svg version="1.1" viewBox="0 0 4 7" class="vue-svg-icon vue-svg-fill vue-svg-up">
 <!-- svg code -->
@@ -192,7 +195,7 @@ It will be generated like this:
 ```
 
 ### defaultWidth / defaultHeight
-Set default size if size props not set.
+默认大小
 ```js
 Vue.use(svgicon, {
   defaultWidth: '1em',
@@ -201,17 +204,17 @@ Vue.use(svgicon, {
 ```
 
 
-## Props
+## 组件属性
 
 ### icon / name
-icon name.
+图标名称
 ```html
 <svgicon icon="vue"></svgicon>
 <svgicon name="vue"></svgicon>
 ```
 
 ### dir
-The direction of icon.
+图标方向
 ```html
 <svgicon name="arrow" width="50" height="50" dir="left"></svgicon>
 <svgicon name="arrow" width="50" height="50" dir="up"></svgicon>
@@ -220,35 +223,36 @@ The direction of icon.
 ```
 
 ### fill
-Whether to fill the path/shape. Default value is **true**
+是否填充 path/shape. 默认是 **true**
 ```html
 <svgicon name="arrow" width="50" height="50"></svgicon>
 <svgicon name="arrow" width="50" height="50" :fill="false"></svgicon>
 ```
 You can use **r-color** to reverse the fill property
+你可以使用 **r-color** 反向设置 fill 属性。
 ```html
-<!-- the first one is fill(default), the second use stroke -->
+<!-- 第一个 path 是填充的 (默认), 第二个是描边 -->
 <svgicon name="clock" color="#8A99B2 r-#1C2330" width="100" height="100"></svgicon>
-<!-- the first one is stoke, the second is fill -->
+<!-- 第一个 path 是描边的 (默认), 第二个是填充 -->
 <svgicon name="clock" color="#8A99B2 r-#1C2330" width="100" height="100" :fill="false"></svgicon>
 ```
 
 
 ### width / height
-Specify the size of icon. Default value is **16px / 16px**. Default unit is **px**
+指定图标大小，默认单位是 **px**
 ```html
 <svgicon name="arrow" width="50" height="50"></svgicon>
 <svgicon name="arrow" width="10em" height="10em"></svgicon>
 ```
 ### scale
-Scale icon size, it will overwrite width/height prop
+缩放图标
 ```html
 <svgicon name="arrow" scale="10"></svgicon>
 <svgicon name="arrow" scale="10" width="10em" height="10em"></svgicon>
 ```
 
 ### color
-Specify the color of icon. Default value is **inherit**.
+指定图标颜色. 默认是继承颜色.
 ```html
 <p style="color: darkorange">
     <svgicon name="arrow" width="50" height="50"></svgicon>
@@ -257,11 +261,11 @@ Specify the color of icon. Default value is **inherit**.
     <svgicon name="arrow" width="50" height="50" color="blue"></svgicon>
 </p>
 ```
-If the icon is mutil path/shape, you can use mutil color. It is defined in the order of path/shape.
+如果图标有多个 path/shape, 你可以按照顺序定义多种颜色。
 ```html
 <svgicon name="vue" width="100" height="100" color="#42b983 #35495e"></svgicon>
 ```
-Also, you can use CSS to add colors.
+你可以使用 css 设置颜色
 ```html
 <svgicon class="vue-icon" name="vue" width="100" height="100"></svgicon>
 ```
@@ -275,7 +279,8 @@ Also, you can use CSS to add colors.
 }
 ```
 
-Use gradient
+
+使用渐变
 ```html
 <template>
     <svg>
@@ -295,15 +300,15 @@ Use gradient
 ```
 
 ### original
-use original color
+使用 svg 原来的颜色
 ```html
 <icon name="colorwheel" width="100" height="100" :original="true"></icon>
-<!-- overwrite original color -->
+<!-- 覆盖原来的颜色，_ 表示当前位置的 path/shape 使用原来的颜色，其他使用新的颜色 -->
 <icon name="colorwheel" width="100" height="100" :original="true" color="_ black _ black _"></icon>
 ```
 
-### Multiple directory (Namespace)
-You can use multiple directory to discriminate the icons which has the same name.
+### 多个路径 (Namespace)
+你可以使用多个路径存放 svg 文件，避免同名冲突。
 ```
 ├── arrow.svg
 ├── sora
@@ -320,7 +325,7 @@ You can use multiple directory to discriminate the icons which has the same name
 
 ```
 
-### Work on IE and old browser
+### 在 IE 或旧浏览器中使用
 This component doesn't work on IE because IE don't support `innerHTML` in SVGElement. You can use [innersvg-polyfill](innersvg-polyfill) to make it work. You can also use the polyfill provided by this component.
 ```js
 // in main.js first line
