@@ -200,7 +200,13 @@ Vue.use(svgicon, {
 })
 ```
 
-
+### isStroke
+Is use stroke style by default
+```js
+Vue.use(svgicon, {
+  isStroke: true
+})
+```
 ## Props
 
 ### icon / name

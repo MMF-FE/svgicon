@@ -203,6 +203,14 @@ Vue.use(svgicon, {
 })
 ```
 
+### isStroke
+默认使用描边样式
+```js
+Vue.use(svgicon, {
+  isStroke: true
+})
+```
+
 
 ## 组件属性
 

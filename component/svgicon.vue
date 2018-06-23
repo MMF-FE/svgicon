@@ -8,6 +8,7 @@
   let defaultWidth = ''
   let defaultHeight = ''
   let classPrefix = 'svg'
+  let isStroke = false
 
   export default {
     data() {
@@ -30,7 +31,9 @@
       dir: String,
       fill: {
         type: Boolean,
-        default: true
+        default: function() {
+          return !isStroke
+        }
       },
       color: String,
       original: {
@@ -190,6 +193,8 @@
       if (options.classPrefix) {
         classPrefix = options.classPrefix
       }
+
+      isStroke = !!options.isStroke
 
       // default size
       options.defaultWidth && (defaultWidth = options.defaultWidth)
