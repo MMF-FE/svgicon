@@ -59,8 +59,9 @@
       },
 
       iconData() {
-        if (this.iconName && this.loaded) {
-          return icons[this.iconName]
+        let iconData = icons[this.iconName]
+        if (iconData || this.loaded ) {
+          return iconData
         }
 
         return null
