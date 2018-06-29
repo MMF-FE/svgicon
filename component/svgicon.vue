@@ -1,5 +1,5 @@
 <template>
-    <svg version="1.1" :class="clazz" :viewBox="box" v-html="path" :style="style"></svg>
+    <svg version="1.1" :class="clazz" :viewBox="box" v-html="path" :style="style" @click="onClick"></svg>
 </template>
 
 <script>
@@ -184,6 +184,9 @@
         }
 
         return pathData
+      },
+      onClick(e) {
+        this.$emit('click', e)
       }
     },
 
