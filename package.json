@@ -38,9 +38,8 @@
     },
     "homepage": "https://github.com/MMF-FE/vue-svgicon#readme",
     "files": [
-        "dist/lib/",
-        "default/",
-        "dist/polyfill.js"
+        "dist/",
+        "default/"
     ],
     "dependencies": {
         "colors": "^1.3.0",
