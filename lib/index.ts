@@ -1,4 +1,4 @@
-#!/usr/bin/env nod
+#!/usr/bin/env node
 
 /**
  * build svg icon
