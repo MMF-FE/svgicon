@@ -6,7 +6,6 @@ var fs = require("fs-plus");
 var colors = require("colors");
 var glob = require("glob");
 var Svgo = require("svgo");
-var merge = require("lodash.merge");
 /**
  * build svg icon
  */
@@ -142,15 +141,14 @@ function generateIndex(opts, files, subDir) {
 }
 // get svgo config
 function getSvgoConfig(svgo) {
-    var defaultConfig = require('../../default/svgo');
     if (!svgo) {
-        return defaultConfig;
+        return require('../../default/svgo');
     }
     else if (typeof svgo === 'string') {
-        return merge({}, defaultConfig, require(path.join(process.cwd(), svgo)));
+        return require(path.join(process.cwd(), svgo));
     }
     else {
-        return merge({}, defaultConfig, svgo);
+        return svgo;
     }
 }
 // get svg viewbox
