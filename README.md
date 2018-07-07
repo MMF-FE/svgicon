@@ -2,34 +2,42 @@
 
 [![Build Status](https://img.shields.io/travis/MMF-FE/vue-svgicon.svg?style=flat-square)](https://travis-ci.org/MMF-FE/vue-svgicon)
 
-
 A tool to create svg icon components. (vue 2.x) [中文](./README-CN.md)
 
 ## Inspiration
+
 https://github.com/Justineo/vue-awesome
 
 ## demo
+
 https://mmf-fe.github.io/vue-svgicon/
 
 ## Some issues
-- [Work on IE and old browser](#work-on-ie-and-old-browser)
+
+-   [Work on IE and old browser](#work-on-ie-and-old-browser)
 
 ## Usage
+
 ### Generate icon
+
 #### Install
+
 ```bash
 # install global
 npm install vue-svgicon -g
 # install for project
 npm install vue-svgicon --save-dev
 ```
+
 #### Command
+
 ```bash
 # generate svg icon components
 vsvg -s /path/to/svg/source -t /path/for/generated/components
 ```
 
 #### Use as npm scripts
+
 ```json
 {
     "scripts": {
@@ -51,7 +59,9 @@ It will generate icons to the specified path.
 # specify template path
 vsvg -s /path/to/svg/source -t /path/for/generated/components --tpl /path/for/icon-template
 ```
+
 Default template is:
+
 ```javascript
 var icon = require('vue-svgicon')
 icon.register({
@@ -62,21 +72,32 @@ icon.register({
     data: `${data}`
   }
 })
-
 ```
 
 #### Custom icon file extension
+
 ```bash
 vsvg -s /path/to/svg/source -t /path/for/generated/components --ext ts
 ```
 
 ### Suport ES6 modules
+
 ```bash
 vsvg -s /path/to/svg/source -t /path/for/generated/components --ext ts --es6
 ```
 
+### Custom svgo
+
+```bash
+vsvg -s /path/to/svg/source -t /path/for/generated/components --svgo svgo.js
+```
+
+[Default svgo config](https://github.com/MMF-FE/vue-svgicon/blob/master/default/svgo.js)
+
 ### Use generated icon
+
 First of all, your should write some css code for `vue-svgicon` in global scope. Recommended code is below:
+
 ```css
 /* recommended css code for vue-svgicon */
 .svg-icon {
@@ -100,7 +121,7 @@ First of all, your should write some css code for `vue-svgicon` in global scope.
 }
 
 .svg-right {
-     transform: rotate(90deg);
+    transform: rotate(90deg);
 }
 
 .svg-down {
@@ -110,8 +131,8 @@ First of all, your should write some css code for `vue-svgicon` in global scope.
 .svg-left {
     transform: rotate(-90deg);
 }
-
 ```
+
 > you can use `classPrefix` option to set the default class name. The default prefix is `svg`
 
 Use plugin
@@ -128,12 +149,13 @@ Vue.use(svgicon, {
 })
 
 new Vue({
-  el: '#app',
-  render: h => h(App)
+    el: '#app',
+    render: h => h(App)
 })
 ```
 
 Use icon in component
+
 ```html
 <!-- App.vue -->
 <template>
@@ -157,7 +179,9 @@ export default {
 }
 </script>
 ```
+
 You can import all icons at once
+
 ```javascript
 import 'icons'
 ```
@@ -165,25 +189,31 @@ import 'icons'
 ## Options
 
 ### tagName
+
 Custom component tag name. Default is **svgicon**
+
 ```js
 Vue.use(svgicon, {
-  tagName: 'svgicon'
+    tagName: 'svgicon'
 })
 ```
+
 ```html
 <svgicon name="vue"></svgicon>
 ```
 
 ### classPrefix
+
 your can use `classPrefix` option to set the default class name. The default prefix is `svg`
 
 ```js
 Vue.use(svgicon, {
-  classPrefix: 'vue-svg'
+    classPrefix: 'vue-svg'
 })
 ```
+
 It will be generated like this:
+
 ```html
 <svg version="1.1" viewBox="0 0 4 7" class="vue-svg-icon vue-svg-fill vue-svg-up">
 <!-- svg code -->
@@ -191,32 +221,41 @@ It will be generated like this:
 ```
 
 ### defaultWidth / defaultHeight
+
 Set default size if size props not set.
+
 ```js
 Vue.use(svgicon, {
-  defaultWidth: '1em',
-  defaultHeight: '1em'
+    defaultWidth: '1em',
+    defaultHeight: '1em'
 })
 ```
 
 ### isStroke
+
 Is use stroke style by default
+
 ```js
 Vue.use(svgicon, {
-  isStroke: true
+    isStroke: true
 })
 ```
+
 ## Props
 
 ### icon / name
+
 icon name.
+
 ```html
 <svgicon icon="vue"></svgicon>
 <svgicon name="vue"></svgicon>
 ```
 
 ### dir
+
 The direction of icon.
+
 ```html
 <svgicon name="arrow" width="50" height="50" dir="left"></svgicon>
 <svgicon name="arrow" width="50" height="50" dir="up"></svgicon>
@@ -225,12 +264,16 @@ The direction of icon.
 ```
 
 ### fill
+
 Whether to fill the path/shape. Default value is **true**
+
 ```html
 <svgicon name="arrow" width="50" height="50"></svgicon>
 <svgicon name="arrow" width="50" height="50" :fill="false"></svgicon>
 ```
+
 You can use **r-color** to reverse the fill property
+
 ```html
 <!-- the first one is fill(default), the second use stroke -->
 <svgicon name="clock" color="#8A99B2 r-#1C2330" width="100" height="100"></svgicon>
@@ -238,22 +281,28 @@ You can use **r-color** to reverse the fill property
 <svgicon name="clock" color="#8A99B2 r-#1C2330" width="100" height="100" :fill="false"></svgicon>
 ```
 
-
 ### width / height
+
 Specify the size of icon. Default value is **16px / 16px**. Default unit is **px**
+
 ```html
 <svgicon name="arrow" width="50" height="50"></svgicon>
 <svgicon name="arrow" width="10em" height="10em"></svgicon>
 ```
+
 ### scale
+
 Scale icon size, it will overwrite width/height prop
+
 ```html
 <svgicon name="arrow" scale="10"></svgicon>
 <svgicon name="arrow" scale="10" width="10em" height="10em"></svgicon>
 ```
 
 ### color
+
 Specify the color of icon. Default value is **inherit**.
+
 ```html
 <p style="color: darkorange">
     <svgicon name="arrow" width="50" height="50"></svgicon>
@@ -262,25 +311,31 @@ Specify the color of icon. Default value is **inherit**.
     <svgicon name="arrow" width="50" height="50" color="blue"></svgicon>
 </p>
 ```
+
 If the icon is mutil path/shape, you can use mutil color. It is defined in the order of path/shape.
+
 ```html
 <svgicon name="vue" width="100" height="100" color="#42b983 #35495e"></svgicon>
 ```
+
 Also, you can use CSS to add colors.
+
 ```html
 <svgicon class="vue-icon" name="vue" width="100" height="100"></svgicon>
 ```
+
 ```css
-.vue-icon path[pid="0"] {
-    fill: #42b983
+.vue-icon path[pid='0'] {
+    fill: #42b983;
 }
 
-.vue-icon path[pid="1"] {
-    fill: #35495e
+.vue-icon path[pid='1'] {
+    fill: #35495e;
 }
 ```
 
 Use gradient
+
 ```html
 <template>
     <svg>
@@ -300,7 +355,9 @@ Use gradient
 ```
 
 ### original
+
 use original color
+
 ```html
 <icon name="colorwheel" width="100" height="100" :original="true"></icon>
 <!-- overwrite original color -->
@@ -308,27 +365,30 @@ use original color
 ```
 
 ### Multiple directory (Namespace)
+
 You can use multiple directory to discriminate the icons which has the same name.
+
 ```
 ├── arrow.svg
 ├── sora
 │   ├── arrow.svg
 │   └── fit
 │       └── arrow.svg
-
 ```
 
 ```html
 <svgicon name="arrow" width="50" height="50"></svgicon>
 <svgicon name="sora/arrow" width="50" height="50"></svgicon>
 <svgicon name="sora/fit/arrow" width="50" height="50"></svgicon>
-
 ```
 
 ### Work on IE and old browser
+
 This component doesn't work on IE because IE don't support `innerHTML` in SVGElement. You can use [innersvg-polyfill](innersvg-polyfill) to make it work. You can also use the polyfill provided by this component.
+
 ```js
 // in main.js first line
 import 'vue-svgicon/dist/polyfill'
 ```
+
 This polyfill is a wrapper of [innersvg-polyfill](https://github.com/dnozay/innersvg-polyfill).
