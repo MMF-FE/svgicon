@@ -16,9 +16,10 @@ interface OptimizedSvg {
 export interface Options {
     sourcePath: string
     targetPath: string
-    ext: string
-    es6: boolean
-    tpl: string
+    ext?: string
+    es6?: boolean
+    tpl?: string
+    svgConfig?: string | { [key: string]: any }
 }
 
 /**
@@ -38,37 +39,12 @@ export default async function build(options: Options) {
               )
         const tpl = fs.readFileSync(tplPath, 'utf8')
 
-        let svgo = new Svgo({
-            plugins: [
-                {
-                    removeAttrs: {}
-                },
-                {
-                    removeTitle: true
-                },
-                {
-                    removeStyleElement: true
-                },
-                {
-                    removeComments: true
-                },
-                {
-                    removeDesc: true
-                },
-                {
-                    removeUselessDefs: true
-                },
-                {
-                    cleanupIDs: {
-                        remove: true,
-                        prefix: 'svgicon-'
-                    }
-                },
-                {
-                    convertShapeToPath: true
-                }
-            ]
-        })
+        let svgoConfig =
+            typeof options.svgConfig === 'string'
+                ? require(options.svgConfig)
+                : options.svgConfig
+
+        let svgo = new Svgo(svgoConfig)
 
         glob(path.join(options.sourcePath, '**/*.svg'), function(
             err: any,
@@ -119,15 +95,15 @@ export default async function build(options: Options) {
                 })
 
                 // replace element id, make sure ID is unique. fix #16
-                let idReg = /svgicon-(\w)/g
+                let idReg = /svgicon-(\w+)/g
                 data = data.replace(idReg, function(
                     match: string,
                     elId: string
                 ) {
-                    return `svgicon-${filePath.replace(
+                    return `svgicon_${filePath.replace(
                         /[\\\/]/g,
-                        '-'
-                    )}${name}-${elId}`
+                        '_'
+                    )}${name}_${elId}`
                 })
 
                 // escape single quotes
@@ -194,8 +170,17 @@ function getFilePath(sourcePath: string, filename: string, subDir = '') {
 // generate index.js, which import all icons
 function generateIndex(opts: Options, files: string[], subDir = '') {
     let isES6 = opts.es6
-    let content = opts.ext === 'js' ? '/* eslint-disable */\n' : ''
+    let content = ''
     let dirMap: { [key: string]: any } = {}
+
+    switch (opts.ext) {
+        case 'js':
+            content += '/* eslint-disable */\n'
+            break
+        case 'ts':
+            content += '/* tslint:disable */\n'
+            break
+    }
 
     files.forEach(file => {
         let name = path.basename(file).split('.')[0]
