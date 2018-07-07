@@ -1,0 +1,32 @@
+.demo-block {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    > div {
+        float: left;
+        width: 50%;
+    }
+
+    code {
+        line-height: 1.5;
+        border-radius: 5px;
+        background: #F4F4F4 !important;
+        font-size: 12px;
+        text-align: left;
+        font-family: "Roboto Mono", monospace;
+    }
+}
+
+@media (max-width: 1000px) {
+    .demo-block {
+        display: block;
+
+        > div {
+            width: 100%;
+        }
+    }
+}
