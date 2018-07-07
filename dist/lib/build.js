@@ -20,37 +20,7 @@ function build(options) {
                         ? path.join(process.cwd(), options.tpl)
                         : path.join(__dirname, "../../default/icon.tpl" + (options.es6 ? '.es6' : '') + ".txt");
                     var tpl = fs.readFileSync(tplPath, 'utf8');
-                    var svgo = new Svgo({
-                        plugins: [
-                            {
-                                removeAttrs: {}
-                            },
-                            {
-                                removeTitle: true
-                            },
-                            {
-                                removeStyleElement: true
-                            },
-                            {
-                                removeComments: true
-                            },
-                            {
-                                removeDesc: true
-                            },
-                            {
-                                removeUselessDefs: true
-                            },
-                            {
-                                cleanupIDs: {
-                                    remove: true,
-                                    prefix: 'svgicon-'
-                                }
-                            },
-                            {
-                                convertShapeToPath: true
-                            }
-                        ]
-                    });
+                    var svgo = new Svgo(getSvgoConfig(options.svgo));
                     glob(path.join(options.sourcePath, '**/*.svg'), function (err, files) {
                         var _this = this;
                         if (err) {
@@ -59,7 +29,7 @@ function build(options) {
                         }
                         files = files.map(function (f) { return path.normalize(f); });
                         files.forEach(function (filename, ix) { return tslib_1.__awaiter(_this, void 0, void 0, function () {
-                            var name, svgContent, filePath, result, data, viewBoxMatch, viewBox, shapeReg, id, styleShaeReg, styleReg, idReg, content;
+                            var name, svgContent, filePath, result, data, viewBox, content;
                             return tslib_1.__generator(this, function (_a) {
                                 switch (_a.label) {
                                     case 0:
@@ -72,30 +42,13 @@ function build(options) {
                                         data = result.data
                                             .replace(/<svg[^>]+>/gi, '')
                                             .replace(/<\/svg>/gi, '');
-                                        viewBoxMatch = result.data.match(/viewBox="([-\d\.]+\s[-\d\.]+\s[-\d\.]+\s[-\d\.]+)"/);
-                                        viewBox = '0 0 200 200';
-                                        if (viewBoxMatch && viewBoxMatch.length > 1) {
-                                            viewBox = viewBoxMatch[1];
-                                        }
-                                        else if (result.info.height && result.info.width) {
-                                            viewBox = "0 0 " + result.info.width + " " + result.info.height;
-                                        }
-                                        shapeReg = /<(path|rect|circle|polygon|line|polyline|ellipse)\s/gi;
-                                        id = 0;
-                                        data = data.replace(shapeReg, function (match) {
-                                            return match + ("pid=\"" + id++ + "\" ");
-                                        });
-                                        styleShaeReg = /<(path|rect|circle|polygon|line|polyline|g|ellipse).+>/gi;
-                                        styleReg = /fill=\"|stroke="/gi;
-                                        data = data.replace(styleShaeReg, function (shape) {
-                                            return shape.replace(styleReg, function (styleName) {
-                                                return '_' + styleName;
-                                            });
-                                        });
-                                        idReg = /svgicon-(\w)/g;
-                                        data = data.replace(idReg, function (match, elId) {
-                                            return "svgicon-" + filePath.replace(/[\\\/]/g, '-') + name + "-" + elId;
-                                        });
+                                        viewBox = getViewBox(result);
+                                        // add pid attr, for css
+                                        data = addPid(data);
+                                        // rename fill and stroke. (It can restroe in vue-svgicon)
+                                        data = renameStyle(data);
+                                        // replace element id, make sure ID is unique. fix #16
+                                        data = changeId(data, filePath, name, options.idSP);
                                         // escape single quotes
                                         data = data.replace(/\'/g, "\\'");
                                         content = compile(tpl, {
@@ -150,8 +103,16 @@ function getFilePath(sourcePath, filename, subDir) {
 function generateIndex(opts, files, subDir) {
     if (subDir === void 0) { subDir = ''; }
     var isES6 = opts.es6;
-    var content = opts.ext === 'js' ? '/* eslint-disable */\n' : '';
+    var content = '';
     var dirMap = {};
+    switch (opts.ext) {
+        case 'js':
+            content += '/* eslint-disable */\n';
+            break;
+        case 'ts':
+            content += '/* tslint:disable */\n';
+            break;
+    }
     files.forEach(function (file) {
         var name = path.basename(file).split('.')[0];
         var filePath = getFilePath(opts.sourcePath, file, subDir);
@@ -177,5 +138,58 @@ function generateIndex(opts, files, subDir) {
     for (var dir in dirMap) {
         generateIndex(opts, dirMap[dir], path.join(subDir, dir));
     }
+}
+// get svgo config
+function getSvgoConfig(svgo) {
+    if (!svgo) {
+        return require('../../default/svgo');
+    }
+    else if (typeof svgo === 'string') {
+        return require(path.join(process.cwd(), svgo));
+    }
+    else {
+        return svgo;
+    }
+}
+// get svg viewbox
+function getViewBox(svgoResult) {
+    var viewBoxMatch = svgoResult.data.match(/viewBox="([-\d\.]+\s[-\d\.]+\s[-\d\.]+\s[-\d\.]+)"/);
+    var viewBox = '0 0 200 200';
+    if (viewBoxMatch && viewBoxMatch.length > 1) {
+        viewBox = viewBoxMatch[1];
+    }
+    else if (svgoResult.info.height && svgoResult.info.width) {
+        viewBox = "0 0 " + svgoResult.info.width + " " + svgoResult.info.height;
+    }
+    return viewBox;
+}
+// add pid attr, for css
+function addPid(content) {
+    var shapeReg = /<(path|rect|circle|polygon|line|polyline|ellipse)\s/gi;
+    var id = 0;
+    content = content.replace(shapeReg, function (match) {
+        return match + ("pid=\"" + id++ + "\" ");
+    });
+    return content;
+}
+// rename fill and stroke. (It can restroe in vue-svgicon)
+function renameStyle(content) {
+    var styleShaeReg = /<(path|rect|circle|polygon|line|polyline|g|ellipse).+>/gi;
+    var styleReg = /fill=\"|stroke="/gi;
+    content = content.replace(styleShaeReg, function (shape) {
+        return shape.replace(styleReg, function (styleName) {
+            return '_' + styleName;
+        });
+    });
+    return content;
+}
+// replace element id, make sure ID is unique. fix #16
+function changeId(content, filePath, name, idSep) {
+    if (idSep === void 0) { idSep = '_'; }
+    var idReg = /svgicon(\w+)/g;
+    content = content.replace(idReg, function (match, elId) {
+        return "svgicon" + idSep + filePath.replace(/[\\\/]/g, idSep) + name + idSep + elId;
+    });
+    return content;
 }
 //# sourceMappingURL=build.js.map

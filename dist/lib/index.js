@@ -1,4 +1,4 @@
-#!/usr/bin/env nod
+#!/usr/bin/env node
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
@@ -15,15 +15,13 @@ var args = yargs
     .default('ext', 'js')
     .describe('tpl', 'The template file which to generate icon files')
     .describe('es6', 'Use ES6 module')
+    .describe('svgo', 'Svgo config file')
     .help('help')
     .alias('h', 'help').argv;
 // svg file path
 var sourcePath = path.join(process.cwd(), args.s);
 // generated icon path
 var targetPath = path.join(process.cwd(), args.t);
-var tpl = args.tpl;
-var ext = args.ext;
-var es6 = args.es6;
 (function () {
     return tslib_1.__awaiter(this, void 0, void 0, function () {
         var err_1;
@@ -34,9 +32,10 @@ var es6 = args.es6;
                     return [4 /*yield*/, build_1.default({
                             sourcePath: sourcePath,
                             targetPath: targetPath,
-                            tpl: tpl,
-                            ext: ext,
-                            es6: es6
+                            tpl: args.tpl,
+                            ext: args.ext,
+                            es6: args.es6,
+                            svgo: args.svgo
                         })];
                 case 1:
                     _a.sent();

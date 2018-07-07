@@ -1,3 +1,4 @@
+/* tslint:disable */
 import './arrow'
 import './check'
 import './clock'

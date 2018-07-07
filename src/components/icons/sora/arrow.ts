@@ -1,5 +1,6 @@
 /* eslint-disable */
-//@ts-ignore
+/* tslint:disable */
+// @ts-ignore
 import icon from 'vue-svgicon'
 icon.register({
     'sora/arrow': {

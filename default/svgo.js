@@ -21,7 +21,7 @@ module.exports = {
         {
             cleanupIDs: {
                 remove: true,
-                prefix: 'svgicon_'
+                prefix: 'svgicon'
             }
         },
         {
