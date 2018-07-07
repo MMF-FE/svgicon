@@ -3,6 +3,7 @@ import * as fs from 'fs-plus'
 import * as colors from 'colors'
 import * as glob from 'glob'
 import * as Svgo from 'svgo'
+import merge = require('lodash.merge')
 
 interface OptimizedSvg {
     data: string
@@ -190,12 +191,13 @@ function generateIndex(opts: Options, files: string[], subDir = '') {
 
 // get svgo config
 function getSvgoConfig(svgo?: string | { [key: string]: any }) {
+    let defaultConfig = require('../../default/svgo')
     if (!svgo) {
-        return require('../../default/svgo')
+        return defaultConfig
     } else if (typeof svgo === 'string') {
-        return require(path.join(process.cwd(), svgo))
+        return merge({}, defaultConfig, require(path.join(process.cwd(), svgo)))
     } else {
-        return svgo
+        return merge({}, defaultConfig, svgo)
     }
 }
 
