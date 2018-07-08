@@ -3,7 +3,6 @@
     "version": "3.0.0",
     "description": "A tool to create svg icon components. (vue 2.x)",
     "main": "./dist/components/svgicon.common.js",
-    "module": "./dist/components/svgicon.umd.js",
     "typings": "typings/index.d.ts",
     "bin": {
         "vsvg": "./dist/lib/index.js"
