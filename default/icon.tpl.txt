@@ -1,6 +1,6 @@
 
 /* eslint-disable */
-var icon = require('vue-svgicon').default
+var icon = require('vue-svgicon')
 icon.register({
   '${name}': {
     width: ${width},

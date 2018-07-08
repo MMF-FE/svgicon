@@ -114,7 +114,7 @@ __webpack_require__.r(__webpack_exports__);
 // EXTERNAL MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
 var setPublicPath = __webpack_require__("HrLf");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"/home/allenice/Documents/project/code/git/vue-svgicon/node_modules/.cache/vue-loader","cacheIdentifier":"74fde9b4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/SvgIcon.vue?vue&type=template&id=6cd50ac8
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"/home/allenice/Documents/project/code/git/vue-svgicon/node_modules/.cache/vue-loader","cacheIdentifier":"52b5065e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/SvgIcon.vue?vue&type=template&id=6cd50ac8
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('svg',{class:_vm.clazz,style:(_vm.style),attrs:{"version":"1.1","viewBox":_vm.box},domProps:{"innerHTML":_vm._s(_vm.path)},on:{"click":_vm.onClick}})}
 var staticRenderFns = []
 

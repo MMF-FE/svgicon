@@ -5,8 +5,7 @@ let libConfig = {
     outputDir: 'dist/components',
     configureWebpack: {
         output: {
-            library: 'VueSvgIcon',
-            libraryExport: 'default'
+            library: 'VueSvgIcon'
         }
     }
 }
