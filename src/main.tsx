@@ -7,7 +7,9 @@ import 'highlight.js/styles/github-gist.css'
 
 Vue.config.productionTip = false
 
-Vue.component('icon', SvgIcon)
+Vue.use(SvgIcon, {
+    tagName: 'icon'
+})
 
 new Vue({
     render: h => {

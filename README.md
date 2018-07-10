@@ -141,10 +141,10 @@ Use plugin
 // main.js
 import Vue from 'vue'
 import App from './App.vue'
-import * as svgicon from 'vue-svgicon'
+import SvgIcon from 'vue-svgicon'
 
 // Default tag name is 'svgicon'
-Vue.use(svgicon, {
+Vue.use(SvgIcon, {
     tagName: 'svgicon'
 })
 

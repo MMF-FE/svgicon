@@ -132,13 +132,12 @@ vsvg -s /path/to/svg/source -t /path/for/generated/components --ext ts --es6
 注册 `vue-svgicon` 组件
 
 ```javascript
-// main.js
 import Vue from 'vue'
 import App from './App.vue'
-import * as svgicon from 'vue-svgicon'
+import SvgIcon from 'vue-svgicon'
 
-// 默认的标签名是 'svgicon'
-Vue.use(svgicon, {
+// Default tag name is 'svgicon'
+Vue.use(SvgIcon, {
     tagName: 'svgicon'
 })
 
