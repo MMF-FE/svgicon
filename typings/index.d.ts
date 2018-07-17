@@ -1,6 +1,14 @@
 import Vue from 'vue'
 import { PluginFunction } from 'vue'
 
+interface Icon {
+    width: number
+    height: number
+    viewBox: string
+    data: string
+    [key: string]: any
+}
+
 declare class VueSvgIcon extends Vue {
     static icons: { [key: string]: Icon }
     static register: (data: { [key: string]: Icon }) => void
@@ -13,12 +21,4 @@ declare class VueSvgIcon extends Vue {
     }>
 }
 
-export type Icon = {
-    width: number
-    height: number
-    viewBox: string
-    data: string
-    [key: string]: any
-}
-
-export default VueSvgIcon
+export = VueSvgIcon
