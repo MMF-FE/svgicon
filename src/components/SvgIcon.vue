@@ -1,5 +1,5 @@
 <template>
-    <svg version="1.1" :class="clazz" :viewBox="box" v-html="path" :style="style" @click="onClick"></svg>
+    <svg version="1.1" :class="clazz" :viewBox="box" v-html="titleTag + path" :style="style" @click="onClick"></svg>
 </template>
 
 <script>
@@ -39,7 +39,8 @@
       original: {
         type: Boolean,
         default: false
-      }
+      },
+      title: String
     },
 
     computed: {
@@ -75,6 +76,16 @@
           return this.color.split(' ')
         }
         return []
+      },
+
+      titleTag() {
+        if (!this.title) {
+          return ''
+        }
+        const text = document.createTextNode(this.title)
+        const tag = document.createElement('title')
+        tag.appendChild(text)
+        return tag.outerHTML
       },
 
       path() {
