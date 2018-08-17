@@ -21,4 +21,4 @@ declare class VueSvgIcon extends Vue {
     }>
 }
 
-export = VueSvgIcon
+export default VueSvgIcon
