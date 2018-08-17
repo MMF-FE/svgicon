@@ -1,0 +1,17 @@
+/**
+ * App
+ */
+
+@import "base/base";
+
+.app {
+    min-height: 100vh;
+    background: #F5F5F5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
+
+    a {
+        color: $color-primary;
+    }
+}

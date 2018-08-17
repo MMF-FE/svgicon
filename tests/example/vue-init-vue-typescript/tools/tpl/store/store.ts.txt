@@ -1,0 +1,66 @@
+/**
+ * ${storeName} store
+ * @author ${username}
+ * @date ${curDate}
+ * @since ${version}
+ */
+
+import keymirror from 'store/utils/keymirror'
+import api from 'api'
+
+import {
+    State as vState,
+    Getter as vGetter,
+    Mutation as vMutation,
+    Action as vAction,
+    namespace
+} from 'vuex-class'
+
+import {
+    getter,
+    mutation,
+    action,
+    decorator
+} from 'store/utils/vuexUtil'
+
+export const storeName = '${storeName}'
+
+/*** state ***/
+let state = {
+}
+
+/*** getters ***/
+let getters = getter(state, {
+})
+
+/*** mutations ***/
+let mutations = mutation(state, {
+})
+
+/*** actions ***/
+let actions = action(state, {
+})
+
+/*** module store ***/
+let store = {
+    namespaced: true,
+    state,
+    getters,
+    mutations,
+    actions,
+}
+
+/*** exports ***/
+export let types = {
+    state: keymirror(state),
+    getter: keymirror(getters),
+    mutation: keymirror(mutations),
+    action: keymirror(actions)
+}
+
+export let State = decorator(namespace(storeName, vState), types.state)
+export let Getter = decorator(namespace(storeName, vGetter), types.getter)
+export let Mutation = decorator(namespace(storeName, vMutation), types.mutation)
+export let Action = decorator(namespace(storeName, vAction), types.action)
+
+export default store

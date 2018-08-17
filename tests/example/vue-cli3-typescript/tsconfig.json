@@ -7,24 +7,22 @@
         "importHelpers": true,
         "moduleResolution": "node",
         "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
+        "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "sourceMap": true,
         "baseUrl": ".",
-        "types": ["node", "mocha", "chai"],
-        "typeRoots": ["typings"],
+        "types": ["node"],
         "paths": {
             "@/*": ["src/*"]
         },
-        "lib": ["es2015", "dom", "dom.iterable", "scripthost"]
+        "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
     },
     "include": [
         "src/**/*.ts",
         "src/**/*.tsx",
         "src/**/*.vue",
         "tests/**/*.ts",
-        "tests/**/*.tsx",
-        "typings/**/**.ts"
+        "tests/**/*.tsx"
     ],
-    "exclude": ["node_modules", "tests/example/"]
+    "exclude": ["node_modules"]
 }

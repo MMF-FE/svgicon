@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "alwaysStrict": true,
+        "allowJs": true,
+        "noUnusedLocals": true,
+        "importHelpers": true,
+        "experimentalDecorators": true
+    },
+    "include": ["./"]
+}
