@@ -22,10 +22,12 @@
         return t
     }
     var o = {},
-        n = { 3: 0 },
+        n = { app: 0 },
         r = []
     function a(t) {
-        return c.p + 'js/' + ({}[t] || t) + '.' + { 0: 'c7dca6ea' }[t] + '.js'
+        return (
+            c.p + 'js/' + ({}[t] || t) + '.' + { '50d1': '1fbd341d' }[t] + '.js'
+        )
     }
     function c(e) {
         if (o[e]) return o[e].exports
@@ -139,12 +141,12 @@
     ;(l.push = e), (l = l.slice())
     for (var d = 0; d < l.length; d++) e(l[d])
     var h = s
-    r.push([3, 1]), i()
+    r.push([0, 'chunk-vendors']), i()
 })({
-    3: function(t, e, i) {
-        t.exports = i('QqCh')
+    0: function(t, e, i) {
+        t.exports = i('42a0')
     },
-    ADLm: function(t, e, i) {
+    '0032': function(t, e, i) {
         'use strict'
         var o = function() {
                 var t = this,
@@ -159,19 +161,12 @@
                 })
             },
             n = [],
-            r = (i('pIFo'),
-            i('xfY5'),
-            i('KKXr'),
-            i('f3/d'),
-            i('bHtr'),
-            i('VRzm'),
-            {}),
+            r = (i('a481'), i('c5f6'), i('28a5'), i('7f7f'), i('6c7b'), {}),
             a = [],
             c = '',
-            l = '',
-            s = 'svg',
-            d = !1,
-            h = {
+            l = 'svg',
+            s = !1,
+            d = {
                 data: function() {
                     return { loaded: !1 }
                 },
@@ -185,19 +180,20 @@
                     fill: {
                         type: Boolean,
                         default: function() {
-                            return !d
+                            return !s
                         }
                     },
                     color: String,
-                    original: { type: Boolean, default: !1 }
+                    original: { type: Boolean, default: !1 },
+                    title: String
                 },
                 computed: {
                     clazz: function() {
-                        var t = ''.concat(s, '-icon')
+                        var t = ''.concat(l, '-icon')
                         return (
-                            this.fill && (t += ' '.concat(s, '-fill')),
+                            this.fill && (t += ' '.concat(l, '-fill')),
                             this.dir &&
-                                (t += ' '.concat(s, '-').concat(this.dir)),
+                                (t += ' '.concat(l, '-').concat(this.dir)),
                             t
                         )
                     },
@@ -216,6 +212,8 @@
                         return (
                             this.iconData
                                 ? ((t = this.iconData.data),
+                                  (t = this.setTitle(t)),
+                                  this.title && console.log(t),
                                   this.original &&
                                       (t = this.addOriginalColor(t)),
                                   this.colors.length > 0 &&
@@ -245,18 +243,17 @@
                             e,
                             i = /^\d+$/,
                             o = Number(this.scale)
-                        return (
-                            !isNaN(o) && this.iconData
-                                ? ((t = Number(this.iconData.width) * o + 'px'),
-                                  (e = Number(this.iconData.height) * o + 'px'))
-                                : ((t = i.test(this.width)
-                                      ? this.width + 'px'
-                                      : this.width),
-                                  (e = i.test(this.height)
-                                      ? this.height + 'px'
-                                      : this.height)),
-                            { width: t || c, height: e || l }
-                        )
+                        !isNaN(o) && this.iconData
+                            ? ((t = Number(this.iconData.width) * o + 'px'),
+                              (e = Number(this.iconData.height) * o + 'px'))
+                            : ((t = i.test(this.width)
+                                  ? this.width + 'px'
+                                  : this.width || c),
+                              (e = i.test(this.height)
+                                  ? this.height + 'px'
+                                  : this.height || c))
+                        var n = {}
+                        return t && (n.width = t), e && (n.height = e), n
                     }
                 },
                 created: function() {
@@ -306,6 +303,16 @@
                         }
                         return t
                     },
+                    setTitle: function(t) {
+                        if (this.title) {
+                            var e = this.title
+                                .replace(/\</gi, '&lt;')
+                                .replace(/>/gi, '&gt;')
+                                .replace(/&/g, '&amp;')
+                            return '<title>'.concat(e, '</title>') + t
+                        }
+                        return t
+                    },
                     onClick: function(t) {
                         this.$emit('click', t)
                     }
@@ -316,10 +323,10 @@
                                 ? arguments[1]
                                 : {},
                         i = e.tagName || 'svgicon'
-                    e.classPrefix && (s = e.classPrefix),
-                        (d = !!e.isStroke),
+                    e.classPrefix && (l = e.classPrefix),
+                        (s = !!e.isStroke),
                         e.defaultWidth && (c = e.defaultWidth),
-                        e.defaultHeight && (l = e.defaultHeight),
+                        e.defaultHeight && e.defaultHeight,
                         t.component(i, this)
                 },
                 register: function(t) {
@@ -341,28 +348,29 @@
                 },
                 icons: r
             },
-            u = h,
-            p = i('KHd+'),
-            f = Object(p['a'])(u, o, n, !1, null, null, null)
-        e['a'] = f.exports
+            h = d,
+            u = i('2877'),
+            p = Object(u['a'])(h, o, n, !1, null, null, null)
+        p.options.__file = 'SvgIcon.vue'
+        e['a'] = p.exports
     },
-    QqCh: function(t, e, i) {
+    '42a0': function(t, e, i) {
         'use strict'
         i.r(e)
-        i('VRzm')
-        var o = i('XuX8'),
+        i('cadf'), i('551c'), i('097d')
+        var o = i('5ee5'),
             n = i.n(o),
-            r = i('xmWZ'),
-            a = i('3Aqn'),
-            c = i('qpph'),
-            l = i('0yhX'),
-            s = i('EdlT'),
-            d = i('mrSG'),
-            h = i('YKMj'),
-            u = (i('pIFo'),
+            r = i('c665'),
+            a = i('dc0a'),
+            c = i('aa9a'),
+            l = i('d328'),
+            s = i('11d9'),
+            d = i('9ab4'),
+            h = i('60a3'),
+            u = (i('a481'),
             {
                 dir: [
-                    '\n      <icon name="arrow" width="50" height="50" dir="left"></icon>\n      <icon name="arrow" width="50" height="50" dir="up"></icon>\n      <icon name="arrow" width="50" height="50"></icon>\n      <icon name="arrow" width="50" height="50" dir="down"></icon>\n      '
+                    '\n      <icon name="arrow" width="50" height="50" dir="left" title="left"></icon>\n      <icon name="arrow" width="50" height="50" dir="up" title="up"></icon>\n      <icon name="arrow" width="50" height="50" title="right"></icon>\n      <icon name="arrow" width="50" height="50" dir="down" title="down"></icon>\n      '
                 ],
                 fill: [
                     '\n      <icon name="arrow" width="50" height="50"></icon>\n      <icon name="arrow" width="50" height="50" :fill="false"></icon>\n      '
@@ -374,7 +382,7 @@
                     '\n      <icon name="arrow" width="50" height="50"></icon>\n      <icon name="arrow" width="50" height="50" color="red"></icon>\n      <icon name="arrow" width="50" height="50" color="green"></icon>\n      <icon name="arrow" width="50" height="50" color="blue"></icon>\n      '
                 ],
                 size: [
-                    '\n      <icon name="arrow"></icon>\n      <icon name="arrow" width="50" height="50"></icon>\n      <icon name="arrow" scale="15"></icon>\n      <icon name="arrow" width="10em" height="10em"></icon>\n      '
+                    '\n      <icon name="arrow"></icon>\n      <icon name="arrow" width="50" height="50"></icon>\n      <icon name="arrow" height="50"></icon>\n      <icon name="arrow" scale="15"></icon>\n      <icon name="arrow" width="10em" height="10em"></icon>\n      '
                 ],
                 'multi-color': [
                     '<icon name="check" :fill="false" width="100" height="100" color="r-#42b983 white"></icon>'
@@ -401,9 +409,9 @@
                     "\n      <template> #{{tpl}}</template>\n\n      <script>\n        export default {\n          mounted () {\n            require.ensure([], () => {\n              require('icons-async')\n            }, 'async-icons')\n          }\n        }\n      </script>\n      "
                 ]
             }),
-            p = i('pw5m')
-        p['registerLanguage']('javascript', i('TdF3')),
-            p['registerLanguage']('xml', i('jctj'))
+            p = i('a70e')
+        p['registerLanguage']('javascript', i('4dd1')),
+            p['registerLanguage']('xml', i('8dcb'))
         var f = p,
             g = (function(t) {
                 function e() {
@@ -532,8 +540,8 @@
                             key: 'mounted',
                             value: function() {
                                 setTimeout(function() {
-                                    i.e(0)
-                                        .then(i.bind(null, 'UNEA'))
+                                    i.e('50d1')
+                                        .then(i.bind(null, '50d1'))
                                         .then(function() {
                                             console.log('Async icons loaded')
                                         })
@@ -545,73 +553,6 @@
                             value: function() {
                                 var t = arguments[0]
                                 return t('div', { attrs: { id: 'app' } }, [
-                                    t(
-                                        'svg',
-                                        {
-                                            style:
-                                                'width: 0; position: absolute; opacity: 0'
-                                        },
-                                        [
-                                            t('defs', [
-                                                t(
-                                                    'linearGradient',
-                                                    {
-                                                        attrs: {
-                                                            id: 'gradient-1',
-                                                            x1: '0',
-                                                            y1: '0',
-                                                            x2: '0',
-                                                            y2: '1'
-                                                        }
-                                                    },
-                                                    [
-                                                        t('stop', {
-                                                            attrs: {
-                                                                offset: '5%',
-                                                                'stop-color':
-                                                                    '#57f0c2'
-                                                            }
-                                                        }),
-                                                        t('stop', {
-                                                            attrs: {
-                                                                offset: '95%',
-                                                                'stop-color':
-                                                                    '#147d58'
-                                                            }
-                                                        })
-                                                    ]
-                                                ),
-                                                t(
-                                                    'linearGradient',
-                                                    {
-                                                        attrs: {
-                                                            id: 'gradient-2',
-                                                            x1: '0',
-                                                            y1: '0',
-                                                            x2: '0',
-                                                            y2: '1'
-                                                        }
-                                                    },
-                                                    [
-                                                        t('stop', {
-                                                            attrs: {
-                                                                offset: '5%',
-                                                                'stop-color':
-                                                                    '#7295c2'
-                                                            }
-                                                        }),
-                                                        t('stop', {
-                                                            attrs: {
-                                                                offset: '95%',
-                                                                'stop-color':
-                                                                    '#252e3d'
-                                                            }
-                                                        })
-                                                    ]
-                                                )
-                                            ])
-                                        ]
-                                    ),
                                     t('p', [
                                         t('icon', {
                                             class: 'vue-logo',
@@ -700,7 +641,74 @@
                                         t('demo-block', {
                                             attrs: { code: 'async' }
                                         })
-                                    ])
+                                    ]),
+                                    t(
+                                        'svg',
+                                        {
+                                            style:
+                                                'width: 0; position: absolute; opacity: 0'
+                                        },
+                                        [
+                                            t('defs', [
+                                                t(
+                                                    'linearGradient',
+                                                    {
+                                                        attrs: {
+                                                            id: 'gradient-1',
+                                                            x1: '0',
+                                                            y1: '0',
+                                                            x2: '0',
+                                                            y2: '1'
+                                                        }
+                                                    },
+                                                    [
+                                                        t('stop', {
+                                                            attrs: {
+                                                                offset: '5%',
+                                                                'stop-color':
+                                                                    '#57f0c2'
+                                                            }
+                                                        }),
+                                                        t('stop', {
+                                                            attrs: {
+                                                                offset: '95%',
+                                                                'stop-color':
+                                                                    '#147d58'
+                                                            }
+                                                        })
+                                                    ]
+                                                ),
+                                                t(
+                                                    'linearGradient',
+                                                    {
+                                                        attrs: {
+                                                            id: 'gradient-2',
+                                                            x1: '0',
+                                                            y1: '0',
+                                                            x2: '0',
+                                                            y2: '1'
+                                                        }
+                                                    },
+                                                    [
+                                                        t('stop', {
+                                                            attrs: {
+                                                                offset: '5%',
+                                                                'stop-color':
+                                                                    '#7295c2'
+                                                            }
+                                                        }),
+                                                        t('stop', {
+                                                            attrs: {
+                                                                offset: '95%',
+                                                                'stop-color':
+                                                                    '#252e3d'
+                                                            }
+                                                        })
+                                                    ]
+                                                )
+                                            ])
+                                        ]
+                                    )
                                 ])
                             }
                         }
@@ -711,7 +719,7 @@
             })(h['c'])
         v = d['a']([Object(h['a'])({ components: { DemoBlock: m } })], v)
         var w = v,
-            b = i('ADLm')
+            b = i('0032')
         b['a'].register({
             arrow: {
                 width: 4,
@@ -754,7 +762,7 @@
                     height: 16,
                     viewBox: '0 0 200 200',
                     data:
-                        '<defs><clipPath id="svgicon-mask-a"><path pid="0" d="M0 0h200v100H0z"/></clipPath></defs><circle pid="1" cx="100" cy="100" r="100" clip-path="url(#svgicon-mask-a)"/>'
+                        '<defs><clipPath id="svgicon_mask_a"><path pid="0" d="M0 0h200v100H0z"/></clipPath></defs><circle pid="1" cx="100" cy="100" r="100" clip-path="url(#svgicon_mask_a)"/>'
                 }
             }),
             b['a'].register({
@@ -781,7 +789,7 @@
                     height: 16,
                     viewBox: '0 0 200 200',
                     data:
-                        '<defs><linearGradient id="svgicon-sora-fit-mask-a"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient><mask id="svgicon-sora-fit-mask-b"><path pid="0" _fill="url(#svgicon-sora-fit-mask-a)" d="M0 0h200v200H0z"/></mask></defs><path pid="1" _fill="green" d="M0 0h200v200H0z"/><path pid="2" _fill="red" mask="url(#svgicon-sora-fit-mask-b)" d="M0 0h200v200H0z"/>'
+                        '<defs><linearGradient id="svgicon_sora_fit_mask_a"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient><mask id="svgicon_sora_fit_mask_b"><path pid="0" _fill="url(#svgicon_sora_fit_mask_a)" d="M0 0h200v200H0z"/></mask></defs><path pid="1" _fill="green" d="M0 0h200v200H0z"/><path pid="2" _fill="red" mask="url(#svgicon_sora_fit_mask_b)" d="M0 0h200v200H0z"/>'
                 }
             }),
             b['a'].register({
@@ -793,9 +801,9 @@
                         '<path pid="0" d="M0 0l128 220.8L256 0h-51.2L128 132.48 50.56 0H0z" _fill="#41B883"/><path pid="1" d="M50.56 0L128 133.12 204.8 0h-47.36L128 51.2 97.92 0H50.56z" _fill="#35495E"/>'
                 }
             })
-        i('sR2V')
+        i('b11d')
         ;(n.a.config.productionTip = !1),
-            n.a.component('icon', b['a']),
+            n.a.use(b['a'], { tagName: 'icon' }),
             new n.a({
                 render: function(t) {
                     return t(w)
@@ -803,4 +811,4 @@
             }).$mount('#app')
     }
 })
-//# sourceMappingURL=app.90baf637.js.map
+//# sourceMappingURL=app.3d51813f.js.map

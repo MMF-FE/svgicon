@@ -25,9 +25,13 @@ const args = yargs
     .alias('h', 'help').argv
 
 // svg file path
-const sourcePath = path.join(process.cwd(), args.s)
+const sourcePath = path.isAbsolute(args.s)
+    ? args.s
+    : path.join(process.cwd(), args.s)
 // generated icon path
-const targetPath = path.join(process.cwd(), args.t)
+const targetPath = path.isAbsolute(args.t)
+    ? args.t
+    : path.join(process.cwd(), args.t)
 
 // auto run
 ;(async function() {

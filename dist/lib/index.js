@@ -19,9 +19,13 @@ var args = yargs
     .help('help')
     .alias('h', 'help').argv;
 // svg file path
-var sourcePath = path.join(process.cwd(), args.s);
+var sourcePath = path.isAbsolute(args.s)
+    ? args.s
+    : path.join(process.cwd(), args.s);
 // generated icon path
-var targetPath = path.join(process.cwd(), args.t);
+var targetPath = path.isAbsolute(args.t)
+    ? args.t
+    : path.join(process.cwd(), args.t);
 (function () {
     return tslib_1.__awaiter(this, void 0, void 0, function () {
         var err_1;
