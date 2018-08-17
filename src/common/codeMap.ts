@@ -2,10 +2,10 @@
 export default {
     dir: [
         `
-      <icon name="arrow" width="50" height="50" dir="left"></icon>
-      <icon name="arrow" width="50" height="50" dir="up"></icon>
-      <icon name="arrow" width="50" height="50"></icon>
-      <icon name="arrow" width="50" height="50" dir="down"></icon>
+      <icon name="arrow" width="50" height="50" dir="left" title="left"></icon>
+      <icon name="arrow" width="50" height="50" dir="up" title="up"></icon>
+      <icon name="arrow" width="50" height="50" title="right"></icon>
+      <icon name="arrow" width="50" height="50" dir="down" title="down"></icon>
       `
     ],
     fill: [
@@ -31,6 +31,7 @@ export default {
         `
       <icon name="arrow"></icon>
       <icon name="arrow" width="50" height="50"></icon>
+      <icon name="arrow" height="50"></icon>
       <icon name="arrow" scale="15"></icon>
       <icon name="arrow" width="10em" height="10em"></icon>
       `
