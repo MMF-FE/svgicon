@@ -1177,12 +1177,12 @@ __webpack_require__.r(__webpack_exports__);
 // EXTERNAL MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
 var setPublicPath = __webpack_require__("1eb2");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac48580-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/SvgIcon.vue?vue&type=template&id=6cd50ac8&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"8ac48580-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/SvgIcon.vue?vue&type=template&id=30190379&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('svg',{class:_vm.clazz,style:(_vm.style),attrs:{"version":"1.1","viewBox":_vm.box},domProps:{"innerHTML":_vm._s(_vm.path)},on:{"click":_vm.onClick}})}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/SvgIcon.vue?vue&type=template&id=6cd50ac8&
+// CONCATENATED MODULE: ./src/components/SvgIcon.vue?vue&type=template&id=30190379&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.regexp.replace.js
 var es6_regexp_replace = __webpack_require__("a481");
@@ -1244,7 +1244,8 @@ var isStroke = false;
     original: {
       type: Boolean,
       default: false
-    }
+    },
+    title: String
   },
   computed: {
     clazz: function clazz() {
@@ -1283,7 +1284,8 @@ var isStroke = false;
       var pathData = '';
 
       if (this.iconData) {
-        pathData = this.iconData.data; // use original color
+        pathData = this.iconData.data;
+        pathData = this.setTitle(pathData); // use original color
 
         if (this.original) {
           pathData = this.addOriginalColor(pathData);
@@ -1326,14 +1328,21 @@ var isStroke = false;
         width = Number(this.iconData.width) * scale + 'px';
         height = Number(this.iconData.height) * scale + 'px';
       } else {
-        width = digitReg.test(this.width) ? this.width + 'px' : this.width;
-        height = digitReg.test(this.height) ? this.height + 'px' : this.height;
+        width = digitReg.test(this.width) ? this.width + 'px' : this.width || defaultWidth;
+        height = digitReg.test(this.height) ? this.height + 'px' : this.height || defaultWidth;
       }
 
-      return {
-        width: width || defaultWidth,
-        height: height || defaultHeight
-      };
+      var style = {};
+
+      if (width) {
+        style.width = width;
+      }
+
+      if (height) {
+        style.height = height;
+      }
+
+      return style;
     }
   },
   created: function created() {
@@ -1379,6 +1388,14 @@ var isStroke = false;
         pathData = pathData.replace(reg, function (match, p1, p2, p3, p4) {
           return "<".concat(p1).concat(p2).concat(p3, "_").concat(p4);
         });
+      }
+
+      return pathData;
+    },
+    setTitle: function setTitle(pathData) {
+      if (this.title) {
+        var title = this.title.replace(/\</gi, '&lt;').replace(/>/gi, '&gt;').replace(/&/g, '&amp;');
+        return "<title>".concat(title, "</title>") + pathData;
       }
 
       return pathData;
