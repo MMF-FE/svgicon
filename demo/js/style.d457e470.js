@@ -54,7 +54,7 @@
         (n.o = function(e, t) {
             return Object.prototype.hasOwnProperty.call(e, t)
         }),
-        (n.p = '/'),
+        (n.p = '/vue-svgicon/'),
         n((n.s = 2))
 })({
     2: function(e, t, n) {
@@ -62,4 +62,4 @@
     },
     e612: function(e, t, n) {}
 })
-//# sourceMappingURL=style.050cb988.js.map
+//# sourceMappingURL=style.d457e470.js.map

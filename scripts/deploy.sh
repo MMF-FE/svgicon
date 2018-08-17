@@ -1,4 +1,4 @@
-cd ../demo
+cd demo
 git init
 git add -A
 git commit -m 'update demo'

@@ -84,9 +84,6 @@ export default {
                 pathData = this.iconData.data
 
                 pathData = this.setTitle(pathData)
-                if (this.title) {
-                    console.log(pathData)
-                }
 
                 // use original color
                 if (this.original) {

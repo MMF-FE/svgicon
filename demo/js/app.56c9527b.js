@@ -132,7 +132,7 @@
         (c.o = function(t, e) {
             return Object.prototype.hasOwnProperty.call(t, e)
         }),
-        (c.p = '/'),
+        (c.p = '/vue-svgicon/'),
         (c.oe = function(t) {
             throw (console.error(t), t)
         })
@@ -161,7 +161,15 @@
                 })
             },
             n = [],
-            r = (i('a481'), i('c5f6'), i('28a5'), i('7f7f'), i('6c7b'), {}),
+            r = (i('a481'),
+            i('c5f6'),
+            i('28a5'),
+            i('7f7f'),
+            i('6c7b'),
+            i('cadf'),
+            i('551c'),
+            i('097d'),
+            {}),
             a = [],
             c = '',
             l = 'svg',
@@ -213,7 +221,6 @@
                             this.iconData
                                 ? ((t = this.iconData.data),
                                   (t = this.setTitle(t)),
-                                  this.title && console.log(t),
                                   this.original &&
                                       (t = this.addOriginalColor(t)),
                                   this.colors.length > 0 &&
@@ -350,9 +357,9 @@
             },
             h = d,
             u = i('2877'),
-            p = Object(u['a'])(h, o, n, !1, null, null, null)
-        p.options.__file = 'SvgIcon.vue'
-        e['a'] = p.exports
+            f = Object(u['a'])(h, o, n, !1, null, null, null)
+        f.options.__file = 'SvgIcon.vue'
+        e['a'] = f.exports
     },
     '42a0': function(t, e, i) {
         'use strict'
@@ -409,10 +416,10 @@
                     "\n      <template> #{{tpl}}</template>\n\n      <script>\n        export default {\n          mounted () {\n            require.ensure([], () => {\n              require('icons-async')\n            }, 'async-icons')\n          }\n        }\n      </script>\n      "
                 ]
             }),
-            p = i('a70e')
-        p['registerLanguage']('javascript', i('4dd1')),
-            p['registerLanguage']('xml', i('8dcb'))
-        var f = p,
+            f = i('a70e')
+        f['registerLanguage']('javascript', i('4dd1')),
+            f['registerLanguage']('xml', i('8dcb'))
+        var p = f,
             g = (function(t) {
                 function e() {
                     return (
@@ -439,7 +446,7 @@
                                               }
                                           )
                                         : this.codeString[0]),
-                                    f.highlightBlock(e))
+                                    p.highlightBlock(e))
                             }
                         },
                         {
@@ -811,4 +818,4 @@
             }).$mount('#app')
     }
 })
-//# sourceMappingURL=app.3d51813f.js.map
+//# sourceMappingURL=app.56c9527b.js.map

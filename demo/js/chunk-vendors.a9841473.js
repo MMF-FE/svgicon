@@ -7952,12 +7952,12 @@ and limitations under the License.
                                 'object' === typeof e &&
                                 Object({
                                     NODE_ENV: 'production',
-                                    BASE_URL: '/'
+                                    BASE_URL: '/vue-svgicon/'
                                 }) &&
                                 'true' ===
                                     Object({
                                         NODE_ENV: 'production',
-                                        BASE_URL: '/'
+                                        BASE_URL: '/vue-svgicon/'
                                     })['REFLECT_METADATA_USE_MAP_POLYFILL'],
                             p =
                                 l ||
@@ -9902,4 +9902,4 @@ and limitations under the License.
         }
     }
 ])
-//# sourceMappingURL=chunk-vendors.261c9922.js.map
+//# sourceMappingURL=chunk-vendors.a9841473.js.map
