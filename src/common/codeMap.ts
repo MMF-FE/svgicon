@@ -96,7 +96,7 @@ export default {
     uid: [
         `
       <icon name="mask" width="100" height="100"></icon>
-      <icon name="sora/fit/mask" width="100" height="100" color="url(#svgicon-sora-fit-mask-a) red green" ></icon>
+      <icon name="sora/fit/mask" width="100" height="100" color="url(#svgicon_sora_fit_mask_a) red green" ></icon>
       `
     ],
     async: [
