@@ -13,7 +13,7 @@
         "build": "APP_ENV=lib vue-cli-service build --target lib --name svgicon ./src/components/SvgIcon.vue",
         "build:lib": "rm -rf dist/lib && tsc -p ./lib/tsconfig.json",
         "build:demo": "vue-cli-service build",
-        "deploy:demo": "./scripts/deploy.sh",
+        "deploy:demo": "yarn build:demo && ./scripts/deploy.sh",
         "test": "vue-cli-service test:unit",
         "svg": "node ./dist/lib/index.js -s ./src/assets/svg -t ./src/components/icons",
         "svg:async": "node ./dist/lib/index.js -s ./src/assets/svg-async -t ./src/components/icons-async --ext ts --es6",
