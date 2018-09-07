@@ -1,3 +1,4 @@
+import "../dist/polyfill.js"
 import Vue from 'vue'
 import App from './App'
 import SvgIcon from '@/components/SvgIcon.vue'
