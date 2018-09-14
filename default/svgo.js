@@ -7,9 +7,6 @@ module.exports = {
             removeTitle: true
         },
         {
-            removeStyleElement: true
-        },
-        {
             removeComments: true
         },
         {
@@ -17,6 +14,9 @@ module.exports = {
         },
         {
             removeUselessDefs: true
+        },
+        {
+            convertStyleToAttrs: true
         },
         {
             cleanupIDs: {

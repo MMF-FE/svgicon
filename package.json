@@ -12,6 +12,7 @@
         "serve:lib": "tsc -w -p ./lib/tsconfig.json",
         "build": "APP_ENV=lib vue-cli-service build --target lib --name svgicon ./src/components/SvgIcon.vue",
         "build:lib": "rm -rf dist/lib && tsc -p ./lib/tsconfig.json",
+        "build:polyfill": "webpack",
         "build:demo": "vue-cli-service build",
         "deploy:demo": "yarn build:demo && ./scripts/deploy.sh",
         "test": "vue-cli-service test:unit",
@@ -78,7 +79,9 @@
         "typescript": "^3.0.1",
         "vue-class-component": "^6.0.0",
         "vue-property-decorator": "^6.0.0",
-        "vue-template-compiler": "^2.5.16"
+        "vue-template-compiler": "^2.5.16",
+        "webpack-bundle-analyzer": "^3.0.2",
+        "webpack-cli": "^3.1.0"
     },
     "browserslist": [
         "> 1%",
