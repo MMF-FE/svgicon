@@ -7,6 +7,17 @@ module.exports = {
             removeTitle: true
         },
         {
+            inlineStyles: {
+                onlyMatchedOnce: false
+            }
+        },
+        {
+            convertStyleToAttrs: true
+        },
+        {
+            removeStyleElement: true
+        },
+        {
             removeComments: true
         },
         {
@@ -14,9 +25,6 @@ module.exports = {
         },
         {
             removeUselessDefs: true
-        },
-        {
-            convertStyleToAttrs: true
         },
         {
             cleanupIDs: {

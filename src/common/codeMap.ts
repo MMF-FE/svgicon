@@ -59,10 +59,11 @@ export default {
     ],
     'original-color': [
         `
-        <icon name="colorwheel" width="100" height="100" :original="true"></icon>
+        <icon name="colorwheel" width="100" height="100" original></icon>
         <!-- overwrite original color -->
-        <icon name="colorwheel" width="100" height="100" :original="true" color="_ black _ black _"></icon>
-        <icon name="colorwheel" width="100" height="100" :original="true" color="_ r-black _ r-red _"></icon>
+        <icon name="colorwheel" width="100" height="100" original color="_ black _ black _"></icon>
+        <icon name="colorwheel" width="100" height="100" original color="_ r-black _ r-red _"></icon>
+        <icon name="gift" width="100" height="100" original></icon>
       `
     ],
     gradient: [
