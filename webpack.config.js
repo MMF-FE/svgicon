@@ -5,7 +5,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 const REPORT = process.env.REPORT
 
 let config = {
-    mode: 'production',
+    mode: 'development',
     entry: {
         polyfill: './polyfill/index.js'
     },
