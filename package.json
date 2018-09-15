@@ -12,7 +12,7 @@
         "serve:lib": "tsc -w -p ./lib/tsconfig.json",
         "build": "APP_ENV=lib vue-cli-service build --target lib --name svgicon ./src/components/SvgIcon.vue",
         "build:lib": "rm -rf dist/lib && tsc -p ./lib/tsconfig.json",
-        "build:polyfill": "webpack -w",
+        "build:polyfill": "APP_ENV=lib webpack",
         "build:demo": "vue-cli-service build",
         "deploy:demo": "yarn build:demo && ./scripts/deploy.sh",
         "test": "vue-cli-service test:unit",

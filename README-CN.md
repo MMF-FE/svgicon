@@ -47,6 +47,21 @@ vsvg -s /path/to/svg/source -t /path/for/generated/components
 }
 ```
 
+#### Use programming api
+
+```js
+import build from 'vue-svgicon/dist/lib/build'
+build({
+    sourcePath: '';
+    targetPath: '';
+    ext?: 'js';
+    es6?: false;
+    tpl?: '';
+    idSP?: '_';
+    svgo?: 'Configuration file path' || {/* svgo config object */}
+})
+```
+
 ```bash
 # bash
 npm run svg
@@ -82,10 +97,16 @@ icon.register({
 vsvg -s /path/to/svg/source -t /path/for/generated/components --ext ts
 ```
 
-### 支持 ES6 模块
+#### 支持 ES6 模块
 
 ```bash
 vsvg -s /path/to/svg/source -t /path/for/generated/components --ext ts --es6
+```
+
+#### 自定义 svgo
+
+```bash
+vsvg -s /path/to/svg/source -t /path/for/generated/components --svgo svgo.js
 ```
 
 ### 使用生成的图标

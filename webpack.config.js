@@ -5,7 +5,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 const REPORT = process.env.REPORT
 
 let config = {
-    mode: 'development',
+    mode: 'production',
     entry: {
         polyfill: './polyfill/index.js'
     },
@@ -20,17 +20,7 @@ let config = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                exclude: /node_modules/,
-                options: {
-                    presets: [
-                        [
-                            '@babel/preset-env',
-                            {
-                                useBuiltIns: false
-                            }
-                        ]
-                    ]
-                }
+                exclude: /node_modules/
             }
         ]
     },

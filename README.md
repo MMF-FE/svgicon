@@ -53,6 +53,21 @@ npm run svg
 
 It will generate icons to the specified path.
 
+#### Use programming api
+
+```js
+import build from 'vue-svgicon/dist/lib/build'
+build({
+    sourcePath: '';
+    targetPath: '';
+    ext?: 'js';
+    es6?: false;
+    tpl?: '';
+    idSP?: '_';
+    svgo?: 'Configuration file path' || {/* svgo config object */}
+})
+```
+
 #### Custom icon content format
 
 ```bash
@@ -80,13 +95,13 @@ icon.register({
 vsvg -s /path/to/svg/source -t /path/for/generated/components --ext ts
 ```
 
-### Suport ES6 modules
+#### Suport ES6 modules
 
 ```bash
 vsvg -s /path/to/svg/source -t /path/for/generated/components --ext ts --es6
 ```
 
-### Custom svgo
+#### Custom svgo
 
 ```bash
 vsvg -s /path/to/svg/source -t /path/for/generated/components --svgo svgo.js
