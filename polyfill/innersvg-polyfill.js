@@ -77,7 +77,7 @@ module.exports = function() {
                 dXML.async = false
                 // Wrap the markup into a SVG node to ensure parsing works.
                 var sXML =
-                    "<svg xmlns='http://www.w3.org/2000/svg'>" +
+                    "<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>" +
                     markupText +
                     '</svg>'
 
