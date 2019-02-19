@@ -1,0 +1,53 @@
+{
+    "name": "@yzfe/vue-svgicon",
+    "version": "1.0.0",
+    "description": "A tool to create svg icon components. (vue 2.x)",
+    "scripts": {
+        "test": "echo \"Error: run tests from root\" && exit 1",
+        "dev": "vue-cli-service build --watch --target lib --name svgicon index.ts",
+        "build": "vue-cli-service build --target lib --name svgicon index.ts"
+    },
+    "keywords": [
+        "vue",
+        "svg",
+        "icon",
+        "svgicon"
+    ],
+    "author": "Allenice Mo <994298628@qq.com>",
+    "homepage": "https://github.com/MMF-FE/vue-svgicon/tree/master/packages/vue-svgicon#readme",
+    "license": "MIT",
+    "main": "dist/svgicon.common.js",
+    "directories": {
+        "lib": "lib",
+        "dist": "dist"
+    },
+    "files": [
+        "dist",
+        "typings"
+    ],
+    "dependencies": {
+        "vue": "^2.5.22"
+    },
+    "devDependencies": {
+        "@types/chai": "^4.1.7",
+        "@types/mocha": "^5.2.6",
+        "@types/node": "^11.9.4",
+        "@vue/cli-plugin-babel": "^3.4.0",
+        "@vue/cli-plugin-typescript": "^3.4.0",
+        "@vue/cli-service": "^3.4.0",
+        "chai": "^4.2.0",
+        "fibers": "^3.1.1",
+        "mocha": "^6.0.0",
+        "sass": "^1.16.0",
+        "sass-loader": "^7.1.0",
+        "typescript": "^3.0.0",
+        "vue-template-compiler": "^2.5.21"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MMF-FE/vue-svgicon.git"
+    },
+    "bugs": {
+        "url": "https://github.com/MMF-FE/vue-svgicon/issues"
+    }
+}

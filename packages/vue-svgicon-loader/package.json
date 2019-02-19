@@ -1,0 +1,36 @@
+{
+    "name": "@yzfe/vue-svgicon-loader",
+    "version": "1.0.0",
+    "description": "Webpack loader to load vue-svgicon",
+    "scripts": {
+        "test": "echo \"Error: run tests from root\" && exit 1"
+    },
+    "keywords": [
+        "vue",
+        "svg",
+        "icon",
+        "webpack",
+        "loader"
+    ],
+    "author": "Allenice Mo <994298628@qq.com>",
+    "homepage": "https://github.com/MMF-FE/vue-svgicon/tree/master/packages/svgicon-loader#readme",
+    "license": "MIT",
+    "main": "dist/index.js",
+    "directories": {
+        "lib": "lib",
+        "dist": "dist",
+        "typings": "typings"
+    },
+    "files": [
+        "lib",
+        "dist",
+        "typings"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MMF-FE/vue-svgicon.git"
+    },
+    "bugs": {
+        "url": "https://github.com/MMF-FE/vue-svgicon/issues"
+    }
+}
