@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "strict": true,
+        "declaration": true,
+        "removeComments": false,
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "moduleResolution": "node",
+        "importHelpers": true,
+        "noImplicitAny": true,
+        "noLib": false,
+        "sourceMap": true,
+        "lib": ["esnext"],
+        "outDir": "dist",
+        "types": ["node"]
+    },
+    "include": ["index.ts", "lib/**/*.ts"],
+    "exclude": ["node_modules", "dist"]
+}

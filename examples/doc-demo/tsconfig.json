@@ -11,7 +11,7 @@
         "allowSyntheticDefaultImports": true,
         "sourceMap": true,
         "baseUrl": ".",
-        "types": ["webpack-env", "node", "mocha", "chai"],
+        "types": ["webpack-env"],
         "typeRoots": ["typings"],
         "paths": {
             "@/*": ["src/*"]
@@ -23,7 +23,8 @@
         "src/**/*.tsx",
         "src/**/*.vue",
         "tests/**/*.ts",
-        "tests/**/*.tsx"
+        "tests/**/*.tsx",
+        "typings/**/*.ts"
     ],
     "exclude": ["node_modules"]
 }

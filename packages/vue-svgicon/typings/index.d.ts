@@ -17,7 +17,7 @@ export interface Icon {
     [key: string]: any
 }
 
-export const VueSvgIcon: {
+declare const VueSvgIcon: {
     install: PluginFunction<PluginOptions>
 }
 

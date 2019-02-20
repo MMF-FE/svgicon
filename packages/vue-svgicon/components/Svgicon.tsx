@@ -172,14 +172,14 @@ export default Vue.extend({
             })
         },
 
-        addOriginalColor(data) {
+        addOriginalColor(data: string) {
             let styleReg = /_fill="|_stroke="/gi
             return data.replace(styleReg, styleName => {
                 return styleName && styleName.slice(1)
             })
         },
 
-        getValidPathData(pathData) {
+        getValidPathData(pathData: string) {
             // If use original and colors, clear double fill or stroke
             if (this.original && this.colors.length > 0) {
                 let reg = /<(path|rect|circle|polygon|line|polyline|ellipse)(\sfill|\sstroke)([="\w\s\.\-\+#\$\&>]+)(fill|stroke)/gi
@@ -191,7 +191,7 @@ export default Vue.extend({
             return pathData
         },
 
-        setTitle(pathData) {
+        setTitle(pathData: string) {
             if (this.title) {
                 let title = this.title
                     .replace(/\</gi, '&lt;')
@@ -202,7 +202,7 @@ export default Vue.extend({
             return pathData
         },
 
-        onClick(e) {
+        onClick(e: Event) {
             this.$emit('click', e)
         }
     },

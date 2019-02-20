@@ -1,11 +1,13 @@
-import Vue from 'vue'
-import Svgicon, { setOptions } from './components/Svgicon'
+import { PluginObject } from 'vue'
+import SvgIcon, { setOptions } from './components/Svgicon'
 import { PluginOptions } from './typings/index'
 
-export default {
-    install(vue: typeof Vue, options: PluginOptions = {}) {
+let VueSvgIconPlugin: PluginObject<PluginOptions> = {
+    install(vue, options = {}) {
         let tagName = options.tagName || 'svgicon'
-        vue.component(tagName, Svgicon)
+        vue.component(tagName, SvgIcon)
         setOptions(options)
     }
 }
+
+export default VueSvgIconPlugin

@@ -17,6 +17,7 @@
     "homepage": "https://github.com/MMF-FE/vue-svgicon/tree/master/packages/vue-svgicon#readme",
     "license": "MIT",
     "main": "dist/svgicon.common.js",
+    "typings": "typings/index.d.ts",
     "directories": {
         "lib": "lib",
         "dist": "dist"
@@ -35,6 +36,7 @@
         "@vue/cli-plugin-babel": "^3.4.0",
         "@vue/cli-plugin-typescript": "^3.4.0",
         "@vue/cli-service": "^3.4.0",
+        "@yzfe/vue-svgicon-loader": "^1.0.0",
         "chai": "^4.2.0",
         "fibers": "^3.1.1",
         "mocha": "^6.0.0",

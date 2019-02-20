@@ -697,6 +697,11 @@
     error-stack-parser "^2.0.0"
     string-width "^2.0.0"
 
+"@types/highlight.js@^9.12.3":
+  version "9.12.3"
+  resolved "http://registry.npm.taobao.org/@types/highlight.js/download/@types/highlight.js-9.12.3.tgz#b672cfaac25cbbc634a0fd92c515f66faa18dbca"
+  integrity sha1-tnLPqsJcu8Y0oP2SxRX2b6oY28o=
+
 "@types/q@^1.5.1":
   version "1.5.1"
   resolved "http://registry.npm.taobao.org/@types/q/download/@types/q-1.5.1.tgz#48fd98c1561fe718b61733daed46ff115b496e18"
@@ -3439,6 +3444,11 @@ hex-color-regex@^1.1.0:
   version "1.1.0"
   resolved "http://registry.npm.taobao.org/hex-color-regex/download/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha1-TAb8y0YC/iYCs8k9+C1+fb8aio4=
+
+highlight.js@^9.14.2:
+  version "9.14.2"
+  resolved "http://registry.npm.taobao.org/highlight.js/download/highlight.js-9.14.2.tgz#efbfb22dc701406e4da406056ef8c2b70ebe5b26"
+  integrity sha1-77+yLccBQG5NpAYFbvjCtw6+WyY=
 
 hmac-drbg@^1.0.0:
   version "1.0.1"
