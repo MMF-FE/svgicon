@@ -103,6 +103,25 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__8bbf__;
 
 /***/ }),
 
+/***/ "d038":
+/***/ (function(module, exports) {
+
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncaught exception popping up in devtools
+	return Promise.resolve().then(function() {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	});
+}
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = "d038";
+
+/***/ }),
+
 /***/ "fb15":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -191,7 +210,7 @@ function setOptions(opts) {
       return this.name || this.icon;
     },
     iconData: function iconData() {
-      return null;
+      return __webpack_require__("d038")("./loader.vuesvgicon?name=".concat(this.iconName));
     },
     colors: function colors() {
       if (this.color) {

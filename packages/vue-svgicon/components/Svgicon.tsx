@@ -68,7 +68,9 @@ export default Vue.extend({
         },
 
         iconData() {
-            return null
+            return require(`@yzfe/vue-svgicon-loader/loader.vuesvgicon?name=${
+                this.iconName
+            }`)
         },
 
         colors() {
