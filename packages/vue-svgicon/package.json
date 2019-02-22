@@ -4,8 +4,8 @@
     "description": "A tool to create svg icon components. (vue 2.x)",
     "scripts": {
         "test": "echo \"Error: run tests from root\" && exit 1",
-        "dev": "vue-cli-service build --watch --target lib --name svgicon index.ts",
-        "build": "vue-cli-service build --target lib --name svgicon index.ts"
+        "dev": "vue-cli-service build --watch --target lib --name svgicon src/index.ts",
+        "build": "vue-cli-service build --target lib --name svgicon src/index.ts"
     },
     "keywords": [
         "vue",
@@ -27,7 +27,7 @@
         "typings"
     ],
     "dependencies": {
-        "vue": "^2.5.22"
+        "vue": "^2.6.6"
     },
     "devDependencies": {
         "@types/chai": "^4.1.7",

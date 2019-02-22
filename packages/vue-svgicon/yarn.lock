@@ -739,10 +739,10 @@
     lodash.kebabcase "^4.1.1"
     svg-tags "^1.0.0"
 
-"@vue/babel-preset-app@^3.4.0":
-  version "3.4.0"
-  resolved "http://registry.npm.taobao.org/@vue/babel-preset-app/download/@vue/babel-preset-app-3.4.0.tgz#926c718066babc0117ee70cebf890d3aaa812bfa"
-  integrity sha1-kmxxgGa6vAEX7nDOv4kNOqqBK/o=
+"@vue/babel-preset-app@^3.4.1":
+  version "3.4.1"
+  resolved "http://registry.npm.taobao.org/@vue/babel-preset-app/download/@vue/babel-preset-app-3.4.1.tgz#98a0bf3f207b989e00a9ec27dd0d2d1b4f27402b"
+  integrity sha1-mKC/PyB7mJ4Aqewn3Q0tG08nQCs=
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.0.0"
     "@babel/plugin-proposal-decorators" "^7.1.0"
@@ -754,7 +754,7 @@
     "@babel/runtime-corejs2" "^7.2.0"
     "@vue/babel-preset-jsx" "^1.0.0-beta.2"
     babel-plugin-dynamic-import-node "^2.2.0"
-    core-js "^2.6.3"
+    core-js "^2.6.5"
 
 "@vue/babel-preset-jsx@^1.0.0-beta.2":
   version "1.0.0-beta.2"
@@ -809,13 +809,13 @@
   integrity sha1-f+fPQerLrx8Vee/K2T4jtl1Fgds=
 
 "@vue/cli-plugin-babel@^3.4.0":
-  version "3.4.0"
-  resolved "http://registry.npm.taobao.org/@vue/cli-plugin-babel/download/@vue/cli-plugin-babel-3.4.0.tgz#d6e7967995f860b94204bdfb17900fadd4aea2d9"
-  integrity sha1-1ueWeZX4YLlCBL37F5APrdSuotk=
+  version "3.4.1"
+  resolved "http://registry.npm.taobao.org/@vue/cli-plugin-babel/download/@vue/cli-plugin-babel-3.4.1.tgz#f84fe329966ab5c82c80da1bd62da4db4089090b"
+  integrity sha1-+E/jKZZqtcgsgNob1i2k20CJCQs=
   dependencies:
     "@babel/core" "^7.0.0"
-    "@vue/babel-preset-app" "^3.4.0"
-    "@vue/cli-shared-utils" "^3.4.0"
+    "@vue/babel-preset-app" "^3.4.1"
+    "@vue/cli-shared-utils" "^3.4.1"
     babel-loader "^8.0.5"
     webpack ">=4 < 4.29"
 
@@ -893,6 +893,24 @@
   version "3.4.0"
   resolved "http://registry.npm.taobao.org/@vue/cli-shared-utils/download/@vue/cli-shared-utils-3.4.0.tgz#4331cb926351e399bf7305a9306bf09d0f2a1b9d"
   integrity sha1-QzHLkmNR45m/cwWpMGvwnQ8qG50=
+  dependencies:
+    chalk "^2.4.1"
+    execa "^1.0.0"
+    joi "^14.3.0"
+    launch-editor "^2.2.1"
+    lru-cache "^5.1.1"
+    node-ipc "^9.1.1"
+    opn "^5.3.0"
+    ora "^3.0.0"
+    request "^2.87.0"
+    request-promise-native "^1.0.5"
+    semver "^5.5.0"
+    string.prototype.padstart "^3.0.0"
+
+"@vue/cli-shared-utils@^3.4.1":
+  version "3.4.1"
+  resolved "http://registry.npm.taobao.org/@vue/cli-shared-utils/download/@vue/cli-shared-utils-3.4.1.tgz#963454d2d2bc549d027c8988666c939903be6d7e"
+  integrity sha1-ljRU0tK8VJ0CfImIZmyTmQO+bX4=
   dependencies:
     chalk "^2.4.1"
     execa "^1.0.0"
@@ -2120,7 +2138,7 @@ copy-webpack-plugin@^4.6.0:
     p-limit "^1.0.0"
     serialize-javascript "^1.4.0"
 
-core-js@^2.5.7, core-js@^2.6.3:
+core-js@^2.5.7, core-js@^2.6.5:
   version "2.6.5"
   resolved "http://registry.npm.taobao.org/core-js/download/core-js-2.6.5.tgz#44bc8d249e7fb2ff5d00e0341a7ffb94fbf67895"
   integrity sha1-RLyNJJ5/sv9dAOA0Gn/7lPv2eJU=
@@ -5962,9 +5980,9 @@ regenerator-runtime@^0.12.0:
   integrity sha1-+hpxVEdkwDb4xJsToIsllMn4oN4=
 
 regenerator-transform@^0.13.3:
-  version "0.13.3"
-  resolved "http://registry.npm.taobao.org/regenerator-transform/download/regenerator-transform-0.13.3.tgz#264bd9ff38a8ce24b06e0636496b2c856b57bcbb"
-  integrity sha1-JkvZ/zioziSwbgY2SWsshWtXvLs=
+  version "0.13.4"
+  resolved "http://registry.npm.taobao.org/regenerator-transform/download/regenerator-transform-0.13.4.tgz#18f6763cf1382c69c36df76c6ce122cc694284fb"
+  integrity sha1-GPZ2PPE4LGnDbfdsbOEizGlChPs=
   dependencies:
     private "^0.1.6"
 
@@ -7290,10 +7308,10 @@ vue-template-es2015-compiler@^1.8.2:
   resolved "http://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.8.2.tgz#dd73e80ba58bb65dd7a8aa2aeef6089cf6116f2a"
   integrity sha1-3XPoC6WLtl3XqKoq7vYInPYRbyo=
 
-vue@^2.5.22:
-  version "2.6.6"
-  resolved "http://registry.npm.taobao.org/vue/download/vue-2.6.6.tgz#dde41e483c11c46a7bf523909f4f2f816ab60d25"
-  integrity sha1-3eQeSDwRxGp79SOQn08vgWq2DSU=
+vue@^2.6.6:
+  version "2.6.7"
+  resolved "http://registry.npm.taobao.org/vue/download/vue-2.6.7.tgz#254f188e7621d2d19ee28d0c0442c6d21b53ae2d"
+  integrity sha1-JU8YjnYh0tGe4o0MBELG0htTri0=
 
 watchpack@^1.5.0:
   version "1.6.0"

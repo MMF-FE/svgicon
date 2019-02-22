@@ -1,0 +1,34 @@
+{
+    "folders": [
+        {
+            "path": ".",
+            "name": "root"
+        },
+        {
+            "path": "packages/vue-svgicon"
+        },
+        {
+            "path": "packages/vue-svgicon-loader"
+        },
+        {
+            "path": "packages/vue-svgicon-polyfill"
+        },
+        {
+            "path": "packages/vue-svgicon-build"
+        }
+    ],
+    "settings": {
+        "editor.formatOnSave": true,
+        "prettier.eslintIntegration": false,
+        "prettier.stylelintIntegration": true,
+        "files.exclude": {
+            "**/.git": true,
+            "**/.svn": true,
+            "**/.hg": true,
+            "**/CVS": true,
+            "**/.DS_Store": true,
+            "packages": true,
+            "**/node_modules": true
+        }
+    }
+}

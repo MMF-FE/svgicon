@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { PluginOptions } from '../typings/index'
+import { PluginOptions, Icon } from '../../typings/index'
 
 let options = {
     defaultWidth: '',
@@ -35,21 +35,21 @@ export default Vue.extend({
         },
         scale: String,
         dir: String,
+        color: String,
+        title: String,
         fill: {
             type: Boolean,
-            default: function() {
+            default: () => {
                 return !options.isStroke
             }
         },
-        color: String,
         original: {
             type: Boolean,
             default: false
-        },
-        title: String
+        }
     },
     computed: {
-        clazz() {
+        clazz(): string {
             let clazz = `${options.classPrefix}-icon`
 
             if (this.fill) {
@@ -63,24 +63,22 @@ export default Vue.extend({
             return clazz
         },
 
-        iconName() {
+        iconName(): string {
             return this.name || this.icon
         },
 
-        iconData() {
-            return require(`@yzfe/vue-svgicon-loader/loader.vuesvgicon?name=${
-                this.iconName
-            }`)
+        iconData(): Icon | null {
+            return null
         },
 
-        colors() {
+        colors(): string[] {
             if (this.color) {
                 return this.color.split(' ')
             }
             return []
         },
 
-        path() {
+        path(): string {
             let pathData = ''
             if (this.iconData) {
                 pathData = this.iconData.data
@@ -100,9 +98,9 @@ export default Vue.extend({
             return this.getValidPathData(pathData)
         },
 
-        box() {
-            let width = this.width || 16
-            let height = this.width || 16
+        box(): string {
+            let width = parseFloat(this.width) || 16
+            let height = parseFloat(this.width) || 16
 
             if (this.iconData) {
                 if (this.iconData.viewBox) {
@@ -111,10 +109,10 @@ export default Vue.extend({
                 return `0 0 ${this.iconData.width} ${this.iconData.height}`
             }
 
-            return `0 0 ${parseFloat(width)} ${parseFloat(height)}`
+            return `0 0 ${width} ${height}`
         },
 
-        style() {
+        style(): CSSStyleDeclaration {
             let digitReg = /^\d+$/
             let scale = Number(this.scale)
             let width
@@ -149,7 +147,7 @@ export default Vue.extend({
     created() {},
 
     methods: {
-        addColor(data: string) {
+        addColor(data: string): string {
             let reg = /<(path|rect|circle|polygon|line|polyline|ellipse)\s/gi
             let i = 0
             return data.replace(reg, match => {
@@ -193,7 +191,7 @@ export default Vue.extend({
             return pathData
         },
 
-        setTitle(pathData: string) {
+        setTitle(pathData: string): string {
             if (this.title) {
                 let title = this.title
                     .replace(/\</gi, '&lt;')

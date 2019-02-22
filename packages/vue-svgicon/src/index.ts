@@ -1,6 +1,6 @@
 import { PluginObject } from 'vue'
-import SvgIcon, { setOptions } from './components/Svgicon'
-import { PluginOptions } from './typings/index'
+import SvgIcon, { setOptions } from '@/components/Svgicon'
+import { PluginOptions } from '../typings/index'
 
 let VueSvgIconPlugin: PluginObject<PluginOptions> = {
     install(vue, options = {}) {

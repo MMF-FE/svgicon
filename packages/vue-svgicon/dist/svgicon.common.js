@@ -94,25 +94,6 @@ module.exports = require("vue");
 
 /***/ }),
 
-/***/ "d038":
-/***/ (function(module, exports) {
-
-function webpackEmptyAsyncContext(req) {
-	// Here Promise.resolve().then() is used instead of new Promise() to prevent
-	// uncaught exception popping up in devtools
-	return Promise.resolve().then(function() {
-		var e = new Error("Cannot find module '" + req + "'");
-		e.code = 'MODULE_NOT_FOUND';
-		throw e;
-	});
-}
-webpackEmptyAsyncContext.keys = function() { return []; };
-webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
-module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = "d038";
-
-/***/ }),
-
 /***/ "fb15":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -136,7 +117,7 @@ if (typeof window !== 'undefined') {
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
 
-// CONCATENATED MODULE: ./components/Svgicon.tsx
+// CONCATENATED MODULE: ./src/components/Svgicon.tsx
 
 var Svgicon_options = {
   defaultWidth: '',
@@ -170,18 +151,18 @@ function setOptions(opts) {
     },
     scale: String,
     dir: String,
+    color: String,
+    title: String,
     fill: {
       type: Boolean,
       default: function _default() {
         return !Svgicon_options.isStroke;
       }
     },
-    color: String,
     original: {
       type: Boolean,
       default: false
-    },
-    title: String
+    }
   },
   computed: {
     clazz: function clazz() {
@@ -201,7 +182,7 @@ function setOptions(opts) {
       return this.name || this.icon;
     },
     iconData: function iconData() {
-      return __webpack_require__("d038")("./loader.vuesvgicon?name=".concat(this.iconName));
+      return null;
     },
     colors: function colors() {
       if (this.color) {
@@ -229,8 +210,8 @@ function setOptions(opts) {
       return this.getValidPathData(pathData);
     },
     box: function box() {
-      var width = this.width || 16;
-      var height = this.width || 16;
+      var width = parseFloat(this.width) || 16;
+      var height = parseFloat(this.width) || 16;
 
       if (this.iconData) {
         if (this.iconData.viewBox) {
@@ -240,7 +221,7 @@ function setOptions(opts) {
         return "0 0 ".concat(this.iconData.width, " ").concat(this.iconData.height);
       }
 
-      return "0 0 ".concat(parseFloat(width), " ").concat(parseFloat(height));
+      return "0 0 ".concat(width, " ").concat(height);
     },
     style: function style() {
       var digitReg = /^\d+$/;
@@ -342,7 +323,7 @@ function setOptions(opts) {
     });
   }
 }));
-// CONCATENATED MODULE: ./index.ts
+// CONCATENATED MODULE: ./src/index.ts
 
 var VueSvgIconPlugin = {
   install: function install(vue) {
@@ -352,11 +333,11 @@ var VueSvgIconPlugin = {
     setOptions(options);
   }
 };
-/* harmony default export */ var index = (VueSvgIconPlugin);
+/* harmony default export */ var src = (VueSvgIconPlugin);
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
 
 
-/* harmony default export */ var entry_lib = __webpack_exports__["default"] = (index);
+/* harmony default export */ var entry_lib = __webpack_exports__["default"] = (src);
 
 
 
