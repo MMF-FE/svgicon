@@ -4,7 +4,8 @@
     "private": true,
     "scripts": {
         "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build"
+        "build": "vue-cli-service build",
+        "svg": "vsvg -s src/assets/svg -t src/components/icons"
     },
     "dependencies": {
         "@yzfe/vue-svgicon": "^1.0.0",

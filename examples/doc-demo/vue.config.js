@@ -14,8 +14,8 @@ module.exports = {
             .use('vue-loader')
             .loader('vue-loader')
             .tap(options => {
-                // options.transformAssetUrls = options.transformAssetUrls || {}
-                // options.transformAssetUrls['icon'] = ['name', 'icon']
+                options.transformAssetUrls = options.transformAssetUrls || {}
+                options.transformAssetUrls['icon'] = ['name', 'icon']
                 return options
             })
 
