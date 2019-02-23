@@ -5,7 +5,7 @@ import VueSvgIcon, { PluginOptions } from '@yzfe/vue-svgicon'
 Vue.config.productionTip = false
 
 Vue.use<PluginOptions>(VueSvgIcon, {
-    tagName: 'icon'
+    tagName: 'svgicon'
 })
 
 new Vue({

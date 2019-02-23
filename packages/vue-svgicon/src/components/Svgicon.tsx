@@ -64,7 +64,8 @@ export default Vue.extend({
         },
 
         iconName(): string {
-            return this.name || this.icon
+            let iconName = this.name || this.icon
+            return iconName
         },
 
         iconData(): Icon | null {

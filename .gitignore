@@ -16,3 +16,5 @@ node_modules
 *.sln
 *.sw*
 
+# remove example dist
+examples/**/dist

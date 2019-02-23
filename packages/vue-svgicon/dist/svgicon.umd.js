@@ -188,7 +188,8 @@ function setOptions(opts) {
       return clazz;
     },
     iconName: function iconName() {
-      return this.name || this.icon;
+      var iconName = this.name || this.icon;
+      return iconName;
     },
     iconData: function iconData() {
       return null;
@@ -335,11 +336,11 @@ function setOptions(opts) {
 // CONCATENATED MODULE: ./src/index.ts
 
 var VueSvgIconPlugin = {
-  install: function install(vue) {
+  install: function install(Vue) {
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
     var tagName = options.tagName || 'svgicon';
-    vue.component(tagName, Svgicon);
     setOptions(options);
+    Vue.component(tagName, Svgicon);
   }
 };
 /* harmony default export */ var src = (VueSvgIconPlugin);

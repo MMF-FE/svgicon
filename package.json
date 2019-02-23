@@ -25,7 +25,9 @@
         "lint-staged": "^8.1.4",
         "prettier": "^1.16.4",
         "prettier-stylelint": "^0.4.2",
-        "stylelint-config-standard": "^18.2.0"
+        "stylelint": "^9.10.1",
+        "stylelint-config-standard": "^18.2.0",
+        "stylelint-order": "^2.0.0"
     },
     "husky": {
         "hooks": {

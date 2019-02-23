@@ -9,6 +9,21 @@ module.exports = {
             .use('svgicon')
             .loader('@yzfe/vue-svgicon-loader')
 
+        config.module
+            .rule('vue')
+            .use('vue-loader')
+            .loader('vue-loader')
+            .tap(options => {
+                // options.transformAssetUrls = options.transformAssetUrls || {}
+                // options.transformAssetUrls['icon'] = ['name', 'icon']
+                return options
+            })
+
+        config.resolve.alias.set(
+            '@icon',
+            '@yzfe/vue-svgicon-loader/test.vuesvgicon'
+        )
+
         config.resolve.symlinks(false)
     }
 }
