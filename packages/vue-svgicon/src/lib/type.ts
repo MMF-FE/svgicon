@@ -1,6 +1,3 @@
-import Vue from 'vue'
-import { PluginFunction } from 'vue'
-
 export interface PluginOptions {
     tagName?: string
     classPrefix?: string
@@ -16,9 +13,3 @@ export interface Icon {
     data: string
     [key: string]: any
 }
-
-declare const VueSvgIcon: {
-    install: PluginFunction<PluginOptions>
-}
-
-export default VueSvgIcon

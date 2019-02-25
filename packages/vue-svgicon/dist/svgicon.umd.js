@@ -119,7 +119,15 @@ if (typeof window !== 'undefined') {
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
 
+// CONCATENATED MODULE: ./src/lib/icons.ts
+var icons = {};
+/* harmony default export */ var lib_icons = (icons);
+// CONCATENATED MODULE: ./src/lib/notLoadedIcons.ts
+var map = {};
+/* harmony default export */ var notLoadedIcons = (map);
 // CONCATENATED MODULE: ./src/components/Svgicon.tsx
+
+
 
 var Svgicon_options = {
   defaultWidth: '',
@@ -136,7 +144,9 @@ function setOptions(opts) {
 }
 /* harmony default export */ var Svgicon = (external_commonjs_vue_commonjs2_vue_root_Vue_default.a.extend({
   data: function data() {
-    return {};
+    return {
+      loaded: true
+    };
   },
   props: {
     // icon name
@@ -185,6 +195,12 @@ function setOptions(opts) {
       return iconName;
     },
     iconData: function iconData() {
+      var iconData = lib_icons[this.iconName];
+
+      if (iconData || this.loaded) {
+        return iconData;
+      }
+
       return null;
     },
     colors: function colors() {
@@ -253,7 +269,17 @@ function setOptions(opts) {
       return style;
     }
   },
-  created: function created() {},
+  created: function created() {
+    if (lib_icons[this.iconName]) {
+      this.loaded = true;
+    }
+  },
+  destroyed: function destroyed() {
+    // if icon is not loaded when component is destoryed, remove it from notLoadedIcons
+    if (notLoadedIcons[this.iconName]) {
+      delete notLoadedIcons[this.iconName];
+    }
+  },
   methods: {
     addColor: function addColor(data) {
       var _this = this;
@@ -328,12 +354,29 @@ function setOptions(opts) {
 }));
 // CONCATENATED MODULE: ./src/index.ts
 
+
+
 var VueSvgIconPlugin = {
-  install: function install(Vue) {
+  icons: lib_icons,
+  register: function register(newIcons) {
+    for (var name in newIcons) {
+      if (!lib_icons[name]) {
+        lib_icons[name] = newIcons[name];
+      } // check new register icon is not loaded, and set loaded to true
+
+
+      if (notLoadedIcons[name]) {
+        notLoadedIcons[name].$set(notLoadedIcons, 'loaded', true); // remove from not loaded
+
+        delete notLoadedIcons[name];
+      }
+    }
+  },
+  install: function install(vue) {
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
     var tagName = options.tagName || 'svgicon';
     setOptions(options);
-    Vue.component(tagName, Svgicon);
+    vue.component(tagName, Svgicon);
   }
 };
 /* harmony default export */ var src = (VueSvgIconPlugin);

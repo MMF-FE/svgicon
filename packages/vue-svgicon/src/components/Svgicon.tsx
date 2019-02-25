@@ -1,5 +1,7 @@
 import Vue from 'vue'
-import { PluginOptions, Icon } from '../../typings/index'
+import { PluginOptions, Icon } from '@/lib/type'
+import icons from '@/lib/icons'
+import notLoadedIcons from '@/lib//notLoadedIcons'
 
 let options = {
     defaultWidth: '',
@@ -18,7 +20,9 @@ export function setOptions(opts: PluginOptions) {
 
 export default Vue.extend({
     data() {
-        return {}
+        return {
+            loaded: true
+        }
     },
     props: {
         // icon name
@@ -69,6 +73,11 @@ export default Vue.extend({
         },
 
         iconData(): Icon | null {
+            let iconData = icons[this.iconName]
+            if (iconData || this.loaded) {
+                return iconData
+            }
+
             return null
         },
 
@@ -145,7 +154,18 @@ export default Vue.extend({
         }
     },
 
-    created() {},
+    created() {
+        if (icons[this.iconName]) {
+            this.loaded = true
+        }
+    },
+
+    destroyed() {
+        // if icon is not loaded when component is destoryed, remove it from notLoadedIcons
+        if (notLoadedIcons[this.iconName]) {
+            delete notLoadedIcons[this.iconName]
+        }
+    },
 
     methods: {
         addColor(data: string): string {

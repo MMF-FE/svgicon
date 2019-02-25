@@ -1,11 +1,12 @@
 {
-    "name": "@yzfe/vue-svgicon",
+    "name": "vue-svgicon",
     "version": "1.0.0",
     "description": "A tool to create svg icon components. (vue 2.x)",
     "scripts": {
         "test": "echo \"Error: run tests from root\" && exit 1",
         "dev": "vue-cli-service build --watch --target lib --name svgicon src/index.ts",
-        "build": "vue-cli-service build --target lib --name svgicon src/index.ts"
+        "build": "vue-cli-service build --target lib --name svgicon src/index.ts && yarn build:dts",
+        "build:dts": "tsc -p ./tsconfig.dts.json"
     },
     "keywords": [
         "vue",
@@ -17,14 +18,13 @@
     "homepage": "https://github.com/MMF-FE/vue-svgicon/tree/master/packages/vue-svgicon#readme",
     "license": "MIT",
     "main": "dist/svgicon.common.js",
-    "typings": "typings/index.d.ts",
+    "typings": "dist/types/index.d.ts",
     "directories": {
         "lib": "lib",
         "dist": "dist"
     },
     "files": [
-        "dist",
-        "typings"
+        "dist"
     ],
     "dependencies": {
         "vue": "^2.6.6"
