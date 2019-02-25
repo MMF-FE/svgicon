@@ -5,8 +5,7 @@
     "scripts": {
         "test": "echo \"Error: run tests from root\" && exit 1",
         "dev": "vue-cli-service build --watch --target lib --name svgicon src/index.ts",
-        "build": "vue-cli-service build --target lib --name svgicon src/index.ts && yarn build:dts",
-        "build:dts": "tsc -p ./tsconfig.dts.json"
+        "build": "vue-cli-service build --target lib --name svgicon src/index.ts"
     },
     "keywords": [
         "vue",
@@ -18,13 +17,14 @@
     "homepage": "https://github.com/MMF-FE/vue-svgicon/tree/master/packages/vue-svgicon#readme",
     "license": "MIT",
     "main": "dist/svgicon.common.js",
-    "typings": "dist/types/index.d.ts",
+    "typings": "typings/index.d.ts",
     "directories": {
         "lib": "lib",
         "dist": "dist"
     },
     "files": [
-        "dist"
+        "dist",
+        "typings"
     ],
     "dependencies": {
         "vue": "^2.6.6"

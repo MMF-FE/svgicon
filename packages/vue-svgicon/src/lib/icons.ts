@@ -1,4 +1,4 @@
-import { Icon } from './type'
+import { Icon } from '../../typings'
 
 let icons: { [key: string]: Icon } = {}
 
