@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import { PluginOptions, Icon } from '@/lib/type'
-import icons from '@/lib/icons'
-import notLoadedIcons from '@/lib//notLoadedIcons'
+import { PluginOptions, Icon } from '../lib/type'
+import icons from '../lib/icons'
+import notLoadedIcons from '../lib//notLoadedIcons'
 
 let options = {
     defaultWidth: '',

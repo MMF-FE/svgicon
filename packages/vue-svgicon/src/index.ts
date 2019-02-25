@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import SvgIcon, { setOptions } from '@/components/Svgicon'
-import { PluginOptions, Icon } from '@/lib/type'
-import icons from '@/lib/icons'
+import { PluginOptions, Icon } from './lib/type'
+import icons from './lib/icons'
 import notLoadedIcons from '@/lib/notLoadedIcons'
 
 let VueSvgIconPlugin = {

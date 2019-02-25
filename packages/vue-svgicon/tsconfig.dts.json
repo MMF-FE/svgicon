@@ -3,7 +3,10 @@
     "compilerOptions": {
         "declaration": true,
         "emitDeclarationOnly": true,
-        "declarationDir": "dist/types"
+        "declarationDir": "dist/types",
+        "paths": {
+            "@/*": ["src/*"]
+        }
     },
     "include": ["./src/index.ts", "typings/**/*.ts"]
 }

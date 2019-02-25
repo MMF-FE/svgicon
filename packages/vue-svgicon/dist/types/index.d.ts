@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { PluginOptions, Icon } from '@/lib/type';
+import { PluginOptions, Icon } from './lib/type';
 declare let VueSvgIconPlugin: {
     icons: {
         [key: string]: Icon;

@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { PluginOptions, Icon } from '@/lib/type';
+import { PluginOptions, Icon } from '../lib/type';
 export declare function setOptions(opts: PluginOptions): void;
 declare const _default: import("vue").VueConstructor<{
     loaded: boolean;
