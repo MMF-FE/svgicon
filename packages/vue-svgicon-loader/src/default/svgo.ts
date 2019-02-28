@@ -1,4 +1,6 @@
-module.exports = {
+// svgo config
+
+export default {
     plugins: [
         {
             removeAttrs: {}

@@ -12,9 +12,6 @@
         },
         {
             "path": "packages/vue-svgicon-polyfill"
-        },
-        {
-            "path": "packages/vue-svgicon-build"
         }
     ],
     "settings": {
@@ -27,8 +24,8 @@
             "**/.hg": true,
             "**/CVS": true,
             "**/.DS_Store": true,
-            "packages": true,
-            "**/node_modules": true
+            "packages": true
+            // "**/node_modules": true
         }
     }
 }

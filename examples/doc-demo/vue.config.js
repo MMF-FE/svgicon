@@ -5,9 +5,13 @@ module.exports = {
     chainWebpack: config => {
         config.module
             .rule('vue-svgicon')
-            .test(/\.vuesvgicon$/)
+            .test(/\.svg$/)
             .use('svgicon')
             .loader('@yzfe/vue-svgicon-loader')
+            .options({
+                idSeparator: '-',
+                svgFilePath: path.join(__dirname, 'src/assets/svg')
+            })
 
         config.module
             .rule('vue')
@@ -19,9 +23,13 @@ module.exports = {
                 return options
             })
 
+        config.module
+            .rule('svg')
+            .exclude.add(path.join(__dirname, './src/assets/svg'))
+
         config.resolve.alias.set(
             '@icon',
-            '@yzfe/vue-svgicon-loader/test.vuesvgicon'
+            path.join(__dirname, './src/assets/svg')
         )
 
         config.resolve.symlinks(false)

@@ -119,15 +119,7 @@ if (typeof window !== 'undefined') {
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
 
-// CONCATENATED MODULE: ./src/lib/icons.ts
-var icons = {};
-/* harmony default export */ var lib_icons = (icons);
-// CONCATENATED MODULE: ./src/lib/notLoadedIcons.ts
-var map = {};
-/* harmony default export */ var notLoadedIcons = (map);
 // CONCATENATED MODULE: ./src/components/Svgicon.tsx
-
-
 
 var Svgicon_options = {
   defaultWidth: '',
@@ -149,10 +141,11 @@ function setOptions(opts) {
     };
   },
   props: {
-    // icon name
-    name: String,
-    // icon name alias
-    icon: String,
+    // icon data
+    icon: {
+      type: Object,
+      default: null
+    },
     width: {
       type: String,
       default: ''
@@ -190,18 +183,9 @@ function setOptions(opts) {
 
       return clazz;
     },
-    iconName: function iconName() {
-      var iconName = this.name || this.icon;
-      return iconName;
-    },
     iconData: function iconData() {
-      var iconData = lib_icons[this.iconName];
-
-      if (iconData || this.loaded) {
-        return iconData;
-      }
-
-      return null;
+      var iconData = this.icon ? this.icon.data : null;
+      return iconData;
     },
     colors: function colors() {
       if (this.color) {
@@ -269,17 +253,7 @@ function setOptions(opts) {
       return style;
     }
   },
-  created: function created() {
-    if (lib_icons[this.iconName]) {
-      this.loaded = true;
-    }
-  },
-  destroyed: function destroyed() {
-    // if icon is not loaded when component is destoryed, remove it from notLoadedIcons
-    if (notLoadedIcons[this.iconName]) {
-      delete notLoadedIcons[this.iconName];
-    }
-  },
+  created: function created() {},
   methods: {
     addColor: function addColor(data) {
       var _this = this;
@@ -338,11 +312,11 @@ function setOptions(opts) {
     var h = arguments[0];
     return h("svg", {
       "attrs": {
-        "version": "1.1"
+        "version": "1.1",
+        "viewBox": this.box
       },
       "class": this.clazz,
       "domProps": {
-        "viewBox": this.box,
         "innerHTML": this.path
       },
       "style": this.style,
@@ -352,6 +326,12 @@ function setOptions(opts) {
     });
   }
 }));
+// CONCATENATED MODULE: ./src/lib/icons.ts
+var icons = {};
+/* harmony default export */ var lib_icons = (icons);
+// CONCATENATED MODULE: ./src/lib/notLoadedIcons.ts
+var map = {};
+/* harmony default export */ var notLoadedIcons = (map);
 // CONCATENATED MODULE: ./src/index.ts
 
 

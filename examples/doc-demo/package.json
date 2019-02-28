@@ -8,11 +8,12 @@
         "svg": "vsvg -s src/assets/svg -t src/components/icons"
     },
     "dependencies": {
-        "@yzfe/vue-svgicon": "^1.0.0",
         "highlight.js": "^9.14.2",
         "vue": "^2.5.22",
         "vue-class-component": "^6.0.0",
-        "vue-property-decorator": "^7.0.0"
+        "vue-property-decorator": "^7.0.0",
+        "vue-router": "^3.0.2",
+        "vue-svgicon": "^1.0.0"
     },
     "devDependencies": {
         "@types/highlight.js": "^9.12.3",

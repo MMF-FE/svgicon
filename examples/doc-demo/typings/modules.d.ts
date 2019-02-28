@@ -8,4 +8,4 @@ declare module '*.vue' {
     export default Vue
 }
 
-declare module '*.vuesvgicon'
+declare module '*.svg'

@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import { PluginOptions, Icon } from '../../typings'
-import icons from '@/lib/icons'
-import notLoadedIcons from '@/lib//notLoadedIcons'
 
 let options = {
     defaultWidth: '',
@@ -25,10 +23,11 @@ export default Vue.extend({
         }
     },
     props: {
-        // icon name
-        name: String,
-        // icon name alias
-        icon: String,
+        // icon data
+        icon: {
+            type: Object,
+            default: null
+        },
         width: {
             type: String,
             default: ''
@@ -67,18 +66,9 @@ export default Vue.extend({
             return clazz
         },
 
-        iconName(): string {
-            let iconName = this.name || this.icon
-            return iconName
-        },
-
         iconData(): Icon | null {
-            let iconData = icons[this.iconName]
-            if (iconData || this.loaded) {
-                return iconData
-            }
-
-            return null
+            let iconData = this.icon ? this.icon.data : null
+            return iconData
         },
 
         colors(): string[] {
@@ -154,18 +144,7 @@ export default Vue.extend({
         }
     },
 
-    created() {
-        if (icons[this.iconName]) {
-            this.loaded = true
-        }
-    },
-
-    destroyed() {
-        // if icon is not loaded when component is destoryed, remove it from notLoadedIcons
-        if (notLoadedIcons[this.iconName]) {
-            delete notLoadedIcons[this.iconName]
-        }
-    },
+    created() {},
 
     methods: {
         addColor(data: string): string {
@@ -233,7 +212,7 @@ export default Vue.extend({
             <svg
                 version="1.1"
                 class={this.clazz}
-                domPropsViewBox={this.box}
+                viewBox={this.box}
                 domPropsInnerHTML={this.path}
                 style={this.style}
                 onClick={this.onClick}

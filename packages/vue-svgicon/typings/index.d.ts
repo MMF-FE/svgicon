@@ -3,6 +3,7 @@ import { PluginFunction } from 'vue'
 export interface PluginOptions {
     tagName?: string
     classPrefix?: string
+    // Is stroke default
     isStroke?: boolean
     defaultWidth?: string
     defaultHeight?: string
@@ -17,8 +18,6 @@ export interface Icon {
 }
 
 declare const VueSvgIconPlugin: {
-    icons: { [key: string]: Icon }
-    register: (newIcons: { [key: string]: Icon }) => void
     install: PluginFunction<PluginOptions>
 }
 
