@@ -26,6 +26,7 @@
             "**/.DS_Store": true,
             "packages": true
             // "**/node_modules": true
-        }
+        },
+        "vetur.format.options.tabSize": 4
     }
 }

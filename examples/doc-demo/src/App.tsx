@@ -1,10 +1,16 @@
 import { Component, Vue } from 'vue-property-decorator'
-import DemoBlock from '@/components/DemoBlock.vue'
+import DemoColor from '@/components/DemoColor.vue'
+import DemoMultiColor from '@/components/DemoMultiColor.vue'
+import DemoOriginalColor from '@/components/DemoOriginalColor.vue'
+import DemoDirection from '@/components/DemoDirection.vue'
+import DemoSize from '@/components/DemoSize.vue'
+import DemoFill from '@/components/DemoFill.vue'
+import DemoReverseColor from '@/components/DemoReverseColor.vue'
+import DemoGradient from '@/components/DemoGradient.vue'
+import DemoUniqueId from '@/components/DemoUniqueId.vue'
 
 @Component({
-    components: {
-        DemoBlock
-    }
+    components: {}
 })
 export default class App extends Vue {
     protected colors =
@@ -33,7 +39,16 @@ export default class App extends Vue {
                         Star
                     </a>
                 </p>
-                <demo-block />
+
+                <DemoColor />
+                <DemoMultiColor />
+                <DemoOriginalColor />
+                <DemoGradient />
+                <DemoSize />
+                <DemoFill />
+                <DemoReverseColor />
+                <DemoDirection />
+                <DemoUniqueId />
             </div>
         )
     }
