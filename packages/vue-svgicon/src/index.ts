@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import SvgIcon, { setOptions } from '@/components/Svgicon'
 import { PluginOptions } from '../typings'
+import './style.scss'
 
 let VueSvgIconPlugin = {
     install(vue: typeof Vue, options: PluginOptions = {}) {

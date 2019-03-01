@@ -326,32 +326,13 @@ function setOptions(opts) {
     });
   }
 }));
-// CONCATENATED MODULE: ./src/lib/icons.ts
-var icons = {};
-/* harmony default export */ var lib_icons = (icons);
-// CONCATENATED MODULE: ./src/lib/notLoadedIcons.ts
-var map = {};
-/* harmony default export */ var notLoadedIcons = (map);
+// EXTERNAL MODULE: ./src/style.scss
+var style = __webpack_require__("944d");
+
 // CONCATENATED MODULE: ./src/index.ts
 
 
-
 var VueSvgIconPlugin = {
-  icons: lib_icons,
-  register: function register(newIcons) {
-    for (var name in newIcons) {
-      if (!lib_icons[name]) {
-        lib_icons[name] = newIcons[name];
-      } // check new register icon is not loaded, and set loaded to true
-
-
-      if (notLoadedIcons[name]) {
-        notLoadedIcons[name].$set(notLoadedIcons, 'loaded', true); // remove from not loaded
-
-        delete notLoadedIcons[name];
-      }
-    }
-  },
   install: function install(vue) {
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
     var tagName = options.tagName || 'svgicon';
@@ -373,6 +354,13 @@ var VueSvgIconPlugin = {
 /***/ (function(module, exports) {
 
 module.exports = __WEBPACK_EXTERNAL_MODULE__8bbf__;
+
+/***/ }),
+
+/***/ "944d":
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ })
 
