@@ -19,7 +19,7 @@ import DemoBlock from './DemoBlock.vue'
 })
 export default class extends Vue {
     protected code = `
-        <icon data="@icon/clock.svg" color="#8A99B2 r-#1C2330" width="100" height="100"></icon>
+    <icon data="@icon/clock.svg" color="#8A99B2 r-#1C2330" width="100" height="100" />
     `
 }
 </script>

@@ -32,23 +32,28 @@ export default class extends Vue {
     protected colors =
         '#FBAD20 #F5EB13 #B8D433 #6BC9C6 #058BC5 #34469D #7E4D9F #C63D96 #ED1944'
     protected code = `
-        <icon data="@icon/check.svg" :fill="false" width="100" height="100" color="r-#42b983 white"></icon>
+    <icon
+        data="@icon/check.svg"
+        :fill="false"
+        width="100"
+        height="100"
+        color="r-#42b983 white" />
     `
 
     protected code2 = `
-        <template>
-            <icon data="@icon/colorwheel.svg" width="200" height="200" :color="colors"></icon>
-        </template>
+    <template>
+        <icon data="@icon/colorwheel.svg" width="200" height="200" :color="colors" />
+    </template>
 
-        <script>
-            export default {
-                data () {
-                    return {
-                        colors: '#FBAD20 #F5EB13 #B8D433 #6BC9C6 #058BC5 #34469D #7E4D9F #C63D96 #ED1944'
-                    }
+    <script>
+        export default {
+            data () {
+                return {
+                    colors: '#FBAD20 #F5EB13 #B8D433 #6BC9C6 #058BC5 #34469D #7E4D9F #C63D96 #ED1944'
                 }
             }
-        <\/script>
+        }
+    <\/script>
     `
 }
 </script>
