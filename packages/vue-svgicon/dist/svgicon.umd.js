@@ -142,7 +142,11 @@ function setOptions(opts) {
   },
   props: {
     // icon data
-    icon: {
+
+    /**
+     * @type Icon
+     */
+    data: {
       type: Object,
       default: null
     },
@@ -184,7 +188,8 @@ function setOptions(opts) {
       return clazz;
     },
     iconData: function iconData() {
-      var iconData = this.icon ? this.icon.data : null;
+      var resource = this.data;
+      var iconData = resource ? resource.data : null;
       return iconData;
     },
     colors: function colors() {

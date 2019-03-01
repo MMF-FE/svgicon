@@ -9,12 +9,17 @@ export interface PluginOptions {
     defaultHeight?: string
 }
 
-export interface Icon {
+export interface IconData {
     width: number
     height: number
     viewBox: string
     data: string
     [key: string]: any
+}
+
+export interface Icon {
+    name: string
+    data: IconData
 }
 
 declare const VueSvgIconPlugin: {

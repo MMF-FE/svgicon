@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { PluginOptions, Icon } from '../../typings'
+import { PluginOptions, Icon, IconData } from '../../typings'
 
 let options = {
     defaultWidth: '',
@@ -24,7 +24,10 @@ export default Vue.extend({
     },
     props: {
         // icon data
-        icon: {
+        /**
+         * @type Icon
+         */
+        data: {
             type: Object,
             default: null
         },
@@ -66,8 +69,9 @@ export default Vue.extend({
             return clazz
         },
 
-        iconData(): Icon | null {
-            let iconData = this.icon ? this.icon.data : null
+        iconData(): IconData | null {
+            let resource: Icon = this.data
+            let iconData = resource ? resource.data : null
             return iconData
         },
 

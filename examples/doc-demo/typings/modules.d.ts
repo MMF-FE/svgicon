@@ -8,4 +8,8 @@ declare module '*.vue' {
     export default Vue
 }
 
-declare module '*.svg'
+declare module '*.svg' {
+    import { Icon } from 'vue-svgicon'
+    const resource: Icon
+    export default resource
+}

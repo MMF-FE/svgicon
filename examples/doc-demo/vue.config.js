@@ -3,13 +3,15 @@ const path = require('path')
 module.exports = {
     publicPath: process.env.NODE_ENV === 'production' ? '/vue-svgicon/' : '/',
     chainWebpack: config => {
+        config.entry('style').add('./src/style/app.scss')
+
         config.module
             .rule('vue-svgicon')
             .test(/\.svg$/)
             .use('svgicon')
             .loader('@yzfe/vue-svgicon-loader')
             .options({
-                idSeparator: '-',
+                idSeparator: '_',
                 svgFilePath: path.join(__dirname, 'src/assets/svg')
             })
 
@@ -19,7 +21,7 @@ module.exports = {
             .loader('vue-loader')
             .tap(options => {
                 options.transformAssetUrls = options.transformAssetUrls || {}
-                options.transformAssetUrls['icon'] = ['name', 'icon']
+                options.transformAssetUrls['icon'] = ['data']
                 return options
             })
 

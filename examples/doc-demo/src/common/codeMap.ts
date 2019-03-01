@@ -2,48 +2,48 @@
 export default {
     dir: [
         `
-      <icon name="arrow" width="50" height="50" dir="left" title="left"></icon>
-      <icon name="arrow" width="50" height="50" dir="up" title="up"></icon>
-      <icon name="arrow" width="50" height="50" title="right"></icon>
-      <icon name="arrow" width="50" height="50" dir="down" title="down"></icon>
+      <icon icon="@icon/arrow.svg" width="50" height="50" dir="left" title="left"></icon>
+      <icon icon="@icon/arrow.svg" width="50" height="50" dir="up" title="up"></icon>
+      <icon icon="@icon/arrow.svg" width="50" height="50" title="right"></icon>
+      <icon icon="@icon/arrow.svg" width="50" height="50" dir="down" title="down"></icon>
       `
     ],
     fill: [
         `
-      <icon name="arrow" width="50" height="50"></icon>
-      <icon name="arrow" width="50" height="50" :fill="false"></icon>
+      <icon icon="@icon/arrow.svg" width="50" height="50"></icon>
+      <icon icon="@icon/arrow.svg" width="50" height="50" :fill="false"></icon>
       `
     ],
     'r-color': [
         `
-        <icon name="clock" color="#8A99B2 r-#1C2330" width="100" height="100"></icon>
+        <icon icon="@icon/clock.svg" color="#8A99B2 r-#1C2330" width="100" height="100"></icon>
       `
     ],
     color: [
         `
-      <icon name="arrow" width="50" height="50"></icon>
-      <icon name="arrow" width="50" height="50" color="red"></icon>
-      <icon name="arrow" width="50" height="50" color="green"></icon>
-      <icon name="arrow" width="50" height="50" color="blue"></icon>
+      <icon icon="@icon/arrow.svg" width="50" height="50"></icon>
+      <icon icon="@icon/arrow.svg" width="50" height="50" color="red"></icon>
+      <icon icon="@icon/arrow.svg" width="50" height="50" color="green"></icon>
+      <icon icon="@icon/arrow.svg" width="50" height="50" color="blue"></icon>
       `
     ],
     size: [
         `
-      <icon name="arrow"></icon>
-      <icon name="arrow" width="50" height="50"></icon>
-      <icon name="arrow" height="50"></icon>
-      <icon name="arrow" scale="15"></icon>
-      <icon name="arrow" width="10em" height="10em"></icon>
+      <icon icon="@icon/arrow.svg"></icon>
+      <icon icon="@icon/arrow.svg" width="50" height="50"></icon>
+      <icon icon="@icon/arrow.svg" height="50"></icon>
+      <icon icon="@icon/arrow.svg" scale="15"></icon>
+      <icon icon="@icon/arrow.svg" width="10em" height="10em"></icon>
       `
     ],
     'multi-color': [
-        `<icon name="check" :fill="false" width="100" height="100" color="r-#42b983 white"></icon>`
+        `<icon icon="@icon/check.svg" :fill="false" width="100" height="100" color="r-#42b983 white"></icon>`
     ],
     'multi-color2': [
-        `<icon name="colorwheel" width="200" height="200" :color="datas[0]"></icon>`,
+        `<icon icon="@icon/colorwheel.svg" width="200" height="200" :color="datas[0]"></icon>`,
         `
       <template>
-        <icon name="colorwheel" width="200" height="200" :color="colors"></icon>
+        <icon icon="@icon/colorwheel.svg" width="200" height="200" :color="colors"></icon>
       </template>
 
       <script>
@@ -59,15 +59,15 @@ export default {
     ],
     'original-color': [
         `
-        <icon name="colorwheel" width="100" height="100" original></icon>
+        <icon icon="@icon/colorwheel.svg" width="100" height="100" original></icon>
         <!-- overwrite original color -->
-        <icon name="colorwheel" width="100" height="100" original color="_ black _ black _"></icon>
-        <icon name="colorwheel" width="100" height="100" original color="_ r-black _ r-red _"></icon>
-        <icon name="gift" width="100" height="100" original></icon>
+        <icon icon="@icon/colorwheel.svg" width="100" height="100" original color="_ black _ black _"></icon>
+        <icon icon="@icon/colorwheel.svg" width="100" height="100" original color="_ r-black _ r-red _"></icon>
+        <icon icon="@icon/gift.svg" width="100" height="100" original></icon>
       `
     ],
     gradient: [
-        `<icon name="vue" width="15rem" height="15rem" color="url(#gradient-1) url(#gradient-2)"></icon>`,
+        `<icon icon="@icon/vue.svg" width="15rem" height="15rem" color="url(#gradient-1) url(#gradient-2)"></icon>`,
         `
       <template>
         <svg style="width: 0; position: absolute; opacity: 0">
@@ -87,38 +87,10 @@ export default {
       </template>
       `
     ],
-    namespace: [
-        `
-      <icon name="arrow" width="50" height="50"></icon>
-      <icon name="sora/arrow" width="50" height="50"></icon>
-      <icon name="sora/fit/arrow" width="50" height="50"></icon>
-      `
-    ],
     uid: [
         `
-      <icon name="mask" width="100" height="100"></icon>
-      <icon name="sora/fit/mask" width="100" height="100" color="url(#svgicon_sora_fit_mask_a) red green" ></icon>
-      `
-    ],
-    async: [
-        `
-        <icon name="download" width="40" height="40" color="red" ></icon>
-        <icon name="download" width="40" height="40" color="green" ></icon>
-        <icon name="download" width="40" height="40" color="blue" ></icon>
-        <icon name="good" width="40" height="40" class="good"></icon>
-      `,
-        `
-      <template> #{{tpl}}</template>
-
-      <script>
-        export default {
-          mounted () {
-            require.ensure([], () => {
-              require('icons-async')
-            }, 'async-icons')
-          }
-        }
-      </script>
+      <icon icon="@icon/mask.svg" width="100" height="100"></icon>
+      <icon icon="@icon/sora/fit/mask.svg" width="100" height="100" color="url(#svgicon_sora_fit_mask_a) red green" ></icon>
       `
     ]
 } as { [key: string]: string[] }

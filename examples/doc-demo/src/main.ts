@@ -1,6 +1,5 @@
 import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
+import App from './App'
 import VueSvgIcon, { PluginOptions } from 'vue-svgicon'
 import 'vue-svgicon/dist/svgicon.css'
 
@@ -11,6 +10,5 @@ Vue.use<PluginOptions>(VueSvgIcon, {
 })
 
 new Vue({
-    router,
     render: h => h(App)
 }).$mount('#app')
