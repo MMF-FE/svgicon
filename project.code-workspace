@@ -10,8 +10,11 @@
         {
             "path": "packages/vue-svgicon-loader"
         },
+        // {
+        //     "path": "packages/vue-svgicon-polyfill"
+        // },
         {
-            "path": "packages/vue-svgicon-polyfill"
+            "path": "packages/vue-svgicon-viewer"
         }
     ],
     "settings": {

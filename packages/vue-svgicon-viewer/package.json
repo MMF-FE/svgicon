@@ -1,0 +1,33 @@
+{
+    "name": "@yzfe/vue-svgicon-viewer",
+    "version": "1.0.0",
+    "description": "Preview SVG Icon",
+    "keywords": [
+        "vue",
+        "svg",
+        "icon",
+        "preview"
+    ],
+    "author": "Allenice Mo <994298628@qq.com>",
+    "homepage": "https://github.com/MMF-FE/vue-svgicon/tree/master/packages/vue-svgicon-viewer#readme",
+    "license": "ISC",
+    "main": "dist/index.js",
+    "directories": {
+        "lib": "lib"
+    },
+    "files": [
+        "bin",
+        "web"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MMF-FE/vue-svgicon.git"
+    },
+    "bugs": {
+        "url": "https://github.com/MMF-FE/vue-svgicon/issues"
+    },
+    "dependencies": {
+        "fs-extra": "^7.0.1",
+        "yargs": "^13.2.1"
+    }
+}
