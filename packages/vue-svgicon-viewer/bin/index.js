@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 const yargs = require('yargs')
-const fs = require('fs-extra')
 const path = require('path')
 const exec = require('child_process').execSync
 
@@ -21,8 +20,10 @@ const args = yargs
     .help('help')
     .alias('h', 'help').argv
 
-process.env.SVG = args.svgFilePath
+process.env.SVG = path.isAbsolute(args.svgFilePath)
+    ? args.svgFilePath
+    : path.join(process.cwd(), args.svgFilePath)
 
-process.chdir('./web')
+process.chdir(path.join(__dirname, '../web'))
 execa('yarn')
 execa(`yarn serve`)
