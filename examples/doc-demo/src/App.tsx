@@ -9,6 +9,8 @@ import DemoReverseColor from '@/components/DemoReverseColor.vue'
 import DemoGradient from '@/components/DemoGradient.vue'
 import DemoUniqueId from '@/components/DemoUniqueId.vue'
 
+import vueSvg from '@/assets/vue.svg'
+
 @Component({
     components: {}
 })

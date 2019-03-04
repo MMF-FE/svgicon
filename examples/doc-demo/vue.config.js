@@ -1,4 +1,5 @@
 const path = require('path')
+const svgFilePath = path.join(__dirname, './src/assets/svg')
 
 module.exports = {
     publicPath: process.env.NODE_ENV === 'production' ? '/vue-svgicon/' : '/',
@@ -12,7 +13,7 @@ module.exports = {
             .loader('@yzfe/vue-svgicon-loader')
             .options({
                 idSeparator: '_',
-                svgFilePath: path.join(__dirname, 'src/assets/svg')
+                svgFilePath
             })
 
         config.module
@@ -25,14 +26,9 @@ module.exports = {
                 return options
             })
 
-        config.module
-            .rule('svg')
-            .exclude.add(path.join(__dirname, './src/assets/svg'))
+        config.module.rule('svg').exclude.add(svgFilePath)
 
-        config.resolve.alias.set(
-            '@icon',
-            path.join(__dirname, './src/assets/svg')
-        )
+        config.resolve.alias.set('@icon', svgFilePath)
 
         config.resolve.symlinks(false)
     }
