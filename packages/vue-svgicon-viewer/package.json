@@ -2,7 +2,9 @@
     "name": "@yzfe/vue-svgicon-viewer",
     "version": "1.0.0",
     "description": "Preview SVG Icon",
-    "bin": "bin/index.js",
+    "bin": {
+        "vsvg-viewer": "bin/index.js"
+    },
     "keywords": [
         "vue",
         "svg",
@@ -25,6 +27,10 @@
         "url": "https://github.com/MMF-FE/vue-svgicon/issues"
     },
     "dependencies": {
-        "yargs": "^13.2.1"
+        "vue": "^2.6.6",
+        "@yzfe/vue-svgicon-loader": "^1.0.0",
+        "vue-svgicon": "^1.0.0",
+        "yargs": "^13.2.1",
+        "vue-template-compiler": "^2.5.21"
     }
 }
