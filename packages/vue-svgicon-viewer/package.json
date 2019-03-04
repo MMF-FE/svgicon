@@ -1,6 +1,6 @@
 {
     "name": "@yzfe/vue-svgicon-viewer",
-    "version": "1.0.0",
+    "version": "0.0.0",
     "description": "Preview SVG Icon",
     "bin": {
         "vsvg-viewer": "bin/index.js"

@@ -1,6 +1,6 @@
 {
     "name": "vue-svgicon",
-    "version": "1.0.0",
+    "version": "3.2.2",
     "description": "A tool to create svg icon components. (vue 2.x)",
     "scripts": {
         "test": "echo \"Error: run tests from root\" && exit 1",
