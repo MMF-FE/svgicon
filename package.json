@@ -5,7 +5,10 @@
         "examples/*"
     ],
     "description": "A tool to create svg icon components. (vue 2.x)",
-    "scripts": {},
+    "scripts": {
+        "build": "lerna run build --ignore @example/*",
+        "build:demo": "lerna run build --scope @example/doc-demo"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/MMF-FE/vue-svgicon.git"
