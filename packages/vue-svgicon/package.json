@@ -3,9 +3,9 @@
     "version": "4.0.0-alpha.0",
     "description": "A tool to create svg icon components. (vue 2.x)",
     "scripts": {
-        "test": "echo \"Error: run tests from root\" && exit 1",
         "dev": "vue-cli-service build --watch --target lib --name svgicon src/index.ts",
-        "build": "vue-cli-service build --target lib --name svgicon src/index.ts"
+        "build": "vue-cli-service build --target lib --name svgicon src/index.ts",
+        "test": "vue-cli-service test:unit"
     },
     "keywords": [
         "vue",
@@ -27,7 +27,9 @@
         "typings"
     ],
     "dependencies": {
-        "vue": "^2.6.6"
+        "vue": "^2.6.6",
+        "vue-class-component": "^6.0.0",
+        "vue-property-decorator": "^7.0.0"
     },
     "devDependencies": {
         "@types/chai": "^4.1.7",
@@ -35,7 +37,10 @@
         "@types/node": "^11.9.4",
         "@vue/cli-plugin-babel": "^3.4.0",
         "@vue/cli-plugin-typescript": "^3.4.0",
+        "@vue/cli-plugin-unit-mocha": "^3.4.0",
         "@vue/cli-service": "^3.4.0",
+        "@vue/test-utils": "^1.0.0-beta.20",
+        "@yzfe/vue-svgicon-loader": "^1.0.0-alpha.0",
         "chai": "^4.2.0",
         "fibers": "^3.1.1",
         "mocha": "^6.0.0",

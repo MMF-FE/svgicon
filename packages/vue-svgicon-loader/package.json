@@ -3,7 +3,6 @@
     "version": "1.0.0-alpha.0",
     "description": "Webpack loader to load vue-svgicon",
     "scripts": {
-        "test": "echo \"Error: run tests from root\" && exit 1",
         "dev": "tsc -w",
         "build": "rm -rf dist && tsc"
     },
