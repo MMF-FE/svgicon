@@ -28,8 +28,8 @@
     },
     "dependencies": {
         "vue": "^2.6.6",
-        "@yzfe/vue-svgicon-loader": "^1.0.0",
-        "vue-svgicon": "^1.0.0",
+        "@yzfe/vue-svgicon-loader": "^0.0.0",
+        "vue-svgicon": "^3.2.2",
         "yargs": "^13.2.1",
         "vue-template-compiler": "^2.5.21"
     }

@@ -14,15 +14,15 @@
         "vue-class-component": "^6.0.0",
         "vue-property-decorator": "^7.0.0",
         "vue-router": "^3.0.2",
-        "vue-svgicon": "^1.0.0"
+        "vue-svgicon": "^3.2.2"
     },
     "devDependencies": {
         "@types/highlight.js": "^9.12.3",
         "@vue/cli-plugin-babel": "^3.4.0",
         "@vue/cli-plugin-typescript": "^3.4.0",
         "@vue/cli-service": "^3.4.0",
-        "@yzfe/vue-svgicon-loader": "^1.0.0",
-        "@yzfe/vue-svgicon-viewer": "^1.0.0",
+        "@yzfe/vue-svgicon-loader": "^0.0.0",
+        "@yzfe/vue-svgicon-viewer": "^0.0.0",
         "fibers": "^3.1.1",
         "sass": "^1.16.0",
         "sass-loader": "^7.1.0",
