@@ -5,7 +5,7 @@
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
-        "svg": "vsvg -s src/assets/svg -t src/components/icons"
+        "view-svg": "vsvg-viewer src/assets/svg"
     },
     "dependencies": {
         "@yzfe/vue-svgicon-polyfill": "^1.0.0",

@@ -25,8 +25,13 @@ import DemoBlock from './DemoBlock.vue'
 })
 export default class extends Vue {
     protected code = `
-        <icon data="@icon/mask.svg" width="100" height="100"></icon>
-        <icon data="@icon/sora/fit/mask.svg" width="100" height="100" color="url(#svgicon_sora_fit_mask_a) red green" ></icon>
+    <icon data="@icon/mask.svg" width="100" height="100" />
+
+    <icon
+        data="@icon/sora/fit/mask.svg"
+        width="100"
+        height="100"
+        color="url(#svgicon_sora_fit_mask_a) red green" />
     `
 }
 </script>

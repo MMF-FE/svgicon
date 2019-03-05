@@ -22,10 +22,10 @@ import DemoBlock from './DemoBlock.vue'
 })
 export default class extends Vue {
     protected code = `
-        <icon data="@icon/arrow.svg" width="50" height="50"></icon>
-        <icon data="@icon/arrow.svg" width="50" height="50" color="red"></icon>
-        <icon data="@icon/arrow.svg" width="50" height="50" color="green"></icon>
-        <icon data="@icon/arrow.svg" width="50" height="50" color="blue"></icon>
+    <icon data="@icon/arrow.svg" width="50" height="50" />
+    <icon data="@icon/arrow.svg" width="50" height="50" color="red" />
+    <icon data="@icon/arrow.svg" width="50" height="50" color="green" />
+    <icon data="@icon/arrow.svg" width="50" height="50" color="blue" />
     `
 }
 </script>
