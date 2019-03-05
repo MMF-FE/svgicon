@@ -47,5 +47,8 @@
         "loader-utils": "^1.2.3",
         "svgo": "^1.2.0",
         "tslib": "^1.9.3"
+    },
+    "publishConfig": {
+        "access": "public"
     }
 }
