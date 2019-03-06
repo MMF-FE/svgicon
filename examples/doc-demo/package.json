@@ -29,6 +29,9 @@
         "typescript": "^3.0.0",
         "vue-template-compiler": "^2.5.21"
     },
+    "publishConfig": {
+        "access": "public"
+    },
     "postcss": {
         "plugins": {
             "autoprefixer": {}

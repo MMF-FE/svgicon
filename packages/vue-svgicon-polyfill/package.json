@@ -24,5 +24,8 @@
     },
     "bugs": {
         "url": "https://github.com/MMF-FE/vue-svgicon/issues"
+    },
+    "publishConfig": {
+        "access": "public"
     }
 }
