@@ -41,6 +41,11 @@ export default class App extends Vue {
                         Star
                     </a>
                 </p>
+                <p>
+                    <a href="https://mmf-fe.github.io/vue-svgicon/v3">
+                        3.x demo
+                    </a>
+                </p>
 
                 <DemoColor />
                 <DemoMultiColor />
