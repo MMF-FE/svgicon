@@ -6,7 +6,7 @@ Use inline Svg icon in Vue.js. (vue 2.x)
 
 ## 示例
 
-https://mmf-fe.github.io/vue-svgicon/
+https://mmf-fe.github.io/vue-svgicon/v4/
 
 ## 一些坑
 

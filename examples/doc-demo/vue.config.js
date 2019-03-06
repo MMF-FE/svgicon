@@ -2,7 +2,9 @@ const path = require('path')
 const svgFilePath = path.join(__dirname, './src/assets/svg')
 
 module.exports = {
-    publicPath: process.env.NODE_ENV === 'production' ? '/vue-svgicon/' : '/',
+    publicPath:
+        process.env.NODE_ENV === 'production' ? '/vue-svgicon/v4/' : '/',
+    outputDir: 'dist/v4',
     chainWebpack: config => {
         config.entry('style').add('./src/style/app.scss')
 
