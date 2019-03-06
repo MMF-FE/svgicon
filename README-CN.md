@@ -11,7 +11,7 @@ https://github.com/Justineo/vue-awesome
 
 ## demo
 
-https://mmf-fe.github.io/vue-svgicon/
+https://mmf-fe.github.io/vue-svgicon/v3
 
 ## 一些坑
 

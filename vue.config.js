@@ -11,9 +11,9 @@ let libConfig = {
 }
 
 let demoConfig = {
-    baseUrl: process.env.NODE_ENV === 'production' ? '/vue-svgicon/' : '/',
+    baseUrl: process.env.NODE_ENV === 'production' ? '/vue-svgicon/v3' : '/',
     lintOnSave: undefined,
-    outputDir: 'demo',
+    outputDir: 'demo/v3',
     configureWebpack: {
         resolve: {
             alias: {
