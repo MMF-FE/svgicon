@@ -1,6 +1,6 @@
 {
     "name": "@example/doc-demo",
-    "version": "1.0.0-alpha.0",
+    "version": "1.0.0-alpha.1",
     "private": true,
     "scripts": {
         "serve": "vue-cli-service serve",
@@ -8,21 +8,21 @@
         "view-svg": "vsvg-viewer src/assets/svg"
     },
     "dependencies": {
-        "@yzfe/vue-svgicon-polyfill": "^1.0.1",
+        "@yzfe/vue-svgicon-polyfill": "^1.0.2",
         "highlight.js": "^9.14.2",
         "vue": "^2.5.22",
         "vue-class-component": "^6.0.0",
         "vue-property-decorator": "^7.0.0",
         "vue-router": "^3.0.2",
-        "vue-svgicon": "^4.0.0-alpha.0"
+        "vue-svgicon": "^4.0.0-alpha.1"
     },
     "devDependencies": {
         "@types/highlight.js": "^9.12.3",
         "@vue/cli-plugin-babel": "^3.4.0",
         "@vue/cli-plugin-typescript": "^3.4.0",
         "@vue/cli-service": "^3.4.0",
-        "@yzfe/vue-svgicon-loader": "^1.0.0-alpha.0",
-        "@yzfe/vue-svgicon-viewer": "^1.0.0-alpha.0",
+        "@yzfe/vue-svgicon-loader": "^1.0.0-alpha.1",
+        "@yzfe/vue-svgicon-viewer": "^1.0.0-alpha.1",
         "fibers": "^3.1.1",
         "sass": "^1.16.0",
         "sass-loader": "^7.1.0",

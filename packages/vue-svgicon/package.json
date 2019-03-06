@@ -1,6 +1,6 @@
 {
     "name": "vue-svgicon",
-    "version": "4.0.0-alpha.0",
+    "version": "4.0.0-alpha.1",
     "description": "A tool to create svg icon components. (vue 2.x)",
     "scripts": {
         "dev": "vue-cli-service build --watch --target lib --name svgicon src/index.ts",
@@ -40,7 +40,7 @@
         "@vue/cli-plugin-unit-mocha": "^3.4.0",
         "@vue/cli-service": "^3.4.0",
         "@vue/test-utils": "^1.0.0-beta.20",
-        "@yzfe/vue-svgicon-loader": "^1.0.0-alpha.0",
+        "@yzfe/vue-svgicon-loader": "^1.0.0-alpha.1",
         "chai": "^4.2.0",
         "fibers": "^3.1.1",
         "mocha": "^6.0.0",
