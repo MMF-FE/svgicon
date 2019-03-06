@@ -125,7 +125,8 @@ var Svgicon_options = {
   defaultWidth: '',
   defaultHeight: '',
   classPrefix: 'svg',
-  isStroke: false
+  isStroke: false,
+  isOriginalDefault: false
 };
 function setOptions(opts) {
   // Object.assign(options, opts)
@@ -133,6 +134,7 @@ function setOptions(opts) {
   Svgicon_options.defaultHeight = opts.defaultHeight || Svgicon_options.defaultHeight;
   Svgicon_options.classPrefix = opts.classPrefix || Svgicon_options.classPrefix;
   Svgicon_options.isStroke = opts.isStroke || Svgicon_options.isStroke;
+  Svgicon_options.isOriginalDefault = opts.isOriginalDefault || Svgicon_options.isOriginalDefault;
 }
 /* harmony default export */ var Svgicon = (external_commonjs_vue_commonjs2_vue_root_Vue_default.a.extend({
   data: function data() {
@@ -170,7 +172,9 @@ function setOptions(opts) {
     },
     original: {
       type: Boolean,
-      default: false
+      default: function _default() {
+        return !!Svgicon_options.isOriginalDefault;
+      }
     }
   },
   computed: {

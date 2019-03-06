@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import { PluginOptions, Icon, IconData } from '../../typings'
 
-let options = {
+let options: PluginOptions = {
     defaultWidth: '',
     defaultHeight: '',
     classPrefix: 'svg',
-    isStroke: false
+    isStroke: false,
+    isOriginalDefault: false
 }
 
 export function setOptions(opts: PluginOptions) {
@@ -14,6 +15,8 @@ export function setOptions(opts: PluginOptions) {
     options.defaultHeight = opts.defaultHeight || options.defaultHeight
     options.classPrefix = opts.classPrefix || options.classPrefix
     options.isStroke = opts.isStroke || options.isStroke
+    options.isOriginalDefault =
+        opts.isOriginalDefault || options.isOriginalDefault
 }
 
 export default Vue.extend({
@@ -51,7 +54,9 @@ export default Vue.extend({
         },
         original: {
             type: Boolean,
-            default: false
+            default: () => {
+                return !!options.isOriginalDefault
+            }
         }
     },
     computed: {

@@ -5,6 +5,7 @@ export interface PluginOptions {
     classPrefix?: string
     // Is stroke default
     isStroke?: boolean
+    isOriginalDefault?: boolean
     defaultWidth?: string
     defaultHeight?: string
 }
