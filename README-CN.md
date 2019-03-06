@@ -18,7 +18,7 @@ https://mmf-fe.github.io/vue-svgicon/
 
 ```bash
 # 安装 vue-svgicon 和 vue-svgicon-loader
-npm install vue-svgicon
+npm install vue-svgicon@next
 npm install @yzfe/vue-svgicon-loader --dev
 ```
 
