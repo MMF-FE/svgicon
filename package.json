@@ -8,8 +8,8 @@
     "scripts": {
         "bootstrap": "lerna bootstrap",
         "build": "lerna run build --ignore @example/*",
-        "build:demo": "lerna run build --scope @example/doc-demo",
-        "deploy:demo": "yarn build:demo && ./scripts/deploy.sh",
+        "build:doc": "lerna run build --scope @example/doc-demo",
+        "deploy:doc": "yarn build:demo && ./scripts/deploy.sh",
         "test": "lerna run test --stream"
     },
     "repository": {
