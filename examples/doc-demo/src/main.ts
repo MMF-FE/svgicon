@@ -1,3 +1,4 @@
+import '@yzfe/vue-svgicon-polyfill'
 import Vue from 'vue'
 import App from './App'
 import VueSvgIcon, { PluginOptions } from 'vue-svgicon'

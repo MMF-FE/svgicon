@@ -4,7 +4,7 @@
  * @since 2017-07-15 04:37:27
  */
 
-let polyfill = require('./innersvg-polyfill')
+let polyfill = require('./lib/svgicon-polyfill')
 
 // check browser is suport SvgElement.innerHTML
 if (
