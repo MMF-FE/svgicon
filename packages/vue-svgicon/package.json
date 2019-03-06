@@ -27,9 +27,11 @@
         "typings"
     ],
     "dependencies": {
-        "vue": "^2.6.6",
         "vue-class-component": "^6.0.0",
         "vue-property-decorator": "^7.0.0"
+    },
+    "peerDependencies": {
+        "vue": "^2.5.16"
     },
     "devDependencies": {
         "@types/chai": "^4.1.7",
