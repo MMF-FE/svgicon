@@ -9,7 +9,6 @@
         "bootstrap": "lerna bootstrap",
         "build": "lerna run build --ignore @example/*",
         "build:doc": "lerna run build --scope @example/doc-demo",
-        "deploy:doc": "yarn build:doc && ./scripts/deploy.sh",
         "test": "lerna run test --stream"
     },
     "repository": {
