@@ -16,6 +16,7 @@ declare class VueSvgIcon extends Vue {
         tagName?: string
         classPrefix?: string
         isStroke?: boolean
+        isOriginalDefault?: boolean
         defaultWidth?: string
         defaultHeight?: string
     }>

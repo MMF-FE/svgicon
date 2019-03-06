@@ -9,6 +9,7 @@ let defaultWidth = ''
 let defaultHeight = ''
 let classPrefix = 'svg'
 let isStroke = false
+let isOriginalDefault = false
 
 export default {
     data() {
@@ -38,7 +39,9 @@ export default {
         color: String,
         original: {
             type: Boolean,
-            default: false
+            default: function() {
+                return !isOriginalDefault
+            }
         },
         title: String
     },
