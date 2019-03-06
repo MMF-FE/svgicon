@@ -42,7 +42,7 @@ export default class App extends Vue {
                     </a>
                 </p>
                 <p>
-                    <a href="https://mmf-fe.github.io/vue-svgicon/v3">
+                    <a href="https://mmf-fe.github.io/vue-svgicon/v3/">
                         3.x demo
                     </a>
                 </p>
