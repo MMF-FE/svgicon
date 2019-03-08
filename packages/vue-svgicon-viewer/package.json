@@ -1,6 +1,6 @@
 {
     "name": "@yzfe/vue-svgicon-viewer",
-    "version": "1.0.0-alpha.2",
+    "version": "1.0.0-alpha.3",
     "description": "Preview SVG Icon",
     "bin": {
         "vsvg-viewer": "bin/index.js"
@@ -29,7 +29,7 @@
     "dependencies": {
         "@yzfe/vue-svgicon-loader": "^1.0.0-alpha.1",
         "vue": "^2.6.6",
-        "vue-svgicon": "^4.0.0-alpha.2",
+        "vue-svgicon": "^4.0.0-alpha.3",
         "vue-template-compiler": "^2.5.21",
         "yargs": "^13.2.1"
     },
