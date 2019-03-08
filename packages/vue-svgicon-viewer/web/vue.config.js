@@ -1,6 +1,6 @@
-const webpack = require('webpack')
+const path = require('path')
 const svgFilePath = process.env.SVG || ''
-console.log(svgFilePath)
+
 module.exports = {
     chainWebpack: config => {
         config.module
@@ -16,6 +16,24 @@ module.exports = {
         config.module.rule('svg').exclude.add(svgFilePath)
 
         config.resolve.alias.set('@icon', svgFilePath)
+
+        let postcssOptions = {
+            sourceMap: false,
+            config: {
+                path: path.join(__dirname, './postcss.config.js')
+            }
+        }
+
+        config.module
+            .rule('css')
+            .oneOf('normal')
+            .use('postcss-loader')
+            .options(postcssOptions)
+        config.module
+            .rule('css')
+            .oneOf('vue-modules')
+            .use('postcss-loader')
+            .options(postcssOptions)
         config.resolve.symlinks(false)
     }
 }

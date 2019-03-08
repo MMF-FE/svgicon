@@ -24,7 +24,8 @@
     },
     "files": [
         "dist",
-        "typings"
+        "typings",
+        "postcss.config.js"
     ],
     "dependencies": {
         "vue-class-component": "^6.0.0",
@@ -60,5 +61,10 @@
     },
     "publishConfig": {
         "access": "public"
-    }
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not ie <= 8"
+    ]
 }
