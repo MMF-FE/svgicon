@@ -19,7 +19,7 @@ https://mmf-fe.github.io/vue-svgicon/v4/
 ```bash
 # install vue-svgicon and vue-svgicon-loader
 npm install vue-svgicon@next
-npm install @yzfe/vue-svgicon-loader --dev
+npm install @yzfe/vue-svgicon-loader@next --dev
 ```
 
 ### Webpack config
