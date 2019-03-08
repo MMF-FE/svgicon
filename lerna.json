@@ -2,5 +2,15 @@
     "version": "independent",
     "npmClient": "yarn",
     "useWorkspaces": true,
-    "packages": ["packages/*", "examples/*"]
+    "packages": ["packages/*", "examples/*"],
+    "command": {
+        "publish": {
+            "ignoreChanges": [
+                "**/examples/**",
+                "**/*.md",
+                "**/tests/*",
+                "**/*.map"
+            ]
+        }
+    }
 }
