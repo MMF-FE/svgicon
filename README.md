@@ -4,6 +4,8 @@
 
 A tool to create svg icon components. (vue 2.x) [中文](./README-CN.md)
 
+> Try next version: [4.x](https://github.com/MMF-FE/vue-svgicon/tree/dev)
+
 ## Inspiration
 
 https://github.com/Justineo/vue-awesome
@@ -174,24 +176,29 @@ Use icon in component
 ```html
 <!-- App.vue -->
 <template>
-  <div id="app">
-    <p>
-      <svgicon name="vue" width="200" height="200" color="#42b983 #35495e"></svgicon>
-    </p>
-  </div>
+    <div id="app">
+        <p>
+            <svgicon
+                name="vue"
+                width="200"
+                height="200"
+                color="#42b983 #35495e"
+            ></svgicon>
+        </p>
+    </div>
 </template>
 
 <script>
-import 'icons/vue'
+    import 'icons/vue'
 
-export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App',
+    export default {
+        name: 'app',
+        data() {
+            return {
+                msg: 'Welcome to Your Vue.js App'
+            }
+        }
     }
-  }
-}
 </script>
 ```
 
@@ -230,8 +237,12 @@ Vue.use(svgicon, {
 It will be generated like this:
 
 ```html
-<svg version="1.1" viewBox="0 0 4 7" class="vue-svg-icon vue-svg-fill vue-svg-up">
-<!-- svg code -->
+<svg
+    version="1.1"
+    viewBox="0 0 4 7"
+    class="vue-svg-icon vue-svg-fill vue-svg-up"
+>
+    <!-- svg code -->
 </svg>
 ```
 
@@ -263,8 +274,7 @@ Vue.use(svgicon, {
 icon name.
 
 ```html
-<svgicon icon="vue"></svgicon>
-<svgicon name="vue"></svgicon>
+<svgicon icon="vue"></svgicon> <svgicon name="vue"></svgicon>
 ```
 
 ### dir
@@ -291,9 +301,20 @@ You can use **r-color** to reverse the fill property
 
 ```html
 <!-- the first one is fill(default), the second use stroke -->
-<svgicon name="clock" color="#8A99B2 r-#1C2330" width="100" height="100"></svgicon>
+<svgicon
+    name="clock"
+    color="#8A99B2 r-#1C2330"
+    width="100"
+    height="100"
+></svgicon>
 <!-- the first one is stoke, the second is fill -->
-<svgicon name="clock" color="#8A99B2 r-#1C2330" width="100" height="100" :fill="false"></svgicon>
+<svgicon
+    name="clock"
+    color="#8A99B2 r-#1C2330"
+    width="100"
+    height="100"
+    :fill="false"
+></svgicon>
 ```
 
 ### width / height
@@ -354,18 +375,23 @@ Use gradient
 ```html
 <template>
     <svg>
-       <defs>
-          <linearGradient id="gradient-1" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%"  stop-color="#57f0c2"/>
-              <stop offset="95%" stop-color="#147d58"/>
-          </linearGradient>
-          <linearGradient id="gradient-2" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%"  stop-color="#7295c2"/>
-              <stop offset="95%" stop-color="#252e3d"/>
-          </linearGradient>
-      </defs>
+        <defs>
+            <linearGradient id="gradient-1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stop-color="#57f0c2" />
+                <stop offset="95%" stop-color="#147d58" />
+            </linearGradient>
+            <linearGradient id="gradient-2" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stop-color="#7295c2" />
+                <stop offset="95%" stop-color="#252e3d" />
+            </linearGradient>
+        </defs>
     </svg>
-    <svgicon name="vue" width="15rem" height="15rem" color="url(#gradient-1) url(#gradient-2)"></svgicon>
+    <svgicon
+        name="vue"
+        width="15rem"
+        height="15rem"
+        color="url(#gradient-1) url(#gradient-2)"
+    ></svgicon>
 </template>
 ```
 
@@ -376,7 +402,13 @@ use original color
 ```html
 <icon name="colorwheel" width="100" height="100" :original="true"></icon>
 <!-- overwrite original color -->
-<icon name="colorwheel" width="100" height="100" :original="true" color="_ black _ black _"></icon>
+<icon
+    name="colorwheel"
+    width="100"
+    height="100"
+    :original="true"
+    color="_ black _ black _"
+></icon>
 ```
 
 ### Multiple directory (Namespace)

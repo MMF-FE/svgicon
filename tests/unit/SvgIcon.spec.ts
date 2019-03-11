@@ -159,7 +159,7 @@ describe('SvgIcon.vue', () => {
                 height: '40'
             })
 
-            let $el = wrapper.vm.$el
+            let $el = wrapper.vm.$el as HTMLElement
             assert.equal('50px', $el.style.width)
             assert.equal('40px', $el.style.height)
         })
@@ -170,7 +170,7 @@ describe('SvgIcon.vue', () => {
                 height: '10em'
             })
 
-            let $el = wrapper.vm.$el
+            let $el = wrapper.vm.$el as HTMLElement
             assert.equal('10em', $el.style.width)
             assert.equal('10em', $el.style.height)
         })
@@ -180,7 +180,7 @@ describe('SvgIcon.vue', () => {
                 scale: '10'
             })
 
-            let $el = wrapper.vm.$el
+            let $el = wrapper.vm.$el as HTMLElement
             assert.equal('40px', $el.style.width)
             assert.equal('70px', $el.style.height)
         })
@@ -192,7 +192,7 @@ describe('SvgIcon.vue', () => {
                 height: '50'
             })
 
-            let $el = wrapper.vm.$el
+            let $el = wrapper.vm.$el as HTMLElement
             assert.equal('40px', $el.style.width)
             assert.equal('70px', $el.style.height)
         })
