@@ -173,25 +173,30 @@ new Vue({
 ```html
 <!-- App.vue -->
 <template>
-  <div id="app">
-    <p>
-      <svgicon name="vue" width="200" height="200" color="#42b983 #35495e"></svgicon>
-    </p>
-  </div>
+    <div id="app">
+        <p>
+            <svgicon
+                name="vue"
+                width="200"
+                height="200"
+                color="#42b983 #35495e"
+            ></svgicon>
+        </p>
+    </div>
 </template>
 
 <script>
-// 使用之前需要引入生成的图标
-import 'icons/vue'
+    // 使用之前需要引入生成的图标
+    import 'icons/vue'
 
-export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App',
+    export default {
+        name: 'app',
+        data() {
+            return {
+                msg: 'Welcome to Your Vue.js App'
+            }
+        }
     }
-  }
-}
 </script>
 ```
 
@@ -230,8 +235,12 @@ Vue.use(svgicon, {
 这样会生成像以下那样的代码
 
 ```html
-<svg version="1.1" viewBox="0 0 4 7" class="vue-svg-icon vue-svg-fill vue-svg-up">
-<!-- svg code -->
+<svg
+    version="1.1"
+    viewBox="0 0 4 7"
+    class="vue-svg-icon vue-svg-fill vue-svg-up"
+>
+    <!-- svg code -->
 </svg>
 ```
 
@@ -263,8 +272,7 @@ Vue.use(svgicon, {
 图标名称
 
 ```html
-<svgicon icon="vue"></svgicon>
-<svgicon name="vue"></svgicon>
+<svgicon icon="vue"></svgicon> <svgicon name="vue"></svgicon>
 ```
 
 ### dir
@@ -292,9 +300,20 @@ You can use **r-color** to reverse the fill property
 
 ```html
 <!-- 第一个 path 是填充的 (默认), 第二个是描边 -->
-<svgicon name="clock" color="#8A99B2 r-#1C2330" width="100" height="100"></svgicon>
+<svgicon
+    name="clock"
+    color="#8A99B2 r-#1C2330"
+    width="100"
+    height="100"
+></svgicon>
 <!-- 第一个 path 是描边的 (默认), 第二个是填充 -->
-<svgicon name="clock" color="#8A99B2 r-#1C2330" width="100" height="100" :fill="false"></svgicon>
+<svgicon
+    name="clock"
+    color="#8A99B2 r-#1C2330"
+    width="100"
+    height="100"
+    :fill="false"
+></svgicon>
 ```
 
 ### width / height
@@ -355,18 +374,23 @@ You can use **r-color** to reverse the fill property
 ```html
 <template>
     <svg>
-       <defs>
-          <linearGradient id="gradient-1" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%"  stop-color="#57f0c2"/>
-              <stop offset="95%" stop-color="#147d58"/>
-          </linearGradient>
-          <linearGradient id="gradient-2" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%"  stop-color="#7295c2"/>
-              <stop offset="95%" stop-color="#252e3d"/>
-          </linearGradient>
-      </defs>
+        <defs>
+            <linearGradient id="gradient-1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stop-color="#57f0c2" />
+                <stop offset="95%" stop-color="#147d58" />
+            </linearGradient>
+            <linearGradient id="gradient-2" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stop-color="#7295c2" />
+                <stop offset="95%" stop-color="#252e3d" />
+            </linearGradient>
+        </defs>
     </svg>
-    <svgicon name="vue" width="15rem" height="15rem" color="url(#gradient-1) url(#gradient-2)"></svgicon>
+    <svgicon
+        name="vue"
+        width="15rem"
+        height="15rem"
+        color="url(#gradient-1) url(#gradient-2)"
+    ></svgicon>
 </template>
 ```
 
@@ -377,7 +401,30 @@ You can use **r-color** to reverse the fill property
 ```html
 <icon name="colorwheel" width="100" height="100" :original="true"></icon>
 <!-- 覆盖原来的颜色，_ 表示当前位置的 path/shape 使用原来的颜色，其他使用新的颜色 -->
-<icon name="colorwheel" width="100" height="100" :original="true" color="_ black _ black _"></icon>
+<icon
+    name="colorwheel"
+    width="100"
+    height="100"
+    :original="true"
+    color="_ black _ black _"
+></icon>
+```
+
+### title
+
+SVG title
+
+```html
+<icon name="vue" title="vue icon"></icon>
+```
+
+It will be generated like this:
+
+```html
+<svg version="1.1" viewBox="0 0 256 221" class="vue-svg-icon vue-svg-fill">
+    <title>vue icon</title>
+    <!-- svg code -->
+</svg>
 ```
 
 ### 多个路径 (Namespace)

@@ -415,6 +415,23 @@ use original color
 ></icon>
 ```
 
+### title
+
+SVG title
+
+```html
+<icon name="vue" title="vue icon"></icon>
+```
+
+It will be generated like this:
+
+```html
+<svg version="1.1" viewBox="0 0 256 221" class="vue-svg-icon vue-svg-fill">
+    <title>vue icon</title>
+    <!-- svg code -->
+</svg>
+```
+
 ### Multiple directory (Namespace)
 
 You can use multiple directory to discriminate the icons which has the same name.
