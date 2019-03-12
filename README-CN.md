@@ -355,6 +355,26 @@ You can use **r-color** to reverse the fill property
 ></icon>
 ```
 
+### title
+SVG title
+
+```html
+<icon data="@icon/vue.svg" title="vue icon" >
+```
+
+It will be generated like this:
+
+```html
+<svg
+    version="1.1"
+    viewBox="0 0 256 221"
+    class="vue-svg-icon vue-svg-fill"
+>
+    <title>vue icon</title>
+    <!-- svg code -->
+</svg>
+```
+
 ### 预览 图标
 
 Use `@yzfe/vue-svgicon-viewer` preview SVG icons

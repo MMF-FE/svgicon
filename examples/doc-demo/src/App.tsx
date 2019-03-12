@@ -24,6 +24,7 @@ export default class App extends Vue {
                 <p>
                     <icon
                         class="vue-logo"
+                        title="vue icon"
                         data={require('@icon/vue.svg')}
                         width="15rem"
                         height="15rem"

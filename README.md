@@ -197,6 +197,7 @@ Is use stroke style by default.
 
 Is use original color by default.
 
+
 ## Component Props
 
 ### data
@@ -352,6 +353,26 @@ use original color
     original
     color="_ black _ black _"
 ></icon>
+```
+
+### title
+SVG title
+
+```html
+<icon data="@icon/vue.svg" title="vue icon" >
+```
+
+It will be generated like this:
+
+```html
+<svg
+    version="1.1"
+    viewBox="0 0 256 221"
+    class="vue-svg-icon vue-svg-fill"
+>
+    <title>vue icon</title>
+    <!-- svg code -->
+</svg>
 ```
 
 ### Preview SVG icons
