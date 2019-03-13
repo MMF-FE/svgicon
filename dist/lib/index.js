@@ -14,6 +14,7 @@ var args = yargs
     .describe('ext', "Generated file's extension")
     .default('ext', 'js')
     .describe('tpl', 'The template file which to generate icon files')
+    .describe('export', 'Should the templates export icons individually')
     .describe('es6', 'Use ES6 module')
     .describe('svgo', 'Svgo config file')
     .help('help')
@@ -37,6 +38,7 @@ var targetPath = path.isAbsolute(args.t)
                             sourcePath: sourcePath,
                             targetPath: targetPath,
                             tpl: args.tpl,
+                            export: args.export,
                             ext: args.ext,
                             es6: args.es6,
                             svgo: args.svgo

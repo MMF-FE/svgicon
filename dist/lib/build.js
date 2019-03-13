@@ -6,6 +6,7 @@ var fs = require("fs-plus");
 var colors = require("colors");
 var glob = require("glob");
 var Svgo = require("svgo");
+var camelcase_1 = require("camelcase");
 /**
  * build svg icon
  */
@@ -102,6 +103,7 @@ function getFilePath(sourcePath, filename, subDir) {
 // generate index.js, which import all icons
 function generateIndex(opts, files, subDir) {
     if (subDir === void 0) { subDir = ''; }
+    var shouldExport = opts.export;
     var isES6 = opts.es6;
     var content = '';
     var dirMap = {};
@@ -120,16 +122,36 @@ function generateIndex(opts, files, subDir) {
         if (dir) {
             if (!dirMap[dir]) {
                 dirMap[dir] = [];
-                content += isES6
-                    ? "import './" + dir + "'\n"
-                    : "require('./" + dir + "')\n";
+                if (shouldExport) {
+                    var dirName = camelcase_1.default(dir, {
+                        pascalCase: true
+                    });
+                    content += isES6
+                        ? "export * as  " + dirName + " from './" + dir + "'\n"
+                        : "module.exports." + dirName + " = require('./" + dir + "')\n";
+                }
+                else {
+                    content += isES6
+                        ? "import './" + dir + "'\n"
+                        : "require('./" + dir + "')\n";
+                }
             }
             dirMap[dir].push(file);
         }
         else {
-            content += isES6
-                ? "import './" + filePath + name + "'\n"
-                : "require('./" + filePath + name + "')\n";
+            if (shouldExport) {
+                var fileName = camelcase_1.default(name, {
+                    pascalCase: true
+                });
+                content += isES6
+                    ? "export " + fileName + " from './" + filePath + name + "'\n"
+                    : "module.exports." + fileName + " = require('./" + filePath + name + "')\n";
+            }
+            else {
+                content += isES6
+                    ? "import './" + filePath + name + "'\n"
+                    : "require('./" + filePath + name + "')\n";
+            }
         }
     });
     fs.writeFileSync(path.join(opts.targetPath, subDir, "index." + opts.ext), content, 'utf-8');
