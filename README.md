@@ -259,15 +259,21 @@ Vue.use(svgicon, {
 
 ### isStroke
 
-Is use stroke style by default
-
-### isOriginalDefault
-
-Is use original color by default.
+Use stroke style by default
 
 ```js
 Vue.use(svgicon, {
     isStroke: true
+})
+```
+
+### isOriginalDefault
+
+Use original color by default.
+
+```js
+Vue.use(svgicon, {
+    isOriginalDefault: false
 })
 ```
 
