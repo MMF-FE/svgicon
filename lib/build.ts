@@ -3,6 +3,7 @@ import * as fs from 'fs-plus'
 import * as colors from 'colors'
 import * as glob from 'glob'
 import * as Svgo from 'svgo'
+import camelCase from 'camelcase'
 
 interface OptimizedSvg {
     data: string
@@ -17,6 +18,7 @@ export interface Options {
     sourcePath: string
     targetPath: string
     ext?: string
+    export?: boolean
     es6?: boolean
     tpl?: string
     idSP?: string
@@ -138,6 +140,7 @@ function getFilePath(sourcePath: string, filename: string, subDir = '') {
 
 // generate index.js, which import all icons
 function generateIndex(opts: Options, files: string[], subDir = '') {
+    let shouldExport = opts.export
     let isES6 = opts.es6
     let content = ''
     let dirMap: { [key: string]: any } = {}
@@ -159,15 +162,33 @@ function generateIndex(opts: Options, files: string[], subDir = '') {
         if (dir) {
             if (!dirMap[dir]) {
                 dirMap[dir] = []
-                content += isES6
-                    ? `import './${dir}'\n`
-                    : `require('./${dir}')\n`
+                if (shouldExport) {
+                    let dirName = camelCase(dir, {
+                        pascalCase: true
+                    })
+                    content += isES6
+                        ? `export * as  ${dirName} from './${dir}'\n`
+                        : `module.exports.${dirName} = require('./${dir}')\n`
+                } else {
+                    content += isES6
+                        ? `import './${dir}'\n`
+                        : `require('./${dir}')\n`
+                }
             }
             dirMap[dir].push(file)
         } else {
-            content += isES6
-                ? `import './${filePath}${name}'\n`
-                : `require('./${filePath}${name}')\n`
+            if (shouldExport) {
+                let fileName = camelCase(name, {
+                    pascalCase: true
+                })
+                content += isES6
+                    ? `export ${fileName} from './${filePath}${name}'\n`
+                    : `module.exports.${fileName} = require('./${filePath}${name}')\n`
+            } else {
+                content += isES6
+                    ? `import './${filePath}${name}'\n`
+                    : `require('./${filePath}${name}')\n`
+            }
         }
     })
 
