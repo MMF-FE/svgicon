@@ -87,38 +87,33 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "1eb2":
-/***/ (function(module, exports, __webpack_require__) {
-
-// This file is imported into lib/wc client bundles.
-
-if (typeof window !== 'undefined') {
-  var i
-  if ((i = window.document.currentScript) && (i = i.src.match(/(.+\/)[^/]+\.js$/))) {
-    __webpack_require__.p = i[1] // eslint-disable-line
-  }
-}
-
-
-/***/ }),
-
 /***/ "fb15":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 
-// EXTERNAL MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
-var setPublicPath = __webpack_require__("1eb2");
+// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
+// This file is imported into lib/wc client bundles.
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"02e834b4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/SvgIcon.vue?vue&type=template&id=48c933db&
+if (typeof window !== 'undefined') {
+  var i
+  if ((i = window.document.currentScript) && (i = i.src.match(/(.+\/)[^/]+\.js(\?.*)?$/))) {
+    __webpack_require__.p = i[1] // eslint-disable-line
+  }
+}
+
+// Indicate to webpack that this file can be concatenated
+/* harmony default export */ var setPublicPath = (null);
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"19469534-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/SvgIcon.vue?vue&type=template&id=03042cba&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('svg',{class:_vm.clazz,style:(_vm.style),attrs:{"version":"1.1","viewBox":_vm.box},domProps:{"innerHTML":_vm._s(_vm.path)},on:{"click":_vm.onClick}})}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/SvgIcon.vue?vue&type=template&id=48c933db&
+// CONCATENATED MODULE: ./src/components/SvgIcon.vue?vue&type=template&id=03042cba&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/components/SvgIcon.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/SvgIcon.vue?vue&type=script&lang=js&
 //
 //
 //
@@ -159,7 +154,7 @@ var isOriginalDefault = false;
     original: {
       type: Boolean,
       default: function _default() {
-        return !isOriginalDefault;
+        return isOriginalDefault;
       }
     },
     title: String
@@ -329,7 +324,8 @@ var isOriginalDefault = false;
       classPrefix = options.classPrefix;
     }
 
-    isStroke = !!options.isStroke; // default size
+    isStroke = !!options.isStroke;
+    isOriginalDefault = !!options.isOriginalDefault; // default size
 
     options.defaultWidth && (defaultWidth = options.defaultWidth);
     options.defaultHeight && (defaultHeight = options.defaultHeight);
@@ -474,7 +470,6 @@ var component = normalizeComponent(
   
 )
 
-component.options.__file = "SvgIcon.vue"
 /* harmony default export */ var SvgIcon = (component.exports);
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
 
