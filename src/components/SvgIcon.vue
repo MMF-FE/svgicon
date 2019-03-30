@@ -40,7 +40,7 @@ export default {
         original: {
             type: Boolean,
             default: function() {
-                return !isOriginalDefault
+                return isOriginalDefault
             }
         },
         title: String
@@ -228,6 +228,7 @@ export default {
         }
 
         isStroke = !!options.isStroke
+        isOriginalDefault = !!options.isOriginalDefault
 
         // default size
         options.defaultWidth && (defaultWidth = options.defaultWidth)
