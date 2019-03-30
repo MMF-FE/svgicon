@@ -2,6 +2,7 @@ export interface Options {
     sourcePath: string;
     targetPath: string;
     ext?: string;
+    export?: boolean;
     es6?: boolean;
     tpl?: string;
     idSP?: string;
