@@ -7,8 +7,6 @@ if (!fs.existsSync(metaPath)) {
     metaPath = path.join(__dirname, 'meta.json')
 }
 
-console.log(metaPath)
-
 module.exports = {
     chainWebpack: config => {
         config.module
