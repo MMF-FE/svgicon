@@ -20,7 +20,7 @@ const args = yargs
     .help('help')
     .alias('h', 'help').argv
 
-process.env.SVG = path.isAbsolute(args.svgFilePath)
+process.env.SVGFILEPATH = path.isAbsolute(args.svgFilePath)
     ? args.svgFilePath
     : path.join(process.cwd(), args.svgFilePath)
 

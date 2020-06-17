@@ -1,5 +1,13 @@
 const path = require('path')
-const svgFilePath = process.env.SVG || ''
+const fs = require('fs')
+const svgFilePath = process.env.SVGFILEPATH || ''
+let metaPath = process.env.METAPATH || path.join(svgFilePath, 'meta.json')
+
+if (!fs.existsSync(metaPath)) {
+    metaPath = path.join(__dirname, 'meta.json')
+}
+
+console.log(metaPath)
 
 module.exports = {
     chainWebpack: config => {
@@ -16,6 +24,8 @@ module.exports = {
         config.module.rule('svg').exclude.add(svgFilePath)
 
         config.resolve.alias.set('@icon', svgFilePath)
+
+        config.resolve.alias.set('@meta', metaPath)
 
         let postcssOptions = {
             sourceMap: false,

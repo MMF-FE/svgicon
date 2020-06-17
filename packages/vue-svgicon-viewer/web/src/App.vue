@@ -1,13 +1,40 @@
 <template>
     <div id="app">
-        <div class="icon-list">
-            <div class="icon-item" v-for="v in icons" :key="v.name">
-                <div class="icon">
-                    <icon :data="v" original title="original"></icon>
-                    <icon :data="v" title="fill"></icon>
-                    <icon :data="v" :fill="false" title="stroke"></icon>
+        <div class="filters">
+            <div class="left">
+                <el-checkbox-group class="fill-type" v-model="fillType" size="small">
+                    <el-checkbox-button v-for="type in fillTypeList" :key="type" :label="type"></el-checkbox-button>
+                </el-checkbox-group>
+            </div>
+            <div class="right">
+                <el-input
+                    v-model="query"
+                    class="search-input"
+                    size="small"
+                    placeholder="Search Icons"
+                >
+                    <el-button slot="append" icon="el-icon-search"></el-button>
+                </el-input>
+            </div>
+        </div>
+        <div class="page-section">
+            <div v-show="fillType.length > 0" class="icon-list">
+                <div class="icon-item" v-for="v in icons" :key="v.name">
+                    <div class="icon">
+                        <icon v-if="isShowFill" :data="v" title="fill"></icon>
+                        <icon v-if="isShowOriginal" :data="v" original title="original"></icon>
+                        <icon v-if="isShowStroke" :data="v" :fill="false" title="stroke"></icon>
+                    </div>
+                    <p class="icon-name">
+                        {{ v.name }}
+                        <br />
+                        <span v-if="iconMeta[v.name]">
+                            {{
+                            iconMeta[v.name].name
+                            }}
+                        </span>
+                    </p>
                 </div>
-                <p>{{ v.name }}</p>
             </div>
         </div>
     </div>
@@ -16,60 +43,43 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import icons from './icons'
+import iconMeta from '@meta'
+
+type FillType = 'fill' | 'original' | 'stroke'
 
 @Component({
     components: {}
 })
 export default class App extends Vue {
-    protected icons = icons
+    protected fillType: FillType[] = ['fill']
+    protected query = ''
+    protected fillTypeList: FillType[] = ['fill', 'original', 'stroke']
+    protected iconMeta = iconMeta
 
-    mounted() {}
+    protected get icons() {
+        if (this.query) {
+            return icons.filter(v => {
+                let meta = this.iconMeta[v.name]
+                let name = meta ? meta.name + v.name : v.name
+                return name.includes(this.query)
+            })
+        }
+
+        return icons
+    }
+
+    protected get isShowFill() {
+        return this.fillType.includes('fill')
+    }
+
+    protected get isShowOriginal() {
+        return this.fillType.includes('original')
+    }
+
+    protected get isShowStroke() {
+        return this.fillType.includes('stroke')
+    }
 }
 </script>
 
-<style lang="scss">
-$item-size: 100px;
-
-.icon-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(2 * $item-size, 1fr));
-    grid-auto-rows: 100px;
-    overflow: hidden;
-    margin-top: 10px;
-    border: 1px solid #dcdcdc;
-    border-width: 1px 0 0 1px;
-
-    * {
-        outline: none;
-    }
-}
-
-.icon-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    border: 1px solid #dcdcdc;
-    border-width: 0 1px 1px 0;
-    color: #2a2a2a;
-
-    .icon {
-        display: flex;
-        width: 100%;
-        justify-content: space-around;
-        align-items: center;
-    }
-
-    .svg-icon {
-        width: 32px;
-        height: 32px;
-    }
-
-    p {
-        margin: 0;
-        color: black;
-        text-align: center;
-        font-size: 14px;
-    }
-}
-</style>
+<style lang="scss" src="./app.scss"></style>

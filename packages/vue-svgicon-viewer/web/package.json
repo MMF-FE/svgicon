@@ -8,6 +8,7 @@
         "lint": "vue-cli-service lint"
     },
     "dependencies": {
+        "element-ui": "^2.13.2",
         "vue-class-component": "^6.0.0",
         "vue-property-decorator": "^7.0.0"
     },

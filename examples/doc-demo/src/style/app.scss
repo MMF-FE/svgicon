@@ -1,5 +1,9 @@
 @import "./demoBlock";
 
+body {
+    --color-primary: #FFF;
+}
+
 #app {
     margin-top: 60px;
     color: #2C3E50;
@@ -74,4 +78,8 @@ h2 {
 .good {
     animation: rotate 1s linear infinite;
     transform-origin: left bottom;
+}
+
+.svg-icon {
+    margin-right: 10px;
 }
