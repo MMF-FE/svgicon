@@ -103,6 +103,10 @@
             "*": "git add"
         }
     },
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org",
+        "access": "public"
+    },
     "engines": {
         "node": ">= 5.0.0",
         "npm": ">= 3.0.0"
