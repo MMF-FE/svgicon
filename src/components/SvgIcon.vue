@@ -1,5 +1,12 @@
 <template>
-    <svg version="1.1" :class="clazz" :viewBox="box" v-html="path" :style="style" @click="onClick" />
+    <svg
+        version="1.1"
+        :class="clazz"
+        :viewBox="box"
+        v-html="path"
+        :style="style"
+        @click="onClick"
+    />
 </template>
 
 <script>
@@ -174,7 +181,7 @@ export default {
                 }
 
                 // if color start with 'r-', reverse the fill value
-                if (color && color.indexOf('r-') === 0) {
+                if (color && /^r-/.test(color)) {
                     fill = !fill
                     // color = color.split('r-')[1]
                     color = color.substr(2)

@@ -81,8 +81,8 @@ describe('SvgIcon.vue', () => {
             }
         })
 
-        it('should be green', () => {
-            wrapper.setProps({
+        it('should be green', async () => {
+            await wrapper.setProps({
                 name: 'arrow',
                 color: 'green'
             })
@@ -92,8 +92,8 @@ describe('SvgIcon.vue', () => {
             assert.equal('green', path && path.getAttribute('fill'))
         })
 
-        it('should has red and green color', () => {
-            wrapper.setProps({
+        it('should has red and green color', async () => {
+            await wrapper.setProps({
                 name: 'vue',
                 color: 'red green'
             })
@@ -103,8 +103,8 @@ describe('SvgIcon.vue', () => {
             })
         })
 
-        it('r-color', () => {
-            wrapper.setProps({
+        it('r-color', async () => {
+            await wrapper.setProps({
                 name: 'arrow',
                 color: 'r-red'
             })
@@ -114,8 +114,8 @@ describe('SvgIcon.vue', () => {
             assert.equal('red', path && path.getAttribute('stroke'))
         })
 
-        it('multi r-color', () => {
-            wrapper.setProps({
+        it('multi r-color', async () => {
+            await wrapper.setProps({
                 name: 'vue',
                 color: 'red r-green'
             })
@@ -131,8 +131,8 @@ describe('SvgIcon.vue', () => {
             })
         })
 
-        it('gradient', function() {
-            wrapper.setProps({
+        it('gradient', async function() {
+            await wrapper.setProps({
                 name: 'vue',
                 color: 'url(#gradient-1) url(#gradient-2)'
             })
@@ -153,8 +153,8 @@ describe('SvgIcon.vue', () => {
                 name: 'arrow'
             }
         })
-        it('size should be 50px/40px', () => {
-            wrapper.setProps({
+        it('size should be 50px/40px', async () => {
+            await wrapper.setProps({
                 width: '50',
                 height: '40'
             })
@@ -164,8 +164,8 @@ describe('SvgIcon.vue', () => {
             assert.equal('40px', $el.style.height)
         })
 
-        it('size should be 10em/10em', () => {
-            wrapper.setProps({
+        it('size should be 10em/10em', async () => {
+            await wrapper.setProps({
                 width: '10em',
                 height: '10em'
             })
@@ -175,8 +175,8 @@ describe('SvgIcon.vue', () => {
             assert.equal('10em', $el.style.height)
         })
 
-        it('size should be 40px/70px', () => {
-            wrapper.setProps({
+        it('size should be 40px/70px', async () => {
+            await wrapper.setProps({
                 scale: '10'
             })
 
@@ -185,8 +185,8 @@ describe('SvgIcon.vue', () => {
             assert.equal('70px', $el.style.height)
         })
 
-        it('size should be 40px/70px', () => {
-            wrapper.setProps({
+        it('size should be 40px/70px', async () => {
+            await wrapper.setProps({
                 scale: '10',
                 width: '50',
                 height: '50'
