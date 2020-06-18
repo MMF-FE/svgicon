@@ -17,6 +17,7 @@ export default {
     'r-color': [
         `
         <icon name="clock" color="#8A99B2 r-#1C2330" width="100" height="100"></icon>
+        <icon name="clock" color="#8A99B2 r-var(--color-primary)" width="100" height="100"></icon>
       `
     ],
     color: [

@@ -13,4 +13,4 @@ export interface Options {
 /**
  * build svg icon
  */
-export default function build(options: Options): Promise<{}>;
+export default function build(options: Options): Promise<unknown>;

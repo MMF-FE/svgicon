@@ -6,6 +6,10 @@
     justify-content: center;
     overflow: hidden;
 
+    .svg-icon {
+        margin-right: 10px;
+    }
+
     > div {
         float: left;
         width: 50%;

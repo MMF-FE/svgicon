@@ -1,5 +1,10 @@
 #!/usr/bin/env node
 "use strict";
+/**
+ * build svg icon
+ * @author Allenice
+ * @since 2017-02-17
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
 var yargs = require("yargs");

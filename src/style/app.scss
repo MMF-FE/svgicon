@@ -1,5 +1,9 @@
 @import "./demoBlock";
 
+body {
+    --color-primary: #FFF;
+}
+
 .svg-icon {
     display: inline-block;
     width: 16px;
