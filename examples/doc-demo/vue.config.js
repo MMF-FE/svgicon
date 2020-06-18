@@ -5,6 +5,7 @@ module.exports = {
     publicPath:
         process.env.NODE_ENV === 'production' ? '/vue-svgicon/v4/' : '/',
     outputDir: 'dist/v4',
+    productionSourceMap: false,
     chainWebpack: config => {
         config.entry('style').add('./src/style/app.scss')
 
