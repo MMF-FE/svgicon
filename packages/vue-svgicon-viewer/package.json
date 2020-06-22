@@ -34,6 +34,8 @@
         "yargs": "^13.2.1"
     },
     "publishConfig": {
+        "registry": "https://registry.npmjs.org",
         "access": "public"
-    }
+    },
+    "gitHead": "cc2c5282ca471982cc523ce680f4593d9d2fa975"
 }

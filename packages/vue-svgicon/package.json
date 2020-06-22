@@ -60,11 +60,13 @@
         "url": "https://github.com/MMF-FE/vue-svgicon/issues"
     },
     "publishConfig": {
+        "registry": "https://registry.npmjs.org",
         "access": "public"
     },
     "browserslist": [
         "> 1%",
         "last 2 versions",
         "not ie <= 8"
-    ]
+    ],
+    "gitHead": "cc2c5282ca471982cc523ce680f4593d9d2fa975"
 }
