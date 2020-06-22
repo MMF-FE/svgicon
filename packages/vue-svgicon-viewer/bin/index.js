@@ -12,9 +12,13 @@ const execa = function(command) {
 }
 
 const args = yargs
-    .usage('$0 <svgFilePath>', 'Start vue-svgicon viewer', yarg => {
+    .usage('$0 <svgFilePath> [metaPath]', 'Start vue-svgicon viewer', yarg => {
         yarg.positional('svgFilePath', {
             describe: 'SVG source file folder.'
+        })
+
+        yarg.positional('metaPath', {
+            describe: 'meta.json file, custom display name'
         })
     })
     .help('help')
@@ -23,6 +27,12 @@ const args = yargs
 process.env.SVGFILEPATH = path.isAbsolute(args.svgFilePath)
     ? args.svgFilePath
     : path.join(process.cwd(), args.svgFilePath)
+
+if (args.metaPath) {
+    process.env.METAPATH = path.isAbsolute(args.metaPath)
+        ? args.metaPath
+        : path.join(process.cwd(), args.metaPath)
+}
 
 process.chdir(path.join(__dirname, '../web'))
 execa('yarn')

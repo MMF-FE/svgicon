@@ -1,11 +1,36 @@
 # `vue-svgicon-viewer`
 
-> TODO: description
+Preview SVG icon
 
 ## Usage
 
-```
-const vueSvgiconViewer = require('vue-svgicon-viewer');
+```bash
+# Install global
+npm install -g @yzfe/vue-svgicon-viewer
 
-// TODO: DEMONSTRATE API
+# Install in project
+npm install  @yzfe/vue-svgicon-viewer --dev
+
+# preview svg icon
+vsvg-viewer ./svg/folder
+```
+
+## SVG icon display name
+
+You can configure the SVG icon display name by specifying a json config file.
+
+> 你可以通过指定配置自定义预览的 SVG 图标名称
+
+```bash
+vsvg-viewer ./svg/folder ./meta.json
+```
+
+meta.json example
+
+```json
+{
+    "iconName": {
+        "name": "icon display name"
+    }
+}
 ```

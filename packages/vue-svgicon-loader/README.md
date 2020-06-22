@@ -1,11 +1,3 @@
 # `svgicon-loader`
 
-> TODO: description
-
-## Usage
-
-```
-const svgiconLoader = require('svgicon-loader');
-
-// TODO: DEMONSTRATE API
-```
+[doc](https://github.com/MMF-FE/vue-svgicon/tree/dev)
