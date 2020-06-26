@@ -27,7 +27,7 @@ https://mmf-fe.github.io/vue-svgicon/v3/
 # 安装到全局
 npm install vue-svgicon -g
 # 安装到项目
-npm install vue-svgicon --save-dev
+npm install vue-svgicon --save
 ```
 
 #### 命令

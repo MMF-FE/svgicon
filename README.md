@@ -28,7 +28,7 @@ https://mmf-fe.github.io/vue-svgicon/v3/
 # install global
 npm install vue-svgicon -g
 # install for project
-npm install vue-svgicon --save-dev
+npm install vue-svgicon --save
 ```
 
 #### Command
