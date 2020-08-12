@@ -2,8 +2,16 @@
     <div id="app">
         <div class="filters">
             <div class="left">
-                <el-checkbox-group class="fill-type" v-model="fillType" size="small">
-                    <el-checkbox-button v-for="type in fillTypeList" :key="type" :label="type"></el-checkbox-button>
+                <el-checkbox-group
+                    class="fill-type"
+                    v-model="fillType"
+                    size="small"
+                >
+                    <el-checkbox-button
+                        v-for="type in fillTypeList"
+                        :key="type"
+                        :label="type"
+                    ></el-checkbox-button>
                 </el-checkbox-group>
             </div>
             <div class="right">
@@ -22,16 +30,24 @@
                 <div class="icon-item" v-for="v in icons" :key="v.name">
                     <div class="icon">
                         <icon v-if="isShowFill" :data="v" title="fill"></icon>
-                        <icon v-if="isShowOriginal" :data="v" original title="original"></icon>
-                        <icon v-if="isShowStroke" :data="v" :fill="false" title="stroke"></icon>
+                        <icon
+                            v-if="isShowOriginal"
+                            :data="v"
+                            original
+                            title="original"
+                        ></icon>
+                        <icon
+                            v-if="isShowStroke"
+                            :data="v"
+                            :fill="false"
+                            title="stroke"
+                        ></icon>
                     </div>
                     <p class="icon-name">
                         {{ v.name }}
                         <br />
                         <span v-if="iconMeta[v.name]">
-                            {{
-                            iconMeta[v.name].name
-                            }}
+                            {{ iconMeta[v.name].name }}
                         </span>
                     </p>
                 </div>
@@ -51,7 +67,7 @@ type FillType = 'fill' | 'original' | 'stroke'
     components: {}
 })
 export default class App extends Vue {
-    protected fillType: FillType[] = ['fill']
+    protected fillType: FillType[] = ['original']
     protected query = ''
     protected fillTypeList: FillType[] = ['fill', 'original', 'stroke']
     protected iconMeta = iconMeta

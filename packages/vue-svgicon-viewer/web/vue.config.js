@@ -1,13 +1,16 @@
 const path = require('path')
 const fs = require('fs')
-const svgFilePath = process.env.SVGFILEPATH || ''
-let metaPath = process.env.METAPATH || path.join(svgFilePath, 'meta.json')
+const svgFilePath = path.resolve(process.env.SVGFILEPATH || '')
+let metaPath = process.env.METAPATH
+    ? path.resolve(process.env.METAPATH)
+    : path.join(svgFilePath, 'meta.json')
 
 if (!fs.existsSync(metaPath)) {
     metaPath = path.join(__dirname, 'meta.json')
 }
 
 module.exports = {
+    productionSourceMap: false,
     chainWebpack: config => {
         config.module
             .rule('vue-svgicon')
