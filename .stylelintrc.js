@@ -22,12 +22,24 @@ module.exports = {
         'at-rule-no-unknown': null,
         'font-family-no-missing-generic-family-keyword': null,
         'no-descending-specificity': null,
+        'unit-no-unknown': [
+            true,
+            {
+                ignoreUnits: ['rpx'],
+            },
+        ],
         // 属性顺序
         'property-no-unknown': [
             true,
             {
-                ignoreProperties: ['composes']
-            }
+                ignoreProperties: ['composes'],
+            },
+        ],
+        'selector-pseudo-element-no-unknown': [
+            true,
+            {
+                ignorePseudoElements: ['v-deep'],
+            },
         ],
         // 属性顺序
         'order/order': [
@@ -35,7 +47,7 @@ module.exports = {
             'custom-properties',
             'at-rules',
             'declarations',
-            'rules'
+            'rules',
         ],
         'order/properties-order': [
             'display',
@@ -43,7 +55,7 @@ module.exports = {
             'position',
             {
                 order: 'flexible',
-                properties: ['left', 'top', 'right', 'bottom']
+                properties: ['left', 'top', 'right', 'bottom'],
             },
             'width',
             'height',
@@ -54,8 +66,8 @@ module.exports = {
                     'max-width',
                     'min-height',
                     'max-height',
-                    'line-height'
-                ]
+                    'line-height',
+                ],
             },
             'padding',
             {
@@ -64,8 +76,8 @@ module.exports = {
                     'padding-left',
                     'padding-top',
                     'padding-right',
-                    'padding-bottom'
-                ]
+                    'padding-bottom',
+                ],
             },
             'margin',
             {
@@ -74,8 +86,8 @@ module.exports = {
                     'margin-left',
                     'margin-top',
                     'margin-right',
-                    'margin-bottom'
-                ]
+                    'margin-bottom',
+                ],
             },
             'border',
             {
@@ -85,8 +97,8 @@ module.exports = {
                     'border-top',
                     'border-right',
                     'border-bottom',
-                    'border-radius'
-                ]
+                    'border-radius',
+                ],
             },
             'background',
             {
@@ -96,18 +108,18 @@ module.exports = {
                     'background-position',
                     'background-repeat',
                     'background-size',
-                    'background-color'
-                ]
+                    'background-color',
+                ],
             },
             'color',
             {
                 order: 'flexible',
-                properties: ['font-weight', 'font-size']
+                properties: ['font-weight', 'font-size'],
             },
             {
                 order: 'flexible',
-                properties: ['text-align']
-            }
-        ]
-    }
+                properties: ['text-align'],
+            },
+        ],
+    },
 }

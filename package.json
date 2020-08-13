@@ -34,14 +34,20 @@
         "access": "public"
     },
     "devDependencies": {
-        "husky": "^1.3.1",
-        "lerna": "^3.13.0",
-        "lint-staged": "^8.1.4",
-        "prettier": "^1.16.4",
+        "@typescript-eslint/eslint-plugin": "^3.9.0",
+        "@typescript-eslint/parser": "^3.9.0",
+        "eslint": "^7.6.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-prettier": "^3.1.4",
+        "husky": "^4.2.5",
+        "lerna": "^3.22.1",
+        "lint-staged": "^10.2.11",
+        "prettier": "^2.0.5",
         "prettier-stylelint": "^0.4.2",
-        "stylelint": "^9.10.1",
-        "stylelint-config-standard": "^18.2.0",
-        "stylelint-order": "^2.0.0"
+        "stylelint": "^13.6.1",
+        "stylelint-config-standard": "^20.0.0",
+        "stylelint-order": "^4.1.0",
+        "typescript": "^3.9.7"
     },
     "husky": {
         "hooks": {
@@ -49,19 +55,12 @@
         }
     },
     "lint-staged": {
-        "linters": {
-            "*.{ts,js,json,tsx}": [
-                "prettier --write",
-                "git add"
-            ],
-            "*.scss": [
-                "prettier-stylelint --write",
-                "git add"
-            ]
-        },
-        "ignore": [
-            "**/dist/**/*.js",
-            "**/old"
+        "*.{ts,js,json,tsx}": [
+            "prettier --write",
+            "git add"
+        ],
+        "*.scss": [
+            "stylelint --fix"
         ]
     }
 }

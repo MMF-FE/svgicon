@@ -1,0 +1,30 @@
+{
+    "folders": [],
+    "extensions": {
+        "recommendations": [
+            "esbenp.prettier-vscode",
+            "stylelint.vscode-stylelint",
+            "eamodio.gitlens",
+            "octref.vetur"
+        ]
+    },
+    "settings": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.stylelint": true
+        },
+        "[scss]": {
+            // 不用自带的格式化
+            "editor.formatOnSave": false
+        },
+        "vetur.format.defaultFormatter.html": "prettier",
+        "vetur.format.defaultFormatter.scss": "none",
+        "files.exclude": {
+            "**/.git": true,
+            "**/.svn": true,
+            "**/.hg": true,
+            "**/CVS": true,
+            "**/.DS_Store": true
+        }
+    }
+}
