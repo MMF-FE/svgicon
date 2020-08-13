@@ -21,6 +21,7 @@ module.exports = {
     ],
     rules: {
         '@typescript-eslint/explicit-member-accessibility': 'off',
+        '@typescript-eslint/no-var-requires': 'off',
     },
     overrides: [
         {
@@ -46,6 +47,7 @@ module.exports = {
                         format: ['PascalCase'],
                     },
                 ],
+                '@typescript-eslint/no-var-requires': ['error'],
             },
         },
     ],

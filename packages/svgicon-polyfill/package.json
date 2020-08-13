@@ -1,0 +1,32 @@
+{
+    "name": "@yzfe/svgicon-polyfill",
+    "version": "0.0.0",
+    "description": "SVGElement innerHTML polyfill",
+    "keywords": [
+        "SVG",
+        "innerHTML",
+        "Polyfill"
+    ],
+    "author": "Allenice Mo <994298628@qq.com>",
+    "homepage": "https://github.com/MMF-FE/vue-svgicon/tree/master/packages/svgicon-polyfill#readme",
+    "license": "MIT",
+    "main": "index.js",
+    "directories": {
+        "lib": "lib"
+    },
+    "files": [
+        "lib",
+        "index.js"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MMF-FE/vue-svgicon.git"
+    },
+    "bugs": {
+        "url": "https://github.com/MMF-FE/vue-svgicon/issues"
+    },
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org",
+        "access": "public"
+    }
+}

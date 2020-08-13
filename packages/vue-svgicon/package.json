@@ -1,0 +1,45 @@
+{
+    "name": "@yzfe/vue-svgicon",
+    "version": "4.0.0-alpha.0",
+    "description": "SVG icon component for vue",
+    "scripts": {
+        "dev": "vue-cli-service build --watch --target lib --name svgicon src/index.ts",
+        "build": "vue-cli-service build --target lib --name svgicon src/index.ts",
+        "test": "vue-cli-service test:unit"
+    },
+    "keywords": [
+        "vue",
+        "svg",
+        "icon",
+        "svgicon"
+    ],
+    "author": "Allenice Mo <994298628@qq.com>",
+    "homepage": "https://github.com/MMF-FE/vue-svgicon/tree/master/packages/vue-svgicon#readme",
+    "license": "MIT",
+    "main": "dist/svgicon.common.js",
+    "typings": "typings/index.d.ts",
+    "directories": {
+        "lib": "lib",
+        "dist": "dist"
+    },
+    "files": [
+        "dist",
+        "typings",
+        "postcss.config.js"
+    ],
+    "dependencies": {},
+    "devDependencies": {
+        "@types/chai": "^4.2.11",
+        "@types/mocha": "^5.2.4",
+        "@vue/cli-plugin-typescript": "~4.5.0",
+        "@vue/cli-plugin-unit-mocha": "~4.5.0",
+        "@vue/cli-service": "~4.5.0",
+        "@vue/test-utils": "^1.0.3",
+        "chai": "^4.1.2",
+        "sass": "^1.26.5",
+        "sass-loader": "^8.0.2",
+        "typescript": "~3.9.3",
+        "vue": "^2.6.11",
+        "vue-template-compiler": "^2.6.11"
+    }
+}
