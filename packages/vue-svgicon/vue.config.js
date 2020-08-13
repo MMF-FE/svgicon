@@ -18,16 +18,13 @@ function chainLibWebpack(config) {
 }
 
 function chainTestWebpack(config) {
-    const svgFilePath = path.join(
-        __dirname,
-        '../../examples/doc-demo/src/assets/svg'
-    )
+    const svgFilePath = path.join(__dirname, './tests/svg')
 
     config.module
         .rule('vue-svgicon')
         .test(/\.svg$/)
         .use('svgicon')
-        .loader('@yzfe/vue-svgicon-loader')
+        .loader('@yzfe/svgicon-loader')
         .options({
             idSeparator: '_',
             svgFilePath,

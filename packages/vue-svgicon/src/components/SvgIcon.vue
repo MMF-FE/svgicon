@@ -2,7 +2,7 @@
     <svg
         v-html="path"
         version="1.1"
-        class="clazz"
+        :class="clazz"
         :view-box="box"
         :style="style"
         @click="onClick"
