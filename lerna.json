@@ -2,11 +2,11 @@
     "version": "independent",
     "npmClient": "yarn",
     "useWorkspaces": true,
-    "packages": ["packages/*", "examples/*"],
+    "packages": ["packages/*", "docs/*"],
     "command": {
         "publish": {
             "ignoreChanges": [
-                "**/examples/**",
+                "**/docs/**",
                 "**/*.md",
                 "**/tests/*",
                 "**/*.map"

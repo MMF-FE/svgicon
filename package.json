@@ -3,7 +3,7 @@
     "name": "vue-svgicon",
     "workspaces": [
         "packages/*",
-        "examples/*"
+        "docs/*"
     ],
     "description": "A tool to create svg icon components. (vue 2.x)",
     "scripts": {
