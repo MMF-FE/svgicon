@@ -1,5 +1,13 @@
 {
-    "folders": [],
+    "folders": [
+        {
+            "path": "."
+        },
+        {
+            "name": "packages",
+            "path": "packages"
+        }
+    ],
     "extensions": {
         "recommendations": [
             "esbenp.prettier-vscode",

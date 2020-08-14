@@ -1,7 +1,7 @@
-"use strict";
 // svgo config
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = {
+import SVGO from 'svgo'
+
+export default {
     plugins: [
         {
             removeAttrs: {},
@@ -39,4 +39,4 @@ exports.default = {
             convertShapeToPath: true,
         },
     ],
-};
+} as SVGO.Options

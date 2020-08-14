@@ -1,11 +1,15 @@
 {
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
+    "eslint.enable": true,
+    "eslint.format.enable": true,
     "editor.codeActionsOnSave": {
-        "source.fixAll.stylelint": true
+        "source.fixAll": true
     },
-    "[scss]": {
-        // 不用自带的格式化
-        "editor.formatOnSave": false
+    "[vue]": {
+        "editor.formatOnSave": true
+    },
+    "[html]": {
+        "editor.formatOnSave": true
     },
     "vetur.format.defaultFormatter.html": "prettier",
     "vetur.format.defaultFormatter.scss": "none",

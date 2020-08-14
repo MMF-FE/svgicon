@@ -1,6 +1,6 @@
-// svgo config
-
-export default {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = {
     plugins: [
         {
             removeAttrs: {},
@@ -38,4 +38,4 @@ export default {
             convertShapeToPath: true,
         },
     ],
-}
+};

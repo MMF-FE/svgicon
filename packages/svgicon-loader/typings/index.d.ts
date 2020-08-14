@@ -1,15 +1,7 @@
+import SVGO from 'svgo'
+
 export interface LoaderOptions {
-    idSeparator: string
-    svgFilePath: string
+    idSeparator?: string
+    svgFilePath?: string
+    svgoConfig?: unknown
 }
-
-export interface OptimizedSvg {
-    data: string
-    info: {
-        width: string
-        height: string
-        [key: string]: null | undefined | string | number
-    }
-}
-
-export default function (source: string): void
