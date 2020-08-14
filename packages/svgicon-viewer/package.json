@@ -1,9 +1,9 @@
 {
-    "name": "@yzfe/vgicon-viewer",
+    "name": "@yzfe/svgicon-viewer",
     "version": "0.0.0",
     "description": "Preview SVG Icon",
     "bin": {
-        "vsvg-viewer": "bin/index.js"
+        "svgicon-viewer": "bin/index.js"
     },
     "keywords": [
         "vue",
@@ -14,10 +14,10 @@
     "author": "Allenice Mo <994298628@qq.com>",
     "homepage": "https://github.com/MMF-FE/vue-svgicon/tree/master/packages/vue-svgicon-viewer#readme",
     "license": "ISC",
-    "main": "dist/index.js",
+    "main": "bin/index.js",
     "files": [
         "bin",
-        "web"
+        "assets"
     ],
     "repository": {
         "type": "git",
@@ -27,6 +27,11 @@
         "url": "https://github.com/MMF-FE/vue-svgicon/issues"
     },
     "dependencies": {
+        "@yzfe/svgicon-gen": "^0.0.0",
+        "fastify": "^3.2.0",
+        "fastify-static": "^3.2.0",
+        "glob": "^7.1.6",
+        "portfinder": "^1.0.28",
         "yargs": "^13.2.1"
     },
     "publishConfig": {

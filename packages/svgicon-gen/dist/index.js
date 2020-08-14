@@ -90,10 +90,10 @@ function gen(source, filename, svgRootPath, svgoConfig, idSeparator) {
                     // escape single quotes
                     data = data.replace(/'/g, "\\'");
                     icon = {
-                        name: name,
+                        name: "" + filePath + name,
                         data: {
-                            width: Number(result.info.width),
-                            height: Number(result.info.height),
+                            width: result.info.width,
+                            height: result.info.height,
                             viewBox: viewBox,
                             data: data,
                         },

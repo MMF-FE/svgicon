@@ -3,7 +3,7 @@
         v-html="path"
         version="1.1"
         :class="clazz"
-        :view-box="box"
+        :viewBox="box"
         :style="style"
         @click="onClick"
     />

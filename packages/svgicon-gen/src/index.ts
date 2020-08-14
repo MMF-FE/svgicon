@@ -65,10 +65,10 @@ export default async function gen(
     data = data.replace(/'/g, "\\'")
 
     const icon: Icon = {
-        name,
+        name: `${filePath}${name}`,
         data: {
-            width: Number(result.info.width),
-            height: Number(result.info.height),
+            width: result.info.width,
+            height: result.info.height,
             viewBox,
             data,
         },

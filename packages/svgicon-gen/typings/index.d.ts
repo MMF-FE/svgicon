@@ -9,11 +9,11 @@ export interface OptimizedSvg {
 }
 
 export interface IconData {
-    width: number
-    height: number
+    width?: number | string
+    height?: number | string
     viewBox: string
     data: string
-    [key: string]: string | number
+    [key: string]: unknown
 }
 
 export interface Icon {

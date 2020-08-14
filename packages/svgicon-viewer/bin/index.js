@@ -2,25 +2,21 @@
 
 const yargs = require('yargs')
 const path = require('path')
-const exec = require('child_process').execSync
-
-const execa = function (command) {
-    exec(command, {
-        stdio: 'inherit',
-        env: process.env,
-    })
-}
+const fs = require('fs')
+const gen = require('@yzfe/svgicon-gen').default
+const glob = require('glob')
+const serve = require('./serve')
 
 const args = yargs
     .usage(
-        '$0 <svgFilePath> [metaPath]',
+        '$0 <svgFilePath> [metaFile]',
         'Start vue-svgicon viewer',
         (yarg) => {
             yarg.positional('svgFilePath', {
                 describe: 'SVG source file folder.',
             })
 
-            yarg.positional('metaPath', {
+            yarg.positional('metaFile', {
                 describe: 'meta.json file, custom display name',
             })
         }
@@ -28,16 +24,48 @@ const args = yargs
     .help('help')
     .alias('h', 'help').argv
 
-process.env.SVGFILEPATH = path.isAbsolute(args.svgFilePath)
+const svgFilePath = path.isAbsolute(args.svgFilePath)
     ? args.svgFilePath
     : path.join(process.cwd(), args.svgFilePath)
 
-if (args.metaPath) {
-    process.env.METAPATH = path.isAbsolute(args.metaPath)
-        ? args.metaPath
-        : path.join(process.cwd(), args.metaPath)
+let metaFile = ''
+if (args.metaFile) {
+    metaFile = path.isAbsolute(args.metaFile)
+        ? args.metaFile
+        : path.join(process.cwd(), args.metaFile)
+} else {
+    // 默认取 svg 目录的 meta.json
+    metaFile = path.join(svgFilePath, 'meta.json')
 }
 
-process.chdir(path.join(__dirname, '../web'))
-execa('yarn')
-execa(`yarn serve`)
+;(async function () {
+    let files = glob.sync(path.join(svgFilePath, '**/*.svg'))
+    let icons = []
+    let meta = {}
+    for (let i = 0; i < files.length; i++) {
+        let filename = files[i]
+        let content = fs.readFileSync(filename, 'utf8')
+        let icon = await gen(content, filename, svgFilePath)
+        icons.push(icon)
+    }
+
+    if (metaFile && fs.existsSync(metaFile)) {
+        try {
+            meta = require(metaFile)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const injectCode = `
+        window.icons = ${JSON.stringify(icons || [])}
+        window.iconMetas = ${JSON.stringify(meta || {})}
+    `
+    const injectReg = /\/\*\{\{inject\}\}\*\//
+    let html = fs.readFileSync(
+        path.join(__dirname, '../assets/index.html'),
+        'utf8'
+    )
+    html = html.replace(injectReg, injectCode)
+    serve(html)
+})()
