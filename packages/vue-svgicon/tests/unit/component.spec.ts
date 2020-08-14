@@ -14,7 +14,7 @@ const vueIcon = wrapper.findComponent({ ref: 'vue' })
 
 describe('@yzfe/vue-svgicon-loader', () => {
     it('should load svg to be icon data', () => {
-        const icon = vueIcon.props().data
+        const icon = vueIcon.vm.$data.svgicon.icon
         expect(icon.name).eq('vue')
         assert.ok(!!icon.data)
     })
@@ -107,13 +107,13 @@ describe('Test prop: color', () => {
 
 describe('Test props: fill', () => {
     it('should has fill style by default.', async () => {
-        assert.ok(arrowIcon.props().fill)
+        assert.ok(arrowIcon.vm.$data.svgicon.props.fill)
         expect(arrowIcon.classes()).contains('svg-fill')
 
         await arrowIcon.setProps({
             fill: false,
         })
-        assert.ok(!arrowIcon.props().fill)
+        assert.ok(!arrowIcon.vm.$data.svgicon.props.fill)
         expect(arrowIcon.classes()).not.contains('svg-fill')
     })
 
@@ -128,7 +128,7 @@ describe('Test props: fill', () => {
 
         const localArrowIcon = localWrapper.findComponent({ ref: 'arrow' })
 
-        assert.notOk(localArrowIcon.props().fill)
+        assert.notOk(localArrowIcon.vm.$data.svgicon.props.fill)
         expect(localArrowIcon.classes()).not.contains('svg-fill')
     })
 })

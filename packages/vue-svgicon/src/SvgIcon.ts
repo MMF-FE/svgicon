@@ -2,6 +2,21 @@ import { Icon, IconData, PluginOptions } from '../typings'
 
 type Options = PluginOptions
 
+interface Props {
+    /** icon data */
+    data?: Icon
+    width: string
+    height: string
+    scale?: string
+    /** icon direction */
+    dir?: string
+    color?: string
+    title?: string
+    fill?: boolean
+    /** is use original color */
+    original?: boolean
+}
+
 export default class SvgIcon {
     public static options: Options = {
         defaultWidth: '',
@@ -11,41 +26,53 @@ export default class SvgIcon {
         isOriginalDefault: false,
     }
 
-    public data: Icon | null = null
-    public width = ''
-    public height = ''
-    public scale = ''
-    public dir = ''
-    public color = ''
-    public title = ''
-    public fill = !SvgIcon.options.isStroke
-    public original = !!SvgIcon.options.isOriginalDefault
-
-    public get clazz(): string {
-        let clazz = `${SvgIcon.options.classPrefix}-icon`
-
-        if (this.fill) {
-            clazz += ` ${SvgIcon.options.classPrefix}-fill`
-        }
-
-        if (this.dir) {
-            clazz += ` ${SvgIcon.options.classPrefix}-${this.dir}`
-        }
-
-        return clazz
+    constructor(props: Partial<Props>) {
+        this._props = props
     }
 
-    protected get iconData(): IconData | null {
-        const resource = this.data
+    private _props!: Partial<Props>
+
+    public get props(): Props {
+        return {
+            ...{
+                width: '',
+                height: '',
+                fill: !SvgIcon.options.isStroke,
+                original: !!SvgIcon.options.isOriginalDefault,
+            },
+            ...this._props,
+        }
+    }
+
+    public get colors(): string[] {
+        if (this.props.color) {
+            return this.props.color.split(' ')
+        }
+        return []
+    }
+
+    public get icon(): Icon | undefined {
+        return this.props.data
+    }
+
+    public get iconData(): IconData | null {
+        const resource = this.props.data
         const iconData = resource ? resource.data : null
         return iconData
     }
 
-    protected get colors(): string[] {
-        if (this.color) {
-            return this.color.split(' ')
+    public get clazz(): string {
+        let clazz = `${SvgIcon.options.classPrefix}-icon`
+
+        if (this.props.fill) {
+            clazz += ` ${SvgIcon.options.classPrefix}-fill`
         }
-        return []
+
+        if (this.props.dir) {
+            clazz += ` ${SvgIcon.options.classPrefix}-${this.props.dir}`
+        }
+
+        return clazz
     }
 
     public get path(): string {
@@ -56,7 +83,7 @@ export default class SvgIcon {
             pathData = this.setTitle(pathData)
 
             // use original color
-            if (this.original) {
+            if (this.props.original) {
                 pathData = this.addOriginalColor(pathData)
             }
 
@@ -69,8 +96,8 @@ export default class SvgIcon {
     }
 
     public get box(): string {
-        const width = parseFloat(this.width) || 16
-        const height = parseFloat(this.width) || 16
+        const width = parseFloat(this.props.width) || 16
+        const height = parseFloat(this.props.width) || 16
 
         if (this.iconData) {
             if (this.iconData.viewBox) {
@@ -84,7 +111,7 @@ export default class SvgIcon {
 
     public get style(): CSSStyleDeclaration {
         const digitReg = /^\d+$/
-        const scale = Number(this.scale)
+        const scale = Number(this.props.scale)
         let width
         let height
 
@@ -93,12 +120,12 @@ export default class SvgIcon {
             width = Number(this.iconData.width) * scale + 'px'
             height = Number(this.iconData.height) * scale + 'px'
         } else {
-            width = digitReg.test(this.width)
-                ? this.width + 'px'
-                : this.width || SvgIcon.options.defaultWidth
-            height = digitReg.test(this.height)
-                ? this.height + 'px'
-                : this.height || SvgIcon.options.defaultHeight
+            width = digitReg.test(this.props.width)
+                ? this.props.width + 'px'
+                : this.props.width || SvgIcon.options.defaultWidth
+            height = digitReg.test(this.props.height)
+                ? this.props.height + 'px'
+                : this.props.height || SvgIcon.options.defaultHeight
         }
 
         const style = {} as CSSStyleDeclaration
@@ -118,7 +145,7 @@ export default class SvgIcon {
         let i = 0
         return data.replace(reg, (match) => {
             let color = this.colors[i++] || this.colors[this.colors.length - 1]
-            let fill: boolean = this.fill
+            let fill = this.props.fill
 
             // if color is '_', ignore it
             if (color && color === '_') {
@@ -146,7 +173,7 @@ export default class SvgIcon {
 
     protected getValidPathData(pathData: string): string {
         // If use original and colors, clear double fill or stroke
-        if (this.original && this.colors.length > 0) {
+        if (this.props.original && this.colors.length > 0) {
             const reg = /<(path|rect|circle|polygon|line|polyline|ellipse)(\sfill|\sstroke)([="\w\s.\-+#$&>]+)(fill|stroke)/gi
             pathData = pathData.replace(reg, (match, p1, p2, p3, p4) => {
                 return `<${p1}${p2}${p3}_${p4}`
@@ -157,9 +184,9 @@ export default class SvgIcon {
     }
 
     protected setTitle(pathData: string): string {
-        if (this.title) {
-            const title = this.title
-                .replace(/\</gi, '&lt;')
+        if (this.props.title) {
+            const title = this.props.title
+                .replace(/</gi, '&lt;')
                 .replace(/>/gi, '&gt;')
                 .replace(/&/g, '&amp;')
             return `<title>${title}</title>` + pathData
