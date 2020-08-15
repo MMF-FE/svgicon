@@ -228,19 +228,20 @@ class SvgIcon {
     }
     get style() {
         const digitReg = /^\d+$/;
-        const scale = Number(this.props.scale);
+        const scale = this.props.scale;
+        const isScale = scale !== '' && scale !== undefined && scale !== null;
         let width;
         let height;
         // apply scale
-        if (!isNaN(scale) && this.iconData) {
-            width = Number(this.iconData.width) * scale + 'px';
-            height = Number(this.iconData.height) * scale + 'px';
+        if (isScale && this.iconData) {
+            width = Number(this.iconData.width) * Number(scale) + 'px';
+            height = Number(this.iconData.height) * Number(scale) + 'px';
         }
         else {
-            width = digitReg.test(this.props.width || '')
+            width = digitReg.test(String(this.props.width || ''))
                 ? this.props.width + 'px'
                 : this.props.width || SvgIcon.options.defaultWidth;
-            height = digitReg.test(this.props.height || '')
+            height = digitReg.test(String(this.props.height || ''))
                 ? this.props.height + 'px'
                 : this.props.height || SvgIcon.options.defaultHeight;
         }

@@ -1,0 +1,34 @@
+#app {
+    margin-top: 60px;
+    color: #2C3E50;
+    text-align: center;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.content {
+    display: flex;
+    width: 650px;
+    margin: 0 auto;
+}
+
+.icon {
+    display: flex;
+    height: 300px;
+    border-radius: 3px;
+    background-color: #EFEFEF;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    flex: 1;
+    display: grid;
+    grid-auto-rows: 28px;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-left: 10px;
+    justify-content: flex-start;
+}

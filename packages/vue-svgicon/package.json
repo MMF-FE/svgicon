@@ -5,8 +5,8 @@
     "scripts": {
         "dev": "vue-cli-service build --watch --mode production --target lib --name svgicon src/index.ts",
         "build": "vue-cli-service build --target lib --name svgicon src/index.ts",
-        "prepublishOnly": "yarn build",
-        "test": "vue-cli-service test:unit"
+        "test": "vue-cli-service test:unit",
+        "prepublishOnly": "yarn build && yarn test"
     },
     "keywords": [
         "vue",

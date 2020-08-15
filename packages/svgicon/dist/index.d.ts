@@ -22,7 +22,7 @@ export interface Props {
     data?: Icon;
     width: string;
     height: string;
-    scale?: string;
+    scale?: string | number;
     /** icon direction */
     dir?: string;
     color?: string;
