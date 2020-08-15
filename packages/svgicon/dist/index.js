@@ -1,7 +1,7 @@
 export default class SvgIcon {
     constructor(props) {
         this._props = {};
-        this._props = props;
+        this.props = props;
     }
     get props() {
         return {
@@ -15,7 +15,9 @@ export default class SvgIcon {
         };
     }
     set props(props) {
-        this._props = props;
+        if (this._props !== props) {
+            this._props = props;
+        }
     }
     get colors() {
         if (this.props.color) {

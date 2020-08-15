@@ -46,7 +46,7 @@ export default class SvgIcon {
     }
 
     constructor(props: Partial<Props>) {
-        this._props = props
+        this.props = props
     }
 
     private _props: Partial<Props> = {}
@@ -64,7 +64,9 @@ export default class SvgIcon {
     }
 
     public set props(props: Partial<Props>) {
-        this._props = props
+        if (this._props !== props) {
+            this._props = props
+        }
     }
 
     public get colors(): string[] {

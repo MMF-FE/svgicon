@@ -149,7 +149,7 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
 class SvgIcon {
     constructor(props) {
         this._props = {};
-        this._props = props;
+        this.props = props;
     }
     get props() {
         return {
@@ -163,7 +163,9 @@ class SvgIcon {
         };
     }
     set props(props) {
-        this._props = props;
+        if (this._props !== props) {
+            this._props = props;
+        }
     }
     get colors() {
         if (this.props.color) {
