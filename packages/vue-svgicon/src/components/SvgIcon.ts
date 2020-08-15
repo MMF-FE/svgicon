@@ -5,50 +5,20 @@ export default Vue.extend({
     inheritAttrs: false,
     data() {
         return {
-            svgicon: null as SvgIcon | null,
+            svgicon: new SvgIcon({}),
         }
-    },
-
-    computed: {
-        path: function () {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            return this.svgicon ? this.svgicon.path : ''
-        },
-
-        clazz: function () {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            return this.svgicon ? this.svgicon.clazz : ''
-        },
-
-        box: function () {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            return this.svgicon ? this.svgicon.box : ''
-        },
-
-        style: function () {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            return this.svgicon ? this.svgicon.style : ''
-        },
     },
 
     watch: {
         $attrs: function () {
             if (this.svgicon) {
-                this.svgicon.props = {
-                    ...this.$attrs,
-                }
+                this.svgicon.props = this.$attrs
             }
         },
     },
 
     created() {
-        this.svgicon = new SvgIcon({
-            ...this.$attrs,
-        })
+        this.svgicon = new SvgIcon(this.$attrs)
     },
 
     methods: {

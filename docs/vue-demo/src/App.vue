@@ -2,31 +2,64 @@
     <div id="app">
         <img alt="Vue logo" src="./assets/logo.png" />
         <button @click="toggleDir">toggleDir</button>
-        <icon data="@icon/vue.svg" :dir="dir" :width="width"></icon>
-        <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+        <icon
+            data="@icon/vue.svg"
+            v-if="dir === 'right'"
+            :dir="dir"
+            :width="width"
+        ></icon>
+        <icon
+            data="@icon/vue.svg"
+            v-if="dir === 'left'"
+            :dir="dir"
+            :width="width"
+            original
+        ></icon>
+        <icon
+            data="@icon/vue.svg"
+            :dir="dir"
+            :width="width"
+            :fill="false"
+        ></icon>
     </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
-import HelloWorld from './components/HelloWorld.vue'
+import Vue from 'vue'
 
-@Component({
-    components: {
-        HelloWorld,
+export default Vue.extend({
+    data: function () {
+        return {
+            dir: 'left',
+            width: 100,
+        }
+    },
+    methods: {
+        toggleDir: function () {
+            this.dir = this.dir === 'left' ? 'right' : 'left'
+            this.width = this.width === 100 ? 200 : 100
+        },
     },
 })
-export default class App extends Vue {
-    protected dir = 'left'
-    protected width = 100
+// import { Component, Vue } from 'vue-property-decorator'
+// import HelloWorld from './components/HelloWorld.vue'
 
-    protected toggleDir() {
-        this.dir = this.dir === 'left' ? 'right' : 'left'
-        this.width = this.width === 100 ? 200 : 100
-    }
+// @Component({
+//     components: {
+//         HelloWorld,
+//     },
+// })
+// export default class App extends Vue {
+//     protected dir = 'left'
+//     protected width = 100
 
-    created() {}
-}
+//     protected toggleDir() {
+//         this.dir = this.dir === 'left' ? 'right' : 'left'
+//         this.width = this.width === 100 ? 200 : 100
+//     }
+
+//     created() {}
+// }
 </script>
 
 <style lang="scss">
