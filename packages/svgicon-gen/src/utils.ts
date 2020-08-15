@@ -58,12 +58,12 @@ export default {
         name: string,
         idSep = '_'
     ): string {
-        const idReg = /svgicon(\w+)/g
+        const idReg = /svgiconid(\w+)/g
         content = content.replace(idReg, function (
             match: string,
             elId: string
         ) {
-            return `svgicon${idSep}${filePath.replace(
+            return `svgiconid${idSep}${filePath.replace(
                 /[\\/]/g,
                 idSep
             )}${name}${idSep}${elId}`

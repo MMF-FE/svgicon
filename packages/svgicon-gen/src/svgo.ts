@@ -32,7 +32,7 @@ export default {
         {
             cleanupIDs: {
                 remove: true,
-                prefix: 'svgicon',
+                prefix: 'svgiconid',
             },
         },
         {

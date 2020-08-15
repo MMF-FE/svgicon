@@ -1,3 +1,5 @@
+import utils from './utils'
+
 export interface Options {
     tagName?: string
     classPrefix?: string
@@ -47,11 +49,22 @@ export default class SvgIcon {
 
     constructor(props: Partial<Props>) {
         this.props = props
+        this.uid = utils.genUID()
     }
 
     private _props: Partial<Props> = {}
+    protected currentProps: Partial<Props> = {}
+
+    private uid = ''
+    // Is should update props getter value
+    private shouldUpdate = true
 
     public get props(): Partial<Props> {
+        if (!this.shouldUpdate) {
+            return this.currentProps
+        }
+
+        console.log('props getters')
         const props = {
             ...this._props,
         }
@@ -64,7 +77,7 @@ export default class SvgIcon {
             props.fill = true
         }
 
-        return {
+        this.currentProps = {
             ...{
                 width: '',
                 height: '',
@@ -73,12 +86,15 @@ export default class SvgIcon {
             },
             ...props,
         }
+        this.shouldUpdate = false
+        return this.currentProps
     }
 
     public set props(props: Partial<Props>) {
         if (this._props !== props) {
             this._props = props
         }
+        this.shouldUpdate = true
     }
 
     public get colors(): string[] {
@@ -127,6 +143,12 @@ export default class SvgIcon {
             if (this.colors.length > 0) {
                 pathData = this.addColor(pathData)
             }
+
+            // fix #99, inline svg use random id
+            const idReg = /svgiconid([\w-/\\]+)/g
+            pathData = pathData.replace(idReg, (match, elId) => {
+                return `svgiconid${elId}_${this.uid}`
+            })
         }
 
         return this.getValidPathData(pathData)

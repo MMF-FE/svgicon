@@ -145,13 +145,43 @@ var staticRenderFns = []
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
 
+// CONCATENATED MODULE: /Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/@yzfe/svgicon/dist/utils.js
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //不含最大值，含最小值
+}
+let idSeed = 0;
+const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+/* harmony default export */ var utils = ({
+    genUID: () => {
+        idSeed++;
+        return (idSeed +
+            '_' +
+            Array(5)
+                .fill('')
+                .map(() => chars[getRandomInt(0, chars.length)])
+                .join(''));
+    },
+});
+//# sourceMappingURL=utils.js.map
 // CONCATENATED MODULE: /Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/@yzfe/svgicon/dist/index.js
-class SvgIcon {
+
+class dist_SvgIcon {
     constructor(props) {
         this._props = {};
+        this.currentProps = {};
+        this.uid = '';
+        // Is should update props getter value
+        this.shouldUpdate = true;
         this.props = props;
+        this.uid = utils.genUID();
     }
     get props() {
+        if (!this.shouldUpdate) {
+            return this.currentProps;
+        }
+        console.log('props getters');
         const props = {
             ...this._props,
         };
@@ -161,20 +191,23 @@ class SvgIcon {
         if (typeof props.fill !== 'boolean' && 'fill' in props) {
             props.fill = true;
         }
-        return {
+        this.currentProps = {
             ...{
                 width: '',
                 height: '',
-                fill: !SvgIcon.options.isStroke,
-                original: !!SvgIcon.options.isOriginalDefault,
+                fill: !dist_SvgIcon.options.isStroke,
+                original: !!dist_SvgIcon.options.isOriginalDefault,
             },
             ...props,
         };
+        this.shouldUpdate = false;
+        return this.currentProps;
     }
     set props(props) {
         if (this._props !== props) {
             this._props = props;
         }
+        this.shouldUpdate = true;
     }
     get colors() {
         if (this.props.color) {
@@ -191,12 +224,12 @@ class SvgIcon {
         return iconData;
     }
     get clazz() {
-        let clazz = `${SvgIcon.options.classPrefix}-icon`;
+        let clazz = `${dist_SvgIcon.options.classPrefix}-icon`;
         if (this.props.fill) {
-            clazz += ` ${SvgIcon.options.classPrefix}-fill`;
+            clazz += ` ${dist_SvgIcon.options.classPrefix}-fill`;
         }
         if (this.props.dir) {
-            clazz += ` ${SvgIcon.options.classPrefix}-${this.props.dir}`;
+            clazz += ` ${dist_SvgIcon.options.classPrefix}-${this.props.dir}`;
         }
         return clazz;
     }
@@ -212,6 +245,11 @@ class SvgIcon {
             if (this.colors.length > 0) {
                 pathData = this.addColor(pathData);
             }
+            // fix #99, inline svg use random id
+            const idReg = /svgiconid([\w-/\\]+)/g;
+            pathData = pathData.replace(idReg, (match, elId) => {
+                return `svgiconid${elId}_${this.uid}`;
+            });
         }
         return this.getValidPathData(pathData);
     }
@@ -240,10 +278,10 @@ class SvgIcon {
         else {
             width = digitReg.test(String(this.props.width || ''))
                 ? this.props.width + 'px'
-                : this.props.width || SvgIcon.options.defaultWidth;
+                : this.props.width || dist_SvgIcon.options.defaultWidth;
             height = digitReg.test(String(this.props.height || ''))
                 ? this.props.height + 'px'
-                : this.props.height || SvgIcon.options.defaultHeight;
+                : this.props.height || dist_SvgIcon.options.defaultHeight;
         }
         const style = {};
         if (width) {
@@ -301,7 +339,7 @@ class SvgIcon {
         return pathData;
     }
 }
-SvgIcon.options = {
+dist_SvgIcon.options = {
     defaultWidth: '',
     defaultHeight: '',
     classPrefix: 'svg',
@@ -330,7 +368,7 @@ SvgIcon.options = {
         },
     },
     created: function () {
-        this.svgicon = new SvgIcon(this.$attrs);
+        this.svgicon = new dist_SvgIcon(this.$attrs);
     },
     methods: {
         onClick: function (e) {
@@ -690,7 +728,7 @@ function __classPrivateFieldSet(receiver, privateMap, value) {
 
 function setOptions(opts) {
     // Object.assign(options, opts)
-    SvgIcon.options = __assign(__assign({}, SvgIcon.options), opts);
+    dist_SvgIcon.options = __assign(__assign({}, dist_SvgIcon.options), opts);
 }
 
 // CONCATENATED MODULE: ./src/index.ts

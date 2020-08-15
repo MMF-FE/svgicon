@@ -35,6 +35,9 @@ export default class SvgIcon {
     static options: Options;
     constructor(props: Partial<Props>);
     private _props;
+    protected currentProps: Partial<Props>;
+    private uid;
+    private shouldUpdate;
     get props(): Partial<Props>;
     set props(props: Partial<Props>);
     get colors(): string[];

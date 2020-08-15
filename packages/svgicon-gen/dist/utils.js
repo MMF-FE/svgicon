@@ -44,9 +44,9 @@ exports.default = {
     // replace element id, make sure ID is unique. fix #16
     changeId: function (content, filePath, name, idSep) {
         if (idSep === void 0) { idSep = '_'; }
-        var idReg = /svgicon(\w+)/g;
+        var idReg = /svgiconid(\w+)/g;
         content = content.replace(idReg, function (match, elId) {
-            return "svgicon" + idSep + filePath.replace(/[\\/]/g, idSep) + name + idSep + elId;
+            return "svgiconid" + idSep + filePath.replace(/[\\/]/g, idSep) + name + idSep + elId;
         });
         return content;
     },
