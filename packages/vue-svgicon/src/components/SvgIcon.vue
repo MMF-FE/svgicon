@@ -11,8 +11,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { PluginOptions, Icon, IconData } from '../../typings'
-import SvgIcon from '../SvgIcon'
+import SvgIcon from '@yzfe/svgicon'
 
 export default Vue.extend({
     inheritAttrs: false,

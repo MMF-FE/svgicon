@@ -9,7 +9,7 @@
         "noLib": false,
         "sourceMap": false,
         "declaration": true,
-        "lib": ["esnext"],
+        "lib": ["esnext", "dom"],
         "outDir": "dist",
         "types": ["node"]
     },

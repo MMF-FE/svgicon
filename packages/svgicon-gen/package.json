@@ -4,13 +4,13 @@
     "description": "A generator to create svgicon object",
     "scripts": {
         "dev": "tsc -w",
-        "build": "rm -rf dist && tsc"
+        "build": "rm -rf dist && tsc",
+        "prepublishOnly": "yarn build"
     },
     "author": "Allenice Mo <994298628@qq.com>",
     "homepage": "https://github.com/MMF-FE/vue-svgicon/tree/master/#readme",
     "license": "MIT",
     "main": "dist/index.js",
-    "typings": "dist/index.d.ts",
     "directories": {
         "lib": "lib",
         "dist": "dist",
@@ -34,7 +34,8 @@
     },
     "dependencies": {
         "lodash": "^4.17.20",
-        "svgo": "^1.3.2"
+        "svgo": "^1.3.2",
+        "@yzfe/svgicon": "0.0.0"
     },
     "publishConfig": {
         "registry": "https://registry.npmjs.org",

@@ -1,27 +1,10 @@
 import { PluginFunction } from 'vue'
 
-export interface PluginOptions {
-    tagName?: string
-    classPrefix?: string
-    // Is stroke default
-    isStroke?: boolean
-    isOriginalDefault?: boolean
-    defaultWidth?: string
-    defaultHeight?: string
-}
+import { Options } from '@yzfe/svgicon'
 
-export interface IconData {
-    width?: number | string
-    height?: number | string
-    viewBox: string
-    data: string
-    [key: string]: unknown
-}
+export { Icon, IconData } from '@yzfe/svgicon'
 
-export interface Icon {
-    name: string
-    data: IconData
-}
+export type PluginOptions = Options
 
 declare const VueSvgIconPlugin: {
     install: PluginFunction<PluginOptions>

@@ -5,6 +5,7 @@
     "scripts": {
         "dev": "vue-cli-service build --watch --target lib --name svgicon src/index.ts",
         "build": "vue-cli-service build --target lib --name svgicon src/index.ts",
+        "prepublishOnly": "yarn build",
         "test": "vue-cli-service test:unit"
     },
     "keywords": [
@@ -27,7 +28,9 @@
         "typings",
         "postcss.config.js"
     ],
-    "dependencies": {},
+    "dependencies": {
+        "@yzfe/svgicon": "0.0.0"
+    },
     "devDependencies": {
         "@types/chai": "^4.2.11",
         "@types/mocha": "^5.2.4",

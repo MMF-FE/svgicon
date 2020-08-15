@@ -4,7 +4,8 @@
     "description": "Webpack loader to load svg icon",
     "scripts": {
         "dev": "tsc -w",
-        "build": "rm -rf dist && tsc"
+        "build": "rm -rf dist && tsc",
+        "prepublishOnly": "yarn build"
     },
     "keywords": [
         "vue",

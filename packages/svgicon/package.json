@@ -1,0 +1,19 @@
+{
+    "name": "@yzfe/svgicon",
+    "version": "0.0.0",
+    "description": "Svg icon",
+    "main": "dist/index.js",
+    "scripts": {
+        "dev": "tsc -w",
+        "build": "rm -rf dist && tsc",
+        "prepublishOnly": "yarn build"
+    },
+    "homepage": "https://github.com/MMF-FE/vue-svgicon/tree/master/packages/vue-svgicon#readme",
+    "files": [
+        "dist"
+    ],
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org",
+        "access": "public"
+    }
+}

@@ -1,6 +1,25 @@
-import { Icon, IconData, PluginOptions } from '../typings'
+export interface Options {
+    tagName?: string
+    classPrefix?: string
+    // Is stroke default
+    isStroke?: boolean
+    isOriginalDefault?: boolean
+    defaultWidth?: string
+    defaultHeight?: string
+}
 
-type Options = PluginOptions
+export interface IconData {
+    width?: number | string
+    height?: number | string
+    viewBox: string
+    data: string
+    [key: string]: unknown
+}
+
+export interface Icon {
+    name: string
+    data: IconData
+}
 
 interface Props {
     /** icon data */

@@ -1,4 +1,4 @@
-import { Icon } from '../typings'
+import { Icon } from '@yzfe/svgicon'
 import SVGO from 'svgo'
 import utils from './utils'
 import _ from 'lodash'

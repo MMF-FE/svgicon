@@ -1,4 +1,4 @@
-import { Icon } from '../typings';
+import { Icon } from '@yzfe/svgicon';
 import SVGO from 'svgo';
 /**
  * generate svgicon object
