@@ -13,14 +13,12 @@ const svgoCache: Record<string, SVGO> = {}
  * @param filename svg icon file absolute path
  * @param svgRootPath svg icon root path, to calc relative path
  * @param svgoConfig svgo config
- * @param idSeparator id attr separator
  */
 export default async function gen(
     source: string,
     filename: string,
     svgRootPath?: string,
-    svgoConfig?: SVGO.Options,
-    idSeparator = '-'
+    svgoConfig?: SVGO.Options
 ): Promise<Icon> {
     svgRootPath = svgRootPath || process.cwd()
     if (!path.isAbsolute(svgRootPath)) {
@@ -59,7 +57,7 @@ export default async function gen(
     data = utils.renameStyle(data)
 
     // replace element id, make sure ID is unique. fix #16
-    data = utils.changeId(data, filePath, name, idSeparator)
+    data = utils.changeId(data, filePath, name)
 
     // escape single quotes
     data = data.replace(/'/g, "\\'")

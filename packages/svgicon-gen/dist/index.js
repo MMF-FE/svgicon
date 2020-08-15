@@ -48,10 +48,8 @@ var svgoCache = {};
  * @param filename svg icon file absolute path
  * @param svgRootPath svg icon root path, to calc relative path
  * @param svgoConfig svgo config
- * @param idSeparator id attr separator
  */
-function gen(source, filename, svgRootPath, svgoConfig, idSeparator) {
-    if (idSeparator === void 0) { idSeparator = '-'; }
+function gen(source, filename, svgRootPath, svgoConfig) {
     return __awaiter(this, void 0, void 0, function () {
         var name, filePath, config, key, svgo, result, data, viewBox, icon;
         return __generator(this, function (_a) {
@@ -86,7 +84,7 @@ function gen(source, filename, svgRootPath, svgoConfig, idSeparator) {
                     // rename fill and stroke. (It can restroe in vue-svgicon)
                     data = utils_1.default.renameStyle(data);
                     // replace element id, make sure ID is unique. fix #16
-                    data = utils_1.default.changeId(data, filePath, name, idSeparator);
+                    data = utils_1.default.changeId(data, filePath, name);
                     // escape single quotes
                     data = data.replace(/'/g, "\\'");
                     icon = {

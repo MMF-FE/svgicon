@@ -53,18 +53,10 @@ export default class SvgIcon {
     }
 
     private _props: Partial<Props> = {}
-    protected currentProps: Partial<Props> = {}
 
     private uid = ''
-    // Is should update props getter value
-    private shouldUpdate = true
 
     public get props(): Partial<Props> {
-        if (!this.shouldUpdate) {
-            return this.currentProps
-        }
-
-        console.log('props getters')
         const props = {
             ...this._props,
         }
@@ -77,7 +69,7 @@ export default class SvgIcon {
             props.fill = true
         }
 
-        this.currentProps = {
+        return {
             ...{
                 width: '',
                 height: '',
@@ -86,15 +78,12 @@ export default class SvgIcon {
             },
             ...props,
         }
-        this.shouldUpdate = false
-        return this.currentProps
     }
 
     public set props(props: Partial<Props>) {
         if (this._props !== props) {
             this._props = props
         }
-        this.shouldUpdate = true
     }
 
     public get colors(): string[] {

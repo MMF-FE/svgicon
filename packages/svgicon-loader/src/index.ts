@@ -16,8 +16,7 @@ const SvgiconLoader: loader.Loader = function (source) {
             source as string,
             this.resourcePath,
             options.svgFilePath,
-            options.svgoConfig as SVGO.Options,
-            options.idSeparator
+            options.svgoConfig as SVGO.Options
         )
 
         if (callback) {

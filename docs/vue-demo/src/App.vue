@@ -40,12 +40,15 @@
             </div>
         </div>
 
-        <icon
-            v-show="props.dir === 'left'"
-            data="@icon/sora/fit/mask.svg"
-            original
-        ></icon>
-        <icon data="@icon/sora/fit/mask.svg" original></icon>
+        <div>
+            <p>Test Unique ID</p>
+            <icon
+                v-show="props.dir === 'left'"
+                data="@icon/sora/fit/mask.svg"
+                original
+            ></icon>
+            <icon data="@icon/sora/fit/mask.svg" original></icon>
+        </div>
     </div>
 </template>
 <script lang="ts" src="./App.ts"></script>

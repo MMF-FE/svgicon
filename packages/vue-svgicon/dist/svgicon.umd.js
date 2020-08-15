@@ -170,18 +170,11 @@ const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 class dist_SvgIcon {
     constructor(props) {
         this._props = {};
-        this.currentProps = {};
         this.uid = '';
-        // Is should update props getter value
-        this.shouldUpdate = true;
         this.props = props;
         this.uid = utils.genUID();
     }
     get props() {
-        if (!this.shouldUpdate) {
-            return this.currentProps;
-        }
-        console.log('props getters');
         const props = {
             ...this._props,
         };
@@ -191,7 +184,7 @@ class dist_SvgIcon {
         if (typeof props.fill !== 'boolean' && 'fill' in props) {
             props.fill = true;
         }
-        this.currentProps = {
+        return {
             ...{
                 width: '',
                 height: '',
@@ -200,14 +193,11 @@ class dist_SvgIcon {
             },
             ...props,
         };
-        this.shouldUpdate = false;
-        return this.currentProps;
     }
     set props(props) {
         if (this._props !== props) {
             this._props = props;
         }
-        this.shouldUpdate = true;
     }
     get colors() {
         if (this.props.color) {

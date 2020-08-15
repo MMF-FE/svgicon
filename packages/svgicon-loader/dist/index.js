@@ -47,7 +47,7 @@ var SvgiconLoader = function (source) {
         var icon;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, svgicon_gen_1.default(source, this.resourcePath, options.svgFilePath, options.svgoConfig, options.idSeparator)];
+                case 0: return [4 /*yield*/, svgicon_gen_1.default(source, this.resourcePath, options.svgFilePath, options.svgoConfig)];
                 case 1:
                     icon = _a.sent();
                     if (callback) {
