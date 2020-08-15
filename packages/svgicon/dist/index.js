@@ -1,5 +1,6 @@
 export default class SvgIcon {
     constructor(props) {
+        this._props = {};
         this._props = props;
     }
     get props() {

@@ -5,15 +5,18 @@ export default Vue.extend({
     inheritAttrs: false,
     data() {
         return {
-            svgicon: new SvgIcon({}),
+            svgicon: null as SvgIcon | null,
         }
     },
 
     watch: {
-        $attrs: function () {
-            if (this.svgicon) {
-                this.svgicon.props = this.$attrs
-            }
+        $attrs: {
+            deep: true,
+            handler: function () {
+                if (this.svgicon) {
+                    this.svgicon.props = this.$attrs
+                }
+            },
         },
     },
 

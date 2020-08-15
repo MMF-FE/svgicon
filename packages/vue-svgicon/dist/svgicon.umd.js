@@ -148,6 +148,7 @@ var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpac
 // CONCATENATED MODULE: /Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/@yzfe/svgicon/dist/index.js
 class SvgIcon {
     constructor(props) {
+        this._props = {};
         this._props = props;
     }
     get props() {
@@ -303,14 +304,17 @@ SvgIcon.options = {
     inheritAttrs: false,
     data: function () {
         return {
-            svgicon: new SvgIcon({}),
+            svgicon: null,
         };
     },
     watch: {
-        $attrs: function () {
-            if (this.svgicon) {
-                this.svgicon.props = this.$attrs;
-            }
+        $attrs: {
+            deep: true,
+            handler: function () {
+                if (this.svgicon) {
+                    this.svgicon.props = this.$attrs;
+                }
+            },
         },
     },
     created: function () {

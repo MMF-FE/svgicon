@@ -49,7 +49,7 @@ export default class SvgIcon {
         this._props = props
     }
 
-    private _props!: Partial<Props>
+    private _props: Partial<Props> = {}
 
     public get props(): Partial<Props> {
         return {
