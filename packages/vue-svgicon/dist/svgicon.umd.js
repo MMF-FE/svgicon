@@ -134,311 +134,13 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: /Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"66234218-vue-loader-template"}!/Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!/Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/cache-loader/dist/cjs.js??ref--0-0!/Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/vue-loader/lib??vue-loader-options!./src/components/SvgIcon.vue?vue&type=template&id=044a3256&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('svg',{class:_vm.svgicon.clazz,style:(_vm.svgicon.style),attrs:{"version":"1.1","viewBox":_vm.svgicon.box},domProps:{"innerHTML":_vm._s(_vm.svgicon.path)},on:{"click":_vm.onClick}})}
+// CONCATENATED MODULE: /Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"66234218-vue-loader-template"}!/Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!/Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/cache-loader/dist/cjs.js??ref--0-0!/Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/vue-loader/lib??vue-loader-options!./src/components/SvgIcon.vue?vue&type=template&id=115ad4b0&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('svg',{class:_vm.clazz,style:(_vm.style),attrs:{"version":"1.1","viewBox":_vm.box},domProps:{"innerHTML":_vm._s(_vm.path)},on:{"click":_vm.onClick}})}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/SvgIcon.vue?vue&type=template&id=044a3256&
+// CONCATENATED MODULE: ./src/components/SvgIcon.vue?vue&type=template&id=115ad4b0&
 
-// EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
-var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
-var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
-
-// CONCATENATED MODULE: /Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/@yzfe/svgicon/dist/index.js
-class SvgIcon {
-    constructor(props) {
-        this._props = props;
-    }
-    get props() {
-        return {
-            ...{
-                width: '',
-                height: '',
-                fill: !SvgIcon.options.isStroke,
-                original: !!SvgIcon.options.isOriginalDefault,
-            },
-            ...this._props,
-        };
-    }
-    get colors() {
-        if (this.props.color) {
-            return this.props.color.split(' ');
-        }
-        return [];
-    }
-    get icon() {
-        return this.props.data;
-    }
-    get iconData() {
-        const resource = this.props.data;
-        const iconData = resource ? resource.data : null;
-        return iconData;
-    }
-    get clazz() {
-        let clazz = `${SvgIcon.options.classPrefix}-icon`;
-        if (this.props.fill) {
-            clazz += ` ${SvgIcon.options.classPrefix}-fill`;
-        }
-        if (this.props.dir) {
-            clazz += ` ${SvgIcon.options.classPrefix}-${this.props.dir}`;
-        }
-        return clazz;
-    }
-    get path() {
-        let pathData = '';
-        if (this.iconData) {
-            pathData = this.iconData.data;
-            pathData = this.setTitle(pathData);
-            // use original color
-            if (this.props.original) {
-                pathData = this.addOriginalColor(pathData);
-            }
-            if (this.colors.length > 0) {
-                pathData = this.addColor(pathData);
-            }
-        }
-        return this.getValidPathData(pathData);
-    }
-    get box() {
-        const width = parseFloat(this.props.width) || 16;
-        const height = parseFloat(this.props.width) || 16;
-        if (this.iconData) {
-            if (this.iconData.viewBox) {
-                return this.iconData.viewBox;
-            }
-            return `0 0 ${this.iconData.width} ${this.iconData.height}`;
-        }
-        return `0 0 ${width} ${height}`;
-    }
-    get style() {
-        const digitReg = /^\d+$/;
-        const scale = Number(this.props.scale);
-        let width;
-        let height;
-        // apply scale
-        if (!isNaN(scale) && this.iconData) {
-            width = Number(this.iconData.width) * scale + 'px';
-            height = Number(this.iconData.height) * scale + 'px';
-        }
-        else {
-            width = digitReg.test(this.props.width)
-                ? this.props.width + 'px'
-                : this.props.width || SvgIcon.options.defaultWidth;
-            height = digitReg.test(this.props.height)
-                ? this.props.height + 'px'
-                : this.props.height || SvgIcon.options.defaultHeight;
-        }
-        const style = {};
-        if (width) {
-            style.width = width;
-        }
-        if (height) {
-            style.height = height;
-        }
-        return style;
-    }
-    addColor(data) {
-        const reg = /<(path|rect|circle|polygon|line|polyline|ellipse)\s/gi;
-        let i = 0;
-        return data.replace(reg, (match) => {
-            let color = this.colors[i++] || this.colors[this.colors.length - 1];
-            let fill = this.props.fill;
-            // if color is '_', ignore it
-            if (color && color === '_') {
-                return match;
-            }
-            // if color start with 'r-', reverse the fill value
-            if (color && /^r-/.test(color)) {
-                fill = !fill;
-                color = color.substr(2);
-            }
-            const style = fill ? 'fill' : 'stroke';
-            const reverseStyle = fill ? 'stroke' : 'fill';
-            return match + `${style}="${color}" ${reverseStyle}="none" `;
-        });
-    }
-    addOriginalColor(data) {
-        const styleReg = /_fill="|_stroke="/gi;
-        return data.replace(styleReg, (styleName) => {
-            return styleName && styleName.slice(1);
-        });
-    }
-    getValidPathData(pathData) {
-        // If use original and colors, clear double fill or stroke
-        if (this.props.original && this.colors.length > 0) {
-            const reg = /<(path|rect|circle|polygon|line|polyline|ellipse)(\sfill|\sstroke)([="\w\s.\-+#$&>]+)(fill|stroke)/gi;
-            pathData = pathData.replace(reg, (match, p1, p2, p3, p4) => {
-                return `<${p1}${p2}${p3}_${p4}`;
-            });
-        }
-        return pathData;
-    }
-    setTitle(pathData) {
-        if (this.props.title) {
-            const title = this.props.title
-                .replace(/</gi, '&lt;')
-                .replace(/>/gi, '&gt;')
-                .replace(/&/g, '&amp;');
-            return `<title>${title}</title>` + pathData;
-        }
-        return pathData;
-    }
-}
-SvgIcon.options = {
-    defaultWidth: '',
-    defaultHeight: '',
-    classPrefix: 'svg',
-    isStroke: false,
-    isOriginalDefault: false,
-};
-//# sourceMappingURL=index.js.map
-// CONCATENATED MODULE: /Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/cache-loader/dist/cjs.js??ref--12-0!/Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/thread-loader/dist/cjs.js!/Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/ts-loader??ref--12-2!/Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/cache-loader/dist/cjs.js??ref--0-0!/Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/vue-loader/lib??vue-loader-options!./src/components/SvgIcon.vue?vue&type=script&lang=ts&
-
-
-/* harmony default export */ var SvgIconvue_type_script_lang_ts_ = (external_commonjs_vue_commonjs2_vue_root_Vue_default.a.extend({
-    inheritAttrs: false,
-    data: function () {
-        return {
-            svgicon: new SvgIcon({}),
-        };
-    },
-    created: function () {
-        this.svgicon = new SvgIcon(this.$attrs);
-    },
-    methods: {
-        onClick: function (e) {
-            this.$emit('click', e);
-        },
-    },
-}));
-
-// CONCATENATED MODULE: ./src/components/SvgIcon.vue?vue&type=script&lang=ts&
- /* harmony default export */ var components_SvgIconvue_type_script_lang_ts_ = (SvgIconvue_type_script_lang_ts_); 
-// EXTERNAL MODULE: ./src/components/SvgIcon.vue?vue&type=style&index=0&lang=scss&
-var SvgIconvue_type_style_index_0_lang_scss_ = __webpack_require__("35f2");
-
-// CONCATENATED MODULE: /Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/vue-loader/lib/runtime/componentNormalizer.js
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-function normalizeComponent (
-  scriptExports,
-  render,
-  staticRenderFns,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier, /* server only */
-  shadowMode /* vue-cli only */
-) {
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (render) {
-    options.render = render
-    options.staticRenderFns = staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = 'data-v-' + scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = shadowMode
-      ? function () {
-        injectStyles.call(
-          this,
-          (options.functional ? this.parent : this).$root.$options.shadowRoot
-        )
-      }
-      : injectStyles
-  }
-
-  if (hook) {
-    if (options.functional) {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functional component in vue file
-      var originalRender = options.render
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return originalRender(h, context)
-      }
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    }
-  }
-
-  return {
-    exports: scriptExports,
-    options: options
-  }
-}
-
-// CONCATENATED MODULE: ./src/components/SvgIcon.vue
-
-
-
-
-
-
-/* normalize component */
-
-var component = normalizeComponent(
-  components_SvgIconvue_type_script_lang_ts_,
-  render,
-  staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* harmony default export */ var components_SvgIcon = (component.exports);
 // CONCATENATED MODULE: /Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/tslib/tslib.es6.js
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -659,6 +361,342 @@ function __classPrivateFieldSet(receiver, privateMap, value) {
     return value;
 }
 
+// EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
+var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
+var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
+
+// CONCATENATED MODULE: /Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/@yzfe/svgicon/dist/index.js
+class SvgIcon {
+    constructor(props) {
+        this._props = {};
+        this.props = props;
+    }
+    get props() {
+        return {
+            ...{
+                width: '',
+                height: '',
+                fill: !SvgIcon.options.isStroke,
+                original: !!SvgIcon.options.isOriginalDefault,
+            },
+            ...this._props,
+        };
+    }
+    set props(props) {
+        this._props = {
+            ...props,
+        };
+    }
+    get colors() {
+        if (this.props.color) {
+            return this.props.color.split(' ');
+        }
+        return [];
+    }
+    get icon() {
+        return this.props.data;
+    }
+    get iconData() {
+        const resource = this.props.data;
+        const iconData = resource ? resource.data : null;
+        return iconData;
+    }
+    get clazz() {
+        let clazz = `${SvgIcon.options.classPrefix}-icon`;
+        if (this.props.fill) {
+            clazz += ` ${SvgIcon.options.classPrefix}-fill`;
+        }
+        if (this.props.dir) {
+            clazz += ` ${SvgIcon.options.classPrefix}-${this.props.dir}`;
+        }
+        return clazz;
+    }
+    get path() {
+        let pathData = '';
+        if (this.iconData) {
+            pathData = this.iconData.data;
+            pathData = this.setTitle(pathData);
+            // use original color
+            if (this.props.original) {
+                pathData = this.addOriginalColor(pathData);
+            }
+            if (this.colors.length > 0) {
+                pathData = this.addColor(pathData);
+            }
+        }
+        return this.getValidPathData(pathData);
+    }
+    get box() {
+        const width = parseFloat(this.props.width || '16');
+        const height = parseFloat(this.props.width || '16');
+        if (this.iconData) {
+            if (this.iconData.viewBox) {
+                return this.iconData.viewBox;
+            }
+            return `0 0 ${this.iconData.width} ${this.iconData.height}`;
+        }
+        return `0 0 ${width} ${height}`;
+    }
+    get style() {
+        const digitReg = /^\d+$/;
+        const scale = Number(this.props.scale);
+        let width;
+        let height;
+        // apply scale
+        if (!isNaN(scale) && this.iconData) {
+            width = Number(this.iconData.width) * scale + 'px';
+            height = Number(this.iconData.height) * scale + 'px';
+        }
+        else {
+            width = digitReg.test(this.props.width || '')
+                ? this.props.width + 'px'
+                : this.props.width || SvgIcon.options.defaultWidth;
+            height = digitReg.test(this.props.height || '')
+                ? this.props.height + 'px'
+                : this.props.height || SvgIcon.options.defaultHeight;
+        }
+        const style = {};
+        if (width) {
+            style.width = width;
+        }
+        if (height) {
+            style.height = height;
+        }
+        return style;
+    }
+    addColor(data) {
+        const reg = /<(path|rect|circle|polygon|line|polyline|ellipse)\s/gi;
+        let i = 0;
+        return data.replace(reg, (match) => {
+            let color = this.colors[i++] || this.colors[this.colors.length - 1];
+            let fill = this.props.fill;
+            // if color is '_', ignore it
+            if (color && color === '_') {
+                return match;
+            }
+            // if color start with 'r-', reverse the fill value
+            if (color && /^r-/.test(color)) {
+                fill = !fill;
+                color = color.substr(2);
+            }
+            const style = fill ? 'fill' : 'stroke';
+            const reverseStyle = fill ? 'stroke' : 'fill';
+            return match + `${style}="${color}" ${reverseStyle}="none" `;
+        });
+    }
+    addOriginalColor(data) {
+        const styleReg = /_fill="|_stroke="/gi;
+        return data.replace(styleReg, (styleName) => {
+            return styleName && styleName.slice(1);
+        });
+    }
+    getValidPathData(pathData) {
+        // If use original and colors, clear double fill or stroke
+        if (this.props.original && this.colors.length > 0) {
+            const reg = /<(path|rect|circle|polygon|line|polyline|ellipse)(\sfill|\sstroke)([="\w\s.\-+#$&>]+)(fill|stroke)/gi;
+            pathData = pathData.replace(reg, (match, p1, p2, p3, p4) => {
+                return `<${p1}${p2}${p3}_${p4}`;
+            });
+        }
+        return pathData;
+    }
+    setTitle(pathData) {
+        if (this.props.title) {
+            const title = this.props.title
+                .replace(/</gi, '&lt;')
+                .replace(/>/gi, '&gt;')
+                .replace(/&/g, '&amp;');
+            return `<title>${title}</title>` + pathData;
+        }
+        return pathData;
+    }
+}
+SvgIcon.options = {
+    defaultWidth: '',
+    defaultHeight: '',
+    classPrefix: 'svg',
+    isStroke: false,
+    isOriginalDefault: false,
+};
+//# sourceMappingURL=index.js.map
+// CONCATENATED MODULE: /Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/cache-loader/dist/cjs.js??ref--12-0!/Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/thread-loader/dist/cjs.js!/Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/ts-loader??ref--12-2!./src/components/SvgIcon.ts?vue&type=script&lang=ts&
+
+
+
+/* harmony default export */ var SvgIconvue_type_script_lang_ts_ = (external_commonjs_vue_commonjs2_vue_root_Vue_default.a.extend({
+    inheritAttrs: false,
+    data: function () {
+        return {
+            svgicon: null,
+        };
+    },
+    computed: {
+        path: function () {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            return this.svgicon ? this.svgicon.path : '';
+        },
+        clazz: function () {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            return this.svgicon ? this.svgicon.clazz : '';
+        },
+        box: function () {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            return this.svgicon ? this.svgicon.box : '';
+        },
+        style: function () {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            return this.svgicon ? this.svgicon.style : '';
+        },
+    },
+    watch: {
+        $attrs: function () {
+            console.log(this.$attrs);
+            if (this.svgicon) {
+                this.svgicon.props = __assign({}, this.$attrs);
+            }
+        },
+    },
+    created: function () {
+        console.log(this.$attrs);
+        this.svgicon = new SvgIcon(__assign({}, this.$attrs));
+    },
+    methods: {
+        onClick: function (e) {
+            this.$emit('click', e);
+        },
+    },
+}));
+
+// CONCATENATED MODULE: ./src/components/SvgIcon.ts?vue&type=script&lang=ts&
+ /* harmony default export */ var components_SvgIconvue_type_script_lang_ts_ = (SvgIconvue_type_script_lang_ts_); 
+// EXTERNAL MODULE: ./src/components/SvgIcon.vue?vue&type=style&index=0&lang=scss&
+var SvgIconvue_type_style_index_0_lang_scss_ = __webpack_require__("35f2");
+
+// CONCATENATED MODULE: /Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/vue-loader/lib/runtime/componentNormalizer.js
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+function normalizeComponent (
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier, /* server only */
+  shadowMode /* vue-cli only */
+) {
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = shadowMode
+      ? function () {
+        injectStyles.call(
+          this,
+          (options.functional ? this.parent : this).$root.$options.shadowRoot
+        )
+      }
+      : injectStyles
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functional component in vue file
+      var originalRender = options.render
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return originalRender(h, context)
+      }
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    }
+  }
+
+  return {
+    exports: scriptExports,
+    options: options
+  }
+}
+
+// CONCATENATED MODULE: ./src/components/SvgIcon.vue
+
+
+
+
+
+
+/* normalize component */
+
+var component = normalizeComponent(
+  components_SvgIconvue_type_script_lang_ts_,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var components_SvgIcon = (component.exports);
 // CONCATENATED MODULE: ./src/options.ts
 
 

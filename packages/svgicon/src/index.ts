@@ -21,7 +21,7 @@ export interface Icon {
     data: IconData
 }
 
-interface Props {
+export interface Props {
     /** icon data */
     data?: Icon
     width: string
@@ -46,12 +46,12 @@ export default class SvgIcon {
     }
 
     constructor(props: Partial<Props>) {
-        this._props = props
+        this.props = props
     }
 
-    private _props!: Partial<Props>
+    private _props: Partial<Props> = {}
 
-    public get props(): Props {
+    public get props(): Partial<Props> {
         return {
             ...{
                 width: '',
@@ -60,6 +60,12 @@ export default class SvgIcon {
                 original: !!SvgIcon.options.isOriginalDefault,
             },
             ...this._props,
+        }
+    }
+
+    public set props(props: Partial<Props>) {
+        this._props = {
+            ...props,
         }
     }
 
@@ -115,8 +121,8 @@ export default class SvgIcon {
     }
 
     public get box(): string {
-        const width = parseFloat(this.props.width) || 16
-        const height = parseFloat(this.props.width) || 16
+        const width = parseFloat(this.props.width || '16')
+        const height = parseFloat(this.props.width || '16')
 
         if (this.iconData) {
             if (this.iconData.viewBox) {
@@ -128,7 +134,7 @@ export default class SvgIcon {
         return `0 0 ${width} ${height}`
     }
 
-    public get style(): CSSStyleDeclaration {
+    public get style(): Record<string, string | number> {
         const digitReg = /^\d+$/
         const scale = Number(this.props.scale)
         let width
@@ -139,15 +145,15 @@ export default class SvgIcon {
             width = Number(this.iconData.width) * scale + 'px'
             height = Number(this.iconData.height) * scale + 'px'
         } else {
-            width = digitReg.test(this.props.width)
+            width = digitReg.test(this.props.width || '')
                 ? this.props.width + 'px'
                 : this.props.width || SvgIcon.options.defaultWidth
-            height = digitReg.test(this.props.height)
+            height = digitReg.test(this.props.height || '')
                 ? this.props.height + 'px'
                 : this.props.height || SvgIcon.options.defaultHeight
         }
 
-        const style = {} as CSSStyleDeclaration
+        const style: Record<string, string | number> = {}
 
         if (width) {
             style.width = width

@@ -1,6 +1,7 @@
 export default class SvgIcon {
     constructor(props) {
-        this._props = props;
+        this._props = {};
+        this.props = props;
     }
     get props() {
         return {
@@ -11,6 +12,11 @@ export default class SvgIcon {
                 original: !!SvgIcon.options.isOriginalDefault,
             },
             ...this._props,
+        };
+    }
+    set props(props) {
+        this._props = {
+            ...props,
         };
     }
     get colors() {
@@ -53,8 +59,8 @@ export default class SvgIcon {
         return this.getValidPathData(pathData);
     }
     get box() {
-        const width = parseFloat(this.props.width) || 16;
-        const height = parseFloat(this.props.width) || 16;
+        const width = parseFloat(this.props.width || '16');
+        const height = parseFloat(this.props.width || '16');
         if (this.iconData) {
             if (this.iconData.viewBox) {
                 return this.iconData.viewBox;
@@ -74,10 +80,10 @@ export default class SvgIcon {
             height = Number(this.iconData.height) * scale + 'px';
         }
         else {
-            width = digitReg.test(this.props.width)
+            width = digitReg.test(this.props.width || '')
                 ? this.props.width + 'px'
                 : this.props.width || SvgIcon.options.defaultWidth;
-            height = digitReg.test(this.props.height)
+            height = digitReg.test(this.props.height || '')
                 ? this.props.height + 'px'
                 : this.props.height || SvgIcon.options.defaultHeight;
         }

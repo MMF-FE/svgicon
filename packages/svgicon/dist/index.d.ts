@@ -17,7 +17,7 @@ export interface Icon {
     name: string;
     data: IconData;
 }
-interface Props {
+export interface Props {
     /** icon data */
     data?: Icon;
     width: string;
@@ -35,17 +35,17 @@ export default class SvgIcon {
     static options: Options;
     constructor(props: Partial<Props>);
     private _props;
-    get props(): Props;
+    get props(): Partial<Props>;
+    set props(props: Partial<Props>);
     get colors(): string[];
     get icon(): Icon | undefined;
     get iconData(): IconData | null;
     get clazz(): string;
     get path(): string;
     get box(): string;
-    get style(): CSSStyleDeclaration;
+    get style(): Record<string, string | number>;
     protected addColor(data: string): string;
     protected addOriginalColor(data: string): string;
     protected getValidPathData(pathData: string): string;
     protected setTitle(pathData: string): string;
 }
-export {};

@@ -1,3 +1,4 @@
+import './debug'
 import Vue from 'vue'
 import App from './App.vue'
 import VueSvgIcon, { PluginOptions } from '@yzfe/vue-svgicon'

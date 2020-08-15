@@ -18,7 +18,7 @@ function chainLibWebpack(config) {
 }
 
 function chainTestWebpack(config) {
-    const svgFilePath = path.join(__dirname, './tests/svg')
+    const svgFilePath = path.join(__dirname, '../assets/svg')
 
     config.module
         .rule('vue-svgicon')
