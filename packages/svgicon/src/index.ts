@@ -52,6 +52,18 @@ export default class SvgIcon {
     private _props: Partial<Props> = {}
 
     public get props(): Partial<Props> {
+        const props = {
+            ...this._props,
+        }
+
+        if (typeof props.original !== 'boolean' && 'original' in props) {
+            props.original = true
+        }
+
+        if (typeof props.fill !== 'boolean' && 'fill' in props) {
+            props.fill = true
+        }
+
         return {
             ...{
                 width: '',
@@ -59,7 +71,7 @@ export default class SvgIcon {
                 fill: !SvgIcon.options.isStroke,
                 original: !!SvgIcon.options.isOriginalDefault,
             },
-            ...this._props,
+            ...props,
         }
     }
 
