@@ -3,7 +3,7 @@
     "version": "4.0.0-alpha.0",
     "description": "SVG icon component for vue",
     "scripts": {
-        "dev": "vue-cli-service build --watch --target lib --name svgicon src/index.ts",
+        "dev": "vue-cli-service build --watch --mode production --target lib --name svgicon src/index.ts",
         "build": "vue-cli-service build --target lib --name svgicon src/index.ts",
         "prepublishOnly": "yarn build",
         "test": "vue-cli-service test:unit"

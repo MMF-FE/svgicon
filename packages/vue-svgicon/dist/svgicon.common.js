@@ -143,6 +143,15 @@ class SvgIcon {
         this.props = props;
     }
     get props() {
+        const props = {
+            ...this._props,
+        };
+        if (typeof props.original !== 'boolean' && 'original' in props) {
+            props.original = true;
+        }
+        if (typeof props.fill !== 'boolean' && 'fill' in props) {
+            props.fill = true;
+        }
         return {
             ...{
                 width: '',
@@ -150,7 +159,7 @@ class SvgIcon {
                 fill: !SvgIcon.options.isStroke,
                 original: !!SvgIcon.options.isOriginalDefault,
             },
-            ...this._props,
+            ...props,
         };
     }
     set props(props) {
