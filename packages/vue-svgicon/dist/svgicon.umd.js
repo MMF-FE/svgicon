@@ -199,8 +199,15 @@ class dist_SvgIcon {
         };
     }
     set props(props) {
+        // Check is props updated and apply new props
         if (this._props !== props) {
-            this._props = props;
+            const keys = Object.keys(this._props || {});
+            if (Object.keys(props || {}).length !== keys.length) {
+                this._props = props;
+            }
+            else if (keys.some((key) => this._props[key] !== props[key])) {
+                this._props = props;
+            }
         }
     }
     get colors() {
