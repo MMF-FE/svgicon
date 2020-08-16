@@ -11,6 +11,9 @@
     "[html]": {
         "editor.formatOnSave": true
     },
+    "[json]": {
+        "editor.formatOnSave": true
+    },
     "vetur.format.defaultFormatter.html": "prettier",
     "vetur.format.defaultFormatter.scss": "none",
     "files.exclude": {
