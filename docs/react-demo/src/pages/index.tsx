@@ -1,10 +1,143 @@
 import React from 'react'
 import styles from './index.less'
+import SvgIcon from '@/components/SvgIcon'
+import { Props } from '@yzfe/svgicon'
+import icons from '@/icons'
 
-export default () => {
-    return (
-        <div>
-            <h1 className={styles.title}>Page index</h1>
-        </div>
-    )
+import '@yzfe/svgicon/lib/svgicon.css'
+
+export default class App extends React.Component<
+    Record<string, unknown>,
+    { props: Props; iconIndex: number }
+> {
+    constructor(props: Record<string, unknown>) {
+        super(props)
+        this.state = {
+            iconIndex: icons.findIndex((v) => v.name === 'vue'),
+            props: {
+                data: icons.find((v) => v.name === 'vue') || icons[0],
+                width: 100,
+                height: 100,
+                original: true,
+                fill: true,
+                dir: '',
+                color: '',
+                scale: '',
+            },
+        }
+    }
+
+    protected dirList = ['', 'left', 'right', 'up', 'down']
+
+    protected updateProps(
+        prop: keyof Props,
+        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+        isCheckBox = false
+    ): void {
+        this.setState({
+            props: {
+                ...this.state.props,
+                [prop]: isCheckBox
+                    ? (e.target as HTMLInputElement).checked
+                    : e.target.value,
+            },
+        })
+    }
+
+    protected updateIcon(ix: string): void {
+        const index = Number(ix)
+        this.setState({
+            iconIndex: index,
+            props: {
+                ...this.state.props,
+                data: icons[index],
+            },
+        })
+    }
+
+    public render(): JSX.Element {
+        const directionOptions = this.dirList.map((dir) => {
+            return <option key={dir} value={dir} label={dir}></option>
+        })
+
+        return (
+            <div className={styles.app}>
+                <div className={styles.content}>
+                    <div className={styles.icon}>
+                        <SvgIcon {...this.state.props}></SvgIcon>
+                    </div>
+                    <div className={styles.form}>
+                        <select
+                            value={this.state.iconIndex}
+                            placeholder="icon"
+                            onChange={(e) => this.updateIcon(e.target.value)}
+                        >
+                            {icons.map((icon, ix) => {
+                                return (
+                                    <option
+                                        value={ix}
+                                        label={icon.name}
+                                        key={ix}
+                                    ></option>
+                                )
+                            })}
+                        </select>
+
+                        <select
+                            value={this.state.props.dir}
+                            placeholder="direction"
+                            onChange={(e) => this.updateProps('dir', e)}
+                        >
+                            {directionOptions}
+                        </select>
+
+                        <input
+                            value={this.state.props.width}
+                            type="text"
+                            placeholder="width"
+                            onChange={(e) => this.updateProps('width', e)}
+                        />
+                        <input
+                            value={this.state.props.height}
+                            type="text"
+                            placeholder="height"
+                            onChange={(e) => this.updateProps('height', e)}
+                        />
+                        <input
+                            value={this.state.props.color}
+                            type="text"
+                            placeholder="color"
+                            onChange={(e) => this.updateProps('color', e)}
+                        />
+                        <input
+                            value={this.state.props.scale}
+                            type="text"
+                            placeholder="scale"
+                            onChange={(e) => this.updateProps('scale', e)}
+                        />
+                        <label>
+                            <input
+                                checked={this.state.props.fill}
+                                type="checkbox"
+                                onChange={(e) =>
+                                    this.updateProps('fill', e, true)
+                                }
+                            />
+                            <span>Fill</span>
+                        </label>
+                        <label>
+                            <input
+                                checked={this.state.props.original}
+                                type="checkbox"
+                                onChange={(e) =>
+                                    this.updateProps('original', e, true)
+                                }
+                            />
+                            <span>Use Original Color</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 }

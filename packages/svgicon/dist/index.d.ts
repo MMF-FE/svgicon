@@ -19,9 +19,9 @@ export interface Icon {
 }
 export interface Props {
     /** icon data */
-    data?: Icon;
-    width: string;
-    height: string;
+    data: Icon;
+    width?: string | number;
+    height?: string | number;
     scale?: string | number;
     /** icon direction */
     dir?: string;

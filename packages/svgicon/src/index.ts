@@ -25,9 +25,9 @@ export interface Icon {
 
 export interface Props {
     /** icon data */
-    data?: Icon
-    width: string
-    height: string
+    data: Icon
+    width?: string | number
+    height?: string | number
     scale?: string | number
     /** icon direction */
     dir?: string
@@ -71,8 +71,8 @@ export default class SvgIcon {
 
         return {
             ...{
-                width: '',
-                height: '',
+                width: SvgIcon.options.defaultWidth,
+                height: SvgIcon.options.defaultHeight,
                 fill: !SvgIcon.options.isStroke,
                 original: !!SvgIcon.options.isOriginalDefault,
             },
@@ -144,8 +144,15 @@ export default class SvgIcon {
     }
 
     public get box(): string {
-        const width = parseFloat(this.props.width || '16')
-        const height = parseFloat(this.props.width || '16')
+        const width =
+            typeof this.props.width === 'number'
+                ? this.props.width
+                : parseFloat(this.props.width || '16')
+
+        const height =
+            typeof this.props.height === 'number'
+                ? this.props.height
+                : parseFloat(this.props.height || '16')
 
         if (this.iconData) {
             if (this.iconData.viewBox) {

@@ -18,8 +18,8 @@ export default class SvgIcon {
         }
         return {
             ...{
-                width: '',
-                height: '',
+                width: SvgIcon.options.defaultWidth,
+                height: SvgIcon.options.defaultHeight,
                 fill: !SvgIcon.options.isStroke,
                 original: !!SvgIcon.options.isOriginalDefault,
             },
@@ -76,8 +76,12 @@ export default class SvgIcon {
         return this.getValidPathData(pathData);
     }
     get box() {
-        const width = parseFloat(this.props.width || '16');
-        const height = parseFloat(this.props.width || '16');
+        const width = typeof this.props.width === 'number'
+            ? this.props.width
+            : parseFloat(this.props.width || '16');
+        const height = typeof this.props.height === 'number'
+            ? this.props.height
+            : parseFloat(this.props.height || '16');
         if (this.iconData) {
             if (this.iconData.viewBox) {
                 return this.iconData.viewBox;

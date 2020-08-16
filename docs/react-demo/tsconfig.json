@@ -11,7 +11,8 @@
         "strict": true,
         "paths": {
             "@/*": ["src/*"],
-            "@@/*": ["src/.umi/*"]
+            "@@/*": ["src/.umi/*"],
+            "@icon": ["../../packages/assets/svg"]
         },
         "allowSyntheticDefaultImports": true
     },

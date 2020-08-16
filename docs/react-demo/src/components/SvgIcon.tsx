@@ -1,22 +1,34 @@
 import React from 'react'
 import SvgIcon, { Props } from '@yzfe/svgicon'
 
-export default class SvgIconComponent extends React.Component<Props> {
-    private svgicon: SvgIcon | null = null
+interface ComponentProps extends Props {
+    onClick?: () => void
+}
 
-    constructor(props: Props) {
+export default class SvgIconComponent extends React.Component<
+    ComponentProps,
+    { svgicon: SvgIcon }
+> {
+    constructor(props: ComponentProps) {
         super(props)
-        this.svgicon = new SvgIcon(props)
+        this.state = {
+            svgicon: new SvgIcon(props),
+        }
     }
 
     public render(): JSX.Element {
+        this.state.svgicon.props = this.props
+
         return (
             <svg
                 version="1.1"
-                dangerouslySetInnerHTML={{ __html: this.svgicon?.path || '' }}
-                className={this.svgicon?.clazz || ''}
-                viewBox={this.svgicon?.box}
-                style={this.svgicon?.style}
+                dangerouslySetInnerHTML={{
+                    __html: this.state.svgicon.path || '',
+                }}
+                className={this.state.svgicon.clazz || ''}
+                viewBox={this.state.svgicon.box}
+                style={this.state.svgicon.style}
+                onClick={this.props.onClick}
             ></svg>
         )
     }

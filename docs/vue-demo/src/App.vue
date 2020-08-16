@@ -5,7 +5,7 @@
                 <icon v-bind="props"></icon>
             </div>
             <div class="form">
-                <select v-model="props.data" placeholder="direction">
+                <select v-model="props.data" placeholder="icon">
                     <option
                         v-for="v in icons"
                         :key="v.name"

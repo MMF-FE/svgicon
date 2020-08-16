@@ -8,3 +8,9 @@ declare module '*.svg' {
     const url: string
     export default url
 }
+
+declare module '@icon/*' {
+    import { Icon } from '@yzfe/svgicon'
+    const value: Icon
+    export = value
+}
