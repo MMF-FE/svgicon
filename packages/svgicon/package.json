@@ -10,7 +10,8 @@
     },
     "homepage": "https://github.com/MMF-FE/vue-svgicon/tree/master/packages/vue-svgicon#readme",
     "files": [
-        "dist"
+        "dist",
+        "lib"
     ],
     "publishConfig": {
         "registry": "https://registry.npmjs.org",

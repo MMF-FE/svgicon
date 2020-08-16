@@ -3,7 +3,7 @@
  */
 
 module.exports = {
-    ignoreFiles: ['node_modules/**/*.scss'],
+    ignoreFiles: ['node_modules/**/*.scss', 'dist/**/*.css'],
     extends: 'stylelint-config-standard',
     plugins: ['stylelint-order'],
     rules: {
