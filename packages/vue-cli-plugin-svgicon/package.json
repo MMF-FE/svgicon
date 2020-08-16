@@ -1,0 +1,20 @@
+{
+    "name": "@yzfe/vue-cli-plugin-svgicon",
+    "version": "0.0.0",
+    "description": "vue-cli plugin to add @yzfe/svgicon-loader config",
+    "keywords": [
+        "vue",
+        "svg",
+        "icon",
+        "svgicon",
+        "vue-cli-plugin"
+    ],
+    "author": "Allenice Mo <994298628@qq.com>",
+    "homepage": "https://github.com/MMF-FE/vue-svgicon/tree/master/packages/vue-svgicon#readme",
+    "license": "MIT",
+    "main": "./index.js",
+    "dependencies": {
+        "@yzfe/svgicon-loader": "^0.0.0",
+        "@yzfe/vue-svgicon": "^4.0.0-alpha.0"
+    }
+}
