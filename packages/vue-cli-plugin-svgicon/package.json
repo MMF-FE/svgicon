@@ -15,6 +15,7 @@
     "main": "./index.js",
     "dependencies": {
         "@yzfe/svgicon-loader": "^0.0.0",
-        "@yzfe/vue-svgicon": "^4.0.0-alpha.0"
+        "@yzfe/vue-svgicon": "^4.0.0-alpha.0",
+        "lodash": "^4.17.20"
     }
 }

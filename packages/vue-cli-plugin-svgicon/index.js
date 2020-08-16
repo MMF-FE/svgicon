@@ -1,5 +1,18 @@
+const path = require('path')
+const fs = require('fs')
+const _ = require('lodash')
+const configPath = path.resolve('./.vue-svgicon.config.js')
+let options = {}
+
+if (fs.existsSync(configPath)) {
+    options = require(configPath)
+}
+
 module.exports = (api, cliOptions) => {
-    const options = cliOptions.pluginOptions.vueSvgicon
+    if (cliOptions.pluginOptions && cliOptions.pluginOptions.vueSvgicon) {
+        _.merge(options, cliOptions.pluginOptions.vueSvgicon)
+    }
+
     const svgFilePath = options.svgFilePath
     const svgoConfig = options.svgoConfig
     const pathAlias = options.pathAlias

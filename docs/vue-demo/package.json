@@ -8,16 +8,17 @@
     },
     "dependencies": {
         "@yzfe/assets": "^0.0.0",
+        "@yzfe/vue-svgicon": "^4.0.0-alpha.0",
         "core-js": "^3.6.5",
         "vue": "^2.6.11",
         "vue-class-component": "^7.2.3",
         "vue-property-decorator": "^8.4.2"
     },
     "devDependencies": {
-        "@yzfe/vue-cli-plugin-svgicon": "^0.0.0",
         "@vue/cli-plugin-babel": "~4.5.0",
         "@vue/cli-plugin-typescript": "~4.5.0",
         "@vue/cli-service": "~4.5.0",
+        "@yzfe/vue-cli-plugin-svgicon": "^0.0.0",
         "sass": "^1.26.5",
         "sass-loader": "^8.0.2",
         "typescript": "~3.9.3",

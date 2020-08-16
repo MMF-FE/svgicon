@@ -6,6 +6,7 @@
         "experimentalDecorators": true,
         "allowSyntheticDefaultImports": true,
         "moduleResolution": "node",
+        "esModuleInterop": true,
         "noLib": false,
         "sourceMap": false,
         "declaration": true,
