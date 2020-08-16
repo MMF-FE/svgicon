@@ -138,12 +138,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: /Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"66234218-vue-loader-template"}!/Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!/Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/cache-loader/dist/cjs.js??ref--0-0!/Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/vue-loader/lib??vue-loader-options!./src/components/SvgIcon.vue?vue&type=template&id=c1aa204c&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('svg',{class:_vm.svgicon && _vm.svgicon.clazz,style:(_vm.svgicon && _vm.svgicon.style),attrs:{"version":"1.1","viewBox":_vm.svgicon && _vm.svgicon.box},domProps:{"innerHTML":_vm._s(_vm.svgicon && _vm.svgicon.path)},on:{"click":_vm.onClick}})}
+// CONCATENATED MODULE: /Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"66234218-vue-loader-template"}!/Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!/Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/cache-loader/dist/cjs.js??ref--0-0!/Users/allenice/Documents/workspace/git/vue-svgicon-next/node_modules/vue-loader/lib??vue-loader-options!./src/components/SvgIcon.vue?vue&type=template&id=c658b354&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('svg',{class:_vm.svgicon.clazz,style:(_vm.svgicon.style),attrs:{"version":"1.1","viewBox":_vm.svgicon.box},domProps:{"innerHTML":_vm._s(_vm.svgicon.path)},on:{"click":_vm.onClick}})}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/SvgIcon.vue?vue&type=template&id=c1aa204c&
+// CONCATENATED MODULE: ./src/components/SvgIcon.vue?vue&type=template&id=c658b354&
 
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");

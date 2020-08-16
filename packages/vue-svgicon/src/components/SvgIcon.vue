@@ -1,10 +1,10 @@
 <template>
     <svg
         version="1.1"
-        v-html="svgicon && svgicon.path"
-        :class="svgicon && svgicon.clazz"
-        :viewBox="svgicon && svgicon.box"
-        :style="svgicon && svgicon.style"
+        v-html="svgicon.path"
+        :class="svgicon.clazz"
+        :viewBox="svgicon.box"
+        :style="svgicon.style"
         @click="onClick"
     />
 </template>
