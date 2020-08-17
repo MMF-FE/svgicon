@@ -12,8 +12,7 @@ export default {
     output: [
         {
             file: packageJson.main,
-            name: 'ReactSvgIcon',
-            format: 'umd',
+            format: 'cjs',
             sourcemap: true,
             plugins: [terser()],
         },

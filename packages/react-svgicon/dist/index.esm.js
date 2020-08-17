@@ -34,162 +34,202 @@ function getRandomInt(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min; //不含最大值，含最小值
 }
-let idSeed = 0;
-const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+var idSeed = 0;
+var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 var utils = {
-    genUID: () => {
+    genUID: function () {
         idSeed++;
         return (idSeed +
             '_' +
             Array(5)
                 .fill('')
-                .map(() => chars[getRandomInt(0, chars.length)])
+                .map(function () { return chars[getRandomInt(0, chars.length)]; })
                 .join(''));
     },
 };
 
-class SvgIcon {
-    constructor(props) {
+var __assign = (undefined && undefined.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var SvgIcon = /** @class */ (function () {
+    function SvgIcon(props) {
         this._props = {};
         this.uid = '';
         this.props = props;
         this.uid = utils.genUID();
     }
-    get props() {
-        const props = {
-            ...this._props,
-        };
-        if (typeof props.original !== 'boolean' && 'original' in props) {
-            props.original = true;
-        }
-        if (typeof props.fill !== 'boolean' && 'fill' in props) {
-            props.fill = true;
-        }
-        return {
-            ...{
+    Object.defineProperty(SvgIcon.prototype, "props", {
+        get: function () {
+            var props = __assign({}, this._props);
+            if (typeof props.original !== 'boolean' && 'original' in props) {
+                props.original = true;
+            }
+            if (typeof props.fill !== 'boolean' && 'fill' in props) {
+                props.fill = true;
+            }
+            return __assign({
                 width: SvgIcon.options.defaultWidth,
                 height: SvgIcon.options.defaultHeight,
                 fill: !SvgIcon.options.isStroke,
                 original: !!SvgIcon.options.isOriginalDefault,
-            },
-            ...props,
-        };
-    }
-    set props(props) {
-        // Check is props updated and apply new props
-        if (this._props !== props) {
-            const keys = Object.keys(this._props || {});
-            if (Object.keys(props || {}).length !== keys.length) {
-                this._props = props;
+            }, props);
+        },
+        set: function (props) {
+            var _this = this;
+            // Check is props updated and apply new props
+            if (this._props !== props) {
+                var keys = Object.keys(this._props || {});
+                if (Object.keys(props || {}).length !== keys.length) {
+                    this._props = props;
+                }
+                else if (keys.some(function (key) { return _this._props[key] !== props[key]; })) {
+                    this._props = props;
+                }
             }
-            else if (keys.some((key) => this._props[key] !== props[key])) {
-                this._props = props;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(SvgIcon.prototype, "colors", {
+        get: function () {
+            var props = this.props;
+            if (props.color) {
+                return props.color.split(' ');
             }
-        }
-    }
-    get colors() {
-        const props = this.props;
-        if (props.color) {
-            return props.color.split(' ');
-        }
-        return [];
-    }
-    get icon() {
-        return this.props.data;
-    }
-    get iconData() {
-        const resource = this.props.data;
-        const iconData = resource ? resource.data : null;
-        return iconData;
-    }
-    get clazz() {
-        const props = this.props;
-        let clazz = `${SvgIcon.options.classPrefix}-icon`;
-        if (props.fill) {
-            clazz += ` ${SvgIcon.options.classPrefix}-fill`;
-        }
-        if (props.dir) {
-            clazz += ` ${SvgIcon.options.classPrefix}-${props.dir}`;
-        }
-        return clazz;
-    }
-    get path() {
-        const props = this.props;
-        const iconData = this.iconData;
-        let pathData = '';
-        if (iconData) {
-            pathData = iconData.data;
-            pathData = this.setTitle(pathData);
-            // use original color
-            if (props.original) {
-                pathData = this.addOriginalColor(pathData);
+            return [];
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(SvgIcon.prototype, "icon", {
+        get: function () {
+            return this.props.data;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(SvgIcon.prototype, "iconData", {
+        get: function () {
+            var resource = this.props.data;
+            var iconData = resource ? resource.data : null;
+            return iconData;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(SvgIcon.prototype, "clazz", {
+        get: function () {
+            var props = this.props;
+            var clazz = SvgIcon.options.classPrefix + "-icon";
+            if (props.fill) {
+                clazz += " " + SvgIcon.options.classPrefix + "-fill";
             }
-            if (this.colors.length > 0) {
-                pathData = this.addColor(pathData);
+            if (props.dir) {
+                clazz += " " + SvgIcon.options.classPrefix + "-" + props.dir;
             }
-            // fix #99, inline svg use random id
-            const idReg = /svgiconid([\w-/\\]+)/g;
-            pathData = pathData.replace(idReg, (match, elId) => {
-                return `svgiconid${elId}_${this.uid}`;
-            });
-        }
-        return this.getValidPathData(pathData);
-    }
-    get box() {
-        const props = this.props;
-        const iconData = this.iconData;
-        const width = typeof props.width === 'number'
-            ? props.width
-            : parseFloat(props.width || '16');
-        const height = typeof props.height === 'number'
-            ? props.height
-            : parseFloat(props.height || '16');
-        if (iconData) {
-            if (iconData.viewBox) {
-                return iconData.viewBox;
+            return clazz;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(SvgIcon.prototype, "path", {
+        get: function () {
+            var _this = this;
+            var props = this.props;
+            var iconData = this.iconData;
+            var pathData = '';
+            if (iconData) {
+                pathData = iconData.data;
+                pathData = this.setTitle(pathData);
+                // use original color
+                if (props.original) {
+                    pathData = this.addOriginalColor(pathData);
+                }
+                if (this.colors.length > 0) {
+                    pathData = this.addColor(pathData);
+                }
+                // fix #99, inline svg use random id
+                var idReg = /svgiconid([\w-/\\]+)/g;
+                pathData = pathData.replace(idReg, function (match, elId) {
+                    return "svgiconid" + elId + "_" + _this.uid;
+                });
             }
-            return `0 0 ${iconData.width} ${iconData.height}`;
-        }
-        return `0 0 ${width} ${height}`;
-    }
-    get style() {
-        const props = this.props;
-        const iconData = this.iconData;
-        const digitReg = /^\d+$/;
-        const scale = props.scale;
-        const isScale = scale !== '' && scale !== undefined && scale !== null;
-        let width;
-        let height;
-        // apply scale
-        if (isScale && iconData) {
-            width = Number(iconData.width) * Number(scale) + 'px';
-            height = Number(iconData.height) * Number(scale) + 'px';
-        }
-        else {
-            width = digitReg.test(String(props.width || ''))
-                ? props.width + 'px'
-                : props.width || SvgIcon.options.defaultWidth;
-            height = digitReg.test(String(props.height || ''))
-                ? props.height + 'px'
-                : props.height || SvgIcon.options.defaultHeight;
-        }
-        const style = {};
-        if (width) {
-            style.width = width;
-        }
-        if (height) {
-            style.height = height;
-        }
-        return style;
-    }
-    addColor(data) {
-        const props = this.props;
-        const colors = this.colors;
-        const reg = /<(path|rect|circle|polygon|line|polyline|ellipse)\s/gi;
-        let i = 0;
-        return data.replace(reg, (match) => {
-            let color = colors[i++] || colors[colors.length - 1];
-            let fill = props.fill;
+            return this.getValidPathData(pathData);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(SvgIcon.prototype, "box", {
+        get: function () {
+            var props = this.props;
+            var iconData = this.iconData;
+            var width = typeof props.width === 'number'
+                ? props.width
+                : parseFloat(props.width || '16');
+            var height = typeof props.height === 'number'
+                ? props.height
+                : parseFloat(props.height || '16');
+            if (iconData) {
+                if (iconData.viewBox) {
+                    return iconData.viewBox;
+                }
+                return "0 0 " + iconData.width + " " + iconData.height;
+            }
+            return "0 0 " + width + " " + height;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(SvgIcon.prototype, "style", {
+        get: function () {
+            var props = this.props;
+            var iconData = this.iconData;
+            var digitReg = /^\d+$/;
+            var scale = props.scale;
+            var isScale = scale !== '' && scale !== undefined && scale !== null;
+            var width;
+            var height;
+            // apply scale
+            if (isScale && iconData) {
+                width = Number(iconData.width) * Number(scale) + 'px';
+                height = Number(iconData.height) * Number(scale) + 'px';
+            }
+            else {
+                width = digitReg.test(String(props.width || ''))
+                    ? props.width + 'px'
+                    : props.width || SvgIcon.options.defaultWidth;
+                height = digitReg.test(String(props.height || ''))
+                    ? props.height + 'px'
+                    : props.height || SvgIcon.options.defaultHeight;
+            }
+            var style = {};
+            if (width) {
+                style.width = width;
+            }
+            if (height) {
+                style.height = height;
+            }
+            return style;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    SvgIcon.prototype.addColor = function (data) {
+        var props = this.props;
+        var colors = this.colors;
+        var reg = /<(path|rect|circle|polygon|line|polyline|ellipse)\s/gi;
+        var i = 0;
+        return data.replace(reg, function (match) {
+            var color = colors[i++] || colors[colors.length - 1];
+            var fill = props.fill;
             // if color is '_', ignore it
             if (color && color === '_') {
                 return match;
@@ -199,48 +239,49 @@ class SvgIcon {
                 fill = !fill;
                 color = color.substr(2);
             }
-            const style = fill ? 'fill' : 'stroke';
-            const reverseStyle = fill ? 'stroke' : 'fill';
-            return match + `${style}="${color}" ${reverseStyle}="none" `;
+            var style = fill ? 'fill' : 'stroke';
+            var reverseStyle = fill ? 'stroke' : 'fill';
+            return match + (style + "=\"" + color + "\" " + reverseStyle + "=\"none\" ");
         });
-    }
-    addOriginalColor(data) {
-        const styleReg = /_fill="|_stroke="/gi;
-        return data.replace(styleReg, (styleName) => {
+    };
+    SvgIcon.prototype.addOriginalColor = function (data) {
+        var styleReg = /_fill="|_stroke="/gi;
+        return data.replace(styleReg, function (styleName) {
             return styleName && styleName.slice(1);
         });
-    }
-    getValidPathData(pathData) {
-        const props = this.props;
-        const colors = this.colors;
+    };
+    SvgIcon.prototype.getValidPathData = function (pathData) {
+        var props = this.props;
+        var colors = this.colors;
         // If use original and colors, clear double fill or stroke
         if (props.original && colors.length > 0) {
-            const reg = /<(path|rect|circle|polygon|line|polyline|ellipse)(\sfill|\sstroke)([="\w\s.\-+#$&>]+)(fill|stroke)/gi;
-            pathData = pathData.replace(reg, (match, p1, p2, p3, p4) => {
-                return `<${p1}${p2}${p3}_${p4}`;
+            var reg = /<(path|rect|circle|polygon|line|polyline|ellipse)(\sfill|\sstroke)([="\w\s.\-+#$&>]+)(fill|stroke)/gi;
+            pathData = pathData.replace(reg, function (match, p1, p2, p3, p4) {
+                return "<" + p1 + p2 + p3 + "_" + p4;
             });
         }
         return pathData;
-    }
-    setTitle(pathData) {
-        const props = this.props;
+    };
+    SvgIcon.prototype.setTitle = function (pathData) {
+        var props = this.props;
         if (props.title) {
-            const title = props.title
+            var title = props.title
                 .replace(/</gi, '&lt;')
                 .replace(/>/gi, '&gt;')
                 .replace(/&/g, '&amp;');
-            return `<title>${title}</title>` + pathData;
+            return "<title>" + title + "</title>" + pathData;
         }
         return pathData;
-    }
-}
-SvgIcon.options = {
-    defaultWidth: '',
-    defaultHeight: '',
-    classPrefix: 'svg',
-    isStroke: false,
-    isOriginalDefault: false,
-};
+    };
+    SvgIcon.options = {
+        defaultWidth: '',
+        defaultHeight: '',
+        classPrefix: 'svg',
+        isStroke: false,
+        isOriginalDefault: false,
+    };
+    return SvgIcon;
+}());
 
 var SvgIconComponent = /** @class */ (function (_super) {
     __extends(SvgIconComponent, _super);
