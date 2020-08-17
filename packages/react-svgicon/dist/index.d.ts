@@ -1,5 +1,5 @@
 import React from 'react';
-import SvgIconClass, { Props, Options } from '@yzfe/svgicon';
+import SvgIconClass, { Props, Options, SvgIconConstructor, Icon } from '@yzfe/svgicon';
 import '@yzfe/svgicon/lib/svgicon.css';
 interface ComponentProps extends Props {
     onClick?: () => void;
@@ -11,4 +11,8 @@ declare class SvgIcon extends React.Component<ComponentProps, {
     constructor(props: ComponentProps);
     render(): JSX.Element;
 }
-export { SvgIcon, setOptions };
+/** SvgIcon function component, define in @yzfe/svgicon-loader compile */
+interface SvgIconFC extends React.FC<Props> {
+    data: Icon;
+}
+export { SvgIcon, SvgIconFC, setOptions, Icon, Props, Options, SvgIconConstructor, };

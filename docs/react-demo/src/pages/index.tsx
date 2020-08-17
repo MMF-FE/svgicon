@@ -1,21 +1,22 @@
 import React from 'react'
 import styles from './index.less'
-import { SvgIcon } from '@yzfe/react-svgicon'
-import { Props } from '@yzfe/svgicon'
+import { Props, SvgIconFC } from '@yzfe/react-svgicon'
 import icons from '@/icons'
 
-import '@yzfe/svgicon/lib/svgicon.css'
+import '@yzfe/react-svgicon/dist/index.css'
+import VueIcon from '@icon/vue.svg'
+import MaskIcon from '@icon/sora/fit/mask.svg'
 
 export default class App extends React.Component<
     Record<string, unknown>,
-    { props: Props; iconIndex: number }
+    { props: Props; icon: SvgIconFC; iconIndex: number }
 > {
     constructor(props: Record<string, unknown>) {
         super(props)
         this.state = {
-            iconIndex: icons.findIndex((v) => v.name === 'vue'),
+            iconIndex: 0,
+            icon: icons[0],
             props: {
-                data: icons.find((v) => v.name === 'vue') || icons[0],
                 width: 100,
                 height: 100,
                 original: true,
@@ -47,11 +48,8 @@ export default class App extends React.Component<
     protected updateIcon(ix: string): void {
         const index = Number(ix)
         this.setState({
+            icon: icons[index],
             iconIndex: index,
-            props: {
-                ...this.state.props,
-                data: icons[index],
-            },
         })
     }
 
@@ -60,11 +58,12 @@ export default class App extends React.Component<
             return <option key={dir} value={dir} label={dir}></option>
         })
 
+        const Icon = this.state.icon
         return (
             <div className={styles.app}>
                 <div className={styles.content}>
                     <div className={styles.icon}>
-                        <SvgIcon {...this.state.props}></SvgIcon>
+                        <Icon {...this.state.props}></Icon>
                     </div>
                     <div className={styles.form}>
                         <select
@@ -76,7 +75,7 @@ export default class App extends React.Component<
                                 return (
                                     <option
                                         value={ix}
-                                        label={icon.name}
+                                        label={icon.data.name}
                                         key={ix}
                                     ></option>
                                 )
@@ -135,6 +134,18 @@ export default class App extends React.Component<
                             />
                             <span>Use Original Color</span>
                         </label>
+                        <div>Test Unique ID</div>
+                        <div></div>
+                        <div className="form">
+                            <VueIcon original></VueIcon>
+                            <MaskIcon original></MaskIcon>
+                        </div>
+                        <div className="form">
+                            <VueIcon original></VueIcon>
+                            {this.state.props.dir !== 'left' && (
+                                <MaskIcon original></MaskIcon>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>

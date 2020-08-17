@@ -20,12 +20,29 @@ const SvgiconLoader: loader.Loader = function (source) {
         )
 
         if (callback) {
-            callback(
-                null,
+            let result = `
+            const data = ${JSON.stringify(icon)}
+        `
+            if (options.component === 'vue') {
+                console.warn('Load as a vue component is not implemented.')
+            } else if (options.component === 'react') {
+                result += `
+                    import React from 'react'
+                    import { SvgIcon } from '@yzfe/react-svgicon'
+                    function SvgIconFC (props) {
+                        return React.createElement(SvgIcon, {data, ...props})
+                    }
+
+                    SvgIconFC.data = data
+
+                    export default SvgIconFC
                 `
-                    module.exports = ${JSON.stringify(icon)}
-            `
-            )
+            } else {
+                result += `
+                module.exports = data
+                `
+            }
+            callback(null, result)
         }
     })()
 }

@@ -44,14 +44,24 @@ var SvgiconLoader = function (source) {
     var callback = this.async();
     var options = (loaderUtils.getOptions(this) || {});
     (function () { return __awaiter(_this, void 0, void 0, function () {
-        var icon;
+        var icon, result;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, svgicon_gen_1.default(source, this.resourcePath, options.svgFilePath, options.svgoConfig)];
                 case 1:
                     icon = _a.sent();
                     if (callback) {
-                        callback(null, "\n                    module.exports = " + JSON.stringify(icon) + "\n            ");
+                        result = "\n            const data = " + JSON.stringify(icon) + "\n        ";
+                        if (options.component === 'vue') {
+                            console.warn('Load as a vue component is not implemented.');
+                        }
+                        else if (options.component === 'react') {
+                            result += "\n                    import React from 'react'\n                    import { SvgIcon } from '@yzfe/react-svgicon'\n                    function SvgIconFC (props) {\n                        return React.createElement(SvgIcon, {data, ...props})\n                    }\n\n                    SvgIconFC.data = data\n\n                    export default SvgIconFC\n                ";
+                        }
+                        else {
+                            result += "\n                module.exports = data\n                ";
+                        }
+                        callback(null, result);
                     }
                     return [2 /*return*/];
             }
