@@ -1,0 +1,34 @@
+{
+    "name": "@yzfe/react-svgicon",
+    "version": "0.0.0",
+    "description": "SVG icon component for react",
+    "main": "dist/index.js",
+    "module": "dist/index.esm.js",
+    "scripts": {
+        "dev": "rollup -c -w",
+        "build": "rollup -c"
+    },
+    "author": "Allenice Mo <994298628@qq.com>",
+    "homepage": "https://github.com/MMF-FE/vue-svgicon/tree/master/packages/vue-svgicon#readme",
+    "license": "MIT",
+    "peerDependencies": {
+        "react": ">=16.8.0",
+        "react-dom": ">=16.8.0"
+    },
+    "dependencies": {
+        "@yzfe/svgicon": "^0.0.0"
+    },
+    "devDependencies": {
+        "@rollup/plugin-commonjs": "^15.0.0",
+        "@rollup/plugin-node-resolve": "^9.0.0",
+        "@types/react": "^16.9.46",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "rollup": "^2.26.3",
+        "rollup-plugin-peer-deps-external": "^2.2.3",
+        "rollup-plugin-postcss": "^3.1.5",
+        "rollup-plugin-terser": "^7.0.0",
+        "rollup-plugin-typescript2": "^0.27.2",
+        "typescript": "^3.9.7"
+    }
+}

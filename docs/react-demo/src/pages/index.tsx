@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './index.less'
-import SvgIcon from '@/components/SvgIcon'
+import SvgIcon from '@yzfe/react-svgicon'
 import { Props } from '@yzfe/svgicon'
 import icons from '@/icons'
 
