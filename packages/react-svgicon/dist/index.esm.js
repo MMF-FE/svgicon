@@ -29,6 +29,17 @@ function __extends(d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 }
 
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -48,8 +59,8 @@ var utils = {
     },
 };
 
-var __assign = (undefined && undefined.__assign) || function () {
-    __assign = Object.assign || function(t) {
+var __assign$1 = (undefined && undefined.__assign) || function () {
+    __assign$1 = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
             s = arguments[i];
             for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
@@ -57,7 +68,7 @@ var __assign = (undefined && undefined.__assign) || function () {
         }
         return t;
     };
-    return __assign.apply(this, arguments);
+    return __assign$1.apply(this, arguments);
 };
 var SvgIcon = /** @class */ (function () {
     function SvgIcon(props) {
@@ -68,14 +79,14 @@ var SvgIcon = /** @class */ (function () {
     }
     Object.defineProperty(SvgIcon.prototype, "props", {
         get: function () {
-            var props = __assign({}, this._props);
+            var props = __assign$1({}, this._props);
             if (typeof props.original !== 'boolean' && 'original' in props) {
                 props.original = true;
             }
             if (typeof props.fill !== 'boolean' && 'fill' in props) {
                 props.fill = true;
             }
-            return __assign({
+            return __assign$1({
                 width: SvgIcon.options.defaultWidth,
                 height: SvgIcon.options.defaultHeight,
                 fill: !SvgIcon.options.isStroke,
@@ -283,23 +294,26 @@ var SvgIcon = /** @class */ (function () {
     return SvgIcon;
 }());
 
-var SvgIconComponent = /** @class */ (function (_super) {
-    __extends(SvgIconComponent, _super);
-    function SvgIconComponent(props) {
+function setOptions(options) {
+    SvgIcon.options = __assign(__assign({}, SvgIcon.options), options);
+}
+var SvgIcon$1 = /** @class */ (function (_super) {
+    __extends(SvgIcon$1, _super);
+    function SvgIcon$1(props) {
         var _this = _super.call(this, props) || this;
         _this.state = {
             svgicon: new SvgIcon(props),
         };
         return _this;
     }
-    SvgIconComponent.prototype.render = function () {
+    SvgIcon$1.prototype.render = function () {
         this.state.svgicon.props = this.props;
         return (React.createElement("svg", { version: "1.1", dangerouslySetInnerHTML: {
                 __html: this.state.svgicon.path || '',
             }, className: this.state.svgicon.clazz || '', viewBox: this.state.svgicon.box, style: this.state.svgicon.style, onClick: this.props.onClick }));
     };
-    return SvgIconComponent;
+    return SvgIcon$1;
 }(React.Component));
 
-export default SvgIconComponent;
+export { SvgIcon$1 as SvgIcon, setOptions };
 //# sourceMappingURL=index.esm.js.map
