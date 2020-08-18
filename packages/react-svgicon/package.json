@@ -6,7 +6,8 @@
     "module": "dist/index.esm.js",
     "scripts": {
         "dev": "rollup -c -w",
-        "build": "rollup -c"
+        "build": "rollup -c",
+        "prepublishOnly": "yarn build"
     },
     "author": "Allenice Mo <994298628@qq.com>",
     "homepage": "https://github.com/MMF-FE/vue-svgicon/tree/master/packages/vue-svgicon#readme",

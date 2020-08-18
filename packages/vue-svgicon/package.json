@@ -3,8 +3,8 @@
     "version": "4.0.0-alpha.0",
     "description": "SVG icon component for vue",
     "scripts": {
-        "dev": "vue-cli-service build --watch --mode production --target lib --name svgicon src/index.ts",
-        "build": "vue-cli-service build --target lib --name svgicon src/index.ts",
+        "dev": "rollup -c -w",
+        "build": "rollup -c",
         "test": "vue-cli-service test:unit",
         "prepublishOnly": "yarn build && yarn test"
     },
@@ -32,6 +32,8 @@
         "@yzfe/svgicon": "^0.0.0"
     },
     "devDependencies": {
+        "@rollup/plugin-commonjs": "^15.0.0",
+        "@rollup/plugin-node-resolve": "^9.0.0",
         "@types/chai": "^4.2.11",
         "@types/mocha": "^5.2.4",
         "@vue/cli-plugin-typescript": "~4.5.0",
@@ -40,6 +42,11 @@
         "@vue/test-utils": "^1.0.3",
         "@yzfe/svgicon-loader": "^0.0.0",
         "chai": "^4.1.2",
+        "rollup": "^2.26.3",
+        "rollup-plugin-peer-deps-external": "^2.2.3",
+        "rollup-plugin-postcss": "^3.1.5",
+        "rollup-plugin-terser": "^7.0.0",
+        "rollup-plugin-typescript2": "^0.27.2",
         "sass": "^1.26.5",
         "sass-loader": "^8.0.2",
         "typescript": "~3.9.3",

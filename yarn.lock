@@ -16396,7 +16396,7 @@ rollup-plugin-terser@^7.0.0:
 
 rollup-plugin-typescript2@^0.27.2:
   version "0.27.2"
-  resolved "https://npm.yzops.net/rollup-plugin-typescript2/-/rollup-plugin-typescript2-0.27.2.tgz#871a7f5d2a774f9cef50d25da868eec72acc2ed8"
+  resolved "https://registry.npm.taobao.org/rollup-plugin-typescript2/download/rollup-plugin-typescript2-0.27.2.tgz#871a7f5d2a774f9cef50d25da868eec72acc2ed8"
   integrity sha1-hxp/XSp3T5zvUNJdqGjuxyrMLtg=
   dependencies:
     "@rollup/pluginutils" "^3.1.0"
@@ -18139,7 +18139,7 @@ ts-pnp@^1.1.6:
 
 tslib@2.0.1:
   version "2.0.1"
-  resolved "https://npm.yzops.net/tslib/-/tslib-2.0.1.tgz#410eb0d113e5b6356490eec749603725b021b43e"
+  resolved "https://registry.npm.taobao.org/tslib/download/tslib-2.0.1.tgz?cache=0&sync_timestamp=1596753875166&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftslib%2Fdownload%2Ftslib-2.0.1.tgz#410eb0d113e5b6356490eec749603725b021b43e"
   integrity sha1-QQ6w0RPltjVkkO7HSWA3JbAhtD4=
 
 tslib@^1.10.0, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
