@@ -73,16 +73,20 @@ var svgoCache = {};
  */
 function gen(source, filename, svgRootPath, svgoConfig) {
     return __awaiter(this, void 0, void 0, function () {
-        var name, filePath, config, key, svgo, result, data, viewBox, icon;
+        var svgRootPaths, name, filePath, config, key, svgo, result, data, viewBox, icon;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     svgRootPath = svgRootPath || process.cwd();
-                    if (!path.isAbsolute(svgRootPath)) {
-                        svgRootPath = path.join(process.cwd(), svgRootPath);
-                    }
+                    svgRootPaths = Array.isArray(svgRootPath) ? svgRootPath : [svgRootPath];
+                    svgRootPaths = svgRootPaths.map(function (rp) {
+                        if (!path.isAbsolute(rp)) {
+                            return path.join(process.cwd(), rp);
+                        }
+                        return rp;
+                    });
                     name = path.basename(filename).split('.')[0];
-                    filePath = utils_1.default.getFilePath(svgRootPath, filename);
+                    filePath = utils_1.default.getFilePath(svgRootPaths, filename);
                     config = svgo_2.default;
                     key = '';
                     if (svgoConfig) {

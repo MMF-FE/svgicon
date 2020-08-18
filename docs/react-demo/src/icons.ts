@@ -1,6 +1,6 @@
-import { SvgIconFC } from '@yzfe/react-svgicon'
+import { ReactSvgIconFC } from '@yzfe/react-svgicon'
 
-const icons: SvgIconFC[] = []
+const icons: ReactSvgIconFC[] = []
 
 const req = require.context('@icon', true, /\.svg/)
 req.keys().forEach((key) => {

@@ -17,16 +17,24 @@ const svgoCache: Record<string, SVGO> = {}
 export default async function gen(
     source: string,
     filename: string,
-    svgRootPath?: string,
+    svgRootPath?: string | string[],
     svgoConfig?: SVGO.Options
 ): Promise<Icon> {
     svgRootPath = svgRootPath || process.cwd()
-    if (!path.isAbsolute(svgRootPath)) {
-        svgRootPath = path.join(process.cwd(), svgRootPath)
-    }
+    // if (!path.isAbsolute(svgRootPath)) {
+    //     svgRootPath = path.join(process.cwd(), svgRootPath)
+    // }
+    let svgRootPaths = Array.isArray(svgRootPath) ? svgRootPath : [svgRootPath]
+
+    svgRootPaths = svgRootPaths.map((rp) => {
+        if (!path.isAbsolute(rp)) {
+            return path.join(process.cwd(), rp)
+        }
+        return rp
+    })
 
     const name = path.basename(filename).split('.')[0]
-    const filePath = utils.getFilePath(svgRootPath, filename)
+    const filePath = utils.getFilePath(svgRootPaths, filename)
 
     let config: SVGO.Options = defaultSVGConfig
     let key = ''

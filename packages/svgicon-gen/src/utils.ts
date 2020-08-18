@@ -1,5 +1,4 @@
 // build icon data, utils
-
 import * as path from 'path'
 import { OptimizedSvg } from '../typings'
 
@@ -73,10 +72,20 @@ export default {
     },
 
     // get file path by filename
-    getFilePath(sourcePath: string, filename: string): string {
-        let filePath = filename
-            .replace(path.resolve(sourcePath), '')
-            .replace(path.basename(filename), '')
+    getFilePath(svgRootPath: string | string[], filename: string): string {
+        // let filePath = filename
+        //     .replace(path.resolve(sourcePath), '')
+        //     .replace(path.basename(filename), '')
+        let filePath = ''
+        const rootPaths = Array.isArray(svgRootPath)
+            ? svgRootPath
+            : [svgRootPath]
+
+        rootPaths.forEach((rp) => {
+            filename = filename.replace(rp, '')
+        })
+
+        filePath = filename.replace(path.basename(filename), '')
 
         if (/^[/\\]/.test(filePath)) {
             filePath = filePath.substr(1)

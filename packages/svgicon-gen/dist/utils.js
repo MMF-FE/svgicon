@@ -1,5 +1,4 @@
 "use strict";
-// build icon data, utils
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
@@ -20,6 +19,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// build icon data, utils
 var path = __importStar(require("path"));
 exports.default = {
     // Simple template compiler
@@ -70,10 +70,18 @@ exports.default = {
         return content;
     },
     // get file path by filename
-    getFilePath: function (sourcePath, filename) {
-        var filePath = filename
-            .replace(path.resolve(sourcePath), '')
-            .replace(path.basename(filename), '');
+    getFilePath: function (svgRootPath, filename) {
+        // let filePath = filename
+        //     .replace(path.resolve(sourcePath), '')
+        //     .replace(path.basename(filename), '')
+        var filePath = '';
+        var rootPaths = Array.isArray(svgRootPath)
+            ? svgRootPath
+            : [svgRootPath];
+        rootPaths.forEach(function (rp) {
+            filename = filename.replace(rp, '');
+        });
+        filePath = filename.replace(path.basename(filename), '');
         if (/^[/\\]/.test(filePath)) {
             filePath = filePath.substr(1);
         }

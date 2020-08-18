@@ -1,7 +1,8 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { Props } from '@yzfe/vue-svgicon'
 import icons from './icons'
-
+import arrow from '@assetsIcon/arrow.svg'
+console.log(arrow)
 @Component({
     components: {},
 })

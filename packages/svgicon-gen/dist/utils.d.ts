@@ -7,6 +7,6 @@ declare const _default: {
     addPid(content: string): string;
     renameStyle(content: string): string;
     changeId(content: string, filePath: string, name: string, idSep?: string): string;
-    getFilePath(sourcePath: string, filename: string): string;
+    getFilePath(svgRootPath: string | string[], filename: string): string;
 };
 export default _default;

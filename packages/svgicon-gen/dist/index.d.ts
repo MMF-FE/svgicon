@@ -7,4 +7,4 @@ import SVGO from 'svgo';
  * @param svgRootPath svg icon root path, to calc relative path
  * @param svgoConfig svgo config
  */
-export default function gen(source: string, filename: string, svgRootPath?: string, svgoConfig?: SVGO.Options): Promise<Icon>;
+export default function gen(source: string, filename: string, svgRootPath?: string | string[], svgoConfig?: SVGO.Options): Promise<Icon>;

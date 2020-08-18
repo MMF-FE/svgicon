@@ -53,8 +53,10 @@ module.exports = (api, cliOptions) => {
                 })
         }
 
-        if (pathAlias) {
-            config.resolve.alias.set(pathAlias, svgFilePath)
+        if (pathAlias && Object.keys(pathAlias).length) {
+            for (let name in pathAlias) {
+                config.resolve.alias.set(name, pathAlias[name])
+            }
         }
     })
 }
