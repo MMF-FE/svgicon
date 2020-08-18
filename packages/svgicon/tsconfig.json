@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "target": "esnext",
+        "target": "es5",
         "module": "esnext",
         "strict": true,
         "moduleResolution": "node",
@@ -14,8 +14,6 @@
         "types": ["webpack-env", "mocha", "chai"],
         "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
     },
-    "include": [
-        "src/**/*.ts"
-    ],
+    "include": ["src/**/*.ts"],
     "exclude": ["node_modules"]
 }

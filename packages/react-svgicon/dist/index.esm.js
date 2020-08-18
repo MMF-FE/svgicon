@@ -1,5 +1,66 @@
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
+import React from 'react';
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+/* global Reflect, Promise */
+
+var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return extendStatics(d, b);
+};
+
+function __extends(d, b) {
+    extendStatics(d, b);
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //不含最大值，含最小值
+}
+var idSeed = 0;
+var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+var utils = {
+    genUID: function () {
+        idSeed++;
+        return (idSeed +
+            '_' +
+            Array(5)
+                .fill('')
+                .map(function () { return chars[getRandomInt(0, chars.length)]; })
+                .join(''));
+    },
+};
+
+var __assign$1 = (undefined && undefined.__assign) || function () {
+    __assign$1 = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
             s = arguments[i];
             for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
@@ -7,9 +68,8 @@ var __assign = (this && this.__assign) || function () {
         }
         return t;
     };
-    return __assign.apply(this, arguments);
+    return __assign$1.apply(this, arguments);
 };
-import utils from './utils';
 var SvgIcon = /** @class */ (function () {
     function SvgIcon(props) {
         this._props = {};
@@ -19,14 +79,14 @@ var SvgIcon = /** @class */ (function () {
     }
     Object.defineProperty(SvgIcon.prototype, "props", {
         get: function () {
-            var props = __assign({}, this._props);
+            var props = __assign$1({}, this._props);
             if (typeof props.original !== 'boolean' && 'original' in props) {
                 props.original = true;
             }
             if (typeof props.fill !== 'boolean' && 'fill' in props) {
                 props.fill = true;
             }
-            return __assign({
+            return __assign$1({
                 width: SvgIcon.options.defaultWidth,
                 height: SvgIcon.options.defaultHeight,
                 fill: !SvgIcon.options.isStroke,
@@ -233,5 +293,27 @@ var SvgIcon = /** @class */ (function () {
     };
     return SvgIcon;
 }());
-export default SvgIcon;
-//# sourceMappingURL=index.js.map
+
+function setOptions(options) {
+    SvgIcon.options = __assign(__assign({}, SvgIcon.options), options);
+}
+var SvgIcon$1 = /** @class */ (function (_super) {
+    __extends(SvgIcon$1, _super);
+    function SvgIcon$1(props) {
+        var _this = _super.call(this, props) || this;
+        _this.state = {
+            svgicon: new SvgIcon(props),
+        };
+        return _this;
+    }
+    SvgIcon$1.prototype.render = function () {
+        this.state.svgicon.props = this.props;
+        return (React.createElement("svg", { version: "1.1", dangerouslySetInnerHTML: {
+                __html: this.state.svgicon.path || '',
+            }, className: this.state.svgicon.clazz || '', viewBox: this.state.svgicon.box, style: this.state.svgicon.style, onClick: this.props.onClick }));
+    };
+    return SvgIcon$1;
+}(React.Component));
+
+export { SvgIcon$1 as SvgIcon, setOptions };
+//# sourceMappingURL=index.esm.js.map

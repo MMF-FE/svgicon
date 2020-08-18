@@ -10,7 +10,7 @@ declare module '*.svg' {
 }
 
 declare module '@icon/*' {
-    import { Icon } from '@yzfe/svgicon'
-    const value: Icon
+    import { SvgIconFC } from '@yzfe/react-svgicon'
+    const value: SvgIconFC
     export = value
 }

@@ -18,6 +18,7 @@ export default defineConfig({
             .loader('@yzfe/svgicon-loader')
             .options({
                 svgFilePath,
+                component: 'react',
             })
 
         config.module.rule('svg').exclude.add(svgFilePath).end()

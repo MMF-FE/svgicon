@@ -25,7 +25,7 @@ export interface Icon {
 
 export interface Props {
     /** icon data */
-    data: Icon
+    data?: Icon
     width?: string | number
     height?: string | number
     scale?: string | number
@@ -37,6 +37,8 @@ export interface Props {
     /** is use original color */
     original?: boolean
 }
+
+export type SvgIconConstructor = new (props: Props) => SvgIcon
 
 export default class SvgIcon {
     public static options: Options = {
