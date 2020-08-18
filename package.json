@@ -10,7 +10,8 @@
         "bootstrap": "lerna bootstrap",
         "build": "lerna run build --ignore @example/*",
         "build:doc": "lerna run build --scope @example/doc-demo",
-        "test": "lerna run test --stream"
+        "test": "lerna run test --stream",
+        "publish": "lerna publish"
     },
     "repository": {
         "type": "git",
