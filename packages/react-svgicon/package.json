@@ -12,6 +12,10 @@
     "author": "Allenice Mo <994298628@qq.com>",
     "homepage": "https://github.com/MMF-FE/vue-svgicon/tree/master/packages/vue-svgicon#readme",
     "license": "MIT",
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org",
+        "access": "public"
+    },
     "peerDependencies": {
         "react": ">=16.8.0",
         "react-dom": ">=16.8.0"
@@ -31,5 +35,6 @@
         "rollup-plugin-terser": "^7.0.0",
         "rollup-plugin-typescript2": "^0.27.2",
         "typescript": "^3.9.7"
-    }
+    },
+    "gitHead": "8f4f2a4442e072323ecf76585a533342ddafecb5"
 }
