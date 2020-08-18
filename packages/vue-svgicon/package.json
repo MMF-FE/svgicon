@@ -2,6 +2,8 @@
     "name": "@yzfe/vue-svgicon",
     "version": "4.0.0-alpha.0",
     "description": "SVG icon component for vue",
+    "main": "dist/index.js",
+    "module": "dist/index.esm.js",
     "scripts": {
         "dev": "rollup -c -w",
         "build": "rollup -c",
@@ -17,8 +19,6 @@
     "author": "Allenice Mo <994298628@qq.com>",
     "homepage": "https://github.com/MMF-FE/vue-svgicon/tree/master/packages/vue-svgicon#readme",
     "license": "MIT",
-    "main": "dist/svgicon.common.js",
-    "typings": "typings/index.d.ts",
     "directories": {
         "lib": "lib",
         "dist": "dist"
@@ -28,6 +28,9 @@
         "typings",
         "postcss.config.js"
     ],
+    "peerDependencies": {
+        "vue": "*"
+    },
     "dependencies": {
         "@yzfe/svgicon": "^0.0.0"
     },

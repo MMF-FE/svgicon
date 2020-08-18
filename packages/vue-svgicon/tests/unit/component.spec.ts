@@ -3,11 +3,9 @@ import { mount, createLocalVue } from '@vue/test-utils'
 import Icon from './Icon.vue'
 
 import Vue from 'vue'
-import VueSvgIcon from '@yzfe/vue-svgicon'
+import { VueSvgIcon, setOptions } from '@yzfe/vue-svgicon'
 
-Vue.use(VueSvgIcon, {
-    tagName: 'icon',
-})
+Vue.component('icon', VueSvgIcon)
 const wrapper = mount(Icon)
 const arrowIcon = wrapper.findComponent({ ref: 'arrow' })
 const vueIcon = wrapper.findComponent({ ref: 'vue' })
@@ -118,10 +116,11 @@ describe('Test props: fill', () => {
     })
 
     it('should has stroke style by default when use isStroke option', async () => {
-        const localVue = createLocalVue()
-        localVue.use(VueSvgIcon, {
+        setOptions({
             isStroke: true,
         })
+
+        const localVue = createLocalVue()
         const localWrapper = mount(Icon, {
             localVue,
         })

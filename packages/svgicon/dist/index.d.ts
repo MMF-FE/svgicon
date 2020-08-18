@@ -34,6 +34,7 @@ export interface Props {
 export declare type SvgIconConstructor = new (props: Props) => SvgIcon;
 export default class SvgIcon {
     static options: Options;
+    static setOptions(options: Options): void;
     constructor(props: Partial<Props>);
     private _props;
     private uid;

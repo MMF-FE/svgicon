@@ -8,7 +8,7 @@ import { terser } from 'rollup-plugin-terser'
 const packageJson = require('./package.json')
 
 export default {
-    input: 'src/index.tsx',
+    input: 'src/index.ts',
     output: [
         {
             file: packageJson.main,
@@ -26,7 +26,10 @@ export default {
         peerDepsExternal(),
         resolve(),
         commonjs(),
-        typescript({ useTsconfigDeclarationDir: true }),
+        typescript({
+            useTsconfigDeclarationDir: true,
+            tsconfig: './tsconfig.lib.json',
+        }),
         postcss({ extract: true, minimize: true }),
     ],
 }

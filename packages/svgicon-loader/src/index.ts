@@ -28,15 +28,17 @@ const SvgiconLoader: loader.Loader = function (source) {
             } else if (options.component === 'react') {
                 result += `
                     import React from 'react'
-                    import { SvgIcon } from '@yzfe/react-svgicon'
+                    import { ReactSvgIcon } from '@yzfe/react-svgicon'
                     function SvgIconFC (props) {
-                        return React.createElement(SvgIcon, {data, ...props})
+                        return React.createElement(ReactSvgIcon, {data, ...props})
                     }
 
                     SvgIconFC.data = data
 
                     export default SvgIconFC
                 `
+            } else if (options.component === 'custom') {
+                result += options.customCode
             } else {
                 result += `
                 module.exports = data

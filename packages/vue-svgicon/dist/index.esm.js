@@ -1,33 +1,4 @@
-import React from 'react';
-
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation.
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-***************************************************************************** */
-/* global Reflect, Promise */
-
-var extendStatics = function(d, b) {
-    extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return extendStatics(d, b);
-};
-
-function __extends(d, b) {
-    extendStatics(d, b);
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-}
+import Vue from 'vue';
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -285,24 +256,50 @@ var SvgIcon = /** @class */ (function () {
     return SvgIcon;
 }());
 
-var ReactSvgIcon = /** @class */ (function (_super) {
-    __extends(ReactSvgIcon, _super);
-    function ReactSvgIcon(props) {
-        var _this = _super.call(this, props) || this;
-        _this.state = {
-            svgicon: new SvgIcon(props),
+var VueSvgIcon = Vue.extend({
+    inheritAttrs: false,
+    data: function () {
+        return {
+            svgicon: null,
         };
-        return _this;
-    }
-    ReactSvgIcon.prototype.render = function () {
-        this.state.svgicon.props = this.props;
-        return (React.createElement("svg", { version: "1.1", dangerouslySetInnerHTML: {
-                __html: this.state.svgicon.path || '',
-            }, className: this.state.svgicon.clazz || '', viewBox: this.state.svgicon.box, style: this.state.svgicon.style, onClick: this.props.onClick }));
-    };
-    return ReactSvgIcon;
-}(React.Component));
+    },
+    watch: {
+        $attrs: {
+            deep: true,
+            handler: function () {
+                if (this.svgicon) {
+                    this.svgicon.props = this.$attrs;
+                }
+            },
+        },
+    },
+    created: function () {
+        this.svgicon = new SvgIcon(this.$attrs);
+    },
+    methods: {
+        onClick: function (e) {
+            this.$emit('click', e);
+        },
+    },
+    render: function (h) {
+        var _a, _b, _c, _d;
+        return h('svg', {
+            attrs: {
+                version: '1.1',
+                viewBox: (_a = this.svgicon) === null || _a === void 0 ? void 0 : _a.box,
+            },
+            style: (_b = this.svgicon) === null || _b === void 0 ? void 0 : _b.style,
+            class: (_c = this.svgicon) === null || _c === void 0 ? void 0 : _c.clazz,
+            domProps: {
+                innerHTML: (_d = this.svgicon) === null || _d === void 0 ? void 0 : _d.path,
+            },
+            on: {
+                click: this.onClick,
+            },
+        });
+    },
+});
 var setOptions = SvgIcon.setOptions;
 
-export { ReactSvgIcon, setOptions };
+export { VueSvgIcon, setOptions };
 //# sourceMappingURL=index.esm.js.map

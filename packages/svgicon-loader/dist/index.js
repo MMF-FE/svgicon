@@ -56,7 +56,10 @@ var SvgiconLoader = function (source) {
                             console.warn('Load as a vue component is not implemented.');
                         }
                         else if (options.component === 'react') {
-                            result += "\n                    import React from 'react'\n                    import { SvgIcon } from '@yzfe/react-svgicon'\n                    function SvgIconFC (props) {\n                        return React.createElement(SvgIcon, {data, ...props})\n                    }\n\n                    SvgIconFC.data = data\n\n                    export default SvgIconFC\n                ";
+                            result += "\n                    import React from 'react'\n                    import { ReactSvgIcon } from '@yzfe/react-svgicon'\n                    function SvgIconFC (props) {\n                        return React.createElement(ReactSvgIcon, {data, ...props})\n                    }\n\n                    SvgIconFC.data = data\n\n                    export default SvgIconFC\n                ";
+                        }
+                        else if (options.component === 'custom') {
+                            result += options.customCode;
                         }
                         else {
                             result += "\n                module.exports = data\n                ";

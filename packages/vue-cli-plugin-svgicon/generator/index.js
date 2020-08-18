@@ -9,12 +9,12 @@ module.exports = (api, options) => {
 
     api.injectImports(
         api.entryFile,
-        `import VueSvgIcon, { PluginOptions } from '@yzfe/vue-svgicon'`
+        `import { VueSvgIcon } from '@yzfe/vue-svgicon'`
     )
 
     api.injectImports(
         api.entryFile,
-        `import '@yzfe/vue-svgicon/dist/svgicon.css'`
+        `import '@yzfe/vue-svgicon/dist/index.css'`
     )
 }
 
@@ -28,9 +28,7 @@ module.exports.hooks = (api, options) => {
         const lines = contentMain.split(/\r?\n/g)
 
         const injectCode = `
-Vue.use<PluginOptions>(VueSvgIcon, {
-    tagName: '${options.tagName}',
-})
+Vue.component('${options.tagName}', VueSvgIcon)
 `
 
         const renderIndex = lines.findIndex((line) => line.match(/new Vue/))

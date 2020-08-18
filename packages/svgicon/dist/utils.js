@@ -10,8 +10,7 @@ export default {
         idSeed++;
         return (idSeed +
             '_' +
-            Array(5)
-                .fill('')
+            [1, 2, 3, 4, 5]
                 .map(function () { return chars[getRandomInt(0, chars.length)]; })
                 .join(''));
     },

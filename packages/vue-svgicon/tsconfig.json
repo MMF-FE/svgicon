@@ -2,6 +2,8 @@
     "compilerOptions": {
         "target": "es5",
         "module": "esnext",
+        "declaration": true,
+        "declarationDir": "dist",
         "strict": true,
         "jsx": "preserve",
         "importHelpers": true,

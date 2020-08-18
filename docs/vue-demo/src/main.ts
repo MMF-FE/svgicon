@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import App from './App.vue'
-import VueSvgIcon, { PluginOptions } from '@yzfe/vue-svgicon'
-import '@yzfe/vue-svgicon/dist/svgicon.css'
+import '@yzfe/svgicon-polyfill'
+
+import { VueSvgIcon } from '@yzfe/vue-svgicon'
+import '@yzfe/vue-svgicon/dist/index.css'
 
 Vue.config.productionTip = false
 
-Vue.use<PluginOptions>(VueSvgIcon, {
-    tagName: 'icon',
-})
+Vue.component('icon', VueSvgIcon)
 
 new Vue({
     render: (h) => h(App),

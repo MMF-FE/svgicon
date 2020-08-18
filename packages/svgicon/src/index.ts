@@ -49,6 +49,13 @@ export default class SvgIcon {
         isOriginalDefault: false,
     }
 
+    public static setOptions(options: Options): void {
+        SvgIcon.options = {
+            ...SvgIcon.options,
+            ...options,
+        }
+    }
+
     constructor(props: Partial<Props>) {
         this.props = props
         this.uid = utils.genUID()

@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './index.less'
-import { Props, SvgIconFC } from '@yzfe/react-svgicon'
+import { Props, ReactSvgIconFC } from '@yzfe/react-svgicon'
 import icons from '@/icons'
 
 import '@yzfe/react-svgicon/dist/index.css'
@@ -9,7 +9,7 @@ import MaskIcon from '@icon/sora/fit/mask.svg'
 
 export default class App extends React.Component<
     Record<string, unknown>,
-    { props: Props; icon: SvgIconFC; iconIndex: number }
+    { props: Props; icon: ReactSvgIconFC; iconIndex: number }
 > {
     constructor(props: Record<string, unknown>) {
         super(props)

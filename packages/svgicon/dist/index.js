@@ -17,6 +17,9 @@ var SvgIcon = /** @class */ (function () {
         this.props = props;
         this.uid = utils.genUID();
     }
+    SvgIcon.setOptions = function (options) {
+        SvgIcon.options = __assign(__assign({}, SvgIcon.options), options);
+    };
     Object.defineProperty(SvgIcon.prototype, "props", {
         get: function () {
             var props = __assign({}, this._props);

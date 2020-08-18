@@ -12,8 +12,7 @@ export default {
         return (
             idSeed +
             '_' +
-            Array(5)
-                .fill('')
+            [1, 2, 3, 4, 5]
                 .map(() => chars[getRandomInt(0, chars.length)])
                 .join('')
         )
