@@ -5,6 +5,10 @@
     "bin": {
         "svgicon-viewer": "bin/index.js"
     },
+    "scripts": {
+        "build": "node ./scripts/build.js",
+        "prepublishOnly": "yarn build"
+    },
     "keywords": [
         "vue",
         "svg",
