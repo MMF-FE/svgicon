@@ -1,9 +1,9 @@
 import './debug'
 import Vue from 'vue'
 import App from './App.vue'
-import VueSvgIcon, { PluginOptions } from '@yzfe/vue-svgicon'
+import { VueSvgIcon } from '@yzfe/vue-svgicon'
 
-import '@yzfe/vue-svgicon/dist/svgicon.css'
+import '@yzfe/vue-svgicon/dist/index.css'
 
 import {
     Button,
@@ -18,9 +18,7 @@ Vue.component(CheckboxButton.name, CheckboxButton)
 Vue.component(CheckboxGroup.name, CheckboxGroup)
 Vue.component(Input.name, Input)
 
-Vue.use<PluginOptions>(VueSvgIcon, {
-    tagName: 'icon',
-})
+Vue.component('icon', VueSvgIcon)
 
 Vue.config.productionTip = false
 
