@@ -36,7 +36,11 @@ const VueSvgIcon = {
                 ...result.style,
                 ...context.data.staticStyle,
             },
-            staticClass: result.className + ' ' + context.data.staticClass,
+            staticClass:
+                result.className +
+                (context.data.staticClass
+                    ? ` ${context.data.staticClass}`
+                    : ''),
             domProps: {
                 innerHTML: result.path,
             },

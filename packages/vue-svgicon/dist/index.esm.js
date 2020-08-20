@@ -184,7 +184,7 @@ function getStyle(props, iconData) {
     var width;
     var height;
     // apply scale
-    if (isScale && iconData) {
+    if (isScale && iconData && iconData.width && iconData.height) {
         width = Number(iconData.width) * Number(scale) + 'px';
         height = Number(iconData.height) * Number(scale) + 'px';
     }
@@ -248,7 +248,10 @@ var VueSvgIcon = {
                 }
             }
         }
-        return h('svg', __assign(__assign({}, context.data), { attrs: __assign({ version: '1.1', viewBox: result.box }, attrs), staticStyle: __assign(__assign({}, result.style), context.data.staticStyle), staticClass: result.className + ' ' + context.data.staticClass, domProps: {
+        return h('svg', __assign(__assign({}, context.data), { attrs: __assign({ version: '1.1', viewBox: result.box }, attrs), staticStyle: __assign(__assign({}, result.style), context.data.staticStyle), staticClass: result.className +
+                (context.data.staticClass
+                    ? " " + context.data.staticClass
+                    : ''), domProps: {
                 innerHTML: result.path,
             } }));
     },

@@ -7,7 +7,7 @@ import awesome from './awesome'
     components: {},
 })
 export default class App extends Vue {
-    protected props: Partial<Props> = {
+    private props: Partial<Props> = {
         data: icons.find((v) => v.name === 'vue'),
         width: '50',
         height: '50',
@@ -18,13 +18,17 @@ export default class App extends Vue {
         dir: void 0,
     }
 
-    protected icons = icons
-    protected awesome = awesome
-    protected dirList = ['', 'left', 'right', 'up', 'down']
+    private icons = icons
+    private awesome = awesome
+    private dirList = ['', 'left', 'right', 'up', 'down']
 
-    protected className = 'test'
+    private className = 'test'
 
-    protected iconClick(): void {
+    private iconClick() {
         console.log('click')
+    }
+
+    private created() {
+        console.log(this.$refs)
     }
 }

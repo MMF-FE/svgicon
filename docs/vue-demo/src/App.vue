@@ -43,6 +43,7 @@
         <div>
             <p>Test inherit</p>
             <icon
+                ref="mask"
                 v-show="props.dir === 'left'"
                 data="@icon/sora/fit/mask.svg"
                 class="my-class"

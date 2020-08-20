@@ -7,12 +7,12 @@ import { VueSvgIcon, setOptions } from '@yzfe/vue-svgicon'
 
 Vue.component('icon', VueSvgIcon)
 const wrapper = mount(Icon)
-const arrowIcon = wrapper.findComponent({ ref: 'arrow' })
-const vueIcon = wrapper.findComponent({ ref: 'vue' })
+const arrowIcon = wrapper.find({ ref: 'arrow' })
+const vueIcon = wrapper.find({ ref: 'vue' })
 
-describe('@yzfe/vue-svgicon-loader', () => {
+describe('@yzfe/svgicon-loader', () => {
     it('should load svg to be icon data', () => {
-        const icon = vueIcon.vm.$data.svgicon.icon
+        const icon = wrapper.vm.$data.vueIcon
         expect(icon.name).eq('vue')
         assert.ok(!!icon.data)
     })
@@ -21,7 +21,6 @@ describe('@yzfe/vue-svgicon-loader', () => {
 describe('Test props: dir', async () => {
     it('should has correct direction', async () => {
         const dirs = ['left', 'up', 'right', 'down']
-
         for (let i = 0; i < dirs.length; i++) {
             const dir = dirs[i]
             await arrowIcon.setProps({
@@ -32,7 +31,6 @@ describe('Test props: dir', async () => {
                 `svg-${dir}`,
                 'has no dir: ' + dir
             )
-
             // Can't contains other dir
             expect(arrowIcon.classes()).to.not.be.contains(
                 dirs.filter((v) => v != dir).map(() => `svg-${dir}`),
@@ -47,8 +45,9 @@ describe('Test prop: color', () => {
         await arrowIcon.setProps({
             color: 'green',
         })
+
         const path = arrowIcon.vm.$el.querySelector('path')
-        assert.ok(!!path, 'path is no fond')
+        assert.ok(!!path, 'path is not fond')
         assert.equal('green', path && path.getAttribute('fill'))
     })
 
@@ -57,7 +56,7 @@ describe('Test prop: color', () => {
             color: 'r-green',
         })
         const path = arrowIcon.vm.$el.querySelector('path')
-        assert.ok(!!path, 'path not found')
+        assert.ok(!!path, 'path is not found')
         assert.equal('none', path && path.getAttribute('fill'))
         assert.equal('green', path && path.getAttribute('stroke'))
     })
@@ -66,6 +65,7 @@ describe('Test prop: color', () => {
         await vueIcon.setProps({
             color: 'red green',
         })
+
         const paths = vueIcon.vm.$el.querySelectorAll('path')
         paths.forEach((path, ix) => {
             assert.equal(['red', 'green'][ix], path.getAttribute('fill'))
@@ -105,13 +105,11 @@ describe('Test prop: color', () => {
 
 describe('Test props: fill', () => {
     it('should has fill style by default.', async () => {
-        assert.ok(arrowIcon.vm.$data.svgicon.props.fill)
         expect(arrowIcon.classes()).contains('svg-fill')
 
         await arrowIcon.setProps({
             fill: false,
         })
-        assert.ok(!arrowIcon.vm.$data.svgicon.props.fill)
         expect(arrowIcon.classes()).not.contains('svg-fill')
     })
 
@@ -127,7 +125,6 @@ describe('Test props: fill', () => {
 
         const localArrowIcon = localWrapper.findComponent({ ref: 'arrow' })
 
-        assert.notOk(localArrowIcon.vm.$data.svgicon.props.fill)
         expect(localArrowIcon.classes()).not.contains('svg-fill')
     })
 })
