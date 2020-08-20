@@ -141,7 +141,7 @@ function getStyle(props, iconData) {
     var width;
     var height;
     // apply scale
-    if (isScale && iconData) {
+    if (isScale && iconData && iconData.width && iconData.height) {
         width = Number(iconData.width) * Number(scale) + 'px';
         height = Number(iconData.height) * Number(scale) + 'px';
     }

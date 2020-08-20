@@ -4,54 +4,53 @@ import {
     Props,
     Options,
     setOptions,
+    getPropKeys,
     Icon,
     IconData,
 } from '@yzfe/svgicon'
 import '@yzfe/svgicon/lib/svgicon.css'
 
-// interface ComponentProps extends Props {
-//     onClick?: () => void
-// }
+interface ComponentProps extends Props {
+    [key: string]: unknown
+}
 
-// class ReactSvgIcon extends React.Component<
-//     ComponentProps,
-// > {
-//     constructor(props: ComponentProps) {
-//         super(props)
-//         this.state = {
-//             svgicon: new SvgIconClass(props),
-//         }
-//     }
+const ReactSvgIcon = function (props: ComponentProps): JSX.Element {
+    const result = svgIcon(props)
+    const attrs: Record<string, unknown> = {}
 
-//     public render(): JSX.Element {
-//         this.state.svgicon.props = this.props
+    if (props) {
+        const propsKeys = getPropKeys()
+        for (const key in props) {
+            if (propsKeys.indexOf(key as keyof Props) < 0) {
+                attrs[key] = props[key]
+            }
+        }
+    }
 
-//         return (
-//             <svg
-//                 version="1.1"
-//                 dangerouslySetInnerHTML={{
-//                     __html: this.state.svgicon.path || '',
-//                 }}
-//                 className={this.state.svgicon.clazz || ''}
-//                 viewBox={this.state.svgicon.box}
-//                 style={this.state.svgicon.style}
-//                 onClick={this.props.onClick}
-//             ></svg>
-//         )
-//     }
-// }
+    attrs.viewBox = result.box
+    attrs.version = '1.1'
+    attrs.className = (attrs.className || '') + ` ${result.className}`
+    attrs.style = {
+        ...((attrs.style as Record<string, string>) || {}),
+        ...result.style,
+    }
+
+    return (
+        <svg {...attrs} dangerouslySetInnerHTML={{ __html: result.path }}></svg>
+    )
+}
 
 /** SvgIcon function component, define in @yzfe/svgicon-loader compile */
-interface ReactSvgIconFC extends React.FC<Props> {
+interface ReactSvgIconFC extends React.FC<ComponentProps> {
     data: Icon
 }
 
 export {
-    Icon,
-    IconData,
     ReactSvgIcon,
     ReactSvgIconFC,
-    setOptions,
     Props,
     Options,
+    setOptions,
+    Icon,
+    IconData,
 }

@@ -222,7 +222,7 @@ function getStyle(props: Props, iconData: IconData | null) {
     let height
 
     // apply scale
-    if (isScale && iconData) {
+    if (isScale && iconData && iconData.width && iconData.height) {
         width = Number(iconData.width) * Number(scale) + 'px'
         height = Number(iconData.height) * Number(scale) + 'px'
     } else {

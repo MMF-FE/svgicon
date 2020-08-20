@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './index.less'
 import { Props, ReactSvgIconFC } from '@yzfe/react-svgicon'
 import icons from '@/icons'
+import awesome from '@/awesome'
 
 import '@yzfe/react-svgicon/dist/index.css'
 import VueIcon from '@icon/vue.svg'
@@ -17,8 +18,8 @@ export default class App extends React.Component<
             iconIndex: 0,
             icon: icons[0],
             props: {
-                width: 100,
-                height: 100,
+                width: 50,
+                height: 50,
                 original: true,
                 fill: true,
                 dir: '',
@@ -59,11 +60,15 @@ export default class App extends React.Component<
         })
 
         const Icon = this.state.icon
+
         return (
             <div className={styles.app}>
                 <div className={styles.content}>
                     <div className={styles.icon}>
-                        <Icon {...this.state.props}></Icon>
+                        <Icon
+                            {...this.state.props}
+                            className="demo-icon"
+                        ></Icon>
                     </div>
                     <div className={styles.form}>
                         <select
@@ -137,7 +142,14 @@ export default class App extends React.Component<
                         <div>Test Unique ID</div>
                         <div></div>
                         <div className="form">
-                            <VueIcon original></VueIcon>
+                            <VueIcon
+                                data-id="20"
+                                original
+                                className="vue-icon"
+                                style={{
+                                    fontSize: '12px',
+                                }}
+                            ></VueIcon>
                             <MaskIcon original></MaskIcon>
                         </div>
                         <div className="form">
@@ -147,6 +159,14 @@ export default class App extends React.Component<
                             )}
                         </div>
                     </div>
+                </div>
+
+                <div className={styles.grid}>
+                    {awesome.map((AweSomeIcon, index) => (
+                        <div key={index}>
+                            <AweSomeIcon {...this.state.props}></AweSomeIcon>
+                        </div>
+                    ))}
                 </div>
             </div>
         )

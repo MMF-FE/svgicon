@@ -14,3 +14,9 @@ declare module '@icon/*' {
     const value: ReactSvgIconFC
     export = value
 }
+
+declare module '@fa/*' {
+    import { ReactSvgIconFC } from '@yzfe/react-svgicon'
+    const value: ReactSvgIconFC
+    export = value
+}
