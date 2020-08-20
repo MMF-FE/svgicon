@@ -21,7 +21,7 @@
     "main": "bin/index.js",
     "files": [
         "bin",
-        "assets"
+        "dist"
     ],
     "repository": {
         "type": "git",

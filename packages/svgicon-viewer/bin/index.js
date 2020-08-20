@@ -63,7 +63,7 @@ if (args.metaFile) {
     `
     const injectReg = /\/\*\{\{inject\}\}\*\//
     let html = fs.readFileSync(
-        path.join(__dirname, '../assets/index.html'),
+        path.join(__dirname, '../dist/index.html'),
         'utf8'
     )
     html = html.replace(injectReg, injectCode)

@@ -1,3 +1,3 @@
 module.exports = {
-    outputDir: '../assets',
+    outputDir: '../dist',
 }

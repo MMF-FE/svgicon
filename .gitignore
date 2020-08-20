@@ -18,3 +18,4 @@ node_modules
 
 # remove docs dist
 docs/**/dist
+svgicon-viewer/dist
