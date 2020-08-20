@@ -41,13 +41,28 @@
         </div>
 
         <div>
-            <p>Test Unique ID</p>
+            <p>Test inherit</p>
             <icon
                 v-show="props.dir === 'left'"
                 data="@icon/sora/fit/mask.svg"
-                original
+                class="my-class"
+                :class="className"
+                data-id="myid"
+                aria-busy="hello"
+                v-bind="props"
+                @click="iconClick"
             ></icon>
-            <icon data="@icon/sora/fit/mask.svg" original></icon>
+            <icon
+                data="@icon/sora/fit/mask.svg"
+                v-bind="props"
+                @click="iconClick"
+            ></icon>
+        </div>
+
+        <div class="grid">
+            <div v-for="v in awesome" :key="v.name" class="grid-item">
+                <icon :data="v" v-bind="props"></icon>
+            </div>
         </div>
     </div>
 </template>

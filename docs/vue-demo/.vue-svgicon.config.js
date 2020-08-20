@@ -1,5 +1,5 @@
 const path = require('path')
-const svgFilePaths = '../../packages/assets/svg,./src/assets/svg'
+const svgFilePaths = '../../packages/assets/svg,../../packages/assets/font-awesome,./src/assets/svg'
     .split(',')
     .map((v) => path.resolve(v))
 const tagName = 'icon'
@@ -10,7 +10,8 @@ module.exports = {
     svgoConfig: {},
     pathAlias: {
         '@icon': svgFilePaths[0],
-        '@assetsIcon': svgFilePaths[1],
+        "@fa": svgFilePaths[1],
+        '@assetsIcon': svgFilePaths[2],
     },
     transformAssetUrls: {
         [tagName]: ['data'],

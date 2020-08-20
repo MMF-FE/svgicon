@@ -1,16 +1,16 @@
 import { Component, Vue } from 'vue-property-decorator'
 import { Props } from '@yzfe/vue-svgicon'
 import icons from './icons'
-import arrow from '@assetsIcon/arrow.svg'
-console.log(arrow)
+import awesome from './awesome'
+
 @Component({
     components: {},
 })
 export default class App extends Vue {
     protected props: Partial<Props> = {
         data: icons.find((v) => v.name === 'vue'),
-        width: '100',
-        height: '100',
+        width: '50',
+        height: '50',
         color: '',
         fill: true,
         original: true,
@@ -19,5 +19,12 @@ export default class App extends Vue {
     }
 
     protected icons = icons
+    protected awesome = awesome
     protected dirList = ['', 'left', 'right', 'up', 'down']
+
+    protected className = 'test'
+
+    protected iconClick(): void {
+        console.log('click')
+    }
 }

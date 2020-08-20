@@ -11,6 +11,12 @@ declare module '@icon/*.svg' {
     export default resource
 }
 
+declare module '@fa/*.svg' {
+    import { Icon } from '@yzfe/vue-svgicon'
+    const resource: Icon
+    export default resource
+}
+
 declare module '@assetsIcon/*.svg' {
     import { Icon } from '@yzfe/vue-svgicon'
     const resource: Icon

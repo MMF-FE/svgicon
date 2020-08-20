@@ -1,68 +1,47 @@
-import Vue, { CreateElement, VNode } from 'vue'
-import SvgIconClass, {
+import { CreateElement, VNode, RenderContext } from 'vue'
+import {
+    svgIcon,
     Props,
     Options,
-    SvgIconConstructor,
+    setOptions,
     Icon,
     IconData,
+    getPropKeys,
 } from '@yzfe/svgicon'
 import '@yzfe/svgicon/lib/svgicon.css'
 
-const VueSvgIcon = Vue.extend({
-    inheritAttrs: false,
-    data() {
-        return {
-            svgicon: null as SvgIconClass | null,
-        }
-    },
+const VueSvgIcon = {
+    functional: true,
+    render(h: CreateElement, context: RenderContext<Props>): VNode {
+        const result = svgIcon(context.props)
+        const attrs: Record<string, string> = {}
 
-    watch: {
-        $attrs: {
-            deep: true,
-            handler: function () {
-                if (this.svgicon) {
-                    this.svgicon.props = this.$attrs
+        if (context.data.attrs) {
+            const propsKeys = getPropKeys()
+            for (const key in context.data.attrs) {
+                if (propsKeys.indexOf(key as keyof Props) < 0) {
+                    attrs[key] = context.data.attrs[key]
                 }
-            },
-        },
-    },
+            }
+        }
 
-    created() {
-        this.svgicon = new SvgIconClass(this.$attrs)
-    },
-
-    methods: {
-        onClick(e: Event) {
-            this.$emit('click', e)
-        },
-    },
-
-    render: function (h: CreateElement): VNode {
         return h('svg', {
+            ...context.data,
             attrs: {
                 version: '1.1',
-                viewBox: this.svgicon?.box,
+                viewBox: result.box,
+                ...attrs,
             },
-            style: this.svgicon?.style,
-            class: this.svgicon?.clazz,
+            staticStyle: {
+                ...result.style,
+                ...context.data.staticStyle,
+            },
+            staticClass: result.className + ' ' + context.data.staticClass,
             domProps: {
-                innerHTML: this.svgicon?.path,
-            },
-            on: {
-                click: this.onClick,
+                innerHTML: result.path,
             },
         })
     },
-})
-
-const setOptions = SvgIconClass.setOptions
-
-export {
-    Icon,
-    IconData,
-    VueSvgIcon,
-    SvgIconConstructor,
-    setOptions,
-    Props,
-    Options,
 }
+
+export { VueSvgIcon, setOptions, Props, Options, Icon, IconData }
