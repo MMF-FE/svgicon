@@ -1,6 +1,6 @@
 {
     "name": "@yzfe/react-svgicon",
-    "version": "0.0.1-alpha.0",
+    "version": "0.0.1-alpha.1",
     "description": "SVG icon component for react",
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
@@ -21,7 +21,7 @@
         "react-dom": ">=16.8.0"
     },
     "dependencies": {
-        "@yzfe/svgicon": "^0.0.1-alpha.0"
+        "@yzfe/svgicon": "^0.0.1-alpha.1"
     },
     "devDependencies": {
         "@rollup/plugin-commonjs": "^15.0.0",
