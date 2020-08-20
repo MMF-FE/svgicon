@@ -36,3 +36,17 @@
     margin-left: 10px;
     justify-content: flex-start;
 }
+
+.grid {
+    display: grid;
+    width: 100%;
+    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(2 * 100px, 1fr));
+    grid-auto-rows: 120px;
+    overflow: hidden;
+    border-width: 1px 0 0 1px;
+
+    * {
+        outline: none;
+    }
+}

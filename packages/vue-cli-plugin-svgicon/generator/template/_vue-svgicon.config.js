@@ -1,5 +1,5 @@
 const path = require('path')
-const svgFilePaths = '<%= svgFilePath %>'.split(',').map((v) => path.resolve(v))
+const svgFilePaths = <%- JSON.stringify(svgFilePath.split('|'), null) %>.map((v) => path.resolve(v))
 const tagName = '<%= tagName %>'
 
 module.exports = {

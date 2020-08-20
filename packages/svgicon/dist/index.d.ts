@@ -1,5 +1,5 @@
+/** Global default options */
 export interface Options {
-    tagName?: string;
     classPrefix?: string;
     isStroke?: boolean;
     isOriginalDefault?: boolean;
@@ -31,24 +31,15 @@ export interface Props {
     /** is use original color */
     original?: boolean;
 }
-export declare type SvgIconConstructor = new (props: Props) => SvgIcon;
-export default class SvgIcon {
-    static options: Options;
-    static setOptions(options: Options): void;
-    constructor(props: Partial<Props>);
-    private _props;
-    private uid;
-    get props(): Partial<Props>;
-    set props(props: Partial<Props>);
-    get colors(): string[];
-    get icon(): Icon | undefined;
-    get iconData(): IconData | null;
-    get clazz(): string;
-    get path(): string;
-    get box(): string;
-    get style(): Record<string, string | number>;
-    protected addColor(data: string): string;
-    protected addOriginalColor(data: string): string;
-    protected getValidPathData(pathData: string): string;
-    protected setTitle(pathData: string): string;
+/** SvgIcon function result type */
+export interface SvgIconResult {
+    path: string;
+    box: string;
+    className: string;
+    style: Record<string, string | number>;
 }
+/** set default options */
+export declare function setOptions(newOptions: Options): void;
+export declare function getPropKeys(): (keyof Props)[];
+/** get svgicon result by props */
+export declare function svgIcon(props: Props): SvgIconResult;

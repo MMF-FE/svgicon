@@ -15,6 +15,9 @@ export default {
             },
         },
         {
+            minifyStyles: true,
+        },
+        {
             convertStyleToAttrs: true,
         },
         {
