@@ -1,6 +1,6 @@
 {
     "name": "@yzfe/svgicon-viewer",
-    "version": "0.0.1-alpha.1",
+    "version": "0.0.1-alpha.2",
     "description": "Preview SVG Icon",
     "bin": {
         "svgicon-viewer": "bin/index.js"
@@ -31,8 +31,8 @@
         "url": "https://github.com/MMF-FE/vue-svgicon/issues"
     },
     "dependencies": {
-        "@yzfe/svgicon-gen": "^0.0.1-alpha.1",
-        "@yzfe/vue-svgicon": "^4.0.0-alpha.2",
+        "@yzfe/svgicon-gen": "^0.0.1-alpha.2",
+        "@yzfe/vue-svgicon": "^4.0.0-alpha.3",
         "fastify": "^3.2.0",
         "fastify-static": "^3.2.0",
         "glob": "^7.1.6",
