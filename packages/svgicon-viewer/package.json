@@ -17,7 +17,7 @@
     ],
     "author": "Allenice Mo <994298628@qq.com>",
     "homepage": "https://github.com/MMF-FE/vue-svgicon/tree/master/packages/vue-svgicon-viewer#readme",
-    "license": "ISC",
+    "license": "MIT",
     "main": "bin/index.js",
     "files": [
         "bin",
