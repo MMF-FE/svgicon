@@ -5,10 +5,7 @@
     "scripts": {
         "start": "umi dev",
         "build": "umi build",
-        "postinstall": "umi generate tmp",
-        "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
-        "test": "umi-test",
-        "test:coverage": "umi-test --coverage"
+        "postinstall": "umi generate tmp"
     },
     "dependencies": {
         "@ant-design/pro-layout": "^5.0.12",
