@@ -4,7 +4,9 @@ import '@yzfe/svgicon/lib/svgicon.css';
 interface ComponentProps extends Props {
     [key: string]: unknown;
 }
-declare const ReactSvgIcon: (props: ComponentProps) => JSX.Element;
+declare class ReactSvgIcon extends React.PureComponent<ComponentProps> {
+    render(): JSX.Element;
+}
 /** SvgIcon function component, define in @yzfe/svgicon-loader compile */
 interface ReactSvgIconFC extends React.FC<ComponentProps> {
     data: Icon;
