@@ -33,7 +33,7 @@ const SvgiconLoader: loader.Loader = function (source) {
                         return React.createElement(ReactSvgIcon, {data, ...props})
                     }
 
-                    SvgIconFC.data = data
+                    SvgIconFC.iconName = data.name
 
                     export default SvgIconFC
                 `

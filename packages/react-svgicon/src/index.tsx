@@ -30,7 +30,6 @@ class ReactSvgIcon extends React.PureComponent<ComponentProps> {
         }
 
         attrs.viewBox = result.box
-        attrs.version = '1.1'
         attrs.className = (attrs.className || '') + ` ${result.className}`
         attrs.style = {
             ...((attrs.style as Record<string, string>) || {}),
@@ -75,7 +74,7 @@ class ReactSvgIcon extends React.PureComponent<ComponentProps> {
 
 /** SvgIcon function component, define in @yzfe/svgicon-loader compile */
 interface ReactSvgIconFC extends React.FC<ComponentProps> {
-    data: Icon
+    iconName: string
 }
 
 export {

@@ -80,7 +80,7 @@ export default class App extends React.Component<
                                 return (
                                     <option
                                         value={ix}
-                                        label={icon.data.name}
+                                        label={icon.iconName}
                                         key={ix}
                                     ></option>
                                 )
@@ -163,7 +163,7 @@ export default class App extends React.Component<
 
                 <div className={styles.grid}>
                     {awesome.map((AweSomeIcon, index) => (
-                        <div key={index}>
+                        <div key={index} className={styles.gridItem}>
                             <AweSomeIcon {...this.state.props}></AweSomeIcon>
                         </div>
                     ))}

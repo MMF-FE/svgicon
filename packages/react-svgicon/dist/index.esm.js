@@ -269,7 +269,6 @@ var ReactSvgIcon = /** @class */ (function (_super) {
             }
         }
         attrs.viewBox = result.box;
-        attrs.version = '1.1';
         attrs.className = (attrs.className || '') + (" " + result.className);
         attrs.style = __assign(__assign({}, (attrs.style || {})), result.style);
         return (React.createElement("svg", __assign({}, attrs, { dangerouslySetInnerHTML: { __html: result.path } })));
