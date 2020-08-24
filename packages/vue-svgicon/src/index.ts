@@ -12,25 +12,15 @@ import '@yzfe/svgicon/lib/svgicon.css'
 
 const VueSvgIcon = {
     functional: true,
+    props: getPropKeys(),
     render(h: CreateElement, context: RenderContext<Props>): VNode {
         const result = svgIcon(context.props)
-        const attrs: Record<string, string> = {}
-
-        if (context.data.attrs) {
-            const propsKeys = getPropKeys()
-            for (const key in context.data.attrs) {
-                if (propsKeys.indexOf(key as keyof Props) < 0) {
-                    attrs[key] = context.data.attrs[key]
-                }
-            }
-        }
 
         return h('svg', {
             ...context.data,
             attrs: {
-                version: '1.1',
                 viewBox: result.box,
-                ...attrs,
+                ...context.data.attrs,
             },
             staticStyle: {
                 ...result.style,

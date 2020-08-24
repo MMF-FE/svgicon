@@ -237,18 +237,10 @@ function svgIcon(props) {
 
 var VueSvgIcon = {
     functional: true,
+    props: getPropKeys(),
     render: function (h, context) {
         var result = svgIcon(context.props);
-        var attrs = {};
-        if (context.data.attrs) {
-            var propsKeys = getPropKeys();
-            for (var key in context.data.attrs) {
-                if (propsKeys.indexOf(key) < 0) {
-                    attrs[key] = context.data.attrs[key];
-                }
-            }
-        }
-        return h('svg', __assign(__assign({}, context.data), { attrs: __assign({ version: '1.1', viewBox: result.box }, attrs), staticStyle: __assign(__assign({}, result.style), context.data.staticStyle), staticClass: result.className +
+        return h('svg', __assign(__assign({}, context.data), { attrs: __assign({ viewBox: result.box }, context.data.attrs), staticStyle: __assign(__assign({}, result.style), context.data.staticStyle), staticClass: result.className +
                 (context.data.staticClass
                     ? " " + context.data.staticClass
                     : ''), domProps: {
