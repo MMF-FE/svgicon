@@ -44,7 +44,6 @@
         "lerna": "^3.22.1",
         "lint-staged": "^10.2.11",
         "prettier": "^2.0.5",
-        "prettier-stylelint": "^0.4.2",
         "stylelint": "^13.6.1",
         "stylelint-config-standard": "^20.0.0",
         "stylelint-order": "^4.1.0",
@@ -60,7 +59,7 @@
             "prettier --write",
             "git add"
         ],
-        "*.scss": [
+        "*.{scss,less}": [
             "stylelint --fix",
             "git add"
         ]
