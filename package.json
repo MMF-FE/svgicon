@@ -56,12 +56,10 @@
     },
     "lint-staged": {
         "*.{ts,js,json,tsx}": [
-            "prettier --write",
-            "git add"
+            "prettier --write"
         ],
         "*.{scss,less}": [
-            "stylelint --fix",
-            "git add"
+            "stylelint --fix"
         ]
     }
 }
