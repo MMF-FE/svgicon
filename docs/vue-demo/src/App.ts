@@ -3,8 +3,6 @@ import { Props } from '@yzfe/vue-svgicon'
 import icons from './icons'
 import awesome from './awesome'
 
-console.log(JSON.stringify(icons.find((v) => v.name === 'mask')))
-
 @Component({
     components: {},
 })

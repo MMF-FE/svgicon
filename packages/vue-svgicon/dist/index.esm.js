@@ -24,6 +24,24 @@ var __assign = function() {
     return __assign.apply(this, arguments);
 };
 
+var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+function createCommonjsModule(fn, basedir, module) {
+	return module = {
+	  path: basedir,
+	  exports: {},
+	  require: function (path, base) {
+      return commonjsRequire(path, (base === undefined || base === null) ? module.path : base);
+    }
+	}, fn(module, module.exports), module.exports;
+}
+
+function commonjsRequire () {
+	throw new Error('Dynamic requires are not currently supported by @rollup/plugin-commonjs');
+}
+
+var utils = createCommonjsModule(function (module, exports) {
+Object.defineProperty(exports, "__esModule", { value: true });
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -31,7 +49,7 @@ function getRandomInt(min, max) {
 }
 var idSeed = 0;
 var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-var utils = {
+exports.default = {
     genUID: function () {
         idSeed++;
         return (idSeed +
@@ -42,8 +60,11 @@ var utils = {
     },
 };
 
-var __assign$1 = (undefined && undefined.__assign) || function () {
-    __assign$1 = Object.assign || function(t) {
+});
+
+var dist = createCommonjsModule(function (module, exports) {
+var __assign = (commonjsGlobal && commonjsGlobal.__assign) || function () {
+    __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
             s = arguments[i];
             for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
@@ -51,8 +72,14 @@ var __assign$1 = (undefined && undefined.__assign) || function () {
         }
         return t;
     };
-    return __assign$1.apply(this, arguments);
+    return __assign.apply(this, arguments);
 };
+var __importDefault = (commonjsGlobal && commonjsGlobal.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.svgIcon = exports.getPropKeys = exports.setOptions = void 0;
+var utils_1 = __importDefault(utils);
 var options = {
     defaultWidth: '',
     defaultHeight: '',
@@ -62,10 +89,11 @@ var options = {
 };
 /** set default options */
 function setOptions(newOptions) {
-    options = __assign$1(__assign$1({}, options), newOptions);
+    options = __assign(__assign({}, options), newOptions);
 }
+exports.setOptions = setOptions;
 function initProps(props) {
-    props = __assign$1({}, props);
+    props = __assign({}, props);
     // delete undefined prop
     Object.keys(props).forEach(function (key) {
         if (props[key] === void 0) {
@@ -78,7 +106,7 @@ function initProps(props) {
     if (typeof props.fill === 'string') {
         props.fill = true;
     }
-    return __assign$1({
+    return __assign({
         width: options.defaultWidth,
         height: options.defaultHeight,
         fill: !options.isStroke,
@@ -148,7 +176,7 @@ function addColor(data, props, colors) {
     });
 }
 function getPath(props, colors, iconData) {
-    var uid = utils.genUID();
+    var uid = utils_1.default.genUID();
     var pathData = '';
     if (iconData) {
         pathData = iconData.data;
@@ -224,6 +252,7 @@ function getPropKeys() {
         'original',
     ];
 }
+exports.getPropKeys = getPropKeys;
 /** get svgicon result by props */
 function svgIcon(props) {
     props = initProps(props);
@@ -240,12 +269,15 @@ function svgIcon(props) {
         style: style,
     };
 }
+exports.svgIcon = svgIcon;
+
+});
 
 var VueSvgIcon = {
     functional: true,
-    props: getPropKeys(),
+    props: dist.getPropKeys(),
     render: function (h, context) {
-        var result = svgIcon(context.props);
+        var result = dist.svgIcon(context.props);
         return h('svg', __assign(__assign({}, context.data), { attrs: __assign({ viewBox: result.box }, context.data.attrs), staticStyle: __assign(__assign({}, result.style), context.data.staticStyle), staticClass: result.className +
                 (context.data.staticClass
                     ? " " + context.data.staticClass
@@ -255,5 +287,6 @@ var VueSvgIcon = {
     },
 };
 
+var setOptions = dist.setOptions;
 export { VueSvgIcon, setOptions };
 //# sourceMappingURL=index.esm.js.map

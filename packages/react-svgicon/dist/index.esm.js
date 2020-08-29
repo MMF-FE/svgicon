@@ -40,6 +40,24 @@ var __assign = function() {
     return __assign.apply(this, arguments);
 };
 
+var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+function createCommonjsModule(fn, basedir, module) {
+	return module = {
+	  path: basedir,
+	  exports: {},
+	  require: function (path, base) {
+      return commonjsRequire(path, (base === undefined || base === null) ? module.path : base);
+    }
+	}, fn(module, module.exports), module.exports;
+}
+
+function commonjsRequire () {
+	throw new Error('Dynamic requires are not currently supported by @rollup/plugin-commonjs');
+}
+
+var utils = createCommonjsModule(function (module, exports) {
+Object.defineProperty(exports, "__esModule", { value: true });
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -47,7 +65,7 @@ function getRandomInt(min, max) {
 }
 var idSeed = 0;
 var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-var utils = {
+exports.default = {
     genUID: function () {
         idSeed++;
         return (idSeed +
@@ -58,8 +76,11 @@ var utils = {
     },
 };
 
-var __assign$1 = (undefined && undefined.__assign) || function () {
-    __assign$1 = Object.assign || function(t) {
+});
+
+var dist = createCommonjsModule(function (module, exports) {
+var __assign = (commonjsGlobal && commonjsGlobal.__assign) || function () {
+    __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
             s = arguments[i];
             for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
@@ -67,8 +88,14 @@ var __assign$1 = (undefined && undefined.__assign) || function () {
         }
         return t;
     };
-    return __assign$1.apply(this, arguments);
+    return __assign.apply(this, arguments);
 };
+var __importDefault = (commonjsGlobal && commonjsGlobal.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.svgIcon = exports.getPropKeys = exports.setOptions = void 0;
+var utils_1 = __importDefault(utils);
 var options = {
     defaultWidth: '',
     defaultHeight: '',
@@ -78,17 +105,24 @@ var options = {
 };
 /** set default options */
 function setOptions(newOptions) {
-    options = __assign$1(__assign$1({}, options), newOptions);
+    options = __assign(__assign({}, options), newOptions);
 }
+exports.setOptions = setOptions;
 function initProps(props) {
-    props = __assign$1({}, props);
+    props = __assign({}, props);
+    // delete undefined prop
+    Object.keys(props).forEach(function (key) {
+        if (props[key] === void 0) {
+            delete props[key];
+        }
+    });
     if (typeof props.original === 'string') {
         props.original = true;
     }
     if (typeof props.fill === 'string') {
         props.fill = true;
     }
-    return __assign$1({
+    return __assign({
         width: options.defaultWidth,
         height: options.defaultHeight,
         fill: !options.isStroke,
@@ -158,7 +192,7 @@ function addColor(data, props, colors) {
     });
 }
 function getPath(props, colors, iconData) {
-    var uid = utils.genUID();
+    var uid = utils_1.default.genUID();
     var pathData = '';
     if (iconData) {
         pathData = iconData.data;
@@ -234,6 +268,7 @@ function getPropKeys() {
         'original',
     ];
 }
+exports.getPropKeys = getPropKeys;
 /** get svgicon result by props */
 function svgIcon(props) {
     props = initProps(props);
@@ -250,6 +285,9 @@ function svgIcon(props) {
         style: style,
     };
 }
+exports.svgIcon = svgIcon;
+
+});
 
 var ReactSvgIcon = /** @class */ (function (_super) {
     __extends(ReactSvgIcon, _super);
@@ -258,10 +296,10 @@ var ReactSvgIcon = /** @class */ (function (_super) {
     }
     ReactSvgIcon.prototype.render = function () {
         var props = this.props;
-        var result = svgIcon(props);
+        var result = dist.svgIcon(props);
         var attrs = {};
         if (props) {
-            var propsKeys = getPropKeys();
+            var propsKeys = dist.getPropKeys();
             for (var key in props) {
                 if (propsKeys.indexOf(key) < 0) {
                     attrs[key] = props[key];
@@ -276,5 +314,6 @@ var ReactSvgIcon = /** @class */ (function (_super) {
     return ReactSvgIcon;
 }(React.PureComponent));
 
+var setOptions = dist.setOptions;
 export { ReactSvgIcon, setOptions };
 //# sourceMappingURL=index.esm.js.map

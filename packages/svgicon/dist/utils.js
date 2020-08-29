@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -5,7 +7,7 @@ function getRandomInt(min, max) {
 }
 var idSeed = 0;
 var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-export default {
+exports.default = {
     genUID: function () {
         idSeed++;
         return (idSeed +

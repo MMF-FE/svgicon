@@ -1,3 +1,4 @@
+"use strict";
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -9,7 +10,12 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import utils from './utils';
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.svgIcon = exports.getPropKeys = exports.setOptions = void 0;
+var utils_1 = __importDefault(require("./utils"));
 var options = {
     defaultWidth: '',
     defaultHeight: '',
@@ -18,9 +24,10 @@ var options = {
     isOriginalDefault: false,
 };
 /** set default options */
-export function setOptions(newOptions) {
+function setOptions(newOptions) {
     options = __assign(__assign({}, options), newOptions);
 }
+exports.setOptions = setOptions;
 function initProps(props) {
     props = __assign({}, props);
     // delete undefined prop
@@ -105,7 +112,7 @@ function addColor(data, props, colors) {
     });
 }
 function getPath(props, colors, iconData) {
-    var uid = utils.genUID();
+    var uid = utils_1.default.genUID();
     var pathData = '';
     if (iconData) {
         pathData = iconData.data;
@@ -168,7 +175,7 @@ function getStyle(props, iconData) {
     }
     return style;
 }
-export function getPropKeys() {
+function getPropKeys() {
     return [
         'data',
         'color',
@@ -181,8 +188,9 @@ export function getPropKeys() {
         'original',
     ];
 }
+exports.getPropKeys = getPropKeys;
 /** get svgicon result by props */
-export function svgIcon(props) {
+function svgIcon(props) {
     props = initProps(props);
     var colors = getColors(props);
     var iconData = props.data && props.data.data ? props.data.data : null;
@@ -197,4 +205,5 @@ export function svgIcon(props) {
         style: style,
     };
 }
+exports.svgIcon = svgIcon;
 //# sourceMappingURL=index.js.map

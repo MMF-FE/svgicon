@@ -3,7 +3,7 @@
 
 import jsdom from 'mocha-jsdom'
 import { assert, expect } from 'chai'
-import { svgIcon, setOptions, Props } from '../src/index'
+import { svgIcon, setOptions, Props } from '@yzfe/svgicon'
 import icons from './assets/icons'
 
 function mount(props: Props) {
