@@ -82,10 +82,10 @@ function setOptions(newOptions) {
 }
 function initProps(props) {
     props = __assign$1({}, props);
-    if (typeof props.original !== 'boolean' && 'original' in props) {
+    if (typeof props.original === 'string') {
         props.original = true;
     }
-    if (typeof props.fill !== 'boolean' && 'fill' in props) {
+    if (typeof props.fill === 'string') {
         props.fill = true;
     }
     return __assign$1({

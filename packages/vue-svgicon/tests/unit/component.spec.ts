@@ -1,18 +1,22 @@
 import { expect, assert } from 'chai'
-import { mount, createLocalVue } from '@vue/test-utils'
-import Icon from './Icon.vue'
+import { shallowMount, createLocalVue, mount } from '@vue/test-utils'
 
-import Vue from 'vue'
-import { VueSvgIcon, setOptions } from '@yzfe/vue-svgicon'
+import { VueSvgIcon, setOptions, Props } from '@yzfe/vue-svgicon'
 
-Vue.component('icon', VueSvgIcon)
-const wrapper = mount(Icon)
-const arrowIcon = wrapper.find({ ref: 'arrow' })
-const vueIcon = wrapper.find({ ref: 'vue' })
+import vueIconData from '@icon/vue.svg'
+import arrowIconData from '@icon/arrow.svg'
+import maskIconData from '@icon/mask.svg'
+import giftIconData from '@icon/gift.svg'
+
+function mountIcon(props: Props) {
+    return shallowMount(VueSvgIcon, {
+        propsData: props,
+    })
+}
 
 describe('@yzfe/svgicon-loader', () => {
     it('should load svg to be icon data', () => {
-        const icon = wrapper.vm.$data.vueIcon
+        const icon = vueIconData
         expect(icon.name).eq('vue')
         assert.ok(!!icon.data)
     })
@@ -23,7 +27,8 @@ describe('Test props: dir', async () => {
         const dirs = ['left', 'up', 'right', 'down']
         for (let i = 0; i < dirs.length; i++) {
             const dir = dirs[i]
-            await arrowIcon.setProps({
+            const arrowIcon = mountIcon({
+                data: arrowIconData,
                 dir,
             })
 
@@ -42,41 +47,46 @@ describe('Test props: dir', async () => {
 
 describe('Test prop: color', () => {
     it('should fill with green color', async () => {
-        await arrowIcon.setProps({
+        const arrowIcon = mountIcon({
+            data: arrowIconData,
             color: 'green',
         })
 
-        const path = arrowIcon.vm.$el.querySelector('path')
+        const path = arrowIcon.element.querySelector('path')
         assert.ok(!!path, 'path is not fond')
         assert.equal('green', path && path.getAttribute('fill'))
     })
 
     it('should stroke with green color', async () => {
-        await arrowIcon.setProps({
+        const arrowIcon = mountIcon({
+            data: arrowIconData,
             color: 'r-green',
         })
-        const path = arrowIcon.vm.$el.querySelector('path')
+
+        const path = arrowIcon.element.querySelector('path')
         assert.ok(!!path, 'path is not found')
         assert.equal('none', path && path.getAttribute('fill'))
         assert.equal('green', path && path.getAttribute('stroke'))
     })
 
     it('should fill with red and green color', async () => {
-        await vueIcon.setProps({
+        const vueIcon = mountIcon({
+            data: vueIconData,
             color: 'red green',
         })
 
-        const paths = vueIcon.vm.$el.querySelectorAll('path')
+        const paths = vueIcon.element.querySelectorAll('path')
         paths.forEach((path, ix) => {
             assert.equal(['red', 'green'][ix], path.getAttribute('fill'))
         })
     })
-
     it('should fill with red color and stroke with green ', async () => {
-        await vueIcon.setProps({
+        const vueIcon = mountIcon({
+            data: vueIconData,
             color: 'red r-green',
         })
-        const paths = vueIcon.vm.$el.querySelectorAll('path')
+
+        const paths = vueIcon.element.querySelectorAll('path')
         paths.forEach((path, ix) => {
             if (ix === 0) {
                 assert.equal('red', path.getAttribute('fill'))
@@ -87,13 +97,13 @@ describe('Test prop: color', () => {
             }
         })
     })
-
     it('should fill with gradient', async function () {
-        await arrowIcon.setProps({
+        const arrowIcon = mountIcon({
+            data: arrowIconData,
             color: 'url(#gradient-1) url(#gradient-2)',
         })
-        const $el = arrowIcon.vm.$el
 
+        const $el = arrowIcon.element
         $el.querySelectorAll('path').forEach((path, ix) => {
             assert.equal(
                 ['url(#gradient-1)', 'url(#gradient-2)'][ix],
@@ -105,11 +115,16 @@ describe('Test prop: color', () => {
 
 describe('Test props: fill', () => {
     it('should has fill style by default.', async () => {
+        let arrowIcon = mountIcon({
+            data: arrowIconData,
+        })
         expect(arrowIcon.classes()).contains('svg-fill')
 
-        await arrowIcon.setProps({
+        arrowIcon = mountIcon({
+            data: arrowIconData,
             fill: false,
         })
+
         expect(arrowIcon.classes()).not.contains('svg-fill')
     })
 
@@ -119,11 +134,12 @@ describe('Test props: fill', () => {
         })
 
         const localVue = createLocalVue()
-        const localWrapper = mount(Icon, {
+        const localArrowIcon = mount(VueSvgIcon, {
             localVue,
+            propsData: {
+                data: arrowIconData,
+            },
         })
-
-        const localArrowIcon = localWrapper.findComponent({ ref: 'arrow' })
 
         expect(localArrowIcon.classes()).not.contains('svg-fill')
     })
@@ -131,45 +147,49 @@ describe('Test props: fill', () => {
 
 describe('Test prop: width/height/scale', function () {
     it('size should be 50px/40px', async () => {
-        await arrowIcon.setProps({
+        const arrowIcon = mountIcon({
+            data: arrowIconData,
             width: '50',
             height: '40',
         })
 
-        const $el = arrowIcon.vm.$el as HTMLElement
+        const $el = arrowIcon.element as HTMLElement
         assert.equal('50px', $el.style.width)
         assert.equal('40px', $el.style.height)
     })
 
     it('size should be 10em/10em', async () => {
-        await arrowIcon.setProps({
+        const arrowIcon = mountIcon({
+            data: arrowIconData,
             width: '10em',
             height: '10em',
         })
 
-        const $el = arrowIcon.vm.$el as HTMLElement
+        const $el = arrowIcon.element as HTMLElement
         assert.equal('10em', $el.style.width)
         assert.equal('10em', $el.style.height)
     })
 
     it('size should be 40px/70px', async () => {
-        await arrowIcon.setProps({
+        const arrowIcon = mountIcon({
+            data: arrowIconData,
             scale: '10',
         })
 
-        const $el = arrowIcon.vm.$el as HTMLElement
+        const $el = arrowIcon.element as HTMLElement
         assert.equal('40px', $el.style.width)
         assert.equal('70px', $el.style.height)
     })
 
     it('size should be 40px/70px', async () => {
-        await arrowIcon.setProps({
+        const arrowIcon = mountIcon({
+            data: arrowIconData,
             scale: '10',
             width: '50',
             height: '50',
         })
 
-        const $el = arrowIcon.vm.$el as HTMLElement
+        const $el = arrowIcon.element as HTMLElement
         assert.equal('40px', $el.style.width)
         assert.equal('70px', $el.style.height)
     })
@@ -177,8 +197,8 @@ describe('Test prop: width/height/scale', function () {
 
 describe('Test unique id', () => {
     it('should not has same id', async () => {
-        const maskIcon = wrapper.findComponent({ ref: 'mask' })
-        const giftIcon = wrapper.findComponent({ ref: 'gift' })
+        const maskIcon = mountIcon({ data: maskIconData })
+        const giftIcon = mountIcon({ data: giftIconData })
         const html1 = maskIcon.html()
         const html2 = giftIcon.html()
 

@@ -58,6 +58,11 @@
                 v-bind="props"
                 @click="iconClick"
             ></icon>
+            <icon
+                data="@icon/sora/fit/mask.svg"
+                @click="iconClick"
+                original
+            ></icon>
         </div>
 
         <div class="grid">

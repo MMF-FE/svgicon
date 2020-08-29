@@ -66,10 +66,16 @@ function setOptions(newOptions) {
 }
 function initProps(props) {
     props = __assign$1({}, props);
-    if (typeof props.original !== 'boolean' && 'original' in props) {
+    // delete undefined prop
+    Object.keys(props).forEach(function (key) {
+        if (props[key] === void 0) {
+            delete props[key];
+        }
+    });
+    if (typeof props.original === 'string') {
         props.original = true;
     }
-    if (typeof props.fill !== 'boolean' && 'fill' in props) {
+    if (typeof props.fill === 'string') {
         props.fill = true;
     }
     return __assign$1({

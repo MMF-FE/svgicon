@@ -28,7 +28,7 @@ export default class App extends Vue {
         console.log('click')
     }
 
-    private created() {
+    private mounted() {
         console.log(this.$refs)
     }
 }
