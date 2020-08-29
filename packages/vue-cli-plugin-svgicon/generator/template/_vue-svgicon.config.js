@@ -6,8 +6,15 @@ module.exports = {
     tagName,
     svgFilePath: svgFilePaths,
     svgoConfig: {},
+    <%_ if (isVue3) { _%>
+    pathAlias: {
+        '@yzfe/vue-svgicon$': "@yzfe/vue-svgicon/dist/vue3.js"
+    },
+    transformAssetUrls: {},
+    <%_ } else { _%>
     pathAlias: {},
     transformAssetUrls: {
         [tagName]: ['data'],
     },
+    <%_ } _%>
 }

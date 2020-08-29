@@ -3,3 +3,4 @@ dist
 coverage
 .eslintrc.js
 assets
+packages/vue-cli-plugin-svgicon

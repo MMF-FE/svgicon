@@ -5,12 +5,7 @@
     "packages": ["packages/*", "docs/*"],
     "command": {
         "publish": {
-            "ignoreChanges": [
-                "**/docs/**",
-                "**/*.md",
-                "**/tests/*",
-                "**/*.map"
-            ]
+            "ignoreChanges": ["**/docs/**", "**/*.md", "**/tests/*", "**/*.map"]
         }
     }
 }

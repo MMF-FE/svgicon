@@ -6,7 +6,7 @@
     "module": "dist/index.esm.js",
     "scripts": {
         "dev": "rollup -c -w",
-        "build": "rollup -c",
+        "build": "rm -rf dist && rollup -c",
         "test": "vue-cli-service test:unit",
         "prepublishOnly": "yarn build && yarn test"
     },

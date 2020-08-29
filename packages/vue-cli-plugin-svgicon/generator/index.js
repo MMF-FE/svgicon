@@ -27,9 +27,15 @@ module.exports.hooks = (api, options) => {
         })
         const lines = contentMain.split(/\r?\n/g)
 
-        const injectCode = `
+        let injectCode = `
 Vue.component('${options.tagName}', VueSvgIcon)
 `
+
+        if (options.isVue3) {
+            injectCode = `
+app.component('${options.tagName}', VueSvgIcon)
+`
+        }
 
         const renderIndex = lines.findIndex((line) => line.match(/new Vue/))
         lines[renderIndex - 1] += `${injectCode}`

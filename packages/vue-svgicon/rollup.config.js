@@ -21,6 +21,17 @@ export default {
             format: 'esm',
             sourcemap: true,
         },
+        {
+            file: 'dist/vue3.js',
+            format: 'cjs',
+            sourcemap: true,
+            plugins: [terser()],
+        },
+        {
+            file: 'dist/vue3.esm.js',
+            format: 'esm',
+            sourcemap: true,
+        },
     ],
     plugins: [
         peerDepsExternal(),

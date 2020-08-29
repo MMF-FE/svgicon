@@ -1,10 +1,16 @@
 {
     "private": true,
     "name": "vue-svgicon",
-    "workspaces": [
-        "packages/*",
-        "docs/*"
-    ],
+    "workspaces": {
+        "packages": [
+            "packages/*",
+            "docs/*"
+        ],
+        "nohoist": [
+            "@yzfe/vue3-demo",
+            "@yzfe/vue3-demo/**"
+        ]
+    },
     "description": "A tool to create svg icon components. (vue 2.x)",
     "scripts": {
         "bootstrap": "lerna bootstrap",

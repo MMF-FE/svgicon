@@ -11,4 +11,10 @@ module.exports = [
         message: 'The registered name of the vue-svgicon component: ',
         default: 'icon',
     },
+    {
+        type: 'confirm',
+        name: 'isVue3',
+        message: 'Use vue 3.x ?',
+        default: false,
+    },
 ]
