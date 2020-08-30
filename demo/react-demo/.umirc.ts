@@ -3,7 +3,7 @@ import path from 'path'
 
 const svgFilePath = [
     path.join(__dirname, '../../packages/assets/svg'),
-    path.join(__dirname, '../../packages/assets/font-awesome')
+    path.join(__dirname, '../../packages/assets/font-awesome'),
 ]
 
 export default defineConfig({

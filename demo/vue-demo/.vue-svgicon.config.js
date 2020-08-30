@@ -12,7 +12,7 @@ module.exports = {
     svgoConfig: {},
     pathAlias: {
         '@icon': svgFilePaths[0],
-        "@fa": svgFilePaths[1],
+        '@fa': svgFilePaths[1],
         '@assetsIcon': svgFilePaths[2],
     },
     transformAssetUrls: {

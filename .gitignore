@@ -17,7 +17,7 @@ node_modules
 *.sw*
 
 # remove docs dist
-docs/**/dist
+demo/**/dist
 packages/svgicon-viewer/dist
 docs-dist/*
 !docs-dist/v3

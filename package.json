@@ -4,14 +4,15 @@
     "workspaces": {
         "packages": [
             "packages/*",
-            "docs/*"
+            "demo/*"
         ]
     },
     "description": "A tool to create svg icon components. (vue 2.x)",
     "scripts": {
         "bootstrap": "lerna bootstrap",
         "build": "lerna run build --ignore @example/*",
-        "build:doc": "lerna run build --scope @example/doc-demo",
+        "serve:doc": "vuepress dev docs",
+        "build:doc": "vuepress build docs",
         "test": "lerna run test --stream",
         "publish": "lerna publish"
     },
@@ -49,7 +50,8 @@
         "stylelint": "^13.6.1",
         "stylelint-config-standard": "^20.0.0",
         "stylelint-order": "^4.1.0",
-        "typescript": "^3.9.7"
+        "typescript": "^3.9.7",
+        "vuepress": "^1.5.4"
     },
     "husky": {
         "hooks": {
