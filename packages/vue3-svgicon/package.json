@@ -1,14 +1,13 @@
 {
-    "name": "@yzfe/vue-svgicon",
-    "version": "4.0.0-alpha.3",
+    "name": "@yzfe/vue3-svgicon",
+    "version": "0.0.0",
     "description": "SVG icon component for vue",
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
     "scripts": {
         "dev": "rollup -c -w",
         "build": "rm -rf dist && rollup -c",
-        "test": "vue-cli-service test:unit",
-        "prepublishOnly": "yarn build && yarn test"
+        "prepublishOnly": "yarn build"
     },
     "keywords": [
         "vue",
@@ -33,7 +32,7 @@
         "postcss.config.js"
     ],
     "peerDependencies": {
-        "vue": "*"
+        "vue": "^3.0.0-0"
     },
     "dependencies": {
         "@yzfe/svgicon": "^0.0.1-alpha.1"
@@ -41,22 +40,13 @@
     "devDependencies": {
         "@rollup/plugin-commonjs": "^15.0.0",
         "@rollup/plugin-node-resolve": "^9.0.0",
-        "@types/chai": "^4.2.11",
-        "@types/mocha": "^5.2.4",
-        "@vue/cli-plugin-typescript": "~4.5.0",
-        "@vue/cli-plugin-unit-mocha": "~4.5.0",
-        "@vue/cli-service": "~4.5.0",
-        "@vue/test-utils": "^1.0.3",
-        "@yzfe/svgicon-loader": "^0.0.1-alpha.2",
-        "chai": "^4.1.2",
         "rollup": "^2.26.3",
         "rollup-plugin-peer-deps-external": "^2.2.3",
         "rollup-plugin-postcss": "^3.1.5",
         "rollup-plugin-terser": "^7.0.0",
         "rollup-plugin-typescript2": "^0.27.2",
         "typescript": "~3.9.3",
-        "vue": "^2.6.11",
-        "vue-template-compiler": "^2.6.11"
+        "vue": "^3.0.0-0"
     },
     "gitHead": "8f4f2a4442e072323ecf76585a533342ddafecb5"
 }

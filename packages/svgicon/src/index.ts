@@ -54,14 +54,6 @@ let options: Options = {
     isOriginalDefault: false,
 }
 
-/** set default options */
-export function setOptions(newOptions: Options): void {
-    options = {
-        ...options,
-        ...newOptions,
-    }
-}
-
 function initProps(props: Props) {
     props = {
         ...props,
@@ -251,6 +243,14 @@ function getStyle(props: Props, iconData: IconData | null) {
         style.height = height
     }
     return style
+}
+
+/** set default options */
+export function setOptions(newOptions: Options): void {
+    options = {
+        ...options,
+        ...newOptions,
+    }
 }
 
 export function getPropKeys(): (keyof Props)[] {

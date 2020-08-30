@@ -1,28 +1,4 @@
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation.
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-***************************************************************************** */
-
-var __assign = function() {
-    __assign = Object.assign || function __assign(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
+import { defineComponent, h } from 'vue';
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -87,11 +63,6 @@ var options = {
     isStroke: false,
     isOriginalDefault: false,
 };
-/** set default options */
-function setOptions(newOptions) {
-    options = __assign(__assign({}, options), newOptions);
-}
-exports.setOptions = setOptions;
 function initProps(props) {
     props = __assign({}, props);
     // delete undefined prop
@@ -239,6 +210,11 @@ function getStyle(props, iconData) {
     }
     return style;
 }
+/** set default options */
+function setOptions(newOptions) {
+    options = __assign(__assign({}, options), newOptions);
+}
+exports.setOptions = setOptions;
 function getPropKeys() {
     return [
         'data',
@@ -273,20 +249,24 @@ exports.svgIcon = svgIcon;
 
 });
 
-var VueSvgIcon = {
-    functional: true,
+var VueSvgIcon = defineComponent({
     props: dist.getPropKeys(),
-    render: function (h, context) {
-        var result = dist.svgIcon(context.props);
-        return h('svg', __assign(__assign({}, context.data), { attrs: __assign({ viewBox: result.box }, context.data.attrs), staticStyle: __assign(__assign({}, result.style), context.data.staticStyle), staticClass: result.className +
-                (context.data.staticClass
-                    ? " " + context.data.staticClass
-                    : ''), domProps: {
-                innerHTML: result.path,
-            } }));
+    render: function () {
+        var result = dist.svgIcon(this.$props);
+        return h('svg', {
+            viewBox: result.box,
+            style: result.style,
+            class: result.className,
+            innerHTML: result.path,
+        });
+    },
+});
+var VueSvgIconPlugin = {
+    install: function (app, options) {
+        app.component(options.tagName, VueSvgIcon);
     },
 };
 
 var setOptions = dist.setOptions;
-export { VueSvgIcon, setOptions };
-//# sourceMappingURL=vue3.esm.js.map
+export { VueSvgIcon, VueSvgIconPlugin, setOptions };
+//# sourceMappingURL=index.esm.js.map

@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-// @ts-ignore
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, App } from 'vue'
 
 import {
     svgIcon,
@@ -11,6 +9,8 @@ import {
     IconData,
     getPropKeys,
 } from '@yzfe/svgicon'
+
+import '@yzfe/svgicon/lib/svgicon.css'
 
 const VueSvgIcon = defineComponent({
     props: getPropKeys(),
@@ -26,4 +26,18 @@ const VueSvgIcon = defineComponent({
     },
 })
 
-export { VueSvgIcon, setOptions, Props, Options, Icon, IconData }
+const VueSvgIconPlugin = {
+    install: (app: App, options: { tagName: string }): void => {
+        app.component(options.tagName, VueSvgIcon)
+    },
+}
+
+export {
+    VueSvgIcon,
+    VueSvgIconPlugin,
+    setOptions,
+    Props,
+    Options,
+    Icon,
+    IconData,
+}

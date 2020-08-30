@@ -1,21 +1,41 @@
 const pkg = require('../package.json')
+const devDeps = pkg.devDependencies
+
 module.exports = (api, options) => {
     api.render('./template', options)
+    
+    let deps = {}
+
+    if (options.isVue3) {
+        deps['@yzfe/vue3-svgicon'] = devDeps['@yzfe/vue3-svgicon']
+        api.injectImports(
+            api.entryFile,
+            `import { VueSvgIconPlugin } from '@yzfe/vue3-svgicon'`
+        )
+    
+        api.injectImports(
+            api.entryFile,
+            `import '@yzfe/vue3-svgicon/dist/index.css'`
+        )
+    } else {
+        deps['@yzfe/vue-svgicon'] = devDeps['@yzfe/vue-svgicon']
+        api.injectImports(
+            api.entryFile,
+            `import { VueSvgIcon } from '@yzfe/vue-svgicon'`
+        )
+    
+        api.injectImports(
+            api.entryFile,
+            `import '@yzfe/vue-svgicon/dist/index.css'`
+        )
+    }
+
     api.extendPackage({
-        dependencies: {
-            '@yzfe/vue-svgicon': pkg.dependencies['@yzfe/vue-svgicon'],
-        },
+        dependencies: deps,
+        devDependencies: {
+            '@yzfe/svgicon-loader': devDeps['@yzfe/svgicon-loader']
+        }
     })
-
-    api.injectImports(
-        api.entryFile,
-        `import { VueSvgIcon } from '@yzfe/vue-svgicon'`
-    )
-
-    api.injectImports(
-        api.entryFile,
-        `import '@yzfe/vue-svgicon/dist/index.css'`
-    )
 }
 
 module.exports.hooks = (api, options) => {
@@ -25,20 +45,22 @@ module.exports.hooks = (api, options) => {
         const contentMain = fs.readFileSync(api.resolve(api.entryFile), {
             encoding: 'utf-8',
         })
+
         const lines = contentMain.split(/\r?\n/g)
 
-        let injectCode = `
+        if (options.isVue3) {
+            let injectCode = `.use(VueSvgIconPlugin, { tagName: '${options.tagName}' })`
+            const renderIndex = lines.findIndex((line) => line.match(/createApp\(\w+\)/))
+            lines[renderIndex] = lines[renderIndex].replace(/createApp\(\w+\)/g, (match) => {
+                return match + injectCode
+            })
+        } else {
+            let injectCode = `
 Vue.component('${options.tagName}', VueSvgIcon)
 `
-
-        if (options.isVue3) {
-            injectCode = `
-app.component('${options.tagName}', VueSvgIcon)
-`
+            const renderIndex = lines.findIndex((line) => line.match(/new Vue/))
+            lines[renderIndex - 1] += `${injectCode}`
         }
-
-        const renderIndex = lines.findIndex((line) => line.match(/new Vue/))
-        lines[renderIndex - 1] += `${injectCode}`
 
         fs.writeFileSync(api.entryFile, lines.join(EOL), { encoding: 'utf-8' })
     })
