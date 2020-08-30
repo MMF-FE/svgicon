@@ -7,7 +7,6 @@
         "build": "vue-cli-service build"
     },
     "dependencies": {
-        "@yzfe/assets": "^0.0.1-alpha.1",
         "@yzfe/vue-svgicon": "^4.0.0-alpha.3",
         "core-js": "^3.6.5",
         "vue": "^2.6.11",
@@ -18,6 +17,7 @@
         "@vue/cli-plugin-babel": "~4.5.0",
         "@vue/cli-plugin-typescript": "~4.5.0",
         "@vue/cli-service": "~4.5.0",
+        "@yzfe/svgicon-loader": "^0.0.1-alpha.2",
         "@yzfe/vue-cli-plugin-svgicon": "^0.0.1-alpha.2",
         "sass": "^1.26.5",
         "sass-loader": "^8.0.2",

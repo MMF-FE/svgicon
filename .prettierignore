@@ -1,4 +1,5 @@
 dist/
 node_modules/
 assets/*
-packages/vue-cli-plugin-svgicon
+packages/vue-cli-plugin-svgicon/generator/template
+
