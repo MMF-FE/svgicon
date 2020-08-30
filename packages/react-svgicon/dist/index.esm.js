@@ -103,11 +103,6 @@ var options = {
     isStroke: false,
     isOriginalDefault: false,
 };
-/** set default options */
-function setOptions(newOptions) {
-    options = __assign(__assign({}, options), newOptions);
-}
-exports.setOptions = setOptions;
 function initProps(props) {
     props = __assign({}, props);
     // delete undefined prop
@@ -255,6 +250,11 @@ function getStyle(props, iconData) {
     }
     return style;
 }
+/** set default options */
+function setOptions(newOptions) {
+    options = __assign(__assign({}, options), newOptions);
+}
+exports.setOptions = setOptions;
 function getPropKeys() {
     return [
         'data',
