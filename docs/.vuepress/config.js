@@ -3,16 +3,55 @@ const isPrd = process.env.NODE_ENV === 'production'
 const svgFilePath = [path.join(__dirname, '../../packages/assets/svg')]
 
 module.exports = {
-    base: isPrd ? '/yzfe/svgicon/' : '/',
+    base: isPrd ? '/svgicon/' : '/',
+    dest: './docs-dist',
+    themeConfig: {
+        locales: {
+            '/': {
+                selectText: '选择语言',
+                label: '中文',
+                nav: [
+                    {
+                        text: '指南',
+                        link: '/guide/',
+                    },
+                    {
+                        text: 'Github',
+                        link: 'https://github.com/MMF-FE/svgicon',
+                    },
+                ],
+                sidebar: {
+                    '/guide/': ['', 'component', 'preview-icon'],
+                },
+            },
+            '/en/': {
+                selectText: 'Languages',
+                label: 'English',
+                nav: [
+                    {
+                        text: 'Guide',
+                        link: '/guide/',
+                    },
+                    {
+                        text: 'Github',
+                        link: 'https://github.com/MMF-FE/svgicon',
+                    },
+                ],
+                sidebar: {
+                    '/guide/': ['', 'component', 'preview-icon'],
+                },
+            },
+        },
+    },
     locales: {
         '/': {
             lang: 'zh-CN',
-            title: 'YZFE-SvgIcon',
+            title: 'SVG Icon',
             description: 'SVG 图标组件和工具集',
         },
         '/en/': {
             lang: 'en-US',
-            title: 'YZFE-SvgIcon',
+            title: 'SVG Icon',
             description: 'SVG icon components and toolset',
         },
     },

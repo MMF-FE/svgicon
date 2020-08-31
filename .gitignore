@@ -20,4 +20,3 @@ node_modules
 demo/**/dist
 packages/svgicon-viewer/dist
 docs-dist/*
-!docs-dist/v3
