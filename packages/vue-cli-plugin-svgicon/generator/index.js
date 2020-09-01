@@ -10,13 +10,13 @@ module.exports = (api, options) => {
         deps['@yzfe/vue3-svgicon'] = devDeps['@yzfe/vue3-svgicon']
         api.injectImports(api.entryFile, [
             `import { VueSvgIconPlugin } from '@yzfe/vue3-svgicon'`,
-            `import '@yzfe/vue3-svgicon/dist/index.css'`,
+            `import 'import '@yzfe/svgicon/lib/svgicon.css'`,
         ])
     } else {
         deps['@yzfe/vue-svgicon'] = devDeps['@yzfe/vue-svgicon']
         api.injectImports(api.entryFile, [
             `import { VueSvgIcon } from '@yzfe/vue-svgicon'`,
-            `import '@yzfe/vue-svgicon/dist/index.css'`,
+            `import '@yzfe/svgicon/lib/svgicon.css'`,
         ])
     }
 

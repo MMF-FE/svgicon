@@ -4,7 +4,8 @@ import { Props, ReactSvgIconFC } from '@yzfe/react-svgicon'
 import icons from '@/icons'
 import awesome from '@/awesome'
 
-import '@yzfe/react-svgicon/dist/index.css'
+import '@yzfe/svgicon/lib/svgicon.css'
+
 import VueIcon from '@icon/vue.svg'
 import MaskIcon from '@icon/sora/fit/mask.svg'
 

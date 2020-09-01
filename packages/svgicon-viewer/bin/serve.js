@@ -6,7 +6,7 @@ module.exports = async function (indexHtml) {
     const fastify = Fastify({ logger: false })
     const fastifyStatic = require('fastify-static')
 
-    const assetsPath = path.join(__dirname, '../assets')
+    const assetsPath = path.join(__dirname, '../dist')
 
     fastify.register(fastifyStatic, {
         root: assetsPath,

@@ -6,7 +6,7 @@
     "module": "dist/index.esm.js",
     "scripts": {
         "dev": "rollup -c -w",
-        "build": "rollup -c",
+        "build": "rm -rf dist && rollup -c",
         "prepublishOnly": "yarn build"
     },
     "author": "Allenice Mo <994298628@qq.com>",
@@ -18,7 +18,8 @@
     },
     "peerDependencies": {
         "react": ">=16.8.0",
-        "react-dom": ">=16.8.0"
+        "react-dom": ">=16.8.0",
+        "@yzfe/svgicon": "^0.0.1-alpha.2"
     },
     "dependencies": {
         "@yzfe/svgicon": "^0.0.1-alpha.2"

@@ -8,7 +8,6 @@ import {
     Icon,
     IconData,
 } from '@yzfe/svgicon'
-import '@yzfe/svgicon/lib/svgicon.css'
 
 interface ComponentProps extends Props {
     [key: string]: unknown

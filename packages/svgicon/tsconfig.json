@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "module": "commonjs",
+        "module": "esnext",
         "strict": true,
         "moduleResolution": "node",
         "skipLibCheck": true,
@@ -9,6 +9,7 @@
         "allowSyntheticDefaultImports": true,
         "sourceMap": true,
         "declaration": true,
+        "declarationDir": "dist",
         "baseUrl": ".",
         "outDir": "dist",
         "types": ["webpack-env", "mocha", "chai"],

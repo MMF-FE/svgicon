@@ -1,6 +1,5 @@
 import React from 'react';
 import { Props, Options, setOptions, Icon, IconData } from '@yzfe/svgicon';
-import '@yzfe/svgicon/lib/svgicon.css';
 interface ComponentProps extends Props {
     [key: string]: unknown;
 }

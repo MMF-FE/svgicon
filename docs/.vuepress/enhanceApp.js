@@ -1,5 +1,5 @@
 import { VueSvgIcon } from '@yzfe/vue-svgicon'
-import '@yzfe/vue-svgicon/dist/index.css'
+import '@yzfe/svgicon/lib/svgicon.css'
 
 export default ({
     Vue, // VuePress 正在使用的 Vue 构造函数

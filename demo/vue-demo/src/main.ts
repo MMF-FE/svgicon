@@ -3,7 +3,7 @@ import App from './App.vue'
 import '@yzfe/svgicon-polyfill'
 
 import { VueSvgIcon } from '@yzfe/vue-svgicon'
-import '@yzfe/vue-svgicon/dist/index.css'
+import '@yzfe/svgicon/lib/svgicon.css'
 
 Vue.config.productionTip = false
 

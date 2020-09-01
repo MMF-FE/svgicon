@@ -10,8 +10,6 @@ import {
     getPropKeys,
 } from '@yzfe/svgicon'
 
-import '@yzfe/svgicon/lib/svgicon.css'
-
 const VueSvgIcon = defineComponent({
     props: getPropKeys(),
     render() {

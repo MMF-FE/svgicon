@@ -3,7 +3,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import { VueSvgIcon } from '@yzfe/vue-svgicon'
 
-import '@yzfe/vue-svgicon/dist/index.css'
+import '@yzfe/svgicon/lib/svgicon.css'
 
 import {
     Button,

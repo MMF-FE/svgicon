@@ -33,11 +33,10 @@
         "postcss.config.js"
     ],
     "peerDependencies": {
-        "vue": "*"
+        "vue": ">=2.5.11",
+        "@yzfe/svgicon": ">=0.0.1-alpha.2"
     },
-    "dependencies": {
-        "@yzfe/svgicon": "^0.0.1-alpha.2"
-    },
+    "dependencies": {},
     "devDependencies": {
         "@rollup/plugin-commonjs": "^15.0.0",
         "@rollup/plugin-node-resolve": "^9.0.0",
