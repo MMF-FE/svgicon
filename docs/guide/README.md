@@ -191,5 +191,8 @@ export default function FC() {
 ```
 
 ## 其他框架
+其他 js 框架可以通过 `@yzfe/svgicon ` 编写适用于其框架的图标组件，可以参考 `@yzfe/react-svgicon`.
 
-
+::: details @yzfe/react-svgicon
+<<<@/packages/react-svgicon/src/index.tsx
+:::

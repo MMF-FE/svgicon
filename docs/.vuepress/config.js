@@ -1,6 +1,9 @@
 const path = require('path')
 const isPrd = process.env.NODE_ENV === 'production'
-const svgFilePath = [path.join(__dirname, '../../packages/assets/svg')]
+const svgFilePath = [
+    path.join(__dirname, '../../packages/assets/svg'),
+    path.join(__dirname, '../../packages/assets/font-awesome'),
+]
 
 module.exports = {
     base: isPrd ? '/svgicon/' : '/',
@@ -75,6 +78,7 @@ module.exports = {
         config.module.rule('svg').exclude.add(svgFilePath).end()
 
         config.resolve.alias.set('@icon', svgFilePath[0])
+        config.resolve.alias.set('@fa', svgFilePath[1])
 
         config.module
             .rule('vue')

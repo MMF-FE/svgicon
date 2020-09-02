@@ -68,6 +68,7 @@
         <div class="grid">
             <div v-for="v in awesome" :key="v.name" class="grid-item">
                 <icon :data="v" v-bind="props"></icon>
+                <p class="name">{{ v.name }}</p>
             </div>
         </div>
     </div>
