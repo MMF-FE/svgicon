@@ -5,6 +5,9 @@ const svgFilePath = [path.join(__dirname, '../../packages/assets/svg')]
 module.exports = {
     base: isPrd ? '/svgicon/' : '/',
     dest: './docs-dist',
+    markdown: {
+        lineNumbers: true,
+    },
     themeConfig: {
         displayAllHeaders: true,
         sidebarDepth: 3,

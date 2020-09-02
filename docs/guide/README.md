@@ -40,7 +40,7 @@ vue invoke @yzfe/svgicon
 
 ```bash
 # loader
-yarn add @yzfe/svgicon-loader
+yarn add @yzfe/svgicon-loader --dev
 # 添加图标组件
 yarn add @yzfe/vue-svgicon # vue2.x
 # or
@@ -70,7 +70,7 @@ app.use(VueSvgIconPlugin, {tagName: 'icon'})
 ```
 
 #### 手动配置
-Webpack config
+Webpack 配置
 ```js
 {
     module: {
@@ -141,7 +141,54 @@ export default {
 
 ## React
 ### 安装
+```bash
+yarn add @yzfe/svgicon-loader  --dev
+yarn add @yzfe/react-svgicon
+```
+
+Webpack 配置
+```js{13}
+{
+    module: {
+        rules: [
+            {
+                test: /\.svg$/,
+                include: ['SVG 文件路径'],
+                use: [
+                    {
+                        loader: '@yzfe/svgicon-loader',
+                        options: {
+                            svgFilePath: ['SVG 文件路径'],
+                            svgoConfig: null // 自定义 svgo 配置
+                            component: 'react', // 生成 React 组件
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
+::: details umijs 配置 demo
+<<< @/demo/react-demo/.umirc.ts
+:::
+
+引入 css
+```ts
+import '@yzfe/svgicon/lib/svgicon.css'
+```
 ### 使用
+```tsx
+import MySvgIcon from 'svg-path/mysvg.svg'
+
+export default function FC() {
+    return (
+        <div>
+            <MySvgIcon color="red" />
+        </div>
+    )
+}
+```
 
 ## 其他框架
 
