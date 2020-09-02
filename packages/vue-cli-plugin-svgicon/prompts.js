@@ -2,7 +2,8 @@ module.exports = [
     {
         type: 'input',
         name: 'svgFilePath',
-        message: 'The svg file path, use relative path: ',
+        message:
+            'The svg file path, use relative path. (multiple paths use "|" separate ): ',
         validate: (input) => !!input,
     },
     {

@@ -1,7 +1,7 @@
 ---
 home: true
 # heroImage: /hero.png
-heroText: SVG Icon
+heroText: svgicon
 tagline: SVG 图标组件和工具集
 actionText: 快速上手 →
 actionLink: /guide/

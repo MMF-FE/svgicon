@@ -13,6 +13,7 @@ module.exports = (api, cliOptions) => {
         _.merge(options, cliOptions.pluginOptions.vueSvgicon)
     }
 
+    //#region chainWebpack
     const svgFilePath = options.svgFilePath
     const svgoConfig = options.svgoConfig
     const pathAlias = options.pathAlias
@@ -59,4 +60,5 @@ module.exports = (api, cliOptions) => {
             }
         }
     })
+    // #endregion chainWebpack
 }

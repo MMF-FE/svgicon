@@ -6,6 +6,8 @@ module.exports = {
     base: isPrd ? '/svgicon/' : '/',
     dest: './docs-dist',
     themeConfig: {
+        displayAllHeaders: true,
+        sidebarDepth: 3,
         locales: {
             '/': {
                 selectText: '选择语言',
@@ -21,7 +23,7 @@ module.exports = {
                     },
                 ],
                 sidebar: {
-                    '/guide/': ['', 'component', 'preview-icon'],
+                    '/guide/': ['', 'deep'],
                 },
             },
             '/en/': {
@@ -38,7 +40,7 @@ module.exports = {
                     },
                 ],
                 sidebar: {
-                    '/guide/': ['', 'component', 'preview-icon'],
+                    '/guide/': ['', 'deep'],
                 },
             },
         },
@@ -46,12 +48,12 @@ module.exports = {
     locales: {
         '/': {
             lang: 'zh-CN',
-            title: 'SVG Icon',
+            title: 'svgicon',
             description: 'SVG 图标组件和工具集',
         },
         '/en/': {
             lang: 'en-US',
-            title: 'SVG Icon',
+            title: 'svgicon',
             description: 'SVG icon components and toolset',
         },
     },
