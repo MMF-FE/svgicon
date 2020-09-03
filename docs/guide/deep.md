@@ -29,12 +29,12 @@ toc
 <<<@/docs/.vuepress/components/DemoOriginalColor.vue#demo
 :::
 
+> 第二和第三个色轮是在原色的基础上修改某些颜色
+
 <demo-gradient title="渐变" />
 ::: details 查看代码
 <<<@/docs/.vuepress/components/DemoGradient.vue#demo
 :::
-
-> 第二和第三个色轮是在原色的基础上修改某些颜色
 
 ### 大小
 <demo-size title="size, 默认单位：px, 默认大小：16px" />
