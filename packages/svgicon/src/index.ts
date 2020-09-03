@@ -1,14 +1,17 @@
 import utils from './utils'
 
+//#region Options
 /** Global default options */
 export interface Options {
     classPrefix?: string
     // Is stroke default
     isStroke?: boolean
     isOriginalDefault?: boolean
+    /** 16px, defined in css */
     defaultWidth?: string
     defaultHeight?: string
 }
+//#endregion Options
 
 export interface IconData {
     width?: number | string
@@ -23,6 +26,7 @@ export interface Icon {
     data: IconData
 }
 
+//#region props
 export interface Props {
     /** icon data */
     data?: Icon
@@ -37,14 +41,19 @@ export interface Props {
     /** is use original color */
     original?: boolean
 }
+//#endregion props
 
+//#region SvgIconResult
 /** SvgIcon function result type */
 export interface SvgIconResult {
+    /** SVG content */
     path: string
+    /** viewBox */
     box: string
     className: string
     style: Record<string, string | number>
 }
+//#endregion SvgIconResult
 
 let options: Options = {
     defaultWidth: '',

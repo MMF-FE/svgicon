@@ -23,9 +23,7 @@ const SvgiconLoader: loader.Loader = function (source) {
             let result = `
             const data = ${JSON.stringify(icon)}
         `
-            if (options.component === 'vue') {
-                console.warn('Load as a vue component is not implemented.')
-            } else if (options.component === 'react') {
+            if (options.component === 'react') {
                 result += `
                     import React from 'react'
                     import { ReactSvgIcon } from '@yzfe/react-svgicon'

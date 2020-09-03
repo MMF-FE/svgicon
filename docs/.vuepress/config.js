@@ -24,12 +24,17 @@ module.exports = {
                         link: '/guide/',
                     },
                     {
+                        text: 'API',
+                        link: '/api/',
+                    },
+                    {
                         text: 'Github',
                         link: 'https://github.com/MMF-FE/svgicon',
                     },
                 ],
                 sidebar: {
-                    '/guide/': ['', 'deep'],
+                    '/guide/': ['', 'advanced'],
+                    '/api/': [''],
                 },
             },
             '/en/': {
@@ -41,12 +46,17 @@ module.exports = {
                         link: '/guide/',
                     },
                     {
+                        text: 'API',
+                        link: '/api/',
+                    },
+                    {
                         text: 'Github',
                         link: 'https://github.com/MMF-FE/svgicon',
                     },
                 ],
                 sidebar: {
-                    '/guide/': ['', 'deep'],
+                    '/guide/': ['', 'advanced'],
+                    '/api/': [''],
                 },
             },
         },
