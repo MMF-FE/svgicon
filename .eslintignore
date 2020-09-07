@@ -3,5 +3,5 @@ dist
 coverage
 .eslintrc.js
 assets
-docs-dist/*
+docs/.vuepress/dist
 packages/vue-cli-plugin-svgicon/generator/template

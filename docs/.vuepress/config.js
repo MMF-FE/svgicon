@@ -7,7 +7,6 @@ const svgFilePath = [
 
 module.exports = {
     base: isPrd ? '/svgicon/' : '/',
-    dest: './docs-dist',
     markdown: {
         lineNumbers: true,
     },

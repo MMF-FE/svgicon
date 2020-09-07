@@ -19,4 +19,4 @@ node_modules
 # remove docs dist
 demo/**/dist
 packages/svgicon-viewer/dist
-docs-dist/*
+docs/.vuepress/dist
