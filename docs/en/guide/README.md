@@ -10,7 +10,7 @@ svgicon is SVG icon component and tool set. It turns SVG files into icon data (v
 - @yzfe/svgicon `Generate the data required by the SVG icon component according to the incoming parameters (props)`
 - @yzfe/vue-svgicon `SVG icon component for vue2.x`
 - @yzfe/vue3-svgicon `SVG icon component for vue3.x`
-- @yzfe/react-svgicon `适用于 react 的 SVG 图标组件`
+- @yzfe/react-svgicon `SVG icon component for react `
 - @yzfe/svgicon-gen `Generate icon data (icon name and processed SVG content) based on the content of the SVG file`
 - @yzfe/svgicon-loader `Load the SVG file as icon data (vue) or SVG icon component (react), the generated code can be customized`
 - @yzfe/svgicon-viewer `Preview SVG icon`
