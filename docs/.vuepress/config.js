@@ -43,11 +43,11 @@ module.exports = {
                 nav: [
                     {
                         text: 'Guide',
-                        link: '/guide/',
+                        link: '/en/guide/',
                     },
                     {
                         text: 'API',
-                        link: '/api/',
+                        link: '/en/api/',
                     },
                     {
                         text: 'Github',
@@ -55,8 +55,8 @@ module.exports = {
                     },
                 ],
                 sidebar: {
-                    '/guide/': ['', 'advanced'],
-                    '/api/': [''],
+                    '/en/guide/': ['', 'advanced'],
+                    '/en/api/': [''],
                 },
             },
         },

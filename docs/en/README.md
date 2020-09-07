@@ -1,16 +1,18 @@
 ---
 home: true
 # heroImage: /hero.png
-heroText: YZFE-SvgIcon
-tagline: SVG icon components and toolset
+heroText: svgicon
+tagline: SVG icon components and tool set
 actionText: Quick Start →
-actionLink: /guide/get-start.html
+actionLink: /en/guide/
 features:
-- title: 支持多种框架
-  details: 默认提供 vue 2.x, vue 3.x, react >= 16.8 的图标组件, 可以通过 @yzfe/svgicon 来编写支持其他框架的组件
-- title: 按需加载
-  details: 通过 webpack loader (@yzfe/svgicon-loader) 加载 svg 文件变成图标数据或者图标组件，可以自定义生成的代码。
-- title: 多功能
-  details: 支持多颜色，包括渐变；支持同时设置填充和描边；支持原色，并可以只修改某个颜色的值；支持缩放，动画等功能；
+- title: Support multiple js frameworks
+  details: Vue 2.x, Vue 3.x, React >= 16.8 icon components are provided by default, and components that support other frameworks can be written through @yzfe/svgicon
+- title: Load with webpack loader
+  details: Load SVG files into icon data or icon components through webpack loader (@yzfe/svgicon-loader), and you can customize the generated code.
+- title: Multiple features
+  details: Supports multiple colors, including gradients; Supports set fill and stroke attributes at the same time; supports original colors, and can modify a certain color; Supports zoom, animation etc.
+- title: Icon Preview
+  details: In any folder, use @yzfe/svgicon-viewer to view the SVG icon effect
 footer: MIT Licensed | Copyright © 2020-present YZFE
 ---
