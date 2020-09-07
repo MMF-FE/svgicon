@@ -1,0 +1,7 @@
+node_modules
+dist
+coverage
+.eslintrc.js
+assets
+docs/.vuepress/dist
+packages/vue-cli-plugin-svgicon/generator/template

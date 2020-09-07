@@ -1,24 +1,21 @@
 {
+    "private": true,
     "name": "vue-svgicon",
-    "version": "3.2.8",
-    "description": "A tool to create svg icon components. (vue 2.x)",
-    "main": "./dist/components/svgicon.common.js",
-    "typings": "typings/index.d.ts",
-    "bin": {
-        "vsvg": "./dist/lib/index.js"
+    "workspaces": {
+        "packages": [
+            "packages/*",
+            "demo/*"
+        ]
     },
+    "description": "A tool to create svg icon components. (vue 2.x)",
     "scripts": {
-        "serve": "vue-cli-service serve",
-        "serve:lib": "tsc -w -p ./lib/tsconfig.json",
-        "build": "APP_ENV=lib vue-cli-service build --target lib --name svgicon ./src/components/SvgIcon.vue",
-        "build:lib": "rm -rf dist/lib && tsc -p ./lib/tsconfig.json",
-        "build:polyfill": "APP_ENV=lib webpack",
-        "build:demo": "vue-cli-service build",
-        "test": "vue-cli-service test:unit",
-        "svg": "node ./dist/lib/index.js -s ./src/assets/svg -t ./src/components/icons",
-        "svg:async": "node ./dist/lib/index.js -s ./src/assets/svg-async -t ./src/components/icons-async --ext ts --es6",
-        "svg:ts": "node ./dist/lib/index.js -s ./src/assets/svg -t ./src/components/icons --ext ts --es6",
-        "debug": "node --nolazy --inspect-brk=5858 ./dist/lib/index.js -s ./src/assets/svg -t ./src/components/icons"
+        "bootstrap": "lerna bootstrap",
+        "build": "lerna run build",
+        "serve:doc": "vuepress dev docs",
+        "build:doc": "vuepress build docs",
+        "deploy:doc": "./scripts/deploy.sh",
+        "test": "lerna run test --stream",
+        "publish": "lerna publish"
     },
     "repository": {
         "type": "git",
@@ -37,78 +34,41 @@
         "url": "https://github.com/MMF-FE/vue-svgicon/issues"
     },
     "homepage": "https://github.com/MMF-FE/vue-svgicon#readme",
-    "files": [
-        "dist/",
-        "default/",
-        "typings/index.d.ts"
-    ],
-    "dependencies": {
-        "camelcase": "^5.2.0",
-        "colors": "^1.3.0",
-        "fs-plus": "^3.0.2",
-        "glob": "^7.1.2",
-        "svgo": "^1.0.5",
-        "tslib": "^1.9.3",
-        "yargs": "^12.0.1"
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org",
+        "access": "public"
     },
     "peerDependencies": {
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.5.16"
     },
     "devDependencies": {
-        "@types/chai": "^4.1.0",
-        "@types/fs-plus": "^3.0.0",
-        "@types/glob": "^5.0.35",
-        "@types/highlight.js": "^9.12.3",
-        "@types/lodash.merge": "^4.6.3",
-        "@types/mocha": "^2.2.46",
-        "@types/svgo": "^1.0.1",
-        "@types/yargs": "^11.0.0",
-        "@vue/cli-plugin-babel": "^3.0.0",
-        "@vue/cli-plugin-typescript": "^3.0.0",
-        "@vue/cli-plugin-unit-mocha": "^3.0.0",
-        "@vue/cli-service": "^3.0.0",
-        "@vue/test-utils": "^1.0.0-beta.16",
-        "chai": "^4.1.2",
-        "highlight.js": "^9.12.0",
-        "lint-staged": "^6.0.0",
-        "node-sass": "^4.9.0",
-        "prettier": "^1.13.7",
-        "prettier-stylelint": "^0.4.2",
-        "sass-loader": "^7.0.1",
-        "stylelint-config-standard": "^18.2.0",
-        "stylelint-order": "^0.8.1",
-        "ts-node": "^7.0.0",
-        "typescript": "^3.0.1",
-        "vue": "^2.5.16",
-        "vue-class-component": "^6.0.0",
-        "vue-property-decorator": "^6.0.0",
-        "vue-template-compiler": "^2.5.17",
-        "webpack-bundle-analyzer": "^3.0.2",
-        "webpack-cli": "^3.1.0"
+        "@typescript-eslint/eslint-plugin": "^3.9.0",
+        "@typescript-eslint/parser": "^3.9.0",
+        "eslint": "^7.6.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-prettier": "^3.1.4",
+        "husky": "^4.2.5",
+        "lerna": "^3.22.1",
+        "lint-staged": "^10.2.11",
+        "prettier": "^2.0.5",
+        "stylelint": "^13.6.1",
+        "stylelint-config-standard": "^20.0.0",
+        "stylelint-order": "^4.1.0",
+        "typescript": "^3.9.7",
+        "vuepress": "^1.5.4"
     },
-    "browserslist": [
-        "> 1%",
-        "last 2 versions",
-        "not ie <= 8"
-    ],
-    "gitHooks": {
-        "pre-commit": "lint-staged"
-    },
-    "lint-staged": {
-        "concurrent": false,
-        "linters": {
-            "*.{ts,js,json,tsx}": "prettier --write",
-            "*.scss": "prettier-stylelint --write",
-            "*": "git add"
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
         }
     },
-    "publishConfig": {
-        "registry": "https://registry.npmjs.org",
-        "access": "public"
-    },
-    "engines": {
-        "node": ">= 5.0.0",
-        "npm": ">= 3.0.0"
+    "lint-staged": {
+        "*.{ts,js,json,tsx}": [
+            "prettier --write"
+        ],
+        "*.{scss,less}": [
+            "stylelint --fix"
+        ]
     }
 }

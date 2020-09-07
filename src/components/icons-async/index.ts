@@ -1,2 +1,0 @@
-import './download'
-import './good'

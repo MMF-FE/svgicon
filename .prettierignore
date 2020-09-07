@@ -1,2 +1,6 @@
 dist/
 node_modules/
+assets/*
+docs/.vuepress/dist
+packages/vue-cli-plugin-svgicon/generator/template
+
