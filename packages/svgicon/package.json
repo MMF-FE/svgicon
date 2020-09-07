@@ -1,6 +1,6 @@
 {
     "name": "@yzfe/svgicon",
-    "version": "0.0.1-alpha.2",
+    "version": "1.0.0",
     "description": "Svg icon",
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
