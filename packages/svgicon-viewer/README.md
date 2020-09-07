@@ -1,4 +1,4 @@
-# `vue-svgicon-viewer`
+# @yzfe/svgicon-viewer
 
 Preview SVG icon
 
@@ -6,13 +6,13 @@ Preview SVG icon
 
 ```bash
 # Install global
-npm install -g @yzfe/vue-svgicon-viewer
+npm install -g @yzfe/svgicon-viewer
 
 # Install in project
-npm install  @yzfe/vue-svgicon-viewer --dev
+npm install  @yzfe/svgicon-viewer --dev
 
 # preview svg icon
-vsvg-viewer ./svg/folder
+svgicon-viewer ./svg/folder
 ```
 
 ## SVG icon display name
@@ -22,7 +22,7 @@ You can configure the SVG icon display name by specifying a json config file.
 > 你可以通过指定配置自定义预览的 SVG 图标名称
 
 ```bash
-vsvg-viewer ./svg/folder ./meta.json
+svgicon-viewe ./svg/folder ./meta.json
 ```
 
 meta.json example

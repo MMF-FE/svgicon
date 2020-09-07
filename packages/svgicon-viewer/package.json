@@ -16,7 +16,7 @@
         "preview"
     ],
     "author": "Allenice Mo <994298628@qq.com>",
-    "homepage": "https://github.com/MMF-FE/vue-svgicon/tree/master/packages/vue-svgicon-viewer#readme",
+    "homepage": "https://github.com/MMF-FE/svgicon",
     "license": "MIT",
     "main": "bin/index.js",
     "files": [
@@ -25,10 +25,10 @@
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/MMF-FE/vue-svgicon.git"
+        "url": "git+https://github.com/MMF-FE/svgicon.git"
     },
     "bugs": {
-        "url": "https://github.com/MMF-FE/vue-svgicon/issues"
+        "url": "https://github.com/MMF-FE/svgicon/issues"
     },
     "dependencies": {
         "@yzfe/svgicon-gen": "^0.0.1-alpha.3",

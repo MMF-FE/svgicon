@@ -852,11 +852,11 @@
                                             class: 'github-button',
                                             attrs: {
                                                 href:
-                                                    'https://github.com/MMF-FE/vue-svgicon',
+                                                    'https://github.com/MMF-FE/svgicon',
                                                 'data-size': 'large',
                                                 'data-show-count': 'true',
                                                 'aria-label':
-                                                    'Star MMF-FE/vue-svgicon on GitHub',
+                                                    'Star MMF-FE/svgicon on GitHub',
                                             },
                                         },
                                         ['Star']

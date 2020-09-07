@@ -17,7 +17,7 @@
         "loader"
     ],
     "author": "Allenice Mo <994298628@qq.com>",
-    "homepage": "https://github.com/MMF-FE/vue-svgicon/tree/master/#readme",
+    "homepage": "https://github.com/MMF-FE/svgicon",
     "license": "MIT",
     "main": "dist/index.js",
     "typings": "typings/index.d.ts",
@@ -33,10 +33,10 @@
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/MMF-FE/vue-svgicon.git"
+        "url": "git+https://github.com/MMF-FE/svgicon.git"
     },
     "bugs": {
-        "url": "https://github.com/MMF-FE/vue-svgicon/issues"
+        "url": "https://github.com/MMF-FE/svgicon/issues"
     },
     "devDependencies": {
         "@types/loader-utils": "^2.0.1",

@@ -17,7 +17,7 @@
         "svgicon"
     ],
     "author": "Allenice Mo <994298628@qq.com>",
-    "homepage": "https://github.com/MMF-FE/vue-svgicon/tree/master/packages/vue-svgicon#readme",
+    "homepage": "https://github.com/MMF-FE/svgicon",
     "license": "MIT",
     "publishConfig": {
         "registry": "https://registry.npmjs.org",

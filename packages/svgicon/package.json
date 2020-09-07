@@ -10,7 +10,7 @@
         "prepublishOnly": "yarn build && yarn test",
         "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha"
     },
-    "homepage": "https://github.com/MMF-FE/vue-svgicon/tree/master/packages/vue-svgicon#readme",
+    "homepage": "https://github.com/MMF-FE/svgicon",
     "files": [
         "dist",
         "lib"
