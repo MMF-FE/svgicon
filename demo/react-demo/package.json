@@ -1,6 +1,6 @@
 {
     "name": "@yzfe/react-demo",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "private": true,
     "scripts": {
         "start": "umi dev",
@@ -11,8 +11,8 @@
         "@ant-design/pro-layout": "^5.0.12",
         "@umijs/preset-react": "1.x",
         "@umijs/test": "^3.2.15",
-        "@yzfe/svgicon": "^1.0.0",
-        "@yzfe/svgicon-loader": "^1.0.0",
+        "@yzfe/svgicon": "^1.0.1",
+        "@yzfe/svgicon-loader": "^1.0.1",
         "lint-staged": "^10.0.7",
         "prettier": "^1.19.1",
         "react": "^16.12.0",

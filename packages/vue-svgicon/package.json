@@ -1,6 +1,6 @@
 {
     "name": "@yzfe/vue-svgicon",
-    "version": "4.0.0",
+    "version": "4.0.1",
     "description": "SVG icon component for vue",
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
@@ -45,7 +45,7 @@
         "@vue/cli-plugin-unit-mocha": "~4.5.0",
         "@vue/cli-service": "~4.5.0",
         "@vue/test-utils": "^1.0.3",
-        "@yzfe/svgicon-loader": "^1.0.0",
+        "@yzfe/svgicon-loader": "^1.0.1",
         "chai": "^4.1.2",
         "rollup": "^2.26.3",
         "rollup-plugin-peer-deps-external": "^2.2.3",
