@@ -22,6 +22,7 @@
     },
     "devDependencies": {
         "@yzfe/svgicon-loader": "^1.0.0",
+        "@yzfe/svgicon": "^1.0.0",
         "@yzfe/vue-svgicon": "^4.0.0",
         "@yzfe/vue3-svgicon": "^1.0.0"
     },

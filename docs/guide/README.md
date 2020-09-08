@@ -41,6 +41,9 @@ vue invoke @yzfe/svgicon
 ```bash
 # loader
 yarn add @yzfe/svgicon-loader --dev
+# core
+yarn add @yzfe/svgicon
+
 # 添加图标组件
 yarn add @yzfe/vue-svgicon # vue2.x
 # or
@@ -175,6 +178,7 @@ export default {
 ### 安装
 ```bash
 yarn add @yzfe/svgicon-loader  --dev
+yarn add @yzfe/svgicon
 yarn add @yzfe/react-svgicon
 ```
 

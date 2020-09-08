@@ -4,13 +4,15 @@ const devDeps = pkg.devDependencies
 module.exports = (api, options) => {
     api.render('./template', options)
 
-    let deps = {}
+    let deps = {
+        '@yzfe/svgicon': devDeps['@yzfe/svgicon'],
+    }
 
     if (options.isVue3) {
         deps['@yzfe/vue3-svgicon'] = devDeps['@yzfe/vue3-svgicon']
         api.injectImports(api.entryFile, [
             `import { VueSvgIconPlugin } from '@yzfe/vue3-svgicon'`,
-            `import 'import '@yzfe/svgicon/lib/svgicon.css'`,
+            `import '@yzfe/svgicon/lib/svgicon.css'`,
         ])
     } else {
         deps['@yzfe/vue-svgicon'] = devDeps['@yzfe/vue-svgicon']

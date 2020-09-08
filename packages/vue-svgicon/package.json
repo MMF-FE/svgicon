@@ -33,7 +33,7 @@
         "postcss.config.js"
     ],
     "peerDependencies": {
-        "@yzfe/svgicon": ">=0.0.1-alpha.2",
+        "@yzfe/svgicon": ">=1.0.0",
         "vue": ">=2.5.11"
     },
     "devDependencies": {

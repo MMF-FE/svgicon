@@ -1,5 +1,5 @@
-import { Icon } from '@yzfe/svgicon'
 import SVGO from 'svgo'
+import { Icon } from '../typings'
 import utils from './utils'
 import _ from 'lodash'
 import defaultSVGConfig from './svgo'

@@ -17,12 +17,9 @@
         "access": "public"
     },
     "peerDependencies": {
-        "@yzfe/svgicon": "^0.0.1-alpha.2",
+        "@yzfe/svgicon": ">=1.0.0",
         "react": ">=16.8.0",
         "react-dom": ">=16.8.0"
-    },
-    "dependencies": {
-        "@yzfe/svgicon": "^1.0.0"
     },
     "devDependencies": {
         "@rollup/plugin-commonjs": "^15.0.0",

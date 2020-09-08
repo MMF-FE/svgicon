@@ -41,6 +41,9 @@ Use vue-cli, but not @ yzfe / vue-cli-plugin-svgicon.
 ```bash
 # loader
 yarn add @yzfe/svgicon-loader --dev
+# core
+yarn add @yzfe/svgicon
+
 # Add icon component
 yarn add @yzfe/vue-svgicon # vue2.x
 # or
@@ -176,6 +179,7 @@ If `transformAssetUrls` is configured, the svg file path can be used directly. I
 ### Installation
 ```bash
 yarn add @yzfe/svgicon-loader  --dev
+yarn add @yzfe/svgicon
 yarn add @yzfe/react-svgicon
 ```
 Configure Webpack
