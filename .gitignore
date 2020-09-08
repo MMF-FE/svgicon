@@ -16,6 +16,8 @@ node_modules
 *.sln
 *.sw*
 
+dist
+
 # remove docs dist
 demo/**/dist
 packages/svgicon-viewer/dist
