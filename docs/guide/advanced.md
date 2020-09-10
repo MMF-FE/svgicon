@@ -61,7 +61,7 @@ toc
 #### 安装
 ```bash
 # 全局安装
-yarn global add @yzfe/svgion-viewer
+yarn global add @yzfe/svgicon-viewer
 ```
 
 #### 使用

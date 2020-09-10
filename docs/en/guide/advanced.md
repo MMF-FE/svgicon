@@ -61,7 +61,7 @@ Use `@yzfe/svgicon-viewer` to preview SVG files in any folder.
 #### Installation
 ```bash
 # Global installation
-yarn global add @yzfe/svgion-viewer
+yarn global add @yzfe/svgicon-viewer
 ```
 
 #### Usage
