@@ -178,8 +178,7 @@ export default {
 ### 安装
 ```bash
 yarn add @yzfe/svgicon-loader  --dev
-yarn add @yzfe/svgicon
-yarn add @yzfe/react-svgicon
+yarn add @yzfe/svgicon @yzfe/react-svgicon
 ```
 
 Webpack 配置

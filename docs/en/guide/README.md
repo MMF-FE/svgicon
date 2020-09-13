@@ -179,8 +179,7 @@ If `transformAssetUrls` is configured, the svg file path can be used directly. I
 ### Installation
 ```bash
 yarn add @yzfe/svgicon-loader  --dev
-yarn add @yzfe/svgicon
-yarn add @yzfe/react-svgicon
+yarn add @yzfe/svgicon @yzfe/react-svgicon
 ```
 Configure Webpack
 
