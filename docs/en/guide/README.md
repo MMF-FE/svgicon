@@ -226,6 +226,25 @@ export default function FC() {
 }
 ```
 
+If you are typescript user, please configure tsconfig (if use aliases) and typings
+```json
+{
+     "compilerOptions": {
+        "paths": {
+            "@icon": ["svg file path"]
+        },
+    },
+}
+```
+
+```ts
+declare module '@icon/*' {
+    import { ReactSvgIconFC } from '@yzfe/react-svgicon'
+    const value: ReactSvgIconFC
+    export = value
+}
+```
+
 ## Other js frameworks
 Other js frameworks can use `@yzfe/svgicon` to write icon components suitable for their frameworks, please refer to `@yzfe/react-svgicon`.
 

@@ -225,6 +225,25 @@ export default function FC() {
 }
 ```
 
+如果你是 typescript 用户，请配置 tsconfig(使用了别名) 和 typings 
+```json
+{
+     "compilerOptions": {
+        "paths": {
+            "@icon": ["svg 图标路径"]
+        },
+    },
+}
+```
+
+```ts
+declare module '@icon/*' {
+    import { ReactSvgIconFC } from '@yzfe/react-svgicon'
+    const value: ReactSvgIconFC
+    export = value
+}
+```
+
 ## 其他框架
 其他 js 框架可以通过 `@yzfe/svgicon ` 编写适用于其框架的图标组件，可以参考 `@yzfe/react-svgicon`.
 
