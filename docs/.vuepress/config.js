@@ -72,6 +72,14 @@ module.exports = {
             description: 'SVG icon components and toolset',
         },
     },
+    plugins: [
+        [
+            '@vuepress/google-analytics',
+            {
+                ga: 'UA-66013213-2', // UA-00000000-0
+            },
+        ],
+    ],
     chainWebpack: (config) => {
         config.module
             .rule('vue-svgicon')
