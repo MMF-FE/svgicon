@@ -11,11 +11,11 @@
     "scripts": {
         "bootstrap": "lerna bootstrap",
         "build": "lerna run build",
+        "test": "lerna run test --stream",
+        "publish": "lerna publish",
         "serve:doc": "vuepress dev docs",
         "build:doc": "vuepress build docs",
-        "deploy:doc": "./scripts/deploy.sh",
-        "test": "lerna run test --stream",
-        "publish": "lerna publish"
+        "deploy:doc": "./scripts/deploy.sh"
     },
     "repository": {
         "type": "git",
