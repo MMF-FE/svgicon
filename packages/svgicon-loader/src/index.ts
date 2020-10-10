@@ -28,7 +28,15 @@ const SvgiconLoader: loader.Loader = function (source) {
                     import React from 'react'
                     import { ReactSvgIcon } from '@yzfe/react-svgicon'
                     function SvgIconFC (props) {
-                        return React.createElement(ReactSvgIcon, {data, ...props})
+                        var newProps = {
+                            data: data
+                        }
+                        if (props) {
+                            Object.keys(props).forEach(function each(key) {
+                                newProps[key] = props[key]
+                            })
+                        }
+                        return React.createElement(ReactSvgIcon, newProps)
                     }
 
                     SvgIconFC.iconName = data.name

@@ -10,6 +10,9 @@ export default defineConfig({
     nodeModulesTransform: {
         type: 'none',
     },
+    targets: {
+        ie: 11,
+    },
     routes: [{ path: '/', component: '@/pages/index' }],
     chainWebpack(config) {
         config.module
