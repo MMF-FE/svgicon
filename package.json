@@ -11,7 +11,7 @@
     "scripts": {
         "bootstrap": "lerna bootstrap",
         "build": "lerna run build --ignore '@yzfe/*-demo'",
-        "test": "lerna run test --stream",
+        "test": "npm run build && lerna run test --stream",
         "publish": "lerna publish",
         "serve:doc": "vuepress dev docs",
         "build:doc": "vuepress build docs",
