@@ -10,7 +10,7 @@
     "description": "A tool to create svg icon components. (vue 2.x)",
     "scripts": {
         "bootstrap": "lerna bootstrap",
-        "build": "lerna run build",
+        "build": "lerna run build --ignore '@yzfe/*-demo'",
         "test": "lerna run test --stream",
         "publish": "lerna publish",
         "serve:doc": "vuepress dev docs",
