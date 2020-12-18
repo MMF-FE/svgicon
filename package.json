@@ -49,7 +49,7 @@
         "glob": "^7.1.2",
         "svgo": "^1.0.5",
         "tslib": "^1.9.3",
-        "yargs": "^12.0.1"
+        "yargs": "^13.3.2"
     },
     "peerDependencies": {
         "vue": "^2.5.17",
