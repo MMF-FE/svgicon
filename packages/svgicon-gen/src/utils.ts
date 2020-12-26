@@ -13,7 +13,7 @@ export default {
     // get svg viewBox
     getViewBox(svgoResult: OptimizedSvg): string {
         const viewBoxMatch = svgoResult.data.match(
-            /viewBox="([-\d.]\s[-\d.]+\s[-\d.]+\s[-\d.]+)"/
+            /viewBox="([-\d.]+\s[-\d.]+\s[-\d.]+\s[-\d.]+)"/
         )
         let viewBox = '0 0 200 200'
 
