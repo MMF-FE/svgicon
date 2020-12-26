@@ -1,6 +1,6 @@
 {
     "name": "@yzfe/svgicon-gen",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "A generator to create svgicon object",
     "scripts": {
         "dev": "tsc -w",
