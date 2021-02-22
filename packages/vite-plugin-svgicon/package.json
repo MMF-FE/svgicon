@@ -1,0 +1,41 @@
+{
+    "name": "vite-plugin-svgicon",
+    "version": "0.0.0",
+    "main": "dist/index.js",
+    "module": "dist/index.esm.js",
+    "license": "MIT",
+    "description": "vite plugin for @yzfe/svgicon",
+    "keywords": [
+        "vite-plugin",
+        "vite",
+        "svgicon",
+        "@yzfe/svgicon"
+    ],
+    "author": "Allenice Mo <994298628@qq.com>",
+    "homepage": "https://github.com/MMF-FE/svgicon",
+    "scripts": {
+        "dev": "rollup -c -w",
+        "build": "rm -rf dist && rollup -c",
+        "prepublishOnly": "yarn build"
+    },
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org",
+        "access": "public"
+    },
+    "peerDependencies": {
+        "vite": ">=2.0.0-beta.1"
+    },
+    "devDependencies": {
+        "@rollup/plugin-commonjs": "^17.1.0",
+        "@rollup/plugin-node-resolve": "^11.2.0",
+        "rollup": "^2.39.0",
+        "rollup-plugin-peer-deps-external": "^2.2.4",
+        "rollup-plugin-typescript2": "^0.30.0",
+        "vite": "^2.0.1"
+    },
+    "dependencies": {
+        "@yzfe/svgicon-gen": "^1.0.2",
+        "@types/svgo": "^1.3.4",
+        "minimatch": "^3.0.4"
+    }
+}
