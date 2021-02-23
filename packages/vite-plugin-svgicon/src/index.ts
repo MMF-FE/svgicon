@@ -99,7 +99,6 @@ export default function svgicon(options: PluginOptions = {}): Plugin {
                 )
         },
         async load(id: string) {
-            console.log(id)
             if (isSvgIconFile(id, options)) {
                 const code = await fs.readFile(id, 'utf-8')
                 return genSvgIcon(code, id, options)
