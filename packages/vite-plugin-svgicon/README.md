@@ -47,7 +47,7 @@ createApp(App)
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
-import vueSvg from '@/assets/svg-icon/vue.svg'
+import vueSvg from './assets/svg-icon/vue.svg'
 
 export default defineComponent({
     name: 'App',
