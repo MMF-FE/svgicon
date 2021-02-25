@@ -1,15 +1,15 @@
-import { ReactSvgIconFC } from '@yzfe/react-svgicon'
 
 declare module '*.png';
 declare module '*.gif';
 declare module '*.jpg';
 declare module '*.jpeg';
-declare module '*.svg';
+// declare module '*.svg';
 declare module '*.css';
 declare module '*.less';
 declare module '*.scss';
 declare module '*.sass';
 declare module '*.styl';
+
 
 declare namespace NodeJS {
   interface ProcessEnv {
@@ -26,11 +26,9 @@ declare module '*.svg' {
 }
 
 declare module '@icon/*' {
-  const value: ReactSvgIconFC
+  import { TaroSvgIconFC } from '@yzfe/taro-svgicon'
+
+  const value: TaroSvgIconFC
   export = value
 }
 
-declare module '@fa/*' {
-  const value: ReactSvgIconFC
-  export = value
-}

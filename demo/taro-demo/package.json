@@ -40,8 +40,11 @@
     "@tarojs/react": "3.0.21",
     "@tarojs/runtime": "3.0.21",
     "@tarojs/taro": "3.0.21",
+    "classnames": "^2.2.6",
+    "default-passive-events": "^2.0.0",
     "react": "^16.10.0",
-    "react-dom": "^16.10.0"
+    "react-dom": "^16.10.0",
+    "taro-ui": "^3.0.0-alpha.3"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",

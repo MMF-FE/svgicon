@@ -25,12 +25,13 @@
   },
     "typeRoots": [
       "node_modules/@types",
-      "global.d.ts"
+      "typings"
     ]
   },
   "exclude": [
     "node_modules",
     "dist"
   ],
+  "include": ["**/*.ts", "**/*.tsx"],
   "compileOnSave": false
 }

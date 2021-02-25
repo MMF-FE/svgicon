@@ -1,5 +1,4 @@
 import React from 'react'
-import { renderToString } from 'react-dom/server'
 import {
     svgIcon,
     Props,
@@ -14,7 +13,6 @@ import { View } from '@tarojs/components'
 interface ComponentProps extends Props {
     [key: string]: unknown
 }
-
 class TaroSvgIcon extends React.PureComponent<ComponentProps> {
     public render(): JSX.Element {
         const props = this.props
@@ -30,23 +28,18 @@ class TaroSvgIcon extends React.PureComponent<ComponentProps> {
             }
         }
 
-        const customStyle = {
-            ...((attrs.style as Record<string, string>) || {}),
-            ...result.style,
-        }
-
-        const customClassNames =
-            (attrs.className || '') + ` ${result.className}`
-
         attrs.viewBox = result.box
 
-        const svgStr = renderToString(
-            <svg
+        let attrsMap: string[] = []
+        for (const key in attrs) {
+            attrsMap.push(`${key}='${attrs[key]}'`)
+        }
+        const svgStr = `<svg
                 xmlns="http://www.w3.org/2000/svg"
-                {...attrs}
-                dangerouslySetInnerHTML={{ __html: result.path }}
-            ></svg>
-        )
+                ${attrsMap.join(' ')}
+            >
+            ${result.path}
+            </svg>`
             .replace(/"/g, "'")
             .replace(/<|>/g, (matched) => encodeURI(matched))
             .replace(/#/g, '%23')
@@ -54,16 +47,22 @@ class TaroSvgIcon extends React.PureComponent<ComponentProps> {
             .replace(/\n/g, '')
             .replace(/\s+/g, ' ')
 
-        const svgUrl = `data:image/svg+xml,${svgStr}`
+        const customStyle = {
+            ...((attrs.style as Record<string, string>) || {}),
+            ...result.style,
+            backgroundImage: `url("data:image/svg+xml,${svgStr}")`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'contain',
+        }
+
+        const customClassNames =
+            (attrs.className || '') + ` ${result.className}`
 
         return (
             <View
                 className={customClassNames}
                 style={{
                     ...customStyle,
-                    backgroundImage: `url("${svgUrl}")`,
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: 'contain',
                 }}
             ></View>
         )
