@@ -5,12 +5,13 @@ toc
 ## 介绍
 > svgicon 是一个名称
 
-svgicon 是 SVG 图标组件和工具集，将 SVG 文件变成图标数据(vue)或者图标组件(react)，让你可以愉快的在项目中使用 SVG 图标，无论你是使用 vue, react, vue3.x 还是其他 js 框架。svgicon 包括了以下的 npm 包：
+svgicon 是 SVG 图标组件和工具集，将 SVG 文件变成图标数据(vue)或者图标组件(react)，让你可以愉快的在项目中使用 SVG 图标，无论你是使用 vue, react, vue3.x, taro 还是其他 js 框架。svgicon 包括了以下的 npm 包：
 
 - @yzfe/svgicon `根据传入的参数(props)生成 SVG 图标组件需要的数据`
 - @yzfe/vue-svgicon `适用于 vue2.x 的 SVG 图标组件`
 - @yzfe/vue3-svgicon `适用于 vue3.x 的 SVG 图标组件`
 - @yzfe/react-svgicon `适用于 react 的 SVG 图标组件`
+- @yzfe/taro-svgicon `适用于 taro 的 SVG 图标组件`
 - @yzfe/svgicon-gen `根据 SVG 文件内容，生成图标数据（图标名称和处理过的 SVG 内容）`
 - @yzfe/svgicon-loader `将 SVG 文件加载成图标数据(vue)或者 SVG 图标组件(react), 可以自定义生成的代码`
 - @yzfe/svgicon-viewer `预览 SVG 图标`
@@ -240,6 +241,84 @@ export default function FC() {
 declare module '@icon/*' {
     import { ReactSvgIconFC } from '@yzfe/react-svgicon'
     const value: ReactSvgIconFC
+    export = value
+}
+```
+
+## Taro
+### 安装
+```bash
+yarn add @yzfe/svgicon-loader  --dev
+yarn add @yzfe/svgicon @yzfe/taro-svgicon
+```
+
+conifg 配置
+```js{13}
+// 小程序配置；mini
+{
+   ...mini, // ...h5
+   webpackChain (chain, webpack) {
+      chain.merge({
+        module: {
+          rule: {
+            svgIcon: {
+              test: /\.svg$/,
+              include: svgFilePath,
+              use: [{
+                loader: "@yzfe/svgicon-loader",
+                options: {
+                  svgFilePath,
+                  component: 'taro',
+                }
+              }]
+            }
+          }
+        }
+      })
+
+      chain.module
+      .rule('image')
+      .exclude.add(svgFilePath)
+      .end()
+    }
+}
+```
+::: details taro 配置 demo
+<<< @/demo/taro-demo/config/index.js
+:::
+
+引入 css
+```ts
+import '@yzfe/svgicon/lib/svgicon.css'
+```
+### 使用
+```tsx
+import MySvgIcon from 'svg-path/mysvg.svg'
+
+export default function FC() {
+    return (
+        <div>
+            <MySvgIcon color="red" />
+        </div>
+    )
+}
+```
+
+如果你是 typescript 用户，请配置 tsconfig(使用了别名) 和 typings 
+```json
+{
+     "compilerOptions": {
+        "paths": {
+            "@icon": ["svg 图标路径"]
+        },
+    },
+}
+```
+
+```ts
+declare module '@icon/*' {
+    import { TaroSvgIconFC } from '@yzfe/taro-svgicon'
+    const value: TaroSvgIconFC
     export = value
 }
 ```
