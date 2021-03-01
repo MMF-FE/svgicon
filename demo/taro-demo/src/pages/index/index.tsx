@@ -1,6 +1,7 @@
 import 'default-passive-events'
 import React, { Component } from 'react'
-import { View, Text, Picker, Input, Checkbox } from '@tarojs/components'
+import Taro from '@tarojs/taro'
+import { View, Picker, Input } from '@tarojs/components'
 import classNames from 'classnames'
 import { Props, TaroSvgIcon, TaroSvgIconFC } from '@yzfe/taro-svgicon'
 import icons from '@/icons'
@@ -8,6 +9,8 @@ import awesome from '@/awesome'
 
 import VueIcon from '@icon/vue.svg'
 import MaskIcon from '@icon/sora/fit/mask.svg'
+
+import {debounce} from '../../utils/lodash'
 
 import '@yzfe/svgicon/lib/svgicon.css'
 
@@ -23,8 +26,8 @@ Record<string, unknown>,
             iconIndex: 0,
             icon: icons[0],
             props: {
-                width: 50,
-                height: 50,
+                width: Taro.pxTransform(50, 750),
+                height: Taro.pxTransform(50, 750),
                 original: true,
                 fill: true,
                 dir: '',
@@ -131,9 +134,9 @@ Record<string, unknown>,
                                 value={String(props.width)}
                                 type='number'
                                 placeholder='请输入图标宽度'
-                                onInput={(e) => {
+                                onInput={debounce((e) => {
                                     this.updateProps('width', e.detail.value)
-                                }}/>
+                                }, 250)}/>
                         </View>
                     </View>
 
@@ -145,9 +148,9 @@ Record<string, unknown>,
                                 value={String(props.height)}
                                 type='number'
                                 placeholder='请输入图标高度'
-                                onInput={(e) => {
+                                onInput={debounce((e) => {
                                     this.updateProps('height', e.detail.value)
-                                }}/>
+                                })}/>
                         </View>
                     </View>
 
@@ -159,9 +162,9 @@ Record<string, unknown>,
                                 value={props.color}
                                 type='number'
                                 placeholder='请输入图标颜色值'
-                                onInput={(e) => {
+                                onInput={debounce((e) => {
                                     this.updateProps('color', e.detail.value)
-                                }}/>
+                                })}/>
                         </View>
                     </View>
 
@@ -213,7 +216,7 @@ Record<string, unknown>,
                           original
                           className='vue-icon'
                           style={{
-                                fontSize: '12px',
+                                fontSize: '32rpx',
                             }}
                         ></VueIcon>
                         <MaskIcon original></MaskIcon>

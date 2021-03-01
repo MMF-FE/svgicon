@@ -30,6 +30,12 @@ class TaroSvgIcon extends React.PureComponent<ComponentProps> {
 
         attrs.viewBox = result.box
 
+        // 兼容fontsize
+        if (attrs.style && attrs.style.fontSize) {
+            attrs.style.width = parseFloat(attrs.style.fontSize)
+            attrs.style.height = parseFloat(attrs.style.fontSize)
+        }
+
         let attrsMap: string[] = []
         for (const key in attrs) {
             attrsMap.push(`${key}='${attrs[key]}'`)
