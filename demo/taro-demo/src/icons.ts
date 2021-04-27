@@ -1,10 +1,9 @@
-import { ReactSvgIconFC } from '@yzfe/react-svgicon'
+import { TaroSvgIconFC } from '@yzfe/taro-svgicon'
 
-const icons: ReactSvgIconFC[] = []
+const icons: TaroSvgIconFC[] = []
 
 const req = require.context('@icon', true, /\.svg/)
 req.keys().forEach((key) => {
-    console.log('key: ', key, req(key))
     icons.push(req(key).default)
 })
 
