@@ -37,7 +37,7 @@
         "fastify-static": "^3.2.0",
         "glob": "^7.1.6",
         "portfinder": "^1.0.28",
-        "yargs": "^13.2.1"
+        "yargs": "^17.0.1"
     },
     "publishConfig": {
         "registry": "https://registry.npmjs.org",
