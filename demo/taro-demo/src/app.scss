@@ -1,0 +1,47 @@
+@import "~taro-ui/dist/style/components/list.scss";
+
+#app {
+    color: #2C3E50;
+    font-size: 14px;
+    text-align: center;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+div,
+view {
+    font-size: 14px;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+    outline: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+        width: 0 !important;
+        height: 0 !important;
+        background: transparent;
+    }
+}
+
+div {
+    font-size: 14px;
+}
+
+view {
+    font-size: 24px;
+}
+
+.mmf-row {
+    display: flex;
+}
+
+.content-sb {
+    justify-content: space-between;
+}
+
+input {
+    width: 100%;
+    height: 100% !important;
+    text-align: left;
+}

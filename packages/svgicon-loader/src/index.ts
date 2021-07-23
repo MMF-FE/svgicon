@@ -43,6 +43,26 @@ const SvgiconLoader: loader.Loader = function (source) {
 
                     export default SvgIconFC
                 `
+            } else if (options.component === 'taro') {
+                result += `
+                    import React from 'react'
+                    import { TaroSvgIcon } from '@yzfe/taro-svgicon'
+                    function SvgIconFC (props) {
+                        var newProps = {
+                            data: data
+                        }
+                        if (props) {
+                            Object.keys(props).forEach(function each(key) {
+                                newProps[key] = props[key]
+                            })
+                        }
+                        return React.createElement(TaroSvgIcon, newProps)
+                    }
+
+                    SvgIconFC.iconName = data.name
+
+                    export default SvgIconFC
+                `
             } else if (options.component === 'custom') {
                 result += options.customCode
             } else {

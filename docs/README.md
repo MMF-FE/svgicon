@@ -7,7 +7,7 @@ actionText: 快速上手 →
 actionLink: /guide/
 features:
 - title: 支持多种框架
-  details: 默认提供 Vue 2.x, Vue 3.x, React >= 16.8 的图标组件, 可以通过 @yzfe/svgicon 来编写支持其他框架的组件
+  details: 默认提供 Vue 2.x, Vue 3.x, React >= 16.8, Taro 的图标组件, 可以通过 @yzfe/svgicon 来编写支持其他框架的组件
 - title: 按需加载
   details: 通过 webpack loader (@yzfe/svgicon-loader) 加载 SVG 文件变成图标数据或者图标组件，可以自定义生成的代码。
 - title: 多功能
