@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import gen from '@yzfe/svgicon-gen'
 import { promises as fs } from 'fs'
 import minimatch from 'minimatch'
@@ -91,11 +92,18 @@ export default function svgicon(options: PluginOptions = {}): Plugin {
         name: 'svgicon',
         enforce: 'pre',
         configResolved(config) {
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             vuePlugin = config.plugins.find((p) => p.name === 'vite:vue')!
+
+            // find vue2
+            if (!vuePlugin) {
+                vuePlugin = config.plugins.find(
+                    (p) => p.name === 'vite-plugin-vue2'
+                )!
+            }
+
             if (!vuePlugin)
                 throw new Error(
-                    '[vite-plugin-md] no vue plugin found, do you forget to install it?'
+                    '[vite-plugin-svgicon] no vue plugin found, do you forget to install it?'
                 )
         },
         async load(id: string) {
