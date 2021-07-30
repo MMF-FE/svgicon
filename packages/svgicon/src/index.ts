@@ -35,7 +35,9 @@ export interface Props {
     scale?: string | number
     /** icon direction */
     dir?: string
-    color?: string
+    color?: string | string[]
+    /** gradient stop colors */
+    stopColors?: string[]
     title?: string
     fill?: boolean
     /** is use original color */
@@ -95,7 +97,9 @@ function initProps(props: Props) {
 }
 
 function getColors(props: Props) {
-    if (props.color) {
+    if (Array.isArray(props.color)) {
+        return props.color
+    } else if (props.color) {
         return props.color.split(' ')
     }
     return []

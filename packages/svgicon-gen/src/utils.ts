@@ -1,6 +1,6 @@
 // build icon data, utils
 import * as path from 'path'
-import { OptimizedSvg } from '../typings'
+import { OptimizedSvg } from './types'
 
 export default {
     // Simple template compiler
@@ -93,4 +93,35 @@ export default {
 
         return filePath.replace(/\\/g, '/')
     },
+
+    /** get original colors */
+    getOriginalColors(content: string): {type: string, color: string}[] {
+        const reg = /(fill|stroke)="([\w\,#\s\'\(\)-_]+)"/gi
+        const colors: {type: string, color: string}[] = []
+
+        content.replace(reg, (match, prop, color) => {
+            colors.push({
+                type: prop,
+                color
+            })
+
+            return match
+        })
+
+        return colors
+    },
+
+     /** get original colors */
+     getStopColors(content: string): string[] {
+        const reg = /stop-color="([\w\,#\s\'\(\)-_]+)"/gi
+        const colors: string[] = []
+
+        content.replace(reg, (match, color) => {
+            colors.push(color)
+
+            return match
+        })
+
+        return colors
+    }
 }

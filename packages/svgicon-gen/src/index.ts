@@ -1,18 +1,20 @@
 import SVGO from 'svgo'
-import { Icon } from '../typings'
+import { Icon, VDomNode } from './types'
 import utils from './utils'
-import _ from 'lodash'
-import defaultSVGConfig from './svgo'
-import * as path from 'path'
+import defaultSVGConfig from './svgoConfig'
+import path from 'path'
+import fs from 'fs'
 
 const svgoCache: Record<string, SVGO> = {}
 
 /**
  * generate svgicon object
- * @param source svg icon content
- * @param filename svg icon file absolute path
- * @param svgRootPath svg icon root path, to calc relative path
- * @param svgoConfig svgo config
+ * @export
+ * @param {string} source svg file content
+ * @param {string} filename svg icon file absolute path
+ * @param {(string | string[])} [svgRootPath] svg icon root path, to calc relative path
+ * @param {SVGO.Options} [svgoConfig] svgo config
+ * @returns {Promise<Icon>}
  */
 export default async function gen(
     source: string,
@@ -20,6 +22,13 @@ export default async function gen(
     svgRootPath?: string | string[],
     svgoConfig?: SVGO.Options
 ): Promise<Icon> {
+    
+    if (!source) {
+        source = fs.readFileSync(filename, {
+            encoding: 'utf8'
+        })
+    }
+
     svgRootPath = svgRootPath || process.cwd()
     // if (!path.isAbsolute(svgRootPath)) {
     //     svgRootPath = path.join(process.cwd(), svgRootPath)
@@ -40,7 +49,16 @@ export default async function gen(
     let key = ''
 
     if (svgoConfig) {
-        config = _.merge({}, defaultSVGConfig, svgoConfig)
+        config = svgoConfig
+    }
+
+    if (config.plugins) {
+        config.plugins.push({
+            cleanupIDs: {
+                remove: true,
+                prefix: 'svgiconid',
+            },
+        })
     }
 
     key = JSON.stringify(config)
@@ -53,6 +71,7 @@ export default async function gen(
     }
 
     const result = await svgo.optimize(source)
+
     let data = result.data.replace(/<svg[^>]+>/gi, '').replace(/<\/svg>/gi, '')
 
     // get view box
@@ -70,6 +89,9 @@ export default async function gen(
     // escape single quotes
     data = data.replace(/'/g, "\\'")
 
+    const originalColors = utils.getOriginalColors(data)
+    const stopColors = utils.getStopColors(data)
+
     const icon: Icon = {
         name: `${filePath}${name}`,
         data: {
@@ -77,6 +99,8 @@ export default async function gen(
             height: result.info.height,
             viewBox,
             data,
+            originalColors,
+            stopColors
         },
     }
 

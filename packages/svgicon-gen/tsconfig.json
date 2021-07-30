@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "module": "commonjs",
+        "module": "esnext",
         "strict": true,
         "experimentalDecorators": true,
         "allowSyntheticDefaultImports": true,
@@ -10,9 +10,10 @@
         "noLib": false,
         "sourceMap": false,
         "declaration": true,
+        "declarationDir": "dist",
         "lib": ["esnext", "dom"],
         "outDir": "dist",
-        "types": ["node"]
+        "types": ["node", "mocha", "chai"],
     },
     "include": ["src/**/*.ts", "typings/**/*.ts"],
     "exclude": ["node_modules", "dist"]

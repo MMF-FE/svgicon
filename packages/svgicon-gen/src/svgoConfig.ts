@@ -33,12 +33,6 @@ export default {
             removeUselessDefs: true,
         },
         {
-            cleanupIDs: {
-                remove: true,
-                prefix: 'svgiconid',
-            },
-        },
-        {
             convertShapeToPath: true,
         },
     ],
