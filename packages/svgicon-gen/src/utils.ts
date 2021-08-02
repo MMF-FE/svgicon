@@ -95,14 +95,14 @@ export default {
     },
 
     /** get original colors */
-    getOriginalColors(content: string): {type: string, color: string}[] {
-        const reg = /(fill|stroke)="([\w\,#\s\'\(\)-_]+)"/gi
-        const colors: {type: string, color: string}[] = []
+    getOriginalColors(content: string): { type: string; color: string }[] {
+        const reg = /(fill|stroke)="([\w,#\s\\()-_]+)"/gi
+        const colors: { type: string; color: string }[] = []
 
         content.replace(reg, (match, prop, color) => {
             colors.push({
                 type: prop,
-                color
+                color,
             })
 
             return match
@@ -111,9 +111,9 @@ export default {
         return colors
     },
 
-     /** get original colors */
-     getStopColors(content: string): string[] {
-        const reg = /stop-color="([\w\,#\s\'\(\)-_]+)"/gi
+    /** get original colors */
+    getStopColors(content: string): string[] {
+        const reg = /stop-color="([\w,#\s'()-_]+)"/gi
         const colors: string[] = []
 
         content.replace(reg, (match, color) => {
@@ -123,5 +123,5 @@ export default {
         })
 
         return colors
-    }
+    },
 }

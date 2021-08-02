@@ -22,10 +22,9 @@ export default async function gen(
     svgRootPath?: string | string[],
     svgoConfig?: SVGO.Options
 ): Promise<Icon> {
-    
     if (!source) {
         source = fs.readFileSync(filename, {
-            encoding: 'utf8'
+            encoding: 'utf8',
         })
     }
 
@@ -100,7 +99,7 @@ export default async function gen(
             viewBox,
             data,
             originalColors,
-            stopColors
+            stopColors,
         },
     }
 
