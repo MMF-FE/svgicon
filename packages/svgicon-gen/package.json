@@ -5,8 +5,7 @@
     "scripts": {
         "dev": "rollup -c -w",
         "build": "rm -rf dist && rollup -c",
-        "prepublishOnly": "yarn build && test",
-        "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha"
+        "prepublishOnly": "yarn build"
     },
     "author": "Allenice Mo <994298628@qq.com>",
     "homepage": "https://github.com/MMF-FE/svgicon",
