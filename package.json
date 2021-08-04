@@ -7,9 +7,9 @@
             "demo/*"
         ],
         "nohoist": [
-            "@app/react-demo/**",
-            "@app/vue-demo/**",
-            "@app/trao-demo/**"
+            "@yzfe/react-demo/**",
+            "@yzfe/vue-demo/**",
+            "@yzfe/taro-demo/**"
         ]
     },
     "description": "A tool to create svg icon components. (vue 2.x)",
