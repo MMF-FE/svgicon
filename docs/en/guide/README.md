@@ -13,6 +13,7 @@ svgicon is SVG icon component and tool set. It turns SVG files into icon data (v
 - @yzfe/react-svgicon `SVG icon component for react `
 - @yzfe/svgicon-gen `Generate icon data (icon name and processed SVG content) based on the content of the SVG file`
 - @yzfe/svgicon-loader `Load the SVG file as icon data (vue) or SVG icon component (react), the generated code can be customized`
+- vite-plugin-svgicon `vite plugin，like @yzfe/svgicon-loader`
 - @yzfe/svgicon-viewer `Preview SVG icon`
 - @yzfe/vue-cli-plugin-svgicon `A vue-cli plugin that can quickly configure svgicon`
 - @yzfe/svgicon-polyfill `SVG innerHTML compatible (IE)`
@@ -244,6 +245,11 @@ declare module '@icon/*' {
     export = value
 }
 ```
+
+## Vite
+doc: [https://github.com/MMF-FE/svgicon/tree/master/packages/vite-plugin-svgicon](https://github.com/MMF-FE/svgicon/tree/master/packages/vite-plugin-svgicon)
+
+demo: [https://github.com/Allenice/svgicon-vite-demo](https://github.com/Allenice/svgicon-vite-demo)
 
 ## Other js frameworks
 Other js frameworks can use `@yzfe/svgicon` to write icon components suitable for their frameworks, please refer to `@yzfe/react-svgicon`.

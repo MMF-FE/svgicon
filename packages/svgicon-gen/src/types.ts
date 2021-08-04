@@ -27,14 +27,3 @@ export interface Icon {
     name: string
     data: IconData
 }
-
-export interface Properties {
-    [_: string]: string | number | boolean
-}
-
-export interface VDomNode {
-    type: 'root' | 'element'
-    tagName: string
-    properties: Properties
-    children: VDomNode[]
-}

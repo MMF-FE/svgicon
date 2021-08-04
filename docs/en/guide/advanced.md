@@ -36,6 +36,13 @@ toc
 <<<@/docs/.vuepress/components/DemoGradient.vue#demo
 :::
 
+<demo-gradient-colors title="Modify Original Gradient Colors" />
+::: details View Code
+<<<@/docs/.vuepress/components/DemoGradientColors.vue#demo
+:::
+> The `original` porp must to be true
+
+
 ### Size
 <demo-size title="size, default unit: px, default size: 16px" />
 ::: details View Code

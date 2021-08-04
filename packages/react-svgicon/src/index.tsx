@@ -47,6 +47,7 @@ class ReactSvgIcon extends React.PureComponent<ComponentProps> {
 /** SvgIcon function component, define in @yzfe/svgicon-loader compile */
 interface ReactSvgIconFC extends React.FC<ComponentProps> {
     iconName: string
+    iconData: IconData
 }
 
 export {

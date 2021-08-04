@@ -11,8 +11,8 @@ export default {
         {
             file: packageJson.main,
             format: 'cjs',
-            sourcemap: true,
-            exports: 'auto',
+            sourcemap: false,
+            exports: 'named',
         },
     ],
     external: Object.keys(packageJson.dependencies),

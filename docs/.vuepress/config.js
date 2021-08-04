@@ -30,6 +30,10 @@ module.exports = {
                         text: 'Github',
                         link: 'https://github.com/MMF-FE/svgicon',
                     },
+                    {
+                        text: 'v3.x',
+                        link: 'https://mmf-fe.github.io/svgicon/v3/'
+                    }
                 ],
                 sidebar: {
                     '/guide/': ['', 'advanced'],
@@ -52,6 +56,10 @@ module.exports = {
                         text: 'Github',
                         link: 'https://github.com/MMF-FE/svgicon',
                     },
+                    {
+                        text: 'v3.x',
+                        link: 'https://mmf-fe.github.io/svgicon/v3/'
+                    }
                 ],
                 sidebar: {
                     '/en/guide/': ['', 'advanced'],

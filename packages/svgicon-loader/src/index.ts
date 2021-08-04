@@ -40,6 +40,7 @@ const SvgiconLoader: loader.Loader = function (source) {
                     }
 
                     SvgIconFC.iconName = data.name
+                    SvgIconFC.iconData = data.data
 
                     export default SvgIconFC
                 `

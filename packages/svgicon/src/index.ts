@@ -13,11 +13,18 @@ export interface Options {
 }
 //#endregion Options
 
+export interface OriginalColor {
+    type: 'fill' | 'stroke'
+    color: string
+}
+
 export interface IconData {
     width?: number | string
     height?: number | string
     viewBox: string
     data: string
+    originalColors: OriginalColor[]
+    stopColors: string[]
     [key: string]: unknown
 }
 
@@ -177,6 +184,18 @@ function addColor(data: string, props: Props, colors: string[]): string {
     })
 }
 
+// overwrite gradient stop color
+function overwriteStopColors(data: string, props: Props) {
+    const reg = /stop-color="([\w,#\s'()-_]+)"/gi
+    const stopColors = props.stopColors || []
+
+    let ix = 0
+    return data.replace(reg, (match, color) => {
+        color = stopColors[ix++] || color
+        return `stop-color="${color}"`
+    })
+}
+
 function getPath(props: Props, colors: string[], iconData: IconData | null) {
     const uid = utils.genUID()
 
@@ -193,6 +212,11 @@ function getPath(props: Props, colors: string[], iconData: IconData | null) {
 
         if (colors.length > 0) {
             pathData = addColor(pathData, props, colors)
+        }
+
+        // overwrite stop colors
+        if (props.stopColors?.length) {
+            pathData = overwriteStopColors(pathData, props)
         }
 
         // fix #99, inline svg use random id
@@ -270,6 +294,7 @@ export function getPropKeys(): (keyof Props)[] {
     return [
         'data',
         'color',
+        'stopColors',
         'dir',
         'fill',
         'height',
@@ -285,8 +310,8 @@ export function svgIcon(props: Props): SvgIconResult {
     props = initProps(props)
     const colors = getColors(props)
     const iconData = props.data && props.data.data ? props.data.data : null
-    const className = getClassName(props)
     const path = getPath(props, colors, iconData)
+    const className = getClassName(props)
     const box = getBox(props, iconData)
     const style = getStyle(props, iconData)
 

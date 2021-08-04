@@ -57,7 +57,7 @@
         "stylelint-config-standard": "^20.0.0",
         "stylelint-order": "^4.1.0",
         "typescript": "^3.9.7",
-        "vuepress": "^1.5.4"
+        "vuepress": "^1.8.2"
     },
     "husky": {
         "hooks": {

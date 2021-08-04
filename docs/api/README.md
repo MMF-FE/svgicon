@@ -34,33 +34,7 @@ export declare function setOptions(newOptions: Options): void;
 ```
 
 ### Typings
-
-```ts
-// 图标数据内容
-export interface IconData {
-    width?: number | string;
-    height?: number | string;
-    viewBox: string;
-    data: string;
-    [key: string]: unknown;
-}
-
-// 图标数据对象
-export interface Icon {
-    name: string;
-    data: IconData;
-}
-
-// svgIcon 方法返回的结果
-export interface SvgIconResult {
-    /** SVG content */
-    path: string
-    /** viewBox */
-    box: string
-    className: string
-    style: Record<string, string | number>
-}
-```
+<<<@/packages/svgicon/dist/index.d.ts
 
 ## @yzfe/svgicon-gen
 在 nodejs 环境中运行，生成 `Icon` 对象 (props.data 的值)

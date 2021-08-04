@@ -36,33 +36,8 @@ export declare function setOptions(newOptions: Options): void;
 ```
 
 ### Typings
+<<<@/packages/svgicon/dist/index.d.ts
 
-```ts
-// Icon data content
-export interface IconData {
-    width?: number | string;
-    height?: number | string;
-    viewBox: string;
-    data: string;
-    [key: string]: unknown;
-}
-
-// Icon Data Object
-export interface Icon {
-    name: string;
-    data: IconData;
-}
-
-// The result returned by the svgIcon method
-export interface SvgIconResult {
-    /** SVG content */
-    path: string
-    /** viewBox */
-    box: string
-    className: string
-    style: Record<string, string | number>
-}
-```
 
 ## @yzfe/svgicon-gen
 Run in the nodejs environment to generate the `Icon` object (The value of props.data)

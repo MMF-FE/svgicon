@@ -61,8 +61,10 @@
             <icon
                 data="@icon/sora/fit/mask.svg"
                 @click="iconClick"
+                v-bind="props"
                 original
             ></icon>
+            <icon data="@icon/gift.svg" v-bind="props" original :stop-colors="['blue', 'green']"></icon>
         </div>
 
         <div class="grid">

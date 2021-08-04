@@ -1,5 +1,5 @@
 import SVGO from 'svgo'
-import { Icon, VDomNode } from './types'
+import { Icon } from './types'
 import utils from './utils'
 import defaultSVGConfig from './svgoConfig'
 import path from 'path'
@@ -44,11 +44,11 @@ export default async function gen(
     const name = path.basename(filename).split('.')[0]
     const filePath = utils.getFilePath(svgRootPaths, filename)
 
-    let config: SVGO.Options = defaultSVGConfig
+    const config: SVGO.Options = defaultSVGConfig
     let key = ''
 
-    if (svgoConfig) {
-        config = svgoConfig
+    if (svgoConfig && svgoConfig.plugins) {
+        config.plugins = svgoConfig.plugins
     }
 
     if (config.plugins) {

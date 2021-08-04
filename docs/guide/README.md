@@ -14,6 +14,7 @@ svgicon 是 SVG 图标组件和工具集，将 SVG 文件变成图标数据(vue)
 - @yzfe/taro-svgicon `适用于 taro 的 SVG 图标组件`
 - @yzfe/svgicon-gen `根据 SVG 文件内容，生成图标数据（图标名称和处理过的 SVG 内容）`
 - @yzfe/svgicon-loader `将 SVG 文件加载成图标数据(vue)或者 SVG 图标组件(react), 可以自定义生成的代码`
+- vite-plugin-svgicon `vite 插件，功能与 @yzfe/svgicon-loader 类似`
 - @yzfe/svgicon-viewer `预览 SVG 图标`
 - @yzfe/vue-cli-plugin-svgicon `vue-cli 插件，可以快速的配置 svgicon`
 - @yzfe/svgicon-polyfill `SVG innerHTML 兼容（IE）`
@@ -244,6 +245,11 @@ declare module '@icon/*' {
     export = value
 }
 ```
+
+## Vite
+doc: [https://github.com/MMF-FE/svgicon/tree/master/packages/vite-plugin-svgicon](https://github.com/MMF-FE/svgicon/tree/master/packages/vite-plugin-svgicon)
+
+demo: [https://github.com/Allenice/svgicon-vite-demo](https://github.com/Allenice/svgicon-vite-demo)
 
 ## Taro
 ### 安装

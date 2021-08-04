@@ -36,6 +36,12 @@ toc
 <<<@/docs/.vuepress/components/DemoGradient.vue#demo
 :::
 
+<demo-gradient-colors title="修改原始渐变颜色" />
+::: details 查看代码
+<<<@/docs/.vuepress/components/DemoGradientColors.vue#demo
+:::
+> `original` 必须是 true 才有效果
+
 ### 大小
 <demo-size title="size, 默认单位：px, 默认大小：16px" />
 ::: details 查看代码
