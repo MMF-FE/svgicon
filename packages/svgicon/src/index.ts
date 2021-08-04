@@ -23,8 +23,8 @@ export interface IconData {
     height?: number | string
     viewBox: string
     data: string
-    originalColors: OriginalColor[]
-    stopColors: string[]
+    originalColors?: OriginalColor[]
+    stopColors?: string[]
     [key: string]: unknown
 }
 

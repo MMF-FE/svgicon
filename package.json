@@ -5,6 +5,11 @@
         "packages": [
             "packages/*",
             "demo/*"
+        ],
+        "nohoist": [
+            "@app/react-demo/**",
+            "@app/vue-demo/**",
+            "@app/trao-demo/**"
         ]
     },
     "description": "A tool to create svg icon components. (vue 2.x)",
