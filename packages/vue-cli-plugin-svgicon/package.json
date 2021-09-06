@@ -1,6 +1,6 @@
 {
     "name": "@yzfe/vue-cli-plugin-svgicon",
-    "version": "1.0.4",
+    "version": "1.1.0",
     "description": "vue-cli plugin to add @yzfe/svgicon-loader config",
     "keywords": [
         "vue",
@@ -21,8 +21,8 @@
         "lodash": "^4.17.20"
     },
     "devDependencies": {
-        "@yzfe/svgicon": "^1.0.1",
-        "@yzfe/svgicon-loader": "^1.0.5",
+        "@yzfe/svgicon": "^1.1.0",
+        "@yzfe/svgicon-loader": "^1.1.0",
         "@yzfe/vue-svgicon": "^4.0.2",
         "@yzfe/vue3-svgicon": "^1.0.1"
     },
