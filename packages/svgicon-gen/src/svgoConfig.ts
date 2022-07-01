@@ -1,39 +1,20 @@
 // svgo config
-import SVGO from 'svgo'
+import { OptimizeOptions } from 'svgo'
 
 export default {
     plugins: [
         {
-            removeAttrs: {},
-        },
-        {
-            removeTitle: true,
-        },
-        {
-            inlineStyles: {
-                onlyMatchedOnce: false,
+            name: 'preset-default',
+            params: {
+                overrides: {
+                    // customize default plugin options
+                    inlineStyles: {
+                        onlyMatchedOnce: false,
+                    },
+                },
             },
         },
-        {
-            minifyStyles: true,
-        },
-        {
-            convertStyleToAttrs: true,
-        },
-        {
-            removeStyleElement: true,
-        },
-        {
-            removeComments: true,
-        },
-        {
-            removeDesc: true,
-        },
-        {
-            removeUselessDefs: true,
-        },
-        {
-            convertShapeToPath: true,
-        },
+        'convertStyleToAttrs',
+        'removeStyleElement',
     ],
-} as SVGO.Options
+} as OptimizeOptions

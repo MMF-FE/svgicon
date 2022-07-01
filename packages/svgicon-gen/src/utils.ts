@@ -1,6 +1,7 @@
 // build icon data, utils
 import * as path from 'path'
-import { OptimizedSvg, OriginalColor } from './types'
+import { OptimizedSvg } from 'svgo'
+import { OriginalColor } from './types'
 
 export default {
     // Simple template compiler

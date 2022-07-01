@@ -39,16 +39,7 @@ export declare function setOptions(newOptions: Options): void;
 ## @yzfe/svgicon-gen
 在 nodejs 环境中运行，生成 `Icon` 对象 (props.data 的值)
 
-```ts
-/**
- * generate svgicon object
- * @param source svg icon content
- * @param filename svg icon file absolute path
- * @param svgRootPath svg icon root path, to calc relative path
- * @param svgoConfig svgo config
- */
-export default function gen(source: string, filename: string, svgRootPath?: string | string[], svgoConfig?: SVGO.Options): Promise<Icon>;
-```
+<<<@/packages/svgicon-gen/dist/index.d.ts
 
 > TIP: 你可以直接使用 `@yzfe/svgicon-gen` 预先生成图标数据，保存为 js 文件，这样可以不用 `@yzfe/svgicon-loader` 加载图标了。
 

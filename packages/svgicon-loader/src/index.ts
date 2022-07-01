@@ -1,8 +1,7 @@
 import { loader } from 'webpack'
 import * as loaderUtils from 'loader-utils'
-import gen from '@yzfe/svgicon-gen'
+import gen, {SvgoConfig} from '@yzfe/svgicon-gen'
 import { LoaderOptions } from '../typings'
-import SVGO from 'svgo'
 
 const SvgiconLoader: loader.Loader = function (source) {
     this.cacheable(true)
@@ -16,7 +15,7 @@ const SvgiconLoader: loader.Loader = function (source) {
             source as string,
             this.resourcePath,
             options.svgFilePath,
-            options.svgoConfig as SVGO.Options
+            options.svgoConfig as SvgoConfig
         )
 
         if (callback) {

@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import gen from '@yzfe/svgicon-gen'
+import gen, { SvgoConfig } from '@yzfe/svgicon-gen'
 import { promises as fs } from 'fs'
 import minimatch from 'minimatch'
 import { Plugin } from 'vite'
-import { Options as SvgoOptons } from 'svgo'
 
 export interface PluginOptions {
     svgFilePath?: string | string[]
@@ -11,7 +10,7 @@ export interface PluginOptions {
     component?: 'react' | 'custom'
     /** custom code when load as a custom component */
     customCode?: string
-    svgoConfig?: SvgoOptons
+    svgoConfig?: SvgoConfig
     /** Svg files to be excluded, use minimatch */
     exclude?: string | string[]
     /** Svg files to be included, use minimatch */

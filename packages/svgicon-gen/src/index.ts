@@ -1,11 +1,20 @@
-import SVGO from 'svgo'
+import { optimize, OptimizedSvg, OptimizeOptions, Plugin, PresetDefault } from 'svgo'
 import { Icon } from './types'
 import utils from './utils'
 import defaultSVGConfig from './svgoConfig'
 import path from 'path'
 import fs from 'fs'
+import _ from 'lodash'
 
-const svgoCache: Record<string, SVGO> = {}
+export type SvgoConfig = OptimizeOptions
+
+function isPresetDefaultPlugin(plugin: Plugin) {
+    return typeof plugin === 'object' && plugin.name === 'preset-default'
+}
+
+function findPresetDefaultPlugin(config: OptimizeOptions) {
+    return  config.plugins?.find(v => isPresetDefaultPlugin(v))
+}
 
 /**
  * generate svgicon object
@@ -20,7 +29,7 @@ export default async function gen(
     source: string,
     filename: string,
     svgRootPath?: string | string[],
-    svgoConfig?: SVGO.Options
+    svgoConfig?: OptimizeOptions
 ): Promise<Icon> {
     if (!source) {
         source = fs.readFileSync(filename, {
@@ -44,32 +53,44 @@ export default async function gen(
     const name = path.basename(filename).split('.')[0]
     const filePath = utils.getFilePath(svgRootPaths, filename)
 
-    const config: SVGO.Options = defaultSVGConfig
-    let key = ''
+    let config = _.cloneDeep(defaultSVGConfig)
+    const userSvgoConfig = _.cloneDeep(svgoConfig)
+    
+    const presetDefault = findPresetDefaultPlugin(config) as PresetDefault
+    const configPlugins = config.plugins || []
 
-    if (svgoConfig && svgoConfig.plugins) {
-        config.plugins = svgoConfig.plugins
+    if (userSvgoConfig) {
+        const userPresetDefault = findPresetDefaultPlugin(userSvgoConfig)
+        const userPlugins = userSvgoConfig.plugins || []
+
+        config = {
+            ...config,
+            ...userSvgoConfig,
+            plugins: _.uniq([
+                ...configPlugins,
+                ...userPlugins.filter(v => !isPresetDefaultPlugin(v)),
+            ])
+        }
+
+        _.merge(presetDefault, userPresetDefault)
     }
 
-    if (config.plugins) {
-        config.plugins.push({
-            cleanupIDs: {
-                remove: true,
-                prefix: 'svgiconid',
-            },
-        })
-    }
+    _.merge(presetDefault, {
+        params: {
+            overrides: {
+                'cleanupIDs': {
+                    remove: true,
+                    prefix: 'svgiconid'
+                }
+            }
+        }
+    } as PresetDefault )
 
-    key = JSON.stringify(config)
-    let svgo!: SVGO
-    if (svgoCache[key]) {
-        svgo = svgoCache[key]
-    } else {
-        svgo = new SVGO(config)
-        svgoCache[key] = svgo
-    }
+    const result = optimize(source, config) as OptimizedSvg
 
-    const result = await svgo.optimize(source)
+    if (result.error) {
+        throw new Error(result.error)
+    }
 
     let data = result.data.replace(/<svg[^>]+>/gi, '').replace(/<\/svg>/gi, '')
 

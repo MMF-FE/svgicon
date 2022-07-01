@@ -42,16 +42,7 @@ export declare function setOptions(newOptions: Options): void;
 ## @yzfe/svgicon-gen
 Run in the nodejs environment to generate the `Icon` object (The value of props.data)
 
-```ts
-/**
- * generate svgicon object
- * @param source svg icon content
- * @param filename svg icon file absolute path
- * @param svgRootPath svg icon root path, to calc relative path
- * @param svgoConfig svgo config
- */
-export default function gen(source: string, filename: string, svgRootPath?: string | string[], svgoConfig?: SVGO.Options): Promise<Icon>;
-```
+<<<@/packages/svgicon-gen/dist/index.d.ts
 
 > TIP: You can directly use `@yzfe/svgicon-gen` to generate icon data in advance and save it as a js file, so that you don't need to load icons with `@yzfe/svgicon-loader`.
 
