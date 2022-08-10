@@ -34,7 +34,6 @@
     ],
     "peerDependencies": {
         "@yzfe/svgicon": ">=1.0.0",
-        "@yzfe/svgicon-loader": "^1.0.1",
         "vue": ">=2.5.11"
     },
     "devDependencies": {
