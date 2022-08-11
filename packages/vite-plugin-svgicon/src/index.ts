@@ -95,8 +95,8 @@ export default function svgicon(options: PluginOptions = {}): Plugin {
 
             // find vue2
             if (!vuePlugin) {
-                vuePlugin = config.plugins.find(
-                    (p) => p.name === 'vite-plugin-vue2'
+                vuePlugin = config.plugins.find((p) =>
+                    ['vite-plugin-vue2', 'vite:vue2'].includes(p.name)
                 )!
             }
 
