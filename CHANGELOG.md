@@ -1,3 +1,11 @@
+## 2022-08-11
+#### Packages Release
+ - vite-plugin-svgicon@1.3.0
+
+#### Changes
+- suport @vitejs/plugin-vue
+
+
 ## 2022-08-10
 #### Packages Release
  - @yzfe/svgicon-viewer@1.2.1
