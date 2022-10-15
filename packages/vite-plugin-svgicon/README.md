@@ -1,13 +1,37 @@
 # vite plugin for @yzfe/svgicon
 
 ## Install
+
+### vue2.x
+```bash
+yarn add @yzfe/svgicon
+yarn add vite-plugin-svgicon --dev
+```
+
+### vue3.x
 ```bash
 yarn add @yzfe/svgicon @yzfe/vue3-svgicon
 yarn add vite-plugin-svgicon --dev
 ```
 
 ## Setup
-```ts
+```ts vue2.x
+// vite.config.js
+import { defineConfig } from 'vite'
+import {createVuePlugin as vue} from 'vite-plugin-vue2'
+import svgicon from 'vite-plugin-svgicon'
+
+export default defineConfig({
+    plugins: [
+        vue(),
+        svgicon({
+            include: ['**/svg-icon/**/*.svg']
+        })
+    ]
+})
+```
+
+```ts vue3.x
 // vite.config.js
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -24,7 +48,22 @@ export default defineConfig({
 ```
 
 ```ts
-// main.ts
+// main.ts vue2.x
+import vue from 'vue'
+import App from './App'
+import { VueSvgIconPlugin } from '@yzfe/vue-svgicon'
+import '@yzfe/svgicon/lib/svgicon.css'
+
+Vue.component("icon",VueSvgIcon);
+
+new Vue({
+    render:(h)=>(App),
+}).$mount("#app")
+```
+
+
+```ts
+// main.ts vue3.x
 import { createApp } from 'vue'
 import App from './App'
 import { VueSvgIconPlugin } from '@yzfe/vue3-svgicon'
@@ -37,6 +76,7 @@ createApp(App)
     })
     .mount('#app')
 ```
+
 
 ```html
 <!-- App.vue -->
