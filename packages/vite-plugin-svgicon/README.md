@@ -75,6 +75,3 @@ export interface PluginOptions {
     include?: string | string[];
 }
 ```
-
-## Issues
-- Can't use transformAssetUrls
