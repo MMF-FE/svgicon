@@ -154,14 +154,21 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0d780e6f-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/SvgIcon.vue?vue&type=template&id=11bd13c6&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0d780e6f-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/SvgIcon.vue?vue&type=template&id=dc5e705e&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('svg',{class:_vm.clazz,style:(_vm.style),attrs:{"version":"1.1","viewBox":_vm.box},domProps:{"innerHTML":_vm._s(_vm.path)},on:{"click":_vm.onClick}})}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/SvgIcon.vue?vue&type=template&id=11bd13c6&
+// CONCATENATED MODULE: ./src/components/SvgIcon.vue?vue&type=template&id=dc5e705e&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/SvgIcon.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -310,22 +317,33 @@ var isOriginalDefault = false;
       this.loaded = true;
     }
   },
+  beforeDestroy: function beforeDestroy() {
+    var _this = this;
+
+    var index = notLoadedIcons.findIndex(function (v) {
+      return v.name === _this.iconName;
+    });
+
+    if (index >= 0) {
+      notLoadedIcons.splice(index, 1);
+    }
+  },
   methods: {
     addColor: function addColor(data) {
-      var _this = this;
+      var _this2 = this;
 
       var reg = /<(path|rect|circle|polygon|line|polyline|ellipse)\s/gi;
       var i = 0;
       return data.replace(reg, function (match) {
-        var color = _this.colors[i++] || _this.colors[_this.colors.length - 1];
-        var fill = _this.fill; // if color is '_', ignore it
+        var color = _this2.colors[i++] || _this2.colors[_this2.colors.length - 1];
+        var fill = _this2.fill; // if color is '_', ignore it
 
         if (color && color === '_') {
           return match;
         } // if color start with 'r-', reverse the fill value
 
 
-        if (color && color.indexOf('r-') === 0) {
+        if (color && /^r-/.test(color)) {
           fill = !fill; // color = color.split('r-')[1]
 
           color = color.substr(2);
