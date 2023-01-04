@@ -107,6 +107,7 @@ export default {
         <icon name="download" width="40" height="40" color="green" ></icon>
         <icon name="download" width="40" height="40" color="blue" ></icon>
         <icon name="good" width="40" height="40" class="good"></icon>
+        <icon name="notFound" width="40" height="40"></icon>
       `,
         `
       <template> #{{tpl}}</template>

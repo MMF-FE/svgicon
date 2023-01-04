@@ -21,7 +21,7 @@ let isOriginalDefault = false
 export default {
     data() {
         return {
-            loaded: false
+            loaded: false,
         }
     },
     props: {
@@ -29,28 +29,28 @@ export default {
         name: String,
         width: {
             type: String,
-            default: ''
+            default: '',
         },
         height: {
             type: String,
-            default: ''
+            default: '',
         },
         scale: String,
         dir: String,
         fill: {
             type: Boolean,
-            default: function() {
+            default: function () {
                 return !isStroke
-            }
+            },
         },
         color: String,
         original: {
             type: Boolean,
-            default: function() {
+            default: function () {
                 return isOriginalDefault
-            }
+            },
         },
-        title: String
+        title: String,
     },
 
     computed: {
@@ -107,7 +107,7 @@ export default {
                 // if no iconData, push to notLoadedIcons
                 notLoadedIcons.push({
                     name: this.iconName,
-                    component: this
+                    component: this,
                 })
             }
 
@@ -157,7 +157,7 @@ export default {
                 style.height = height
             }
             return style
-        }
+        },
     },
 
     created() {
@@ -166,11 +166,18 @@ export default {
         }
     },
 
+    beforeDestroy() {
+        const index = notLoadedIcons.findIndex((v) => v.name === this.iconName)
+        if (index >= 0) {
+            notLoadedIcons.splice(index, 1)
+        }
+    },
+
     methods: {
         addColor(data) {
             let reg = /<(path|rect|circle|polygon|line|polyline|ellipse)\s/gi
             let i = 0
-            return data.replace(reg, match => {
+            return data.replace(reg, (match) => {
                 let color =
                     this.colors[i++] || this.colors[this.colors.length - 1]
                 let fill = this.fill
@@ -195,7 +202,7 @@ export default {
 
         addOriginalColor(data) {
             let styleReg = /_fill="|_stroke="/gi
-            return data.replace(styleReg, styleName => {
+            return data.replace(styleReg, (styleName) => {
                 return styleName && styleName.slice(1)
             })
         },
@@ -203,7 +210,8 @@ export default {
         getValidPathData(pathData) {
             // If use original and colors, clear double fill or stroke
             if (this.original && this.colors.length > 0) {
-                let reg = /<(path|rect|circle|polygon|line|polyline|ellipse)(\sfill|\sstroke)([="\w\s\.\-\+#\$\&>]+)(fill|stroke)/gi
+                let reg =
+                    /<(path|rect|circle|polygon|line|polyline|ellipse)(\sfill|\sstroke)([="\w\s\.\-\+#\$\&>]+)(fill|stroke)/gi
                 pathData = pathData.replace(reg, (match, p1, p2, p3, p4) => {
                     return `<${p1}${p2}${p3}_${p4}`
                 })
@@ -225,7 +233,7 @@ export default {
 
         onClick(e) {
             this.$emit('click', e)
-        }
+        },
     },
 
     install(Vue, options = {}) {
@@ -263,6 +271,6 @@ export default {
         }
     },
 
-    icons
+    icons,
 }
 </script>
