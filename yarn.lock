@@ -1455,6 +1455,18 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
+"@fastify/ajv-compiler@^1.0.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@fastify/ajv-compiler/-/ajv-compiler-1.1.0.tgz#5ce80b1fc8bebffc8c5ba428d5e392d0f9ed10a1"
+  integrity sha512-gvCOUNpXsWrIQ3A4aXCLIdblL0tDq42BG/2Xw7oxbil9h11uow10ztS2GuFazNBfjbrsZ5nl+nPl5jDSjj5TSg==
+  dependencies:
+    ajv "^6.12.6"
+
+"@fastify/error@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@fastify/error/-/error-2.0.0.tgz#a9f94af56eb934f0ab1ce4ef9f0ced6ebf2319dc"
+  integrity sha512-wI3fpfDT0t7p8E6dA2eTECzzOd+bZsZCJ2Hcv+Onn2b7ZwK3RwD27uW2QDaMtQhAfWQQP+WNK7nKf0twLsBf9w==
+
 "@formatjs/intl-displaynames@^1.2.0":
   version "1.2.10"
   resolved "https://npm.yzops.net/@formatjs%2fintl-displaynames/-/intl-displaynames-1.2.10.tgz#bb9625cca90b099978cd967c6a98aaf4e23fc878"
@@ -4877,6 +4889,26 @@ ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.11.0, ajv@^6.12.2, ajv@^6.12.3, ajv
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
+ajv@^6.12.6:
+  version "6.12.6"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.12.6.tgz#baf5a62e802b07d977034586f8c3baf5adf26df4"
+  integrity sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==
+  dependencies:
+    fast-deep-equal "^3.1.1"
+    fast-json-stable-stringify "^2.0.0"
+    json-schema-traverse "^0.4.1"
+    uri-js "^4.2.2"
+
+ajv@^8.1.0:
+  version "8.12.0"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.12.0.tgz#d1a0527323e22f53562c567c00991577dfbe19d1"
+  integrity sha512-sRu1kpcO9yLtYxBKvqfTeh9KzZEwO3STyX1HT+4CaDzC6HpTGYhIhPIzj9XuKU7KYDwnaeh5hcOwjy1QuJzBPA==
+  dependencies:
+    fast-deep-equal "^3.1.1"
+    json-schema-traverse "^1.0.0"
+    require-from-string "^2.0.2"
+    uri-js "^4.2.2"
+
 algoliasearch@^3.24.5:
   version "3.35.1"
   resolved "https://npm.yzops.net/algoliasearch/-/algoliasearch-3.35.1.tgz#297d15f534a3507cab2f5dfb996019cac7568f0c"
@@ -6769,10 +6801,10 @@ content-disposition@0.5.3:
   dependencies:
     safe-buffer "5.1.2"
 
-content-type@~1.0.4:
-  version "1.0.4"
-  resolved "https://npm.yzops.net/content-type/-/content-type-1.0.4.tgz#e138cc75e040c727b1966fe5e5f8c9aee256fe3b"
-  integrity sha1-4TjMdeBAxyexlm/l5fjJruJW/js=
+content-type@^1.0.4, content-type@~1.0.4:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/content-type/-/content-type-1.0.5.tgz#8b773162656d1d1086784c8f23a54ce6d73d7918"
+  integrity sha512-nTjqfcBFEipKdXCv4YDQWCfmcLZKm81ldF0pAopTvyrFGVbcR6P/VAAd5G7N+0tTr8QqiU0tFadD6FK4NtJwOA==
 
 conventional-changelog-angular@^5.0.3:
   version "5.0.11"
@@ -6874,10 +6906,10 @@ cookie@0.4.0:
   resolved "https://npm.yzops.net/cookie/-/cookie-0.4.0.tgz#beb437e7022b3b6d49019d088665303ebe9c14ba"
   integrity sha1-vrQ35wIrO21JAZ0IhmUwPr6cFLo=
 
-cookie@^0.4.0:
-  version "0.4.1"
-  resolved "https://npm.yzops.net/cookie/-/cookie-0.4.1.tgz#afd713fe26ebd21ba95ceb61f9a8116e50a537d1"
-  integrity sha1-r9cT/ibr0hupXOth+agRblClN9E=
+cookie@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.5.0.tgz#d1f5d71adec6558c58f389987c366aa47e994f8b"
+  integrity sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==
 
 copy-concurrently@^1.0.0:
   version "1.0.5"
@@ -8734,7 +8766,7 @@ fast-deep-equal@3.1.1:
   resolved "https://npm.yzops.net/fast-deep-equal/-/fast-deep-equal-3.1.1.tgz#545145077c501491e33b15ec408c294376e94ae4"
   integrity sha1-VFFFB3xQFJHjOxXsQIwpQ3bpSuQ=
 
-fast-deep-equal@^3.1.1:
+fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
   version "3.1.3"
   resolved "https://npm.yzops.net/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz#3a7d56b559d6cbc3eb512325244e619a65c6c525"
   integrity sha1-On1WtVnWy8PrUSMlJE5hmmXGxSU=
@@ -8773,13 +8805,14 @@ fast-json-stable-stringify@^2.0.0:
   resolved "https://npm.yzops.net/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz#874bf69c6f404c2b5d99c481341399fd55892633"
   integrity sha1-h0v2nG9ATCtdmcSBNBOZ/VWJJjM=
 
-fast-json-stringify@^2.2.1:
-  version "2.2.4"
-  resolved "https://npm.yzops.net/fast-json-stringify/-/fast-json-stringify-2.2.4.tgz#97c7883ba7c47bf317b819bc1d470b1c06596d7c"
-  integrity sha1-l8eIO6fEe/MXuBm8HUcLHAZZbXw=
+fast-json-stringify@^2.5.2:
+  version "2.7.13"
+  resolved "https://registry.yarnpkg.com/fast-json-stringify/-/fast-json-stringify-2.7.13.tgz#277aa86c2acba4d9851bd6108ed657aa327ed8c0"
+  integrity sha512-ar+hQ4+OIurUGjSJD1anvYSDcUflywhKjfxnsW4TBTD7+u0tJufv6DKRWoQk3vI6YBOWMoz0TQtfbe7dxbQmvA==
   dependencies:
     ajv "^6.11.0"
     deepmerge "^4.2.2"
+    rfdc "^1.2.0"
     string-similarity "^4.0.1"
 
 fast-levenshtein@^2.0.6, fast-levenshtein@~2.0.6:
@@ -8787,25 +8820,20 @@ fast-levenshtein@^2.0.6, fast-levenshtein@~2.0.6:
   resolved "https://npm.yzops.net/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
 
-fast-redact@^2.0.0:
-  version "2.0.0"
-  resolved "https://npm.yzops.net/fast-redact/-/fast-redact-2.0.0.tgz#17bb8f5e1f56ecf4a38c8455985e5eab4c478431"
-  integrity sha1-F7uPXh9W7PSjjIRVmF5eq0xHhDE=
+fast-redact@^3.0.0:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/fast-redact/-/fast-redact-3.1.2.tgz#d58e69e9084ce9fa4c1a6fa98a3e1ecf5d7839aa"
+  integrity sha512-+0em+Iya9fKGfEQGcd62Yv6onjBmmhV1uh86XVfOU8VwAe6kaFdQCWI9s0/Nnugx5Vd9tdbZ7e6gE2tR9dzXdw==
 
-fast-safe-stringify@^2.0.7:
-  version "2.0.7"
-  resolved "https://npm.yzops.net/fast-safe-stringify/-/fast-safe-stringify-2.0.7.tgz#124aa885899261f68aedb42a7c080de9da608743"
-  integrity sha1-EkqohYmSYfaK7bQqfAgN6dpgh0M=
+fast-safe-stringify@^2.0.8:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/fast-safe-stringify/-/fast-safe-stringify-2.1.1.tgz#c406a83b6e70d9e35ce3b30a81141df30aeba884"
+  integrity sha512-W+KJc2dmILlPplD/H4K9l9LcAHAfPtP6BY84uVLXQ6Evcz9Lcg33Y2z1IVblT6xdY54PXYVHEv+0Wpq8Io6zkA==
 
 fastest-levenshtein@^1.0.12:
   version "1.0.12"
   resolved "https://npm.yzops.net/fastest-levenshtein/-/fastest-levenshtein-1.0.12.tgz#9990f7d3a88cc5a9ffd1f1745745251700d497e2"
   integrity sha1-mZD306iMxan/0fF0V0UlFwDUl+I=
-
-fastify-error@^0.2.0:
-  version "0.2.0"
-  resolved "https://npm.yzops.net/fastify-error/-/fastify-error-0.2.0.tgz#9a1c28d4f42b6259e7a549671c8e5e2d85660634"
-  integrity sha1-mhwo1PQrYlnnpUlnHI5eLYVmBjQ=
 
 fastify-plugin@^2.0.0:
   version "2.3.3"
@@ -8824,31 +8852,27 @@ fastify-static@^3.2.0:
     readable-stream "^3.4.0"
     send "^0.17.1"
 
-fastify-warning@^0.2.0:
-  version "0.2.0"
-  resolved "https://npm.yzops.net/fastify-warning/-/fastify-warning-0.2.0.tgz#e717776026a4493dc9a2befa44db6d17f618008f"
-  integrity sha1-5xd3YCakST3Jor76RNttF/YYAI8=
-
 fastify@^3.2.0:
-  version "3.3.0"
-  resolved "https://npm.yzops.net/fastify/-/fastify-3.3.0.tgz#2649a23a13da6c40c47f24cb7ab3e2f22fbe2646"
-  integrity sha1-JkmiOhPabEDEfyTLerPi8i++JkY=
+  version "3.29.4"
+  resolved "https://registry.yarnpkg.com/fastify/-/fastify-3.29.4.tgz#294e33017b55f3cb72f315c41cf51431bc9b7a34"
+  integrity sha512-BEyKidZQvscNaiF1BLh+YLE7AzHH03NexhPzrwZP6KBQ+jG2czdgq72X+RFB5rK9hbqdaafVb5yiWN+hCvHfYg==
   dependencies:
+    "@fastify/ajv-compiler" "^1.0.0"
+    "@fastify/error" "^2.0.0"
     abstract-logging "^2.0.0"
-    ajv "^6.12.2"
     avvio "^7.1.2"
-    fast-json-stringify "^2.2.1"
-    fastify-error "^0.2.0"
-    fastify-warning "^0.2.0"
-    find-my-way "^3.0.0"
+    content-type "^1.0.4"
+    fast-json-stringify "^2.5.2"
+    find-my-way "^4.5.0"
     flatstr "^1.0.12"
-    light-my-request "^4.0.0"
-    pino "^6.2.1"
-    proxy-addr "^2.0.5"
-    readable-stream "^3.4.0"
+    light-my-request "^4.2.0"
+    pino "^6.13.0"
+    process-warning "^1.0.0"
+    proxy-addr "^2.0.7"
     rfdc "^1.1.4"
     secure-json-parse "^2.0.0"
-    tiny-lru "^7.0.0"
+    semver "^7.3.2"
+    tiny-lru "^8.0.1"
 
 fastparse@^1.1.2:
   version "1.1.2"
@@ -9011,12 +9035,13 @@ find-cache-dir@^3.0.0, find-cache-dir@^3.3.1:
     make-dir "^3.0.2"
     pkg-dir "^4.1.0"
 
-find-my-way@^3.0.0:
-  version "3.0.4"
-  resolved "https://npm.yzops.net/find-my-way/-/find-my-way-3.0.4.tgz#a485973d1a3fdafd989ac9f12fd2d88e83cda268"
-  integrity sha1-pIWXPRo/2v2YmsnxL9LYjoPNomg=
+find-my-way@^4.5.0:
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/find-my-way/-/find-my-way-4.5.1.tgz#758e959194b90aea0270db18fff75e2fceb2239f"
+  integrity sha512-kE0u7sGoUFbMXcOG/xpkmz4sRLCklERnBcg7Ftuu1iAxsfEt2S46RLJ3Sq7vshsEy2wJT2hZxE58XZK27qa8kg==
   dependencies:
     fast-decode-uri-component "^1.0.1"
+    fast-deep-equal "^3.1.3"
     safe-regex2 "^2.0.0"
     semver-store "^0.3.0"
 
@@ -9207,10 +9232,10 @@ format-util@^1.0.3:
   resolved "https://npm.yzops.net/format-util/-/format-util-1.0.5.tgz#1ffb450c8a03e7bccffe40643180918cc297d271"
   integrity sha1-H/tFDIoD57zP/kBkMYCRjMKX0nE=
 
-forwarded@~0.1.2:
-  version "0.1.2"
-  resolved "https://npm.yzops.net/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
-  integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
+forwarded@0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.2.0.tgz#2269936428aad4c15c7ebe9779a84bf0b2a81811"
+  integrity sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==
 
 fragment-cache@^0.2.1:
   version "0.2.1"
@@ -11789,6 +11814,11 @@ json-schema-traverse@^0.4.1:
   resolved "https://npm.yzops.net/json-schema-traverse/-/json-schema-traverse-0.4.1.tgz#69f6a87d9513ab8bb8fe63bdb0979c448e684660"
   integrity sha1-afaofZUTq4u4/mO9sJecRI5oRmA=
 
+json-schema-traverse@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/json-schema-traverse/-/json-schema-traverse-1.0.0.tgz#ae7bcb3656ab77a73ba5c49bf654f38e6b6860e2"
+  integrity sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==
+
 json-schema@0.2.3:
   version "0.2.3"
   resolved "https://npm.yzops.net/json-schema/-/json-schema-0.2.3.tgz#b480c892e59a2f05954ce727bd3f2a4e882f9e13"
@@ -12059,14 +12089,14 @@ levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
-light-my-request@^4.0.0:
-  version "4.0.2"
-  resolved "https://npm.yzops.net/light-my-request/-/light-my-request-4.0.2.tgz#e80ebbbac512f0f45b9e54cb274b8f121248b924"
-  integrity sha1-6A67usUS8PRbnlTLJ0uPEhJIuSQ=
+light-my-request@^4.2.0:
+  version "4.12.0"
+  resolved "https://registry.yarnpkg.com/light-my-request/-/light-my-request-4.12.0.tgz#fd59329a7b4f794842103c7bef69e12252478831"
+  integrity sha512-0y+9VIfJEsPVzK5ArSIJ8Dkxp8QMP7/aCuxCUtG/tr9a2NoOf/snATE/OUc05XUplJCEnRh6gTkH7xh9POt1DQ==
   dependencies:
-    ajv "^6.12.2"
-    cookie "^0.4.0"
-    readable-stream "^3.6.0"
+    ajv "^8.1.0"
+    cookie "^0.5.0"
+    process-warning "^1.0.0"
     set-cookie-parser "^2.4.1"
 
 line-diff@^2.0.1:
@@ -14412,21 +14442,22 @@ pinkie@^2.0.0:
   resolved "https://npm.yzops.net/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
   integrity sha1-clVrgM+g1IqXToDnckjoDtT3+HA=
 
-pino-std-serializers@^2.4.2:
-  version "2.5.0"
-  resolved "https://npm.yzops.net/pino-std-serializers/-/pino-std-serializers-2.5.0.tgz#40ead781c65a0ce7ecd9c1c33f409d31fe712315"
-  integrity sha1-QOrXgcZaDOfs2cHDP0CdMf5xIxU=
+pino-std-serializers@^3.1.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/pino-std-serializers/-/pino-std-serializers-3.2.0.tgz#b56487c402d882eb96cd67c257868016b61ad671"
+  integrity sha512-EqX4pwDPrt3MuOAAUBMU0Tk5kR/YcCM5fNPEzgCO2zJ5HfX0vbiH9HbJglnyeQsN96Kznae6MWD47pZB5avTrg==
 
-pino@^6.2.1:
-  version "6.6.0"
-  resolved "https://npm.yzops.net/pino/-/pino-6.6.0.tgz#690ca4a98d027b32f2302c3750eced280fbc8dee"
-  integrity sha1-aQykqY0CezLyMCw3UOztKA+8je4=
+pino@^6.13.0:
+  version "6.14.0"
+  resolved "https://registry.yarnpkg.com/pino/-/pino-6.14.0.tgz#b745ea87a99a6c4c9b374e4f29ca7910d4c69f78"
+  integrity sha512-iuhEDel3Z3hF9Jfe44DPXR8l07bhjuFY3GMHIXbjnY9XcafbyDDwl2sN2vw2GjMPf5Nkoe+OFao7ffn9SXaKDg==
   dependencies:
-    fast-redact "^2.0.0"
-    fast-safe-stringify "^2.0.7"
+    fast-redact "^3.0.0"
+    fast-safe-stringify "^2.0.8"
     flatstr "^1.0.12"
-    pino-std-serializers "^2.4.2"
-    quick-format-unescaped "^4.0.1"
+    pino-std-serializers "^3.1.0"
+    process-warning "^1.0.0"
+    quick-format-unescaped "^4.0.3"
     sonic-boom "^1.0.2"
 
 pirates@^4.0.0, pirates@^4.0.1:
@@ -15365,6 +15396,11 @@ process-nextick-args@~2.0.0:
   resolved "https://npm.yzops.net/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
   integrity sha1-eCDZsWEgzFXKmud5JoCufbptf+I=
 
+process-warning@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/process-warning/-/process-warning-1.0.0.tgz#980a0b25dc38cd6034181be4b7726d89066b4616"
+  integrity sha512-du4wfLyj4yCZq1VupnVSZmRsPJsNuxoDQFdCFHLaYiEbFBD7QE0a+I4D7hOxrVnh78QE/YipFAj9lXHiXocV+Q==
+
 process@^0.11.10:
   version "0.11.10"
   resolved "https://npm.yzops.net/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
@@ -15452,12 +15488,12 @@ protoduck@^5.0.1:
   dependencies:
     genfun "^5.0.0"
 
-proxy-addr@^2.0.5, proxy-addr@~2.0.5:
-  version "2.0.6"
-  resolved "https://npm.yzops.net/proxy-addr/-/proxy-addr-2.0.6.tgz#fdc2336505447d3f2f2c638ed272caf614bbb2bf"
-  integrity sha1-/cIzZQVEfT8vLGOO0nLK9hS7sr8=
+proxy-addr@^2.0.7, proxy-addr@~2.0.5:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/proxy-addr/-/proxy-addr-2.0.7.tgz#f19fe69ceab311eeb94b42e70e8c2070f9ba1025"
+  integrity sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==
   dependencies:
-    forwarded "~0.1.2"
+    forwarded "0.2.0"
     ipaddr.js "1.9.1"
 
 prr@~1.0.1:
@@ -15600,10 +15636,10 @@ queue-microtask@^1.1.2:
   resolved "https://npm.yzops.net/queue-microtask/-/queue-microtask-1.1.4.tgz#40841ace4356b48b35b5ea61a2e1fe0a23c59ce1"
   integrity sha1-QIQazkNWtIs1tephouH+CiPFnOE=
 
-quick-format-unescaped@^4.0.1:
-  version "4.0.1"
-  resolved "https://npm.yzops.net/quick-format-unescaped/-/quick-format-unescaped-4.0.1.tgz#437a5ea1a0b61deb7605f8ab6a8fd3858dbeb701"
-  integrity sha1-Q3peoaC2Het2Bfirao/ThY2+twE=
+quick-format-unescaped@^4.0.3:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/quick-format-unescaped/-/quick-format-unescaped-4.0.4.tgz#93ef6dd8d3453cbc7970dd614fad4c5954d6b5a7"
+  integrity sha512-tYC1Q1hgyRuHgloV/YXs2w15unPVh8qfu/qCTfhTYamaw7fyhumKa2yGpdSo87vY32rIclj+4fWYQXUMs9EHvg==
 
 quick-lru@^1.0.0:
   version "1.1.0"
@@ -16775,6 +16811,11 @@ require-directory@^2.1.1:
   resolved "https://npm.yzops.net/require-directory/-/require-directory-2.1.1.tgz#8c64ad5fd30dab1c976e2344ffe7f792a6a6df42"
   integrity sha1-jGStX9MNqxyXbiNE/+f3kqam30I=
 
+require-from-string@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/require-from-string/-/require-from-string-2.0.2.tgz#89a7fdd938261267318eafe14f9c32e598c36909"
+  integrity sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==
+
 require-main-filename@^2.0.0:
   version "2.0.0"
   resolved "https://npm.yzops.net/require-main-filename/-/require-main-filename-2.0.0.tgz#d0b329ecc7cc0f61649f62215be69af54aa8989b"
@@ -16897,10 +16938,10 @@ reusify@^1.0.4:
   resolved "https://npm.yzops.net/reusify/-/reusify-1.0.4.tgz#90da382b1e126efc02146e90845a88db12925d76"
   integrity sha1-kNo4Kx4SbvwCFG6QhFqI2xKSXXY=
 
-rfdc@^1.1.4:
-  version "1.1.4"
-  resolved "https://npm.yzops.net/rfdc/-/rfdc-1.1.4.tgz#ba72cc1367a0ccd9cf81a870b3b58bd3ad07f8c2"
-  integrity sha1-unLME2egzNnPgahws7WL060H+MI=
+rfdc@^1.1.4, rfdc@^1.2.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/rfdc/-/rfdc-1.3.0.tgz#d0b7c441ab2720d05dc4cf26e01c89631d9da08b"
+  integrity sha512-V2hovdzFbOi77/WajaSMXk2OLm+xNIeQdMMuB7icj7bk6zi2F8GGAxigcnDFpJHbNyNcgyJDiP+8nOrY5cZGrA==
 
 rgb-regex@^1.0.1:
   version "1.0.1"
@@ -18793,10 +18834,10 @@ tiny-invariant@^1.0.2:
   resolved "https://npm.yzops.net/tiny-invariant/-/tiny-invariant-1.1.0.tgz#634c5f8efdc27714b7f386c35e6760991d230875"
   integrity sha1-Y0xfjv3CdxS384bDXmdgmR0jCHU=
 
-tiny-lru@^7.0.0:
-  version "7.0.6"
-  resolved "https://npm.yzops.net/tiny-lru/-/tiny-lru-7.0.6.tgz#b0c3cdede1e5882aa2d1ae21cb2ceccf2a331f24"
-  integrity sha1-sMPN7eHliCqi0a4hyyzszyozHyQ=
+tiny-lru@^8.0.1:
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/tiny-lru/-/tiny-lru-8.0.2.tgz#812fccbe6e622ded552e3ff8a4c3b5ff34a85e4c"
+  integrity sha512-ApGvZ6vVvTNdsmt676grvCkUCGwzG9IqXma5Z07xJgiC5L7akUMof5U8G2JTI9Rz/ovtVhJBlY6mNhEvtjzOIg==
 
 tiny-warning@^1.0.0, tiny-warning@^1.0.2, tiny-warning@^1.0.3:
   version "1.0.3"
