@@ -2,7 +2,13 @@
     "name": "vite-plugin-svgicon",
     "version": "1.3.0",
     "main": "dist/index.js",
-    "module": "dist/index.esm.js",
+    "module": "dist/index.mjs",
+    "exports": {
+        ".": {
+            "import": "./dist/index.mjs",
+            "require": "./dist/index.js"
+        }
+    },
     "license": "MIT",
     "description": "vite plugin for @yzfe/svgicon",
     "keywords": [
