@@ -6,27 +6,27 @@ export default {
       <icon name="arrow" width="50" height="50" dir="up" title="up"></icon>
       <icon name="arrow" width="50" height="50" title="right"></icon>
       <icon name="arrow" width="50" height="50" dir="down" title="down"></icon>
-      `
+      `,
     ],
     fill: [
         `
       <icon name="arrow" width="50" height="50"></icon>
       <icon name="arrow" width="50" height="50" :fill="false"></icon>
-      `
+      `,
     ],
     'r-color': [
         `
         <icon name="clock" color="#8A99B2 r-#1C2330" width="100" height="100"></icon>
         <icon name="clock" color="#8A99B2 r-var(--color-primary)" width="100" height="100"></icon>
-      `
+      `,
     ],
     color: [
         `
-      <icon name="arrow" width="50" height="50"></icon>
+      <icon name="arrow" width="50" :height="50"></icon>
       <icon name="arrow" width="50" height="50" color="red"></icon>
       <icon name="arrow" width="50" height="50" color="green"></icon>
       <icon name="arrow" width="50" height="50" color="blue"></icon>
-      `
+      `,
     ],
     size: [
         `
@@ -35,10 +35,10 @@ export default {
       <icon name="arrow" height="50"></icon>
       <icon name="arrow" scale="15"></icon>
       <icon name="arrow" width="10em" height="10em"></icon>
-      `
+      `,
     ],
     'multi-color': [
-        `<icon name="check" :fill="false" width="100" height="100" color="r-#42b983 white"></icon>`
+        `<icon name="check" :fill="false" width="100" height="100" color="r-#42b983 white"></icon>`,
     ],
     'multi-color2': [
         `<icon name="colorwheel" width="200" height="200" :color="datas[0]"></icon>`,
@@ -56,7 +56,7 @@ export default {
           }
         }
       </script>
-      `
+      `,
     ],
     'original-color': [
         `
@@ -65,7 +65,7 @@ export default {
         <icon name="colorwheel" width="100" height="100" original color="_ black _ black _"></icon>
         <icon name="colorwheel" width="100" height="100" original color="_ r-black _ r-red _"></icon>
         <icon name="gift" width="100" height="100" original></icon>
-      `
+      `,
     ],
     gradient: [
         `<icon name="vue" width="15rem" height="15rem" color="url(#gradient-1) url(#gradient-2)"></icon>`,
@@ -86,20 +86,20 @@ export default {
 
         #{{tpl}}
       </template>
-      `
+      `,
     ],
     namespace: [
         `
       <icon name="arrow" width="50" height="50"></icon>
       <icon name="sora/arrow" width="50" height="50"></icon>
       <icon name="sora/fit/arrow" width="50" height="50"></icon>
-      `
+      `,
     ],
     uid: [
         `
       <icon name="mask" width="100" height="100"></icon>
       <icon name="sora/fit/mask" width="100" height="100" color="url(#svgicon_sora_fit_mask_a) red green" ></icon>
-      `
+      `,
     ],
     async: [
         `
@@ -121,6 +121,6 @@ export default {
           }
         }
       </script>
-      `
-    ]
+      `,
+    ],
 } as { [key: string]: string[] }

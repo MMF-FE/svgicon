@@ -28,11 +28,11 @@ export default {
         icon: String,
         name: String,
         width: {
-            type: String,
+            type: [String, Number],
             default: '',
         },
         height: {
-            type: String,
+            type: [String, Number],
             default: '',
         },
         scale: String,
