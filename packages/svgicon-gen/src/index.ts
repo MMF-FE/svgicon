@@ -1,4 +1,10 @@
-import { optimize, OptimizedSvg, OptimizeOptions, Plugin, PresetDefault } from 'svgo'
+import {
+    optimize,
+    OptimizedSvg,
+    OptimizeOptions,
+    Plugin,
+    PresetDefault,
+} from 'svgo'
 import { Icon } from './types'
 import utils from './utils'
 import defaultSVGConfig from './svgoConfig'
@@ -13,7 +19,7 @@ function isPresetDefaultPlugin(plugin: Plugin) {
 }
 
 function findPresetDefaultPlugin(config: OptimizeOptions) {
-    return  config.plugins?.find(v => isPresetDefaultPlugin(v))
+    return config.plugins?.find((v) => isPresetDefaultPlugin(v))
 }
 
 /**
@@ -55,7 +61,7 @@ export default async function gen(
 
     let config = _.cloneDeep(defaultSVGConfig)
     const userSvgoConfig = _.cloneDeep(svgoConfig)
-    
+
     const presetDefault = findPresetDefaultPlugin(config) as PresetDefault
     const configPlugins = config.plugins || []
 
@@ -68,8 +74,8 @@ export default async function gen(
             ...userSvgoConfig,
             plugins: _.uniq([
                 ...configPlugins,
-                ...userPlugins.filter(v => !isPresetDefaultPlugin(v)),
-            ])
+                ...userPlugins.filter((v) => !isPresetDefaultPlugin(v)),
+            ]),
         }
 
         _.merge(presetDefault, userPresetDefault)
@@ -78,13 +84,13 @@ export default async function gen(
     _.merge(presetDefault, {
         params: {
             overrides: {
-                'cleanupIDs': {
+                cleanupIDs: {
                     remove: true,
-                    prefix: 'svgiconid'
-                }
-            }
-        }
-    } as PresetDefault )
+                    prefix: 'svgiconid',
+                },
+            },
+        },
+    } as PresetDefault)
 
     const result = optimize(source, config) as OptimizedSvg
 
@@ -104,7 +110,7 @@ export default async function gen(
     data = utils.renameStyle(data)
 
     // replace element id, make sure ID is unique. fix #16
-    data = utils.changeId(data, filePath, name)
+    data = utils.changeId(data, name)
 
     // escape single quotes
     data = data.replace(/'/g, "\\'")

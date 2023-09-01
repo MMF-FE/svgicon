@@ -31,6 +31,11 @@ toc
 
 > The second and third color wheels modify certain colors based on the primary colors
 
+<demo-replace title="Replace SVG code (replace)" />
+::: details View Code
+<<<@/docs/.vuepress/components/DemoReplace.vue#demo
+:::
+
 <demo-gradient title="Gradient" />
 ::: details View Code
 <<<@/docs/.vuepress/components/DemoGradient.vue#demo

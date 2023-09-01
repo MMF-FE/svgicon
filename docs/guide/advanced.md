@@ -31,6 +31,11 @@ toc
 
 > 第二和第三个色轮是在原色的基础上修改某些颜色
 
+<demo-replace title="替换 svg 代码 (replace)" />
+::: details 查看代码
+<<<@/docs/.vuepress/components/DemoReplace.vue#demo
+:::
+
 <demo-gradient title="渐变" />
 ::: details 查看代码
 <<<@/docs/.vuepress/components/DemoGradient.vue#demo

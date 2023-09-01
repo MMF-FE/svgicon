@@ -214,13 +214,27 @@ describe('Test svgIcon', () => {
 
             function findIds(html: string) {
                 const reg = /\sid="([\w-])+"/g
-                return html.match(reg) || []
+                return (html.match(reg) || []) as string[]
             }
 
             const ids1 = findIds(html1)
             const ids2 = findIds(html2)
 
             assert.ok(ids1.every((v) => ids2.indexOf(v) < 0))
+        })
+    })
+
+    describe('Test replace content', () => {
+        it('shold replace color', async () => {
+            const vueIcon = mount({
+                data: icons.vueIcon,
+                replace: (svg) => {
+                    return svg.replace('#35495E', '#222222')
+                },
+            })
+
+            const html = vueIcon.element.innerHTML
+            assert.ok(html.includes('fill="#222222"'))
         })
     })
 })

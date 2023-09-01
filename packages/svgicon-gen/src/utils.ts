@@ -52,21 +52,13 @@ export default {
     },
 
     // replace element id, make sure ID is unique. fix #16
-    changeId(
-        content: string,
-        filePath: string,
-        name: string,
-        idSep = '_'
-    ): string {
+    changeId(content: string, name: string, idSep = '_'): string {
         const idReg = /svgiconid(\w+)/g
         content = content.replace(idReg, function (
             match: string,
             elId: string
         ) {
-            return `svgiconid${idSep}${filePath.replace(
-                /[\\/]/g,
-                idSep
-            )}${name}${idSep}${elId}`
+            return `svgiconid${idSep}${name}${idSep}${elId}`
         })
 
         return content

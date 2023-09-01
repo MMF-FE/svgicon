@@ -49,6 +49,8 @@ export interface Props {
     fill?: boolean
     /** is use original color */
     original?: boolean
+    /** Replace content, usually replace color */
+    replace?: (svgInnerContent: string) => string
 }
 //#endregion props
 
@@ -149,12 +151,15 @@ function getValidPathData(
     props: Props,
     colors: string[]
 ): string {
-    // If use original and colors, clear double fill or stroke
+    // If use original and colors, clear duplicated fill or stroke
     if (props.original && colors.length > 0) {
         const reg = /<(path|rect|circle|polygon|line|polyline|ellipse)(\sfill|\sstroke)([="\w\s.\-+#$&>]+)(fill|stroke)/gi
-        pathData = pathData.replace(reg, (match, p1, p2, p3, p4) => {
-            return `<${p1}${p2}${p3}_${p4}`
-        })
+        pathData = pathData.replace(
+            reg,
+            (match, tag, attr, other, duplicatedAttr) => {
+                return `<${tag}${attr}${other}_${duplicatedAttr}`
+            }
+        )
     }
 
     return pathData
@@ -224,6 +229,11 @@ function getPath(props: Props, colors: string[], iconData: IconData | null) {
         pathData = pathData.replace(idReg, (match, elId) => {
             return `svgiconid${elId}_${uid}`
         })
+
+        // custom replace content
+        if (props.replace) {
+            pathData = props.replace(pathData)
+        }
     }
 
     return getValidPathData(pathData, props, colors)
@@ -302,6 +312,7 @@ export function getPropKeys(): (keyof Props)[] {
         'title',
         'scale',
         'original',
+        'replace',
     ]
 }
 

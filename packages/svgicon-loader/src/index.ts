@@ -1,6 +1,6 @@
 import { loader } from 'webpack'
 import * as loaderUtils from 'loader-utils'
-import gen, {SvgoConfig} from '@yzfe/svgicon-gen'
+import gen, { SvgoConfig } from '@yzfe/svgicon-gen'
 import { LoaderOptions } from '../typings'
 
 const SvgiconLoader: loader.Loader = function (source) {

@@ -1,4 +1,4 @@
-import { defineComponent, h, App } from 'vue'
+import { defineComponent, h, App, PropType } from 'vue'
 
 import {
     svgIcon,
@@ -7,11 +7,47 @@ import {
     setOptions,
     Icon,
     IconData,
-    getPropKeys,
 } from '@yzfe/svgicon'
 
 const VueSvgIcon = defineComponent({
-    props: getPropKeys(),
+    props: {
+        /** icon data */
+        data: {
+            type: Object as PropType<Icon>,
+        },
+        width: {
+            type: [String, Number],
+        },
+        height: {
+            type: [String, Number],
+        },
+        scale: {
+            type: [String, Number],
+        },
+        dir: {
+            type: String,
+        },
+        color: {
+            type: [String, Array] as PropType<string | string[]>,
+        },
+        stopColors: {
+            type: Array as PropType<string[]>,
+        },
+        title: {
+            type: String,
+        },
+        fill: {
+            type: Boolean,
+            default: true,
+        },
+        original: {
+            type: Boolean,
+            default: false,
+        },
+        replace: {
+            type: Function as PropType<(svgInnerContent: string) => string>,
+        },
+    },
     render() {
         const result = svgIcon(this.$props)
 

@@ -64,7 +64,14 @@
                 v-bind="props"
                 original
             ></icon>
-            <icon data="@icon/gift.svg" v-bind="props" original :stop-colors="['blue', 'green']"></icon>
+            <icon
+                data="@icon/gift.svg"
+                v-bind="props"
+                original
+                :stop-colors="['blue', 'green']"
+                :replace="(svg) => svg.replace('blue', 'red')"
+            >
+            </icon>
         </div>
 
         <div class="grid">
