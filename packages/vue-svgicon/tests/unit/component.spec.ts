@@ -204,7 +204,7 @@ describe('Test unique id', () => {
 
         function findIds(html: string) {
             const reg = /\sid="([\w-])+"/g
-            return html.match(reg) || []
+            return (html.match(reg) || []) as string[]
         }
 
         const ids1 = findIds(html1)

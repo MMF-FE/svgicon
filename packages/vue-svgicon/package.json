@@ -45,6 +45,7 @@
         "@vue/cli-plugin-unit-mocha": "~4.5.0",
         "@vue/cli-service": "~4.5.0",
         "@vue/test-utils": "^1.0.3",
+        "@yzfe/svgicon": ">=1.0.0",
         "chai": "^4.1.2",
         "rollup": "^2.26.3",
         "rollup-plugin-peer-deps-external": "^2.2.3",

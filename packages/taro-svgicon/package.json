@@ -30,6 +30,7 @@
         "@tarojs/runtime": "3.0.21",
         "@tarojs/taro": "3.0.21",
         "@types/react": "^16.9.46",
+        "@yzfe/svgicon": ">=1.0.0",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-element-to-jsx-string": "^14.3.2",
