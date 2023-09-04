@@ -16,7 +16,7 @@
         "bootstrap": "lerna bootstrap",
         "build": "lerna run build --ignore '@yzfe/{vue-demo,react-demo,svgicon-viewer}'",
         "test": "yarn run build && lerna run test",
-        "publish": "lerna publish",
+        "publish": "lerna publish --no-private",
         "serve:doc": "vuepress dev docs",
         "build:doc": "vuepress build docs",
         "deploy:doc": "./scripts/deploy.sh"
