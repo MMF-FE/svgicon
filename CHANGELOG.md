@@ -1,3 +1,20 @@
+## 2023-09-04
+#### Packages Release
+- @yzfe/react-svgicon@1.1.1
+- @yzfe/svgicon-gen@1.2.1
+- @yzfe/svgicon-loader@1.2.1
+- @yzfe/svgicon-viewer@1.2.2
+- @yzfe/svgicon@1.1.1
+- @yzfe/taro-svgicon@1.0.2
+- vite-plugin-svgicon@1.3.2
+- @yzfe/vue-cli-plugin-svgicon@1.2.2
+- @yzfe/vue-svgicon@4.0.4
+- @yzfe/vue3-svgicon@1.0.2
+
+#### Changes
+- Add `replace` prop and optimize id generation
+- Optimize dependencies and unit testing
+
 ## 2022-08-11
 #### Packages Release
  - vite-plugin-svgicon@1.3.0
