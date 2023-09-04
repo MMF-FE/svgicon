@@ -11,6 +11,14 @@
     "homepage": "https://github.com/MMF-FE/svgicon",
     "license": "MIT",
     "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "exports": {
+        ".": {
+            "import": "./dist/index.mjs",
+            "require": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        }
+    },
     "directories": {
         "lib": "lib",
         "dist": "dist",
