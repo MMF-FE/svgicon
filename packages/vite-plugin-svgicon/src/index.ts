@@ -61,15 +61,10 @@ async function genSvgIcon(
             import React from 'react'
             import { ReactSvgIcon } from '@yzfe/react-svgicon'
             function SvgIconFC (props) {
-                var newProps = {
-                    data: data
-                }
-                if (props) {
-                    Object.keys(props).forEach(function each(key) {
-                        newProps[key] = props[key]
-                    })
-                }
-                return React.createElement(ReactSvgIcon, newProps)
+                return React.createElement(ReactSvgIcon, {
+                    ...props,
+                    data
+                })
             }
 
             SvgIconFC.iconName = data.name
@@ -90,21 +85,6 @@ export default function svgicon(options: PluginOptions = {}): Plugin {
     const plugin: Plugin = {
         name: 'svgicon',
         enforce: 'pre',
-        configResolved(config) {
-            vuePlugin = config.plugins.find((p) => p.name === 'vite:vue')!
-
-            // find vue2
-            if (!vuePlugin) {
-                vuePlugin = config.plugins.find((p) =>
-                    ['vite-plugin-vue2', 'vite:vue2'].includes(p.name)
-                )!
-            }
-
-            if (!vuePlugin)
-                throw new Error(
-                    '[vite-plugin-svgicon] no vue plugin found, do you forget to install it?'
-                )
-        },
         async load(id: string) {
             if (isSvgIconFile(id, options)) {
                 const code = await fs.readFile(id, 'utf-8')
