@@ -32,10 +32,14 @@ function isSvgIconFile(id: string, options: PluginOptions) {
 
     return includes.some((includePattern) => {
         return (
-            minimatch(id, includePattern) &&
+            minimatch(id, includePattern, {
+                dot: true,
+            }) &&
             (!excludes ||
                 excludes.every((excludePattern) => {
-                    return !minimatch(id, excludePattern)
+                    return !minimatch(id, excludePattern, {
+                        dot: true,
+                    })
                 }))
         )
     })
