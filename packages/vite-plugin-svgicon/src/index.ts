@@ -89,6 +89,21 @@ export default function svgicon(options: PluginOptions = {}): Plugin {
     const plugin: Plugin = {
         name: 'svgicon',
         enforce: 'pre',
+        configResolved(config) {
+            vuePlugin = config.plugins.find((p) => p.name === 'vite:vue')!
+
+            // find vue2
+            if (!vuePlugin) {
+                vuePlugin = config.plugins.find((p) =>
+                    ['vite-plugin-vue2', 'vite:vue2'].includes(p.name)
+                )!
+            }
+
+            if (!vuePlugin)
+                throw new Error(
+                    '[vite-plugin-svgicon] no vue plugin found, do you forget to install it?'
+                )
+        },
         async load(id: string) {
             if (isSvgIconFile(id, options)) {
                 const code = await fs.readFile(id, 'utf-8')
@@ -97,7 +112,7 @@ export default function svgicon(options: PluginOptions = {}): Plugin {
         },
         async handleHotUpdate(ctx) {
             if (isSvgIconFile(ctx.file, options)) {
-                return vuePlugin.handleHotUpdate?.({
+                return vuePlugin?.handleHotUpdate?.({
                     ...ctx,
                     async read() {
                         return genSvgIcon(await ctx.read(), ctx.file, options)
