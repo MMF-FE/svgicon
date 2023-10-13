@@ -43,5 +43,6 @@
     "dependencies": {
         "@types/svgo": "^2.6.3",
         "@yzfe/svgicon-gen": "^1.2.2"
-    }
+    },
+    "gitHead": "5557f1af66a9934169cd6e4fc73104b511375134"
 }
