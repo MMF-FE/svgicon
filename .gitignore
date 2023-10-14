@@ -22,3 +22,13 @@ dist
 demo/**/dist
 packages/svgicon-viewer/dist
 docs/.vuepress/dist
+
+**/coverage/**
+
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*

@@ -1,102 +1,175 @@
 ---
 toc
 ---
-# Advanced
+# In-Depth
 
-## Component
-### Color
+## SVG imported as component
+`@yzfe/svgicon-loader` or `vite-plugin-svgicon` both provide `component` and `customCode` options to import svg files as components.
 
-<demo-color title="Single color (default: inherit font color)" />
-::: details View Code
-<<<@/docs/.vuepress/components/DemoColor.vue#demo
-:::
+- `component` 
+    - `vue` Vue 3.x Component
+    - `react` React Component
+    - `custom` Custom generated code, used with `customCode`
 
-<demo-reverse-color title="r-color (Reverse fill or stroke attributes)" />
+### Use presets
+```ts
+// vite.config.ts
+import { defineConfig } from 'vite'
+import svgicon from 'vite-plugin-svgicon'
 
-> Clock icon: the circle is the fill, the hour and minute hands are the stroke, Vue icon: the first path is the stroke, the second is the path is the fill
-
-::: details View Code
-<<<@/docs/.vuepress/components/DemoReverseColor.vue#demo
-:::
-
-<demo-multi-color title="Multicolor (set in the order of path/shape)" />
-::: details View Code
-<<<@/docs/.vuepress/components/DemoMultiColor.vue#demo
-:::
-
-<demo-original-color title="Original Color (original)" />
-::: details View Code
-<<<@/docs/.vuepress/components/DemoOriginalColor.vue#demo
-:::
-
-> The second and third color wheels modify certain colors based on the primary colors
-
-<demo-replace title="Replace SVG code (replace)" />
-::: details View Code
-<<<@/docs/.vuepress/components/DemoReplace.vue#demo
-:::
-
-<demo-gradient title="Gradient" />
-::: details View Code
-<<<@/docs/.vuepress/components/DemoGradient.vue#demo
-:::
-
-<demo-gradient-colors title="Modify Original Gradient Colors" />
-::: details View Code
-<<<@/docs/.vuepress/components/DemoGradientColors.vue#demo
-:::
-> The `original` porp must to be true
-
-
-### Size
-<demo-size title="size, default unit: px, default size: 16px" />
-::: details View Code
-<<<@/docs/.vuepress/components/DemoSize.vue#demo
-:::
-
-### Fill/Stroke
-<demo-fill title="fill, default: true" />
-::: details View Code
-<<<@/docs/.vuepress/components/DemoFill.vue#demo
-<<<@/docs/.vuepress/components/DemoFill.vue#css
-:::
-
-### Direction
-<demo-direction title="dir, default: up" />
-::: details View Code
-<<<@/docs/.vuepress/components/DemoDirection.vue#demo
-:::
-
-## Icon preview
-Use `@yzfe/svgicon-viewer` to preview SVG files in any folder.
-
-#### Installation
-```bash
-# Global installation
-yarn global add @yzfe/svgicon-viewer
+export default defineConfig({
+    plugins: [
+        svgicon({
+            include: ['**/assets/svg/**/*.svg'],
+            svgFilePath: path.join(__dirname, 'src/assets/svg'),
+            component: 'react',
+        })
+    ]
+})
 ```
 
-#### Usage
-```bash
-# svgicon-viewer <svgFilePath> [metaFile]
-svgicon-viewer ./src/assets/svg
+Usage
+```tsx
+import ArrowIcon from 'svg-icon-path/arrow.svg'
+export default funtion() {
+   return (
+        <div>
+            <ArrowIcon color="red" />
+        </div>
+    )
+}
 ```
 
-![svgicon-viewer](../../images/svgicon-viewer.png)
+### Customize
+Customize the generated code by setting the `component` and `customCode` options. The `@yzfe/svgicon-loader` or `vite-plugin-svgicon` has already generated a code snippet: `const data = {/*iconData*/}`. Finally, this code snippet will be concatenated with the `customCode` to form the final code.
 
-Use meta.json to add additional information. Currently, only one name field is supported, which can be used to describe the icon.
+```ts
+// vite.config.ts
+import { defineConfig } from 'vite'
+import svgicon from 'vite-plugin-svgicon'
 
-```json
-// meta.json demo
-{
-    "arrow": {
-        "name": "箭头"
+export default defineConfig({
+    plugins: [
+        svgicon({
+            include: ['**/assets/svg/**/*.svg'],
+            svgFilePath: path.join(__dirname, 'src/assets/svg'),
+            component: 'custom',
+            customCode: `
+                import Vue from 'vue'
+                import { VueSvgIcon } from '@yzfe/vue-svgicon'
+
+                export default {
+                    functional: true,
+                    render(h, context) {
+                        return h(VueSvgIcon, {
+                            ...context.data,
+                            data: data
+                        })
+                    }
+                }
+            `
+        })
+    ]
+})
+```
+
+The above configuration loads the svg file as the code below
+```js
+const data = {/*iconData*/}
+import Vue from 'vue'
+import { VueSvgIcon } from '@yzfe/vue-svgicon'
+
+export default {
+    functional: true,
+    render(h, context) {
+        return h(VueSvgIcon, {
+            ...context.data,
+            data: data
+        })
     }
 }
 ```
 
-```bash
-svgicon-viewer ./src/assets/svg ./src/assets/svg/meta.json
+::: warning
+If you are using `@yzfe/svgicon-loader`, you need to add `babel-loader` to process the generated code.
+:::
+
+## Configure multiple paths
+
+```ts
+// vite.config.ts
+import { defineConfig } from 'vite'
+import svgicon from 'vite-plugin-svgicon'
+
+export default defineConfig({
+    plugins: [
+        svgicon({
+            include: ['**/assets/svg/**/*.svg'],
+            svgFilePath: path.join(__dirname, '../../packages/assets/svg'),
+        }),
+        svgicon({
+            include: ['**/assets/svg/**/*.svg'],
+            // macth:  xxx.svg?component
+            matchQuery: /component/,
+            svgFilePath: path.join(__dirname, '../../packages/assets'),
+            component: 'vue',
+        }),
+         svgicon({
+            include: ['**/assets/font-awesome/**/*.svg'],
+            svgFilePath: path.join(
+                __dirname,
+                '../../packages/assets/font-awesome'
+            ),
+        }),
+    ]
+})
 ```
 
-![svgicon-viewer](../../images/svgicon-viewer-meta.png)
+Usage
+```ts
+// import as icon data
+import ArrowIconData from '@/assets/svg/arrow.svg'
+import FaArrowIconData from '@/assets/font-awesome/arrow.svg'
+
+// import as component
+import ArrowIcon from 'svg-icon-path/arrow.svg?component'
+
+// import as url
+import ArrowSvgUrl from 'svg-icon-path/arrow.svg?url'
+```
+
+## Typescript
+If SVG file is imported as a component, the type definition of the component needs to be added.
+
+```ts
+// react
+declare module '@/assets/svg/*.svg' {
+    import { ReactSvgIconFC } from '@yzfe/react-svgicon'
+    const value: ReactSvgIconFC
+    export = value
+}
+
+// vue
+declare module '@/assets/svg/*.svg' {
+    import { VueSvgIcon } from '@yzfe/vue3-svgicon'
+    const value: typeof VueSvgIcon
+    export = value
+}
+```
+
+## vue-cli
+If your project uses `vue-cli`, it is recommended to use `@yzfe/vue-cli-plugin-svgicon` for quick configuration.
+
+```bash
+# You will be prompted to fill in the SVG file path, the globally registered component tag name and the vue version
+vue add @yzfe/svgicon
+```
+
+If you have installed `@yzfe/vue-cli-plugin-svgicon`, but this plugin is not invoked, you can invoke it manually.
+```bash
+vue invoke @yzfe/svgicon
+```
+
+After a successful invoke, the necessary dependencies and code will be automatically added, and a `.vue-svgicon.config.js` file will be generated to configure `@yzfe/svgicon-loader` and webpack aliases, as well as transformAssetUrls, etc.
+
+<<<../demo/vue2-webpack/.vue-svgicon.config.js

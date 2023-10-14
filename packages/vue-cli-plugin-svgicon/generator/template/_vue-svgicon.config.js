@@ -14,4 +14,5 @@ module.exports = {
         [tagName]: ['data'],
     },
     <%_ } _%>
+    loaderOptions: {}
 }

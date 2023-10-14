@@ -32,11 +32,11 @@ module.exports = {
                     },
                     {
                         text: 'v3.x',
-                        link: 'https://mmf-fe.github.io/svgicon/v3/'
-                    }
+                        link: 'https://mmf-fe.github.io/svgicon/v3/',
+                    },
                 ],
                 sidebar: {
-                    '/guide/': ['', 'advanced'],
+                    '/guide/': ['', 'component', 'advanced', 'other'],
                     '/api/': [''],
                 },
             },
@@ -58,11 +58,11 @@ module.exports = {
                     },
                     {
                         text: 'v3.x',
-                        link: 'https://mmf-fe.github.io/svgicon/v3/'
-                    }
+                        link: 'https://mmf-fe.github.io/svgicon/v3/',
+                    },
                 ],
                 sidebar: {
-                    '/en/guide/': ['', 'advanced'],
+                    '/en/guide/': ['', 'component', 'advanced', 'other'],
                     '/en/api/': [''],
                 },
             },

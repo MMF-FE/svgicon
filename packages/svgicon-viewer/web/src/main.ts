@@ -18,6 +18,7 @@ Vue.component(CheckboxButton.name, CheckboxButton)
 Vue.component(CheckboxGroup.name, CheckboxGroup)
 Vue.component(Input.name, Input)
 
+// @ts-ignore
 Vue.component('icon', VueSvgIcon)
 
 Vue.config.productionTip = false

@@ -41,10 +41,12 @@
     "devDependencies": {
         "@types/loader-utils": "^2.0.1",
         "@types/node": "^14.0.27",
-        "@types/webpack": "^4.41.21"
+        "@types/webpack": "4",
+        "typescript": "^5.2.2",
+        "webpack": "4"
     },
     "dependencies": {
-        "@yzfe/svgicon-gen": "^1.2.2",
+        "@yzfe/svgicon-gen": "*",
         "loader-utils": "^2.0.0"
     },
     "publishConfig": {

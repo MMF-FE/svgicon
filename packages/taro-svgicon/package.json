@@ -5,8 +5,8 @@
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
     "scripts": {
-        "dev": "rollup -c -w",
-        "build": "rm -rf dist && rollup -c",
+        "dev": "rollup -c --bundleConfigAsCjs -w",
+        "build": "rm -rf dist && rollup -c --bundleConfigAsCjs",
         "prepublishOnly": "yarn build"
     },
     "author": "allen-mo <735016387@qq.com>",
@@ -23,23 +23,22 @@
         "react-dom": ">=16.8.0"
     },
     "devDependencies": {
-        "@rollup/plugin-commonjs": "^15.0.0",
-        "@rollup/plugin-node-resolve": "^9.0.0",
+        "@rollup/plugin-commonjs": "^25.0.5",
+        "@rollup/plugin-node-resolve": "^15.2.3",
+        "@rollup/plugin-terser": "^0.4.4",
+        "@rollup/plugin-typescript": "^11.1.5",
         "@tarojs/components": "3.0.21",
         "@tarojs/react": "3.0.21",
         "@tarojs/runtime": "3.0.21",
         "@tarojs/taro": "3.0.21",
         "@types/react": "^16.9.46",
-        "@yzfe/svgicon": "^1.1.1",
+        "@yzfe/svgicon": "*",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-element-to-jsx-string": "^14.3.2",
-        "rollup": "^2.26.3",
-        "rollup-plugin-peer-deps-external": "^2.2.3",
-        "rollup-plugin-postcss": "^3.1.5",
-        "rollup-plugin-terser": "^7.0.0",
-        "rollup-plugin-typescript2": "^0.27.2",
-        "typescript": "^3.9.7"
+        "rollup": "^4.0.2",
+        "tslib": "^2.6.2",
+        "typescript": "^5.2.2"
     },
     "gitHead": "8f4f2a4442e072323ecf76585a533342ddafecb5"
 }

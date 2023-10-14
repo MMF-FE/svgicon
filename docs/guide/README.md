@@ -2,6 +2,8 @@
 toc
 ---
 # 快速上手
+本节内容主要是简单的介绍 svgicon 配置和使用，建议查看【[深入](./advanced.md)】这一节了解更多。
+
 ## 介绍
 > svgicon 是一个名称
 
@@ -19,142 +21,100 @@ svgicon 是 SVG 图标组件和工具集，将 SVG 文件变成图标数据(vue)
 - @yzfe/vue-cli-plugin-svgicon `vue-cli 插件，可以快速的配置 svgicon`
 - @yzfe/svgicon-polyfill `SVG innerHTML 兼容（IE）`
 
-## Vue （2.x & 3.x）
-### 安装
-#### 使用 vue-cli 插件 (推荐)
+## 配置
+
+
+### Vite
+使用 vite-plugin-svgicon 加载 SVG 文件为图标数据
 ```bash
-# 将会提示你填写 SVG 文件路径，全局注册的组件标签名称和 vue 的版本
-vue add @yzfe/svgicon
+npm install vite-plugin-svgicon -D
 ```
-
-如果已经安装了 `@yzfe/vue-cli-plugin-svgicon`, 但是没有调用到这个插件，你可以手动调用。
-```bash
-vue invoke @yzfe/svgicon
-```
-
-成功调用后，会自动添加必要的依赖和代码，另外还会生成 `.vue-svgicon.config.js` 文件，用来配置 `@yzfe/svgicon-loader` 和 webpack 别名，还有 transformAssetUrls 等。
-::: details demo/vue-demo/.vue-svgicon.config.js
-<<< @/demo/vue-demo/.vue-svgicon.config.js
-:::
-
-#### 不使用 vue-cli 插件
-使用 vue-cli，但是没有使用 @yzfe/vue-cli-plugin-svgicon.
-
-```bash
-# loader
-yarn add @yzfe/svgicon-loader --dev
-# core
-yarn add @yzfe/svgicon
-
-# 添加图标组件
-yarn add @yzfe/vue-svgicon # vue2.x
-# or
-yarn add @yzfe/vue3-svgicon # vue3.x
-```
-配置 vue.config.js
 
 ```js
-const svgFilePath = 'svg file path （absolute path)'
+// vite.config.ts
+import { defineConfig } from 'vite'
+import svgicon from 'vite-plugin-svgicon'
 
-{
-    chainWebpack(config) {
-        config.module
-            .rule('vue-svgicon')
-            .include.add(svgFilePath)
-            .end()
-            .test(/\.svg$/)
-            .use('svgicon')
-            .loader('@yzfe/svgicon-loader')
-            .options({
-                svgFilePath
-            })
-
-        config.module.rule('svg').exclude.add(svgFilePath).end()
-
-        // 推荐配置 transformAssetUrls
-        config.module
-            .rule('vue')
-            .use('vue-loader')
-            .loader('vue-loader')
-            .tap((opt) => {
-                opt.transformAssetUrls = opt.transformAssetUrls || {}
-                opt.transformAssetUrls['icon'] = ['data']
-                return opt
-            })
-
-        // 推荐配置 alias
-        config.resolve.alias.set('@icon', svgFilePath)
-    }
-}
+export default defineConfig({
+    plugins: [
+        svgicon({
+            include: ['**/assets/svg/**/*.svg'],
+            svgFilePath: path.join(__dirname, 'src/assets/svg'),
+            // 如果是使用 React，建议配置 component 选项为 react, 加载 SVG 文件为 react 组件
+            component: 'react',
+        })
+    ]
+})
 ```
 
-配置好 vue.config.js 之后，还需要在入口文件加上以下代码
-
-```ts
-// vue2.x
-import { VueSvgIcon } from '@yzfe/vue-svgicon'
-import '@yzfe/svgicon/lib/svgicon.css'
-
-Vue.component('icon', VueSvgIcon)
+### Webpack
+使用 @yzfe/svgicon-loader 加载 SVG 文件为图标数据
+```bash
+npm install @yzfe/svgicon-loader -D
 ```
 
-```ts
-// vue3.x
-import { VueSvgIconPlugin } from '@yzfe/vue3-svgicon'
-import '@yzfe/svgicon/lib/svgicon.css'
-
-app.use(VueSvgIconPlugin, {tagName: 'icon'})
-```
-
-#### 手动配置
-Webpack 配置
 ```js
+// webpack.config.js
 {
     module: {
         rules: [
-            {
+             {
                 test: /\.svg$/,
                 include: ['SVG 文件路径'],
                 use: [
+                    'babel-loader',
                     {
                         loader: '@yzfe/svgicon-loader',
                         options: {
                             svgFilePath: ['SVG 文件路径'],
-                            svgoConfig: null // 自定义 svgo 配置
+                            // 自定义 svgo 配置
+                            svgoConfig: null,
+                            // 如果是使用 React，建议配置 component 选项为 react, 加载 SVG 文件为 react 组件
+                            component: 'react',
                         }
                     }
                 ]
             },
-            // Recommend config, transformAssetUrls
-            {
-                test: /\.vue$/,
-                use: [
-                    {
-                        loader: 'vue-loader',
-                        options: {
-                            transformAssetUrls: {
-                                ['标签名']: 'data' // 全局注册的标签名，默认是 icon
-                            }
-                        }
-                    }
-                ]
-            }
         ]
     }
 }
 ```
-
-其他配置可以参考：[不使用-vue-cli-插件](./#不使用-vue-cli-插件)
+> 使用 [vue-cli](./advanced.md#vue-cli-快速配置)
 
 ### 使用
+```js
+import arrowData from 'svg-file-path/arrow.svg'
+// {name: 'arrow', data: {width: 16, height: 16, ...}}
+console.log(arrowData) 
+```
+
+
+## Vue 2.x
+### 安装依赖
+```bash
+npm install @yzfe/svgicon @yzfe/vue-svgicon  --save
+```
+
+### 使用
+```js
+// main.js
+import { VueSvgIcon } from '@yzfe/vue-svgicon'
+
+// 引入 css 样式
+import '@yzfe/svgicon/lib/svgicon.css'
+// 注册全局组件
+Vue.component('icon', VueSvgIcon)
+```
 ```vue
 <template>
     <div>
         <icon :data="arrowData" />
+        <!-- 建议配置 transformAssetUrls， 可以直接传入 SVG 文件路径 -->
+        <icon data="svg-file-path/arrow.svg" />
     </div>
 </template>
 <script>
-import arrowData from 'svgfilepath/arrow.svg'
+import arrowData from 'svg-file-path/arrow.svg'
 export default {
     data() {
         return: {
@@ -164,174 +124,70 @@ export default {
 }
 </script>
 ```
-如果配置了 `transformAssetUrls`, 可以直接使用 svg 文件路径. 建议也配置 svg 文件路径的别名。
+
+## Vue 3.x
+### 安装依赖
+```bash
+npm install @yzfe/svgicon @yzfe/vue3-svgicon --save
+```
+
+### 使用
+```ts
+// main.ts
+import { VueSvgIconPlugin } from '@yzfe/vue3-svgicon'
+// 引入 css 样式
+import '@yzfe/svgicon/lib/svgicon.css'
+// 注册全局组件
+app.use(VueSvgIconPlugin, {tagName: 'icon'})
+```
 
 ```vue
+<script setup lang="ts">
+import arrowData from 'svg-file-path/arrow.svg'
+</script>
 <template>
     <div>
-        <!-- 这里假设配置了svg 文件路径的别名 @icon  -->
-        <icon data="@icon/arrow.svg" />
+        <icon :data="arrowData" />
+        <!-- 建议配置 transformAssetUrls， 可以直接传入 SVG 文件路径 -->
+        <icon data="svg-file-path/arrow.svg" />
     </div>
-</template>
+</template>    
 ```
 
 
 ## React
-### 安装
+### 安装依赖
 ```bash
-yarn add @yzfe/svgicon-loader  --dev
-yarn add @yzfe/svgicon @yzfe/react-svgicon
+npm install @yzfe/svgicon @yzfe/react-svgicon --save
 ```
 
-Webpack 配置
-```js{13}
-{
-    module: {
-        rules: [
-            {
-                test: /\.svg$/,
-                include: ['SVG 文件路径'],
-                use: [
-                    {
-                        loader: '@yzfe/svgicon-loader',
-                        options: {
-                            svgFilePath: ['SVG 文件路径'],
-                            svgoConfig: null, // 自定义 svgo 配置
-                            component: 'react', // 生成 React 组件
-                        }
-                    }
-                ]
-            }
-        ]
-    }
-}
-```
-::: details umijs 配置 demo
-<<< @/demo/react-demo/.umirc.ts
-:::
-
-引入 css
+### 使用
 ```ts
 import '@yzfe/svgicon/lib/svgicon.css'
 ```
-### 使用
+
 ```tsx
-import MySvgIcon from 'svg-path/mysvg.svg'
+import ArrowIcon from 'svg-file-path/arrow.svg'
 
 export default function FC() {
     return (
         <div>
-            <MySvgIcon color="red" />
+            <ArrowIcon color="red" />
         </div>
     )
 }
 ```
 
-如果你是 typescript 用户，请配置 tsconfig(使用了别名) 和 typings 
-```json
-{
-     "compilerOptions": {
-        "paths": {
-            "@icon": ["svg 图标路径"]
-        },
-    },
-}
-```
-
-```ts
-declare module '@icon/*' {
-    import { ReactSvgIconFC } from '@yzfe/react-svgicon'
-    const value: ReactSvgIconFC
-    export = value
-}
-```
-
-## Vite
-doc: [https://github.com/MMF-FE/svgicon/tree/master/packages/vite-plugin-svgicon](https://github.com/MMF-FE/svgicon/tree/master/packages/vite-plugin-svgicon)
-
-demo: [https://github.com/Allenice/svgicon-vite-demo](https://github.com/Allenice/svgicon-vite-demo)
-
-## Taro
-### 安装
+## TaroJs
+### 安装依赖
 ```bash
-yarn add @yzfe/svgicon-loader  --dev
-yarn add @yzfe/svgicon @yzfe/taro-svgicon
+npm install @yzfe/svgicon @yzfe/taro-svgicon
 ```
-
-conifg 配置
-```js{13}
-// 小程序配置；mini
-{
-   ...mini, // ...h5
-   webpackChain (chain, webpack) {
-      chain.merge({
-        module: {
-          rule: {
-            svgIcon: {
-              test: /\.svg$/,
-              include: svgFilePath,
-              use: [{
-                loader: "@yzfe/svgicon-loader",
-                options: {
-                  svgFilePath,
-                  component: 'taro',
-                }
-              }]
-            }
-          }
-        }
-      })
-
-      chain.module
-      .rule('image')
-      .exclude.add(svgFilePath)
-      .end()
-    }
-}
-```
-::: details taro 配置 demo
-<<< @/demo/taro-demo/config/index.js
-:::
-
-引入 css
-```ts
-import '@yzfe/svgicon/lib/svgicon.css'
-```
-### 使用
-```tsx
-import MySvgIcon from 'svg-path/mysvg.svg'
-
-export default function FC() {
-    return (
-        <div>
-            <MySvgIcon color="red" />
-        </div>
-    )
-}
-```
-
-如果你是 typescript 用户，请配置 tsconfig(使用了别名) 和 typings 
-```json
-{
-     "compilerOptions": {
-        "paths": {
-            "@icon": ["svg 图标路径"]
-        },
-    },
-}
-```
-
-```ts
-declare module '@icon/*' {
-    import { TaroSvgIconFC } from '@yzfe/taro-svgicon'
-    const value: TaroSvgIconFC
-    export = value
-}
-```
+TaroJs 使用方式与 React 一致，请参考 React 一节
 
 ## 其他框架
 其他 js 框架可以通过 `@yzfe/svgicon ` 编写适用于其框架的图标组件，可以参考 `@yzfe/react-svgicon`.
 
 ::: details @yzfe/react-svgicon
-<<<@/packages/react-svgicon/src/index.tsx
+<<<../packages/react-svgicon/src/index.tsx
 :::

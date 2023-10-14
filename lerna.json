@@ -1,11 +1,16 @@
 {
+    "$schema": "node_modules/lerna/schemas/lerna-schema.json",
     "version": "independent",
-    "npmClient": "yarn",
-    "useWorkspaces": true,
     "packages": ["packages/*", "demo/*"],
     "command": {
         "publish": {
-            "ignoreChanges": ["**/demo/**", "**/*.md", "**/tests/*", "**/*.map"]
+            "ignoreChanges": [
+                "**/demo/**",
+                "**/*.md",
+                "**/tests/*",
+                "**/*.map",
+                "./docs/**"
+            ]
         }
     }
 }

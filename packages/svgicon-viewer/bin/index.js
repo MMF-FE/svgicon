@@ -2,10 +2,12 @@
 
 const yargs = require('yargs')
 const path = require('path')
-const fs = require('fs')
+const fs = require('fs-extra')
 const gen = require('@yzfe/svgicon-gen').default
 const glob = require('glob')
 const serve = require('./serve')
+
+const distPath = path.join(__dirname, '../dist')
 
 const args = yargs
     .usage(
@@ -19,6 +21,11 @@ const args = yargs
             yarg.positional('metaFile', {
                 describe: 'meta.json file, custom display name',
             })
+
+            yarg.option('output', {
+                describe: 'Output path for static html',
+                type: 'string',
+            }).alias('o', 'output')
         }
     )
     .help('help')
@@ -37,6 +44,8 @@ if (args.metaFile) {
     // 默认取 svg 目录的 meta.json
     metaFile = path.join(svgFilePath, 'meta.json')
 }
+
+const isOutput = !!args.output
 
 ;(async function () {
     let files = glob.sync(path.join(svgFilePath, '**/*.svg'))
@@ -62,10 +71,16 @@ if (args.metaFile) {
         window.iconMetas = ${JSON.stringify(meta || {})}
     `
     const injectReg = /\/\*\{\{inject\}\}\*\//
-    let html = fs.readFileSync(
-        path.join(__dirname, '../dist/index.html'),
-        'utf8'
-    )
+    let html = fs.readFileSync(path.join(distPath, 'index.html'), 'utf8')
     html = html.replace(injectReg, injectCode)
-    serve(html)
+
+    if (isOutput) {
+        const outputPath = path.isAbsolute(args.output)
+            ? args.output
+            : path.join(process.cwd(), args.output)
+        fs.copySync(distPath, outputPath)
+        fs.writeFileSync(path.join(outputPath, 'index.html'), html, 'utf8')
+    } else {
+        serve(html)
+    }
 })()

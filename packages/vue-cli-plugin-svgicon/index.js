@@ -30,11 +30,15 @@ module.exports = (api, cliOptions) => {
             .include.add(svgFilePath)
             .end()
             .test(/\.svg$/)
+            .use('babel-loader')
+            .loader('babel-loader')
+            .end()
             .use('svgicon')
             .loader('@yzfe/svgicon-loader')
             .options({
                 svgFilePath,
                 svgoConfig,
+                ...options.loaderOptions,
             })
 
         config.module.rule('svg').exclude.add(svgFilePath).end()

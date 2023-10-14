@@ -21,8 +21,8 @@
     "author": "Allenice Mo <994298628@qq.com>",
     "homepage": "https://github.com/MMF-FE/svgicon",
     "scripts": {
-        "dev": "rollup -c -w",
-        "build": "rm -rf dist && rollup -c",
+        "dev": "rollup -c --bundleConfigAsCjs -w",
+        "build": "rm -rf dist && rollup -c --bundleConfigAsCjs",
         "prepublishOnly": "yarn build"
     },
     "publishConfig": {
@@ -30,19 +30,31 @@
         "access": "public"
     },
     "peerDependencies": {
+        "@yzfe/react-svgicon": ">=1.0.0",
+        "@yzfe/vue3-svgicon": ">=1.0.0",
         "vite": ">=2.0.0-beta.1"
     },
+    "peerDependenciesMeta": {
+        "@yzfe/react-svgicon": {
+            "optional": true
+        },
+        "@yzfe/vue3-svgicon": {
+            "optional": true
+        }
+    },
     "devDependencies": {
-        "@rollup/plugin-commonjs": "^17.1.0",
-        "@rollup/plugin-node-resolve": "^11.2.0",
-        "rollup": "^2.39.0",
-        "rollup-plugin-peer-deps-external": "^2.2.4",
-        "rollup-plugin-typescript2": "^0.30.0",
-        "vite": "^2.0.1"
+        "@rollup/plugin-commonjs": "^25.0.5",
+        "@rollup/plugin-node-resolve": "^15.2.3",
+        "@rollup/plugin-terser": "^0.4.4",
+        "@rollup/plugin-typescript": "^11.1.5",
+        "rollup": "^4.0.2",
+        "tslib": "^2.6.2",
+        "typescript": "^5.2.2",
+        "vite": "^4.5.0"
     },
     "dependencies": {
         "@types/svgo": "^2.6.3",
-        "@yzfe/svgicon-gen": "^1.2.2"
-    },
-    "gitHead": "5557f1af66a9934169cd6e4fc73104b511375134"
+        "@yzfe/svgicon-gen": "*",
+        "minimatch": "^9.0.3"
+    }
 }

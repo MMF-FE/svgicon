@@ -1,7 +1,7 @@
 import { expect, assert } from 'chai'
 import { shallowMount, createLocalVue, mount } from '@vue/test-utils'
 
-import { VueSvgIcon, setOptions, Props } from '@yzfe/vue-svgicon'
+import { VueSvgIcon, setOptions, Props } from '../../dist'
 
 import vueIconData from '@icon/vue.svg'
 import arrowIconData from '@icon/arrow.svg'

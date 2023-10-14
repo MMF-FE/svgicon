@@ -13,7 +13,7 @@
         "declarationDir": "dist",
         "lib": ["esnext", "dom"],
         "outDir": "dist",
-        "types": ["node", "mocha", "chai"],
+        "types": ["node"],
     },
     "include": ["src/**/*.ts", "typings/**/*.ts"],
     "exclude": ["node_modules", "dist"]

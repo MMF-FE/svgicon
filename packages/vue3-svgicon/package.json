@@ -5,8 +5,8 @@
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
     "scripts": {
-        "dev": "rollup -c -w",
-        "build": "rm -rf dist && rollup -c",
+        "dev": "rollup -c --bundleConfigAsCjs -w",
+        "build": "rm -rf dist && rollup -c --bundleConfigAsCjs",
         "prepublishOnly": "yarn build"
     },
     "keywords": [
@@ -36,16 +36,15 @@
         "vue": ">=2.7.0"
     },
     "devDependencies": {
-        "@rollup/plugin-commonjs": "^15.0.0",
-        "@rollup/plugin-node-resolve": "^9.0.0",
-        "@yzfe/svgicon": "^1.1.1",
-        "rollup": "^2.26.3",
-        "rollup-plugin-peer-deps-external": "^2.2.3",
-        "rollup-plugin-postcss": "^3.1.5",
-        "rollup-plugin-terser": "^7.0.0",
-        "rollup-plugin-typescript2": "^0.27.2",
-        "typescript": "~3.9.3",
-        "vue": "^3.0.0-0"
+        "@rollup/plugin-commonjs": "^25.0.5",
+        "@rollup/plugin-node-resolve": "^15.2.3",
+        "@rollup/plugin-terser": "^0.4.4",
+        "@rollup/plugin-typescript": "^11.1.5",
+        "@yzfe/svgicon": "*",
+        "rollup": "^4.0.2",
+        "tslib": "^2.6.2",
+        "typescript": "^5.2.2",
+        "vue": "^3.0.0"
     },
     "gitHead": "8f4f2a4442e072323ecf76585a533342ddafecb5"
 }

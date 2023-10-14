@@ -1,0 +1,18 @@
+{
+    "name": "docs",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "serve:doc": "vuepress dev ../docs",
+        "build:doc": "vuepress build ../docs"
+    },
+    "dependencies": {
+        "@vuepress/plugin-google-analytics": "^1.5.4",
+        "@yzfe/svgicon": "*",
+        "@yzfe/vue-svgicon": "*",
+        "vuepress": "^1.9.10"
+    },
+    "devDependencies": {
+        "@yzfe/svgicon-loader": "*"
+    }
+}

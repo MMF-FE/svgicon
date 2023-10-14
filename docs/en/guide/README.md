@@ -2,6 +2,8 @@
 toc
 ---
 # Quick Start
+This section provides a brief introduction to the configuration and usage of `svgicon`. For more in-depth information, it is recommended to refer to the "[In-Depth](./advanced.md)" section to gain a deeper understanding.
+
 ## Introduction
 > svgicon is a name
 
@@ -18,143 +20,104 @@ svgicon is SVG icon component and tool set. It turns SVG files into icon data (v
 - @yzfe/vue-cli-plugin-svgicon `A vue-cli plugin that can quickly configure svgicon`
 - @yzfe/svgicon-polyfill `SVG innerHTML compatible (IE)`
 
-## Vue （2.x & 3.x）
-### Installation
-#### Use vue-cli plugin (recommended)
-```bash
-# You will be prompted to fill in the SVG file path, the globally registered component tag name and the vue version
-vue add @yzfe/svgicon
-```
+## Configuration
 
-If you have installed `@yzfe/vue-cli-plugin-svgicon`, but this plugin is not invoked, you can invoke it manually.
-```bash
-vue invoke @yzfe/svgicon
-```
-
-After a successful invoke, the necessary dependencies and code will be automatically added, and a `.vue-svgicon.config.js` file will be generated to configure `@yzfe/svgicon-loader` and webpack aliases, as well as transformAssetUrls, etc.
-::: details demo/vue-demo/.vue-svgicon.config.js
-<<< @/demo/vue-demo/.vue-svgicon.config.js
-:::
-
-#### Not use the vue-cli plugin
-Use vue-cli, but not @ yzfe / vue-cli-plugin-svgicon.
+### Vite
+Use `vite-plugin-svgicon` to load svg files as icon data
 
 ```bash
-# loader
-yarn add @yzfe/svgicon-loader --dev
-# core
-yarn add @yzfe/svgicon
-
-# Add icon component
-yarn add @yzfe/vue-svgicon # vue2.x
-# or
-yarn add @yzfe/vue3-svgicon # vue3.x
+npm install vite-plugin-svgicon -D
 ```
-Configure vue.config.js
+
 
 ```js
-const svgFilePath = 'svg file path （absolute path)'
+// vite.config.ts
+import { defineConfig } from 'vite'
+import svgicon from 'vite-plugin-svgicon'
 
-{
-    chainWebpack(config) {
-        config.module
-            .rule('vue-svgicon')
-            .include.add(svgFilePath)
-            .end()
-            .test(/\.svg$/)
-            .use('svgicon')
-            .loader('@yzfe/svgicon-loader')
-            .options({
-                svgFilePath
-            })
-
-        config.module.rule('svg').exclude.add(svgFilePath).end()
-
-        // Recommended configuration transformAssetUrls
-        config.module
-            .rule('vue')
-            .use('vue-loader')
-            .loader('vue-loader')
-            .tap((opt) => {
-                opt.transformAssetUrls = opt.transformAssetUrls || {}
-                opt.transformAssetUrls['icon'] = ['data']
-                return opt
-            })
-
-        // Recommended configuration alias
-        config.resolve.alias.set('@icon', svgFilePath)
-    }
-}
+export default defineConfig({
+    plugins: [
+        svgicon({
+            include: ['**/assets/svg/**/*.svg'],
+            svgFilePath: path.join(__dirname, 'src/assets/svg'),
+            // If you are using react, it is recommended to configure the component option for react and load the svg file as react components.
+            component: 'react',
+        })
+    ]
+})
 ```
 
-After configuring vue.config.js, you need to add the following code to the entry file
 
-```ts
-// vue2.x
-import { VueSvgIcon } from '@yzfe/vue-svgicon'
-import '@yzfe/svgicon/lib/svgicon.css'
+### Webpack
+Use `@yzfe/svgicon-loader` to load svg files as icon data
 
-Vue.component('icon', VueSvgIcon)
+```bash
+npm install @yzfe/svgicon-loader -D
 ```
-
-```ts
-// vue3.x
-import { VueSvgIconPlugin } from '@yzfe/vue3-svgicon'
-import '@yzfe/svgicon/lib/svgicon.css'
-
-app.use(VueSvgIconPlugin, {tagName: 'icon'})
-```
-
-#### Manual configuration
-Configure Webpack
 
 ```js
+// webpack.config.js
 {
     module: {
         rules: [
-            {
+             {
                 test: /\.svg$/,
-                include: ['SVG 文件路径'],
+                include: ['SVG file path'],
                 use: [
+                    'babel-loader',
                     {
                         loader: '@yzfe/svgicon-loader',
                         options: {
-                            svgFilePath: ['SVG 文件路径'],
-                            svgoConfig: null // Custom svgo configuration
+                            svgFilePath: ['SVG file path'],
+                            // Custom svgo configuration
+                            svgoConfig: null,
+                            // If you are using react, it is recommended to configure the component option for react and load the svg file as react components.
+                            component: 'react',
                         }
                     }
                 ]
             },
-            //  transformAssetUrls
-            {
-                test: /\.vue$/,
-                use: [
-                    {
-                        loader: 'vue-loader',
-                        options: {
-                            transformAssetUrls: {
-                                ['标签名']: 'data' // The globally registered tag name, the default is icon
-                            }
-                        }
-                    }
-                ]
-            }
         ]
     }
 }
 ```
 
-Other configurations can refer to: [Not use-vue-cli-plugin](./#not-use-the-vue-cli-plugin)
+> Use [vue-cli](./advanced.md#vue-cli)
 
 ### Usage
+```js
+import arrowData from 'svg-file-path/arrow.svg'
+// {name: 'arrow', data: {width: 16, height: 16, ...}}
+console.log(arrowData) 
+```
+
+
+## Vue 2.x
+### Install dependencies
+```bash
+npm install @yzfe/svgicon @yzfe/vue-svgicon  --save
+```
+
+### Usage
+```js
+// main.js
+import { VueSvgIcon } from '@yzfe/vue-svgicon'
+
+// Import style
+import '@yzfe/svgicon/lib/svgicon.css'
+// Global component
+Vue.component('icon', VueSvgIcon)
+```
 ```vue
 <template>
     <div>
         <icon :data="arrowData" />
+        <!-- It is recommended to configure transformAssetUrls，. You can directly pass in the svg file path. -->
+        <icon data="svg-file-path/arrow.svg" />
     </div>
 </template>
 <script>
-import arrowData from 'svgfilepath/arrow.svg'
+import arrowData from 'svg-file-path/arrow.svg'
 export default {
     data() {
         return: {
@@ -164,96 +127,63 @@ export default {
 }
 </script>
 ```
-If `transformAssetUrls` is configured, the svg file path can be used directly. It is recommended to also configure the alias of the svg file path.
+
+## Vue 3.x
+### Install dependencies
+```bash
+npm install @yzfe/svgicon @yzfe/vue3-svgicon --save
+```
+
+### Usage
+```ts
+// main.ts
+import { VueSvgIconPlugin } from '@yzfe/vue3-svgicon'
+// Import style
+import '@yzfe/svgicon/lib/svgicon.css'
+// Global component
+app.use(VueSvgIconPlugin, {tagName: 'icon'})
+```
 
 ```vue
+<script setup lang="ts">
+import arrowData from 'svg-file-path/arrow.svg'
+</script>
 <template>
     <div>
-        <!-- It is assumed that the alias of the svg file path is configured: @icon  -->
-        <icon data="@icon/arrow.svg" />
+        <icon :data="arrowData" />
+        <!-- It is recommended to configure transformAssetUrls，. You can directly pass in the svg file path. -->
+        <icon data="svg-file-path/arrow.svg" />
     </div>
-</template>
+</template>    
 ```
 
 
 ## React
-### Installation
+### Install dependencies
 ```bash
-yarn add @yzfe/svgicon-loader  --dev
-yarn add @yzfe/svgicon @yzfe/react-svgicon
+npm install @yzfe/svgicon @yzfe/react-svgicon --save
 ```
-Configure Webpack
 
-```js{13}
-{
-    module: {
-        rules: [
-            {
-                test: /\.svg$/,
-                include: ['SVG file paths'],
-                use: [
-                    {
-                        loader: '@yzfe/svgicon-loader',
-                        options: {
-                            svgFilePath: ['SVG 文件路径'],
-                            svgoConfig: null,
-                            component: 'react', // Generate React components
-                        }
-                    }
-                ]
-            }
-        ]
-    }
-}
-```
-::: details umijs configuration demo
-<<< @/demo/react-demo/.umirc.ts
-:::
-
-Import css
+### Usage
 ```ts
 import '@yzfe/svgicon/lib/svgicon.css'
 ```
-### Usage
+
 ```tsx
-import MySvgIcon from 'svg-path/mysvg.svg'
+import ArrowIcon from 'svg-file-path/arrow.svg'
 
 export default function FC() {
     return (
         <div>
-            <MySvgIcon color="red" />
+            <ArrowIcon color="red" />
         </div>
     )
 }
 ```
 
-If you are typescript user, please configure tsconfig (if use aliases) and typings
-```json
-{
-     "compilerOptions": {
-        "paths": {
-            "@icon": ["svg file path"]
-        },
-    },
-}
-```
-
-```ts
-declare module '@icon/*' {
-    import { ReactSvgIconFC } from '@yzfe/react-svgicon'
-    const value: ReactSvgIconFC
-    export = value
-}
-```
-
-## Vite
-doc: [https://github.com/MMF-FE/svgicon/tree/master/packages/vite-plugin-svgicon](https://github.com/MMF-FE/svgicon/tree/master/packages/vite-plugin-svgicon)
-
-demo: [https://github.com/Allenice/svgicon-vite-demo](https://github.com/Allenice/svgicon-vite-demo)
-
-## Other js frameworks
-Other js frameworks can use `@yzfe/svgicon` to write icon components suitable for their frameworks, please refer to `@yzfe/react-svgicon`.
+## Other frameworks
+Other frameworks can use `@yzfe/svgicon` to write icon components suitable for their frameworks, please refer to `@yzfe/react-svgicon`.
 
 ::: details @yzfe/react-svgicon
-<<<@/packages/react-svgicon/src/index.tsx
+<<<../packages/react-svgicon/src/index.tsx
 :::

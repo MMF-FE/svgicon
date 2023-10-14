@@ -12,7 +12,6 @@
         "declarationDir": "dist",
         "baseUrl": ".",
         "outDir": "dist",
-        "types": ["webpack-env", "mocha", "chai"],
         "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
     },
     "include": ["src/**/*.ts"],

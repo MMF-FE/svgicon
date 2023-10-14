@@ -3,99 +3,171 @@ toc
 ---
 # 深入
 
-## 组件功能
-### 颜色
+## SVG 文件作为组件导入
+`@yzfe/svgicon-loader` 或者 `vite-plugin-svgicon` 都提供 `component` 和 `customCode`选项将 SVG 文件作为组件导入。
 
-<demo-color title="单色 (默认: 继承字体颜色)" />
-::: details 查看代码
-<<<@/docs/.vuepress/components/DemoColor.vue#demo
-:::
+- `component` 选项可选值
+    - `vue` Vue 3.x 组件
+    - `react` React 组件
+    - `custom` 自定义生成的代码， 与 `customCode` 配搭使用
 
-<demo-reverse-color title="r-color (反转填充或描边属性)" />
+### 使用预设值
+```ts
+// vite.config.ts
+import { defineConfig } from 'vite'
+import svgicon from 'vite-plugin-svgicon'
 
-> 时钟图标：圆形是填充，时针分针是描边， Vue 图标：第一个 path 是描边，第二个是 path 是填充
-
-::: details 查看代码
-<<<@/docs/.vuepress/components/DemoReverseColor.vue#demo
-:::
-
-<demo-multi-color title="多色（按照 path/shape 的顺序设置）" />
-::: details 查看代码
-<<<@/docs/.vuepress/components/DemoMultiColor.vue#demo
-:::
-
-<demo-original-color title="原色 (original)" />
-::: details 查看代码
-<<<@/docs/.vuepress/components/DemoOriginalColor.vue#demo
-:::
-
-> 第二和第三个色轮是在原色的基础上修改某些颜色
-
-<demo-replace title="替换 svg 代码 (replace)" />
-::: details 查看代码
-<<<@/docs/.vuepress/components/DemoReplace.vue#demo
-:::
-
-<demo-gradient title="渐变" />
-::: details 查看代码
-<<<@/docs/.vuepress/components/DemoGradient.vue#demo
-:::
-
-<demo-gradient-colors title="修改原始渐变颜色" />
-::: details 查看代码
-<<<@/docs/.vuepress/components/DemoGradientColors.vue#demo
-:::
-> `original` 必须是 true 才有效果
-
-### 大小
-<demo-size title="size, 默认单位：px, 默认大小：16px" />
-::: details 查看代码
-<<<@/docs/.vuepress/components/DemoSize.vue#demo
-:::
-
-### 填充/描边
-<demo-fill title="fill, 默认：true" />
-::: details 查看代码
-<<<@/docs/.vuepress/components/DemoFill.vue#demo
-<<<@/docs/.vuepress/components/DemoFill.vue#css
-:::
-
-### 方向
-<demo-direction title="dir, 默认：up" />
-::: details 查看代码
-<<<@/docs/.vuepress/components/DemoDirection.vue#demo
-:::
-
-## 图标预览
-使用 `@yzfe/svgicon-viewer` 可以预览任意文件夹的 SVG 文件。
-
-#### 安装
-```bash
-# 全局安装
-yarn global add @yzfe/svgicon-viewer
+export default defineConfig({
+    plugins: [
+        svgicon({
+            include: ['**/assets/svg/**/*.svg'],
+            svgFilePath: path.join(__dirname, 'src/assets/svg'),
+            component: 'react',
+        })
+    ]
+})
 ```
 
-#### 使用
-```bash
-# svgicon-viewer <svgFilePath> [metaFile]
-svgicon-viewer ./src/assets/svg
+用法
+```tsx
+import ArrowIcon from 'svg-icon-path/arrow.svg'
+export default funtion() {
+   return (
+        <div>
+            <ArrowIcon color="red" />
+        </div>
+    )
+}
 ```
 
-![svgicon-viewer](../images/svgicon-viewer.png)
+### 自定义
+通过设置 `component` 为 `custom`和配置 `customCode` 来自定义生成的代码。`@yzfe/svgicon-loader` 或 `vite-plugin-svgicon` 已预先生成代码片段，`const data = {/*iconData*/}`，最后会将这段代码与 `customCode` 拼接作为最终的代码。
 
-使用 meta.json 可以添加额外的信息，目前只支持一个 name 字段，可以用来描述图标。
+```ts
+// vite.config.ts
+import { defineConfig } from 'vite'
+import svgicon from 'vite-plugin-svgicon'
 
-```json
-// meta.json demo
-{
-    "arrow": {
-        "name": "箭头"
+export default defineConfig({
+    plugins: [
+        svgicon({
+            include: ['**/assets/svg/**/*.svg'],
+            svgFilePath: path.join(__dirname, 'src/assets/svg'),
+            component: 'custom',
+            customCode: `
+                import Vue from 'vue'
+                import { VueSvgIcon } from '@yzfe/vue-svgicon'
+
+                export default {
+                    functional: true,
+                    render(h, context) {
+                        return h(VueSvgIcon, {
+                            ...context.data,
+                            data: data
+                        })
+                    }
+                }
+            `
+        })
+    ]
+})
+```
+上述配置将 SVG 文件加载为下面的代码：
+```js
+const data = {/*iconData*/}
+import Vue from 'vue'
+import { VueSvgIcon } from '@yzfe/vue-svgicon'
+
+export default {
+    functional: true,
+    render(h, context) {
+        return h(VueSvgIcon, {
+            ...context.data,
+            data: data
+        })
     }
 }
 ```
 
-```bash
-svgicon-viewer ./src/assets/svg ./src/assets/svg/meta.json
+::: warning
+如果使用的是 `@yzfe/svgicon-loader`, 需要加上 `babel-loader` 处理生成的代码。
+:::
+
+## 配置多个路径
+```ts
+// vite.config.ts
+import { defineConfig } from 'vite'
+import svgicon from 'vite-plugin-svgicon'
+
+export default defineConfig({
+    plugins: [
+        svgicon({
+            include: ['**/assets/svg/**/*.svg'],
+            svgFilePath: path.join(__dirname, '../../packages/assets/svg'),
+        }),
+        svgicon({
+            include: ['**/assets/svg/**/*.svg'],
+            // 匹配:  xxx.svg?component
+            matchQuery: /component/,
+            svgFilePath: path.join(__dirname, '../../packages/assets'),
+            component: 'vue',
+        }),
+         svgicon({
+            include: ['**/assets/font-awesome/**/*.svg'],
+            svgFilePath: path.join(
+                __dirname,
+                '../../packages/assets/font-awesome'
+            ),
+        }),
+    ]
+})
 ```
 
-![svgicon-viewer](../images/svgicon-viewer-meta.png)
+用法
+```ts
+// 导入为图标数据
+import ArrowIconData from '@/assets/svg/arrow.svg'
+import FaArrowIconData from '@/assets/font-awesome/arrow.svg'
+
+// 导入为组件
+import ArrowIcon from 'svg-icon-path/arrow.svg?component'
+
+// 导入为路径
+import ArrowSvgUrl from 'svg-icon-path/arrow.svg?url'
+```
+
+## Typescript
+如果配置 SVG 文件作为组件导入，需要加上组件的类型定义。
+
+```ts
+// react
+declare module '@/assets/svg/*.svg' {
+    import { ReactSvgIconFC } from '@yzfe/react-svgicon'
+    const value: ReactSvgIconFC
+    export = value
+}
+
+// vue
+declare module '@/assets/svg/*.svg' {
+    import { VueSvgIcon } from '@yzfe/vue3-svgicon'
+    const value: typeof VueSvgIcon
+    export = value
+}
+```
+
+## vue-cli
+如果你的项目使用 `vue-cli`, 推荐使用 `@yzfe/vue-cli-plugin-svgicon` 进行快速配置。
+
+```bash
+# 将会提示你填写 SVG 文件路径，全局注册的组件标签名称和 vue 的版本
+vue add @yzfe/svgicon
+```
+
+如果已经安装了 `@yzfe/vue-cli-plugin-svgicon`, 但是没有调用到这个插件，你可以手动调用。
+```bash
+vue invoke @yzfe/svgicon
+```
+
+成功调用后，会自动添加必要的依赖和代码，另外还会生成 `.vue-svgicon.config.js` 文件，用来配置 `@yzfe/svgicon-loader` 和 `webpack` 别名，还有 `transformAssetUrls` 等。
+
+<<<../demo/vue2-webpack/.vue-svgicon.config.js

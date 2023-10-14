@@ -1,10 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference
-/// <reference path="global.d.ts" />
+import { expect, describe, it } from '@jest/globals'
 
-import jsdom from 'mocha-jsdom'
-import { assert, expect } from 'chai'
-import { svgIcon, setOptions, Props } from '@yzfe/svgicon'
 import icons from './assets/icons'
+import { svgIcon, setOptions } from '../dist'
+import type { Props } from '../dist'
 
 function mount(props: Props) {
     const result = svgIcon(props)
@@ -18,17 +16,13 @@ function mount(props: Props) {
 }
 
 describe('Test svgIcon', () => {
-    jsdom({
-        url: 'https://example.org/',
-    })
-
     describe('Test svgIcon result', () => {
         it('should return correct result data', () => {
             const result = svgIcon({
                 data: icons.arrowIcon,
             })
-            assert.ok(!!result.path, 'not path data')
-            assert.ok(!!result.className, 'not defalt className')
+            expect(!!result.path).toBeTruthy()
+            expect(!!result.className).toBeTruthy()
         })
     })
 
@@ -42,16 +36,12 @@ describe('Test svgIcon', () => {
                     dir,
                 })
 
-                expect(result.className).has.contain(
-                    `svg-${dir}`,
-                    'has no dir: ' + dir
-                )
+                expect(result.className).toContain(`svg-${dir}`)
 
                 // Can't contains other dir
-                expect(result.className).to.not.be.contains(
-                    dirs.filter((v) => v != dir).map(() => `svg-${dir}`),
-                    "Can't contains other dir"
-                )
+                expect(
+                    dirs.filter((v) => v != dir).map(() => `svg-${dir}`)
+                ).toEqual(expect.not.arrayContaining([result.className]))
             }
         })
     })
@@ -64,8 +54,8 @@ describe('Test svgIcon', () => {
             })
 
             const path = element.querySelector('path')
-            assert.ok(!!path, 'path is not fond')
-            assert.equal('green', path && path.getAttribute('fill'))
+            expect(!!path).toBeTruthy()
+            expect('green').toEqual(path && path.getAttribute('fill'))
         })
 
         it('should stroke with green color', async () => {
@@ -75,9 +65,10 @@ describe('Test svgIcon', () => {
             })
 
             const path = element.querySelector('path')
-            assert.ok(!!path, 'path is not found')
-            assert.equal('none', path && path.getAttribute('fill'))
-            assert.equal('green', path && path.getAttribute('stroke'))
+
+            expect(!!path).toBeTruthy()
+            expect('none').toEqual(path && path.getAttribute('fill'))
+            expect('green').toEqual(path && path.getAttribute('stroke'))
         })
 
         it('should fill with red and green color', async () => {
@@ -88,7 +79,7 @@ describe('Test svgIcon', () => {
 
             const paths = element.querySelectorAll('path')
             paths.forEach((path, ix) => {
-                assert.equal(['red', 'green'][ix], path.getAttribute('fill'))
+                expect(['red', 'green'][ix]).toEqual(path.getAttribute('fill'))
             })
         })
 
@@ -101,11 +92,11 @@ describe('Test svgIcon', () => {
             const paths = vueIcon.element.querySelectorAll('path')
             paths.forEach((path, ix) => {
                 if (ix === 0) {
-                    assert.equal('red', path.getAttribute('fill'))
-                    assert.equal('none', path.getAttribute('stroke'))
+                    expect('red').toEqual(path.getAttribute('fill'))
+                    expect('none').toEqual(path.getAttribute('stroke'))
                 } else {
-                    assert.equal('none', path.getAttribute('fill'))
-                    assert.equal('green', path.getAttribute('stroke'))
+                    expect('none').toEqual(path.getAttribute('fill'))
+                    expect('green').toEqual(path.getAttribute('stroke'))
                 }
             })
         })
@@ -118,8 +109,7 @@ describe('Test svgIcon', () => {
 
             const $el = arrowIcon.element
             $el.querySelectorAll('path').forEach((path, ix) => {
-                assert.equal(
-                    ['url(#gradient-1)', 'url(#gradient-2)'][ix],
+                expect(['url(#gradient-1)', 'url(#gradient-2)'][ix]).toEqual(
                     path.getAttribute('fill')
                 )
             })
@@ -131,14 +121,14 @@ describe('Test svgIcon', () => {
             let arrowIcon = mount({
                 data: icons.arrowIcon,
             })
-            expect(arrowIcon.result.className).contains('svg-fill')
+            expect(arrowIcon.result.className).toContain('svg-fill')
 
             arrowIcon = mount({
                 data: icons.arrowIcon,
                 fill: false,
             })
 
-            expect(arrowIcon.result.className).not.contains('svg-fill')
+            expect(arrowIcon.result.className).not.toContain('svg-fill')
         })
 
         it('should has stroke style by default when use isStroke option', async () => {
@@ -150,7 +140,7 @@ describe('Test svgIcon', () => {
                 data: icons.arrowIcon,
             })
 
-            expect(arrowIcon.result.className).not.contains('svg-fill')
+            expect(arrowIcon.result.className).not.toContain('svg-fill')
 
             // restore options
             setOptions({
@@ -167,8 +157,8 @@ describe('Test svgIcon', () => {
                 height: '40',
             })
 
-            assert.equal('50px', arrowIcon.result.style.width)
-            assert.equal('40px', arrowIcon.result.style.height)
+            expect('50px').toEqual(arrowIcon.result.style.width)
+            expect('40px').toEqual(arrowIcon.result.style.height)
         })
 
         it('size should be 10em/10em', async () => {
@@ -178,8 +168,8 @@ describe('Test svgIcon', () => {
                 height: '10em',
             })
 
-            assert.equal('10em', arrowIcon.result.style.width)
-            assert.equal('10em', arrowIcon.result.style.height)
+            expect('10em').toEqual(arrowIcon.result.style.width)
+            expect('10em').toEqual(arrowIcon.result.style.height)
         })
 
         it('size should be 40px/70px', async () => {
@@ -188,8 +178,8 @@ describe('Test svgIcon', () => {
                 scale: '10',
             })
 
-            assert.equal('40px', arrowIcon.result.style.width)
-            assert.equal('70px', arrowIcon.result.style.height)
+            expect('40px').toEqual(arrowIcon.result.style.width)
+            expect('70px').toEqual(arrowIcon.result.style.height)
         })
 
         it('size should be 40px/70px', async () => {
@@ -200,8 +190,8 @@ describe('Test svgIcon', () => {
                 height: '50',
             })
 
-            assert.equal('40px', arrowIcon.result.style.width)
-            assert.equal('70px', arrowIcon.result.style.height)
+            expect('40px').toEqual(arrowIcon.result.style.width)
+            expect('70px').toEqual(arrowIcon.result.style.height)
         })
     })
 
@@ -220,7 +210,7 @@ describe('Test svgIcon', () => {
             const ids1 = findIds(html1)
             const ids2 = findIds(html2)
 
-            assert.ok(ids1.every((v) => ids2.indexOf(v) < 0))
+            expect(ids1.every((v) => ids2.indexOf(v) < 0)).toBe(true)
         })
     })
 
@@ -234,7 +224,7 @@ describe('Test svgIcon', () => {
             })
 
             const html = vueIcon.element.innerHTML
-            assert.ok(html.includes('fill="#222222"'))
+            expect(html.includes('fill="#222222"')).toBe(true)
         })
     })
 })
