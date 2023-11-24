@@ -6,7 +6,8 @@
         "packages": [
             "packages/*",
             "demo/*",
-            "docs"
+            "docs",
+            "docs-backup"
         ]
     },
     "scripts": {

@@ -1,0 +1,18 @@
+{
+    "name": "docs-backup",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "serve:doc": "vuepress dev ./",
+        "build:doc": "vuepress build ./"
+    },
+    "dependencies": {
+        "@vuepress/plugin-google-analytics": "^1.5.4",
+        "@yzfe/svgicon": "*",
+        "@yzfe/vue-svgicon": "*",
+        "vuepress": "^1.9.10"
+    },
+    "devDependencies": {
+        "@yzfe/svgicon-loader": "*"
+    }
+}

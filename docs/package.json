@@ -3,16 +3,18 @@
     "version": "0.0.0",
     "private": true,
     "scripts": {
-        "serve:doc": "vuepress dev ../docs",
-        "build:doc": "vuepress build ../docs"
+        "docs:dev": "vitepress dev",
+        "docs:build": "vitepress build",
+        "docs:preview": "vitepress preview"
     },
     "dependencies": {
-        "@vuepress/plugin-google-analytics": "^1.5.4",
         "@yzfe/svgicon": "*",
-        "@yzfe/vue-svgicon": "*",
-        "vuepress": "^1.9.10"
+        "@yzfe/vue3-svgicon": "*",
+        "sass": "^1.69.5",
+        "vitepress": "1.0.0-rc.30"
     },
     "devDependencies": {
-        "@yzfe/svgicon-loader": "*"
+        "@types/node": "^20.10.0",
+        "vite-plugin-svgicon": "*"
     }
 }
