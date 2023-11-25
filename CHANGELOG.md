@@ -1,3 +1,16 @@
+## 2023-11-25
+#### Packages Release
+- @yzfe/react-svgicon@1.2.0-alpha.0
+- @yzfe/svgicon@1.2.0-alpha.0
+- @yzfe/svgicon-gen@1.3.0-alpha.0
+- @yzfe/svgicon-loader@1.3.0-alpha.0
+- @yzfe/svgicon-viewer@1.3.0-alpha.0
+- @yzfe/taro-svgicon@1.1.0-alpha.0
+- @yzfe/vue-cli-plugin-svgicon@1.3.0-alpha.0
+- @yzfe/vue-svgicon@5.0.0-alpha.0
+- @yzfe/vue2-svgicon@5.0.0-alpha.0
+- vite-plugin-svgicon@2.1.0-alpha.0
+
 ## 2023-09-04
 #### Packages Release
 - @yzfe/react-svgicon@1.1.1
