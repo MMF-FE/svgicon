@@ -21,7 +21,8 @@ dist
 # remove docs dist
 demo/**/dist
 packages/svgicon-viewer/dist
-docs/.vuepress/dist
+docs/.vitepress/dist
+docs/.vitepress/cache
 
 **/coverage/**
 
