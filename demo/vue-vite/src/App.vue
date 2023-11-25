@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Props } from '@yzfe/vue3-svgicon'
+import { Props } from '@yzfe/vue-svgicon'
 import icons from './icons/icons'
 import awesome from './icons/awesome'
 import { computed } from 'vue'

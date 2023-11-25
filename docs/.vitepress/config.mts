@@ -12,7 +12,7 @@ const svgFilePath = [
 export default defineConfig({
     base: isPrd ? '/svgicon/' : '/',
     title: 'svgicon',
-    description: 'SVG icon components and tool set',
+    description: 'SVG icon toolkit',
     vite: {
         resolve: {
             alias: {

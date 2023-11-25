@@ -1,3 +1,3 @@
-# @yzfe/vue3-svgicon
+# @yzfe/vue2-svgicon
 
 [doc](https://github.com/MMF-FE/svgicon)

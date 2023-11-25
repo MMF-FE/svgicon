@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "svgicon"
-  text: "SVG icon components and tool set"
+  text: "SVG icon toolkit"
   actions:
     - theme: brand
       text: Quick Start →

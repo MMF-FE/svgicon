@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import { VueSvgIcon } from '@yzfe/vue-svgicon'
+import { VueSvgIcon } from '@yzfe/vue2-svgicon'
 import '@yzfe/svgicon/lib/svgicon.css'
 
 Vue.config.productionTip = false

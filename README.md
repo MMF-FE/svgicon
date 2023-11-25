@@ -8,8 +8,8 @@
 
 ## Packages
 - @yzfe/svgicon `Generate the data required by the SVG icon component according to the incoming parameters (props)`
-- @yzfe/vue-svgicon `SVG icon component for vue2.x`
-- @yzfe/vue3-svgicon `SVG icon component for vue3.x`
+- @yzfe/vue-svgicon `SVG icon component for vue ^2.7 || >=3.0.0`
+- @yzfe/vue2-svgicon `SVG icon component for vue < 2.7`
 - @yzfe/react-svgicon `SVG icon component for react`
 - @yzfe/svgicon-gen `Generate icon data (icon name and processed SVG content) based on the content of the SVG file`
 - @yzfe/svgicon-loader `Load the SVG file as icon data (vue) or SVG icon component (react), the generated code can be customized`

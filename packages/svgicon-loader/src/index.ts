@@ -34,7 +34,7 @@ const SvgiconLoader: loader.Loader = function (source) {
                             data
                         })
                     }
-        
+
                     SvgIconFC.iconName = data.name
                     SvgIconFC.iconData = data.data
                     export default SvgIconFC
@@ -59,10 +59,10 @@ const SvgiconLoader: loader.Loader = function (source) {
                 case 'vue':
                     result += `
                     import { defineComponent, h} from 'vue'
-                    import { VueSvgIcon } from '@yzfe/vue3-svgicon'
+                    import { VueSvgIcon } from '@yzfe/vue-svgicon'
                     const name = (data.name.split('/').pop() || '').replace(/^[\\d_]+/, '')
                     const componentName = name || 'SvgIcon'
-        
+
                     export default defineComponent({
                         name: componentName,
                         setup() {

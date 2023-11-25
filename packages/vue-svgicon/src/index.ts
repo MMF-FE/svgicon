@@ -1,4 +1,5 @@
-import { CreateElement, VNode, RenderContext } from 'vue'
+import { defineComponent, h, App, PropType } from 'vue'
+
 import {
     svgIcon,
     Props,
@@ -6,35 +7,71 @@ import {
     setOptions,
     Icon,
     IconData,
-    getPropKeys,
 } from '@yzfe/svgicon'
 
-const VueSvgIcon = {
-    functional: true,
-    props: getPropKeys(),
-    render(h: CreateElement, context: RenderContext<Props>): VNode {
-        const result = svgIcon(context.props)
+const VueSvgIcon = defineComponent({
+    props: {
+        /** icon data */
+        data: {
+            type: Object as PropType<Icon>,
+        },
+        width: {
+            type: [String, Number],
+        },
+        height: {
+            type: [String, Number],
+        },
+        scale: {
+            type: [String, Number],
+        },
+        dir: {
+            type: String,
+        },
+        color: {
+            type: [String, Array] as PropType<string | string[]>,
+        },
+        stopColors: {
+            type: Array as PropType<string[]>,
+        },
+        title: {
+            type: String,
+        },
+        fill: {
+            type: Boolean,
+            default: true,
+        },
+        original: {
+            type: Boolean,
+            default: false,
+        },
+        replace: {
+            type: Function as PropType<(svgInnerContent: string) => string>,
+        },
+    },
+    render() {
+        const result = svgIcon(this.$props)
 
         return h('svg', {
-            ...context.data,
-            attrs: {
-                viewBox: result.box,
-                ...context.data.attrs,
-            },
-            staticStyle: {
-                ...result.style,
-                ...context.data.staticStyle,
-            },
-            staticClass:
-                result.className +
-                (context.data.staticClass
-                    ? ` ${context.data.staticClass}`
-                    : ''),
-            domProps: {
-                innerHTML: result.path,
-            },
+            viewBox: result.box,
+            style: result.style,
+            class: result.className,
+            innerHTML: result.path,
         })
+    },
+})
+
+const VueSvgIconPlugin = {
+    install: (app: App, options: { tagName: string }): void => {
+        app.component(options.tagName, VueSvgIcon)
     },
 }
 
-export { VueSvgIcon, setOptions, Props, Options, Icon, IconData }
+export {
+    VueSvgIcon,
+    VueSvgIconPlugin,
+    setOptions,
+    Props,
+    Options,
+    Icon,
+    IconData,
+}

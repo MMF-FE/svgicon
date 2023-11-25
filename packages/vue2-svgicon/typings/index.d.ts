@@ -4,7 +4,7 @@ declare module '*.vue' {
 }
 
 declare module '*.svg' {
-    import { Icon } from '@yzfe/vue-svgicon'
+    import { Icon } from '@yzfe/vue2-svgicon'
     const resource: Icon
     export default resource
 }

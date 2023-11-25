@@ -9,7 +9,7 @@
 - vite-plugin-svgicon@1.3.2
 - @yzfe/vue-cli-plugin-svgicon@1.2.2
 - @yzfe/vue-svgicon@4.0.4
-- @yzfe/vue3-svgicon@1.0.2
+- @yzfe/vue-svgicon@1.0.2
 
 #### Changes
 - Add `replace` prop and optimize id generation

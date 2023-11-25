@@ -83,7 +83,7 @@ async function genSvgIcon(
         case 'vue':
             result += `
             import { defineComponent, h} from 'vue'
-            import { VueSvgIcon } from '@yzfe/vue3-svgicon'
+            import { VueSvgIcon } from '@yzfe/vue-svgicon'
             const name = (data.name.split('/').pop() || '').replace(/^[\\d_]+/, '')
             const componentName = name || 'SvgIcon'
 

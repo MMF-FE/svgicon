@@ -9,15 +9,15 @@ module.exports = (api, options) => {
     }
 
     if (options.isVue3) {
-        deps['@yzfe/vue3-svgicon'] = devDeps['@yzfe/vue3-svgicon']
+        deps['@yzfe/vue-svgicon'] = devDeps['@yzfe/vue-svgicon']
         api.injectImports(api.entryFile, [
-            `import { VueSvgIconPlugin } from '@yzfe/vue3-svgicon'`,
+            `import { VueSvgIconPlugin } from '@yzfe/vue-svgicon'`,
             `import '@yzfe/svgicon/lib/svgicon.css'`,
         ])
     } else {
-        deps['@yzfe/vue-svgicon'] = devDeps['@yzfe/vue-svgicon']
+        deps['@yzfe/vue2-svgicon'] = devDeps['@yzfe/vue2-svgicon']
         api.injectImports(api.entryFile, [
-            `import { VueSvgIcon } from '@yzfe/vue-svgicon'`,
+            `import { VueSvgIcon } from '@yzfe/vue2-svgicon'`,
             `import '@yzfe/svgicon/lib/svgicon.css'`,
         ])
     }

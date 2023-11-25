@@ -1,4 +1,4 @@
-import { Icon } from '@yzfe/vue-svgicon'
+import { Icon } from '@yzfe/vue2-svgicon'
 
 declare global {
     interface Window {

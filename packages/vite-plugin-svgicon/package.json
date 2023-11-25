@@ -31,14 +31,14 @@
     },
     "peerDependencies": {
         "@yzfe/react-svgicon": ">=1.0.0",
-        "@yzfe/vue3-svgicon": ">=1.0.0",
+        "@yzfe/vue-svgicon": ">=1.0.0",
         "vite": ">=2.0.0-beta.1"
     },
     "peerDependenciesMeta": {
         "@yzfe/react-svgicon": {
             "optional": true
         },
-        "@yzfe/vue3-svgicon": {
+        "@yzfe/vue-svgicon": {
             "optional": true
         }
     },

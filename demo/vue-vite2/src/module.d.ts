@@ -1,5 +1,5 @@
 declare module '@icon/*.svg?component' {
-    import { VueSvgIcon } from '@yzfe/vue3-svgicon'
+    import { VueSvgIcon } from '@yzfe/vue-svgicon'
     const value: typeof VueSvgIcon
     export = value
 }

@@ -56,7 +56,7 @@ export default defineConfig({
             component: 'custom',
             customCode: `
                 import Vue from 'vue'
-                import { VueSvgIcon } from '@yzfe/vue-svgicon'
+                import { VueSvgIcon } from '@yzfe/vue2-svgicon'
 
                 export default {
                     functional: true,
@@ -76,7 +76,7 @@ export default defineConfig({
 ```js
 const data = {/*iconData*/}
 import Vue from 'vue'
-import { VueSvgIcon } from '@yzfe/vue-svgicon'
+import { VueSvgIcon } from '@yzfe/vue2-svgicon'
 
 export default {
     functional: true,
@@ -149,7 +149,7 @@ declare module '@/assets/svg/*.svg' {
 
 // vue
 declare module '@/assets/svg/*.svg' {
-    import { VueSvgIcon } from '@yzfe/vue3-svgicon'
+    import { VueSvgIcon } from '@yzfe/vue-svgicon'
     const value: typeof VueSvgIcon
     export = value
 }

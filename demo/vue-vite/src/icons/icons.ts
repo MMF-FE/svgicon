@@ -1,4 +1,4 @@
-import { Icon } from '@yzfe/vue3-svgicon'
+import { Icon } from '@yzfe/vue-svgicon'
 
 const req = import.meta.glob<Icon>('@icon/**/*.svg', {
     eager: true,

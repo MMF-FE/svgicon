@@ -1,7 +1,7 @@
 {
     "name": "vue-svgicon",
     "private": true,
-    "description": "SVG icon components and tool set",
+    "description": "SVG icon toolkit",
     "workspaces": {
         "packages": [
             "packages/*",

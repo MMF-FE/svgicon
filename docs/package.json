@@ -9,7 +9,7 @@
     },
     "dependencies": {
         "@yzfe/svgicon": "*",
-        "@yzfe/vue3-svgicon": "*",
+        "@yzfe/vue-svgicon": "*",
         "sass": "^1.69.5",
         "vitepress": "1.0.0-rc.30"
     },

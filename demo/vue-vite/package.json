@@ -10,7 +10,7 @@
     },
     "dependencies": {
         "@yzfe/svgicon": "*",
-        "@yzfe/vue3-svgicon": "*",
+        "@yzfe/vue-svgicon": "*",
         "vue": "^3.3.4"
     },
     "devDependencies": {
