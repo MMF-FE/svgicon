@@ -3,7 +3,7 @@
 const yargs = require('yargs')
 const path = require('path')
 const fs = require('fs-extra')
-const gen = require('@yzfe/svgicon-gen').default
+const gen = require('@yzfe/svgicon-gen')
 const glob = require('glob')
 const serve = require('./serve')
 
