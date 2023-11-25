@@ -21,10 +21,3 @@ features:
   details: In any folder, use @yzfe/svgicon-viewer to view the SVG icon effect
 footer: MIT Licensed | Copyright © 2020-present YZFE
 ---
-
-<script setup>
-    import xxx from '@fa/solid/arrow-up.svg'
-</script>
-
-{{xxx}}
-<icon data="@fa/solid/arrow-up.svg" width="100" height="100" />

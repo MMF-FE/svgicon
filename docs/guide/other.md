@@ -1,5 +1,5 @@
 ---
-toc
+outline: deep
 ---
 # Other
 

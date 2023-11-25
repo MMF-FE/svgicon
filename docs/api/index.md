@@ -7,7 +7,7 @@ toc
 ### Props
 Parameters (attributes) of the function to generate SVG icon data
 
-<<<../packages/svgicon/src/index.ts#props
+<<<../../packages/svgicon/src/index.ts#props
 
 ### getPropKeys
 Get the key array of props
@@ -26,7 +26,7 @@ declare function svgIcon(props: Props): SvgIconResult;
 ### Options
 Global options, affecting the default value of props
 
-<<<../packages/svgicon/src/index.ts#Options
+<<<../../packages/svgicon/src/index.ts#Options
 
 ### setOptions
 Modify the default options
@@ -36,13 +36,13 @@ export declare function setOptions(newOptions: Options): void;
 ```
 
 ### Typings
-<<<../packages/svgicon/dist/index.d.ts
+<<<../../packages/svgicon/dist/index.d.ts
 
 
 ## @yzfe/svgicon-gen
 Run in the nodejs environment to generate the `Icon` object (The value of props.data)
 
-<<<../packages/svgicon-gen/dist/index.d.ts
+<<<../../packages/svgicon-gen/dist/index.d.ts
 
 > TIP: You can directly use `@yzfe/svgicon-gen` to generate icon data in advance and save it as a js file, so that you don't need to load icons with `@yzfe/svgicon-loader`.
 
@@ -51,8 +51,8 @@ Run in the nodejs environment to generate the `Icon` object (The value of props.
 Load the SVG file as icon data (vue) or SVG icon component (react), the generated code can be customized
 
 ### Loader options
-<<<../packages/svgicon-loader/typings/index.d.ts
+<<<../../packages/svgicon-loader/typings/index.d.ts
 
 ## vite-plugin-svigon
 ### Plugin options
-<<<../packages/vite-plugin-svgicon/src/index.ts#PluginOptions
+<<<../../packages/vite-plugin-svgicon/src/index.ts#PluginOptions

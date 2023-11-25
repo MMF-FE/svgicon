@@ -1,12 +1,12 @@
 ---
-toc
+outline: deep
 ---
 # In-Depth
 
 ## SVG imported as component
 `@yzfe/svgicon-loader` or `vite-plugin-svgicon` both provide `component` and `customCode` options to import svg files as components.
 
-- `component` 
+- `component`
     - `vue` Vue 3.x Component
     - `react` React Component
     - `custom` Custom generated code, used with `customCode`
@@ -157,7 +157,7 @@ declare module '@/assets/svg/*.svg' {
 }
 ```
 
-## vue-cli
+## vue-cli {#vue-cli}
 If your project uses `vue-cli`, it is recommended to use `@yzfe/vue-cli-plugin-svgicon` for quick configuration.
 
 ```bash
@@ -172,4 +172,4 @@ vue invoke @yzfe/svgicon
 
 After a successful invoke, the necessary dependencies and code will be automatically added, and a `.vue-svgicon.config.js` file will be generated to configure `@yzfe/svgicon-loader` and webpack aliases, as well as transformAssetUrls, etc.
 
-<<<../demo/vue2-webpack/.vue-svgicon.config.js
+<<<../../demo/vue2-webpack/.vue-svgicon.config.js

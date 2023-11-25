@@ -1,5 +1,5 @@
 ---
-toc
+outline: deep
 ---
 # 快速上手
 本节内容主要是简单的介绍 svgicon 配置和使用，建议查看【[深入](./advanced.md)】这一节了解更多。
@@ -79,13 +79,13 @@ npm install @yzfe/svgicon-loader -D
     }
 }
 ```
-> 使用 [vue-cli](./advanced.md#vue-cli-快速配置)
+> 使用 [vue-cli](./advanced.md#vue-cli)
 
 ### 使用
 ```js
 import arrowData from 'svg-file-path/arrow.svg'
 // {name: 'arrow', data: {width: 16, height: 16, ...}}
-console.log(arrowData) 
+console.log(arrowData)
 ```
 
 
@@ -151,7 +151,7 @@ import arrowData from 'svg-file-path/arrow.svg'
         <!-- 建议配置 transformAssetUrls， 可以直接传入 SVG 文件路径 -->
         <icon data="svg-file-path/arrow.svg" />
     </div>
-</template>    
+</template>
 ```
 
 
@@ -189,5 +189,5 @@ TaroJs 使用方式与 React 一致，请参考 React 一节
 其他 js 框架可以通过 `@yzfe/svgicon ` 编写适用于其框架的图标组件，可以参考 `@yzfe/react-svgicon`.
 
 ::: details @yzfe/react-svgicon
-<<<../packages/react-svgicon/src/index.tsx
+<<<../../../packages/react-svgicon/src/index.tsx
 :::

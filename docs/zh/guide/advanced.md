@@ -1,5 +1,5 @@
 ---
-toc
+outline: deep
 ---
 # 深入
 
@@ -155,7 +155,7 @@ declare module '@/assets/svg/*.svg' {
 }
 ```
 
-## vue-cli
+## vue-cli 快速配置 {#vue-cli}
 如果你的项目使用 `vue-cli`, 推荐使用 `@yzfe/vue-cli-plugin-svgicon` 进行快速配置。
 
 ```bash
@@ -170,4 +170,4 @@ vue invoke @yzfe/svgicon
 
 成功调用后，会自动添加必要的依赖和代码，另外还会生成 `.vue-svgicon.config.js` 文件，用来配置 `@yzfe/svgicon-loader` 和 `webpack` 别名，还有 `transformAssetUrls` 等。
 
-<<<../demo/vue2-webpack/.vue-svgicon.config.js
+<<<../../../demo/vue2-webpack/.vue-svgicon.config.js

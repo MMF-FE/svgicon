@@ -1,12 +1,12 @@
 ---
-toc
+outline: deep
 ---
 
 # Component
 ## Color
 <demo-color title="Single color (default: inherit font color)" />
 ::: details View Code
-<<<.vuepress/components/DemoColor.vue#demo
+<<<@/.vitepress/components/DemoColor.vue#demo
 :::
 
 <demo-reverse-color title="r-color (Reverse fill or stroke attributes)" />
@@ -14,29 +14,29 @@ toc
 > Clock icon: the circle is the fill, the hour and minute hands are the stroke, Vue icon: the first path is the stroke, the second is the path is the fill
 
 ::: details View Code
-<<<.vuepress/components/DemoReverseColor.vue#demo
+<<<@/.vitepress/components/DemoReverseColor.vue#demo
 :::
 
 <demo-multi-color title="Multicolor (set in the order of path/shape)" />
 ::: details View Code
-<<<.vuepress/components/DemoMultiColor.vue#demo
+<<<@/.vitepress/components/DemoMultiColor.vue#demo
 :::
 
 <demo-original-color title="Original Color (original)" />
 ::: details View Code
-<<<.vuepress/components/DemoOriginalColor.vue#demo
+<<<@/.vitepress/components/DemoOriginalColor.vue#demo
 :::
 
 > The second and third color wheels modify certain colors based on the primary colors
 
 <demo-gradient title="Gradient" />
 ::: details View Code
-<<<.vuepress/components/DemoGradient.vue#demo
+<<<@/.vitepress/components/DemoGradient.vue#demo
 :::
 
 <demo-gradient-colors title="Modify Original Gradient Colors" />
 ::: details View Code
-<<<.vuepress/components/DemoGradientColors.vue#demo
+<<<@/.vitepress/components/DemoGradientColors.vue#demo
 :::
 > The `original` porp must to be true
 
@@ -44,25 +44,25 @@ toc
 ## Size
 <demo-size title="size, default unit: px, default size: 16px" />
 ::: details View Code
-<<<.vuepress/components/DemoSize.vue#demo
+<<<@/.vitepress/components/DemoSize.vue#demo
 :::
 
 ## Fill/Stroke
 <demo-fill title="fill, default: true" />
 ::: details View Code
-<<<.vuepress/components/DemoFill.vue#demo
-<<<.vuepress/components/DemoFill.vue#css
+<<<@/.vitepress/components/DemoFill.vue#demo
+<<<@/.vitepress/components/DemoFill.vue#css
 :::
 
 ## Direction
 <demo-direction title="dir, default: up" />
 ::: details View Code
-<<<.vuepress/components/DemoDirection.vue#demo
+<<<@/.vitepress/components/DemoDirection.vue#demo
 :::
 
 ## Repalce content
 
 <demo-replace title="Replace SVG content (replace)" />
 ::: details View Code
-<<<.vuepress/components/DemoReplace.vue#demo
+<<<@/.vitepress/components/DemoReplace.vue#demo
 :::

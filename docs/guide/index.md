@@ -1,5 +1,5 @@
 ---
-toc
+outline: deep
 ---
 # Quick Start
 This section provides a brief introduction to the configuration and usage of `svgicon`. For more in-depth information, it is recommended to refer to the "[In-Depth](./advanced.md)" section to gain a deeper understanding.
@@ -88,7 +88,7 @@ npm install @yzfe/svgicon-loader -D
 ```js
 import arrowData from 'svg-file-path/arrow.svg'
 // {name: 'arrow', data: {width: 16, height: 16, ...}}
-console.log(arrowData) 
+console.log(arrowData)
 ```
 
 
@@ -154,7 +154,7 @@ import arrowData from 'svg-file-path/arrow.svg'
         <!-- It is recommended to configure transformAssetUrls，. You can directly pass in the svg file path. -->
         <icon data="svg-file-path/arrow.svg" />
     </div>
-</template>    
+</template>
 ```
 
 
@@ -185,5 +185,5 @@ export default function FC() {
 Other frameworks can use `@yzfe/svgicon` to write icon components suitable for their frameworks, please refer to `@yzfe/react-svgicon`.
 
 ::: details @yzfe/react-svgicon
-<<<../packages/react-svgicon/src/index.tsx
+<<<../../packages/react-svgicon/src/index.tsx
 :::
