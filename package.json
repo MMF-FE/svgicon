@@ -14,6 +14,7 @@
         "build": "lerna run build --ignore '@yzfe/{taro-svgicon,svgicon-viewer}' --ignore '@demo/*'",
         "test": "yarn run build && lerna run test",
         "publish": "lerna publish --no-private",
+        "build:doc": "cd docs && yarn docs:build",
         "deploy:doc": "./scripts/deploy.sh"
     },
     "repository": {
