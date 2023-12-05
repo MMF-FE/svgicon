@@ -1,0 +1,7 @@
+node_modules
+dist
+coverage
+assets
+templates/
+**/dist/**
+demo/v3/**

@@ -3,5 +3,4 @@ dist
 *.html
 *.tsx
 *.json
-*.vue
-demo/**
+demo/v3/**

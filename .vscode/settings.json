@@ -11,7 +11,8 @@
         "editor.formatOnSave": true
     },
     "[json]": {
-        "editor.formatOnSave": true
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "vetur.format.defaultFormatter.html": "prettier",
     "vetur.format.defaultFormatter.scss": "none",
@@ -21,5 +22,11 @@
         "**/.hg": true,
         "**/CVS": true,
         "**/.DS_Store": true
-    }
+    },
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "stylelint.enable": true,
+    "stylelint.validate": ["css", "less", "postcss", "scss"],
+    "css.validate": false,
+    "scss.validate": false,
+    "less.validate": false
 }

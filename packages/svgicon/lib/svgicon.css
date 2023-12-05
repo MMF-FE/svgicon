@@ -6,11 +6,11 @@
     color: inherit;
     vertical-align: middle;
     fill: none;
-    stroke: currentColor;
+    stroke: currentcolor;
 }
 
 .svg-fill {
-    fill: currentColor;
+    fill: currentcolor;
     stroke: none;
 }
 

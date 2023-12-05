@@ -153,7 +153,8 @@ function getValidPathData(
 ): string {
     // If use original and colors, clear duplicated fill or stroke
     if (props.original && colors.length > 0) {
-        const reg = /<(path|rect|circle|polygon|line|polyline|ellipse)(\sfill|\sstroke)([="\w\s.\-+#$&>]+)(fill|stroke)/gi
+        const reg =
+            /<(path|rect|circle|polygon|line|polyline|ellipse)(\sfill|\sstroke)([="\w\s.\-+#$&>]+)(fill|stroke)/gi
         pathData = pathData.replace(
             reg,
             (match, tag, attr, other, duplicatedAttr) => {

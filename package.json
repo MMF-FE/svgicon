@@ -43,11 +43,15 @@
         "vue-template-compiler": "^2.5.16"
     },
     "devDependencies": {
-        "husky": "^4.2.5",
+        "@types/eslint": "^8.37.0",
+        "@yzfe/eslint-config-ts": "^2.2.0",
+        "@yzfe/stylelint-config": "^2.1.0",
+        "eslint": "^8.38.0",
+        "husky": "^8.0.3",
         "lerna": "^7.3.1",
-        "lint-staged": "^10.2.11",
-        "prettier": "^2.0.5",
-        "stylelint": "^13.6.1",
+        "lint-staged": "^13.2.1",
+        "prettier": "^2.8.7",
+        "stylelint": "^15.4.0",
         "stylelint-config-standard": "^20.0.0",
         "stylelint-order": "^4.1.0",
         "typescript": "^5.2.2"
@@ -58,8 +62,14 @@
         }
     },
     "lint-staged": {
-        "*.{ts,js,json,tsx}": [
+        "*.{ts,js,tsx}": [
+            "eslint --fix --quiet"
+        ],
+        "*.json": [
             "prettier --write"
+        ],
+        "*.{scss,less}": [
+            "stylelint --fix"
         ]
     },
     "packageManager": "yarn@4.0.1+sha256.5a9d054e67fbbae8774cd3667736fd74407ffbbb336898523ca1fe87b3fc4ee3"
