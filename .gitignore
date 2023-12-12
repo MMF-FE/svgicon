@@ -33,3 +33,5 @@ docs/.vitepress/cache
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
+
+.yarnrc.yml-bak

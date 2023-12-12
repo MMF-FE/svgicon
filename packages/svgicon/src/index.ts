@@ -301,6 +301,10 @@ export function setOptions(newOptions: Options): void {
     }
 }
 
+export function getOptions() {
+    return options
+}
+
 export function getPropKeys(): (keyof Props)[] {
     return [
         'data',

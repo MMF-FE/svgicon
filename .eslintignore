@@ -5,3 +5,4 @@ assets
 templates/
 **/dist/**
 demo/v3/**
+demo/vue2-webpack/**

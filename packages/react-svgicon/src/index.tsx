@@ -55,7 +55,7 @@ export {
     ReactSvgIconFC,
     Props,
     Options,
-    setOptions,
     Icon,
     IconData,
+    setOptions,
 }
