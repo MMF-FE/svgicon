@@ -28,5 +28,5 @@ export default {
             tsconfig: './tsconfig.lib.json',
         }),
     ],
-    external: [/^@yzfe\//, 'vue'],
+    external: [/^@yzfe\//, 'vue', 'vue-demi'],
 }
