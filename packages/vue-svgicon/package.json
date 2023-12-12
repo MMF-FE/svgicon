@@ -7,6 +7,7 @@
     "scripts": {
         "dev": "rollup -c --bundleConfigAsCjs -w",
         "build": "rm -rf dist && rollup -c --bundleConfigAsCjs",
+        "build:vue2": "yarn switch 2 vue2 &&  rollup -c rollup.vue2.config.js --bundleConfigAsCjs && yarn switch 3",
         "switch": "vue-demi-switch",
         "prepublishOnly": "yarn build"
     },
