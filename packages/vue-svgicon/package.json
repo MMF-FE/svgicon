@@ -1,6 +1,6 @@
 {
     "name": "@yzfe/vue-svgicon",
-    "version": "5.0.0-alpha.0",
+    "version": "5.0.0-alpha.1",
     "description": "SVG icon component for vue",
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
@@ -49,7 +49,7 @@
         "@rollup/plugin-terser": "^0.4.4",
         "@rollup/plugin-typescript": "^11.1.5",
         "@vue/composition-api": "^1.7.2",
-        "@yzfe/svgicon": "^1.2.0-alpha.0",
+        "@yzfe/svgicon": "^1.2.0-alpha.1",
         "rollup": "^4.0.2",
         "rollup-plugin-dts": "^6.1.0",
         "tslib": "^2.6.2",
