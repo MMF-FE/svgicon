@@ -2,7 +2,7 @@
     "editor.formatOnSave": false,
     "eslint.format.enable": true,
     "editor.codeActionsOnSave": {
-        "source.fixAll": true
+        "source.fixAll": "explicit"
     },
     "[vue]": {
         "editor.formatOnSave": true
