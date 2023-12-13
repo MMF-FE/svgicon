@@ -57,7 +57,7 @@
         "vue": "^3.0.0",
         "vue2": "npm:vue@^2.7.15"
     },
-    "gitHead": "25bdefd07cc3982465f0d900e1a6c76155e08328",
+    "gitHead": "8e9d9860c893bcce8e8e6c0c48a22eec8ed72013",
     "dependencies": {
         "vue-demi": "^0.14.6"
     }
