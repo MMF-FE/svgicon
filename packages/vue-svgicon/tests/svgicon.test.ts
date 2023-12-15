@@ -1,24 +1,28 @@
-import { expect, assert } from 'chai'
-import { shallowMount, createLocalVue, mount } from '@vue/test-utils'
+import { expect, it, describe, assert } from 'vitest'
+import { shallowMount } from '@vue/test-utils'
 
-import { VueSvgIcon, setOptions, Props } from '../../dist'
-
+import { VueSvgIcon, setOptions } from '../dist'
 import vueIconData from '@icon/vue.svg'
 import arrowIconData from '@icon/arrow.svg'
 import maskIconData from '@icon/mask.svg'
 import giftIconData from '@icon/gift.svg'
 
+import IconVue from '@icon/vue.svg?component'
+import { Props } from '@yzfe/svgicon'
+
 function mountIcon(props: Props) {
     return shallowMount(VueSvgIcon, {
-        propsData: props,
+        props,
     })
 }
 
-describe('@yzfe/svgicon-loader', () => {
-    it('should load svg to be icon data', () => {
-        const icon = vueIconData
-        expect(icon.name).eq('vue')
-        assert.ok(!!icon.data)
+describe('vite-plugin-svgicon', () => {
+    it('should load as icon data', () => {
+        expect(vueIconData.name).toBe('vue')
+    })
+
+    it('should load as vue component', () => {
+        expect(IconVue.setup).toBeTruthy()
     })
 })
 
@@ -133,15 +137,14 @@ describe('Test props: fill', () => {
             isStroke: true,
         })
 
-        const localVue = createLocalVue()
-        const localArrowIcon = mount(VueSvgIcon, {
-            localVue,
-            propsData: {
-                data: arrowIconData,
-            },
+        const arrowIcon = mountIcon({
+            data: arrowIconData,
         })
 
-        expect(localArrowIcon.classes()).not.contains('svg-fill')
+        expect(arrowIcon.classes()).not.contains('svg-fill')
+        setOptions({
+            isStroke: false,
+        })
     })
 })
 
@@ -211,5 +214,15 @@ describe('Test unique id', () => {
         const ids2 = findIds(html2)
 
         assert.ok(ids1.every((v) => ids2.indexOf(v) < 0))
+    })
+})
+
+describe('Test event', () => {
+    it('shold emit click event', async () => {
+        const vueIcon = mountIcon({
+            data: vueIconData,
+        })
+        vueIcon.trigger('click')
+        expect(vueIcon.emitted()).toHaveProperty('click')
     })
 })

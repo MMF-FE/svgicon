@@ -50,6 +50,7 @@ const VueSvgIcon = defineComponent({
         },
     },
     render(createElement: any) {
+        // @ts-ignore
         const result = svgIcon(this.$props)
 
         if (isVue2) {
@@ -62,6 +63,7 @@ const VueSvgIcon = defineComponent({
                     ...result.style,
                 },
                 staticClass: result.className,
+                // @ts-ignore
                 on: this.$listeners,
                 domProps: {
                     innerHTML: result.path,
