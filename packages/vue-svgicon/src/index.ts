@@ -14,7 +14,7 @@ const VueSvgIcon = defineComponent({
     props: {
         /** icon data */
         data: {
-            type: Object as PropType<Icon>,
+            type: [Object, String] as PropType<Icon | string>,
         },
         width: {
             type: [String, Number],

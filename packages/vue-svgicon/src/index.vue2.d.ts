@@ -1,7 +1,11 @@
-import type { App } from 'vue-demi'
-import type { Options } from '@yzfe/svgicon'
+import type { App, DefineComponent } from 'vue-demi'
+import type { Options, Props, Icon } from '@yzfe/svgicon'
 
-export declare const VueSvgIcon: any
+interface VueSvgIconProps extends Omit<Props, 'data'> {
+    data?: Icon | string
+}
+
+export declare const VueSvgIcon: DefineComponent<VueSvgIconProps>
 export declare const VueSvgIconPlugin: {
     install: (app: App, options: Options) => void
 }

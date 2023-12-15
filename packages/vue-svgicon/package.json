@@ -6,9 +6,11 @@
     "module": "dist/index.esm.js",
     "scripts": {
         "dev": "rollup -c --bundleConfigAsCjs -w",
-        "build": "rm -rf dist && rollup -c --bundleConfigAsCjs",
-        "build:vue2": "yarn switch 2 vue2 &&  rollup -c rollup.vue2.config.js --bundleConfigAsCjs && yarn switch 3",
+        "build": "rm -rf dist && yarn build:vue3 && yarn build:vue2",
+        "build:vue3": "yarn switch 3 && rollup -c --bundleConfigAsCjs",
+        "build:vue2": "yarn switch 2.7 vue2 &&  rollup -c rollup.vue2.config.js --bundleConfigAsCjs && yarn switch 3",
         "switch": "vue-demi-switch",
+        "postinstall": "node ./scripts/postinstall.js",
         "prepublishOnly": "yarn build"
     },
     "keywords": [
@@ -48,7 +50,6 @@
         "@rollup/plugin-node-resolve": "^15.2.3",
         "@rollup/plugin-terser": "^0.4.4",
         "@rollup/plugin-typescript": "^11.1.5",
-        "@vue/composition-api": "^1.7.2",
         "@yzfe/svgicon": "^1.2.0-alpha.1",
         "rollup": "^4.0.2",
         "rollup-plugin-dts": "^6.1.0",
@@ -60,5 +61,6 @@
     "gitHead": "8e9d9860c893bcce8e8e6c0c48a22eec8ed72013",
     "dependencies": {
         "vue-demi": "^0.14.6"
-    }
+    },
+    "types": "dist/index.d.ts"
 }
