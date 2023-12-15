@@ -10,10 +10,9 @@ outline: deep
 svgicon 是 SVG 图标组件和工具集，将 SVG 文件变成图标数据(vue)或者图标组件(react)，让你可以愉快的在项目中使用 SVG 图标，无论你是使用 vue, react, vue3.x, taro 还是其他 js 框架。svgicon 包括了以下的 npm 包：
 
 - @yzfe/svgicon `根据传入的参数(props)生成 SVG 图标组件需要的数据`
-- @yzfe/vue-svgicon `适用于 vue ^2.7 || >3.0.0 的 SVG 图标组件`
-- @yzfe/vue2-svgicon `适用于 vue < 2.7 的 SVG 图标组件`
-- @yzfe/react-svgicon `适用于 react 的 SVG 图标组件`
-- @yzfe/taro-svgicon `适用于 taro 的 SVG 图标组件`
+- @yzfe/vue-svgicon `适用于 Vue 的 SVG 图标组件`
+- @yzfe/react-svgicon `适用于 React 的 SVG 图标组件`
+- @yzfe/taro-svgicon `适用于 TaroJs 的 SVG 图标组件`
 - @yzfe/svgicon-gen `根据 SVG 文件内容，生成图标数据（图标名称和处理过的 SVG 内容）`
 - @yzfe/svgicon-loader `将 SVG 文件加载成图标数据(vue)或者 SVG 图标组件(react), 可以自定义生成的代码`
 - vite-plugin-svgicon `vite 插件，功能与 @yzfe/svgicon-loader 类似`
@@ -92,13 +91,13 @@ console.log(arrowData)
 ## Vue 2.x
 ### 安装依赖
 ```bash
-npm install @yzfe/svgicon @yzfe/vue2-svgicon  --save
+npm install @yzfe/svgicon @yzfe/vue-svgicon  --save
 ```
 
 ### 使用
 ```js
 // main.js
-import { VueSvgIcon } from '@yzfe/vue2-svgicon'
+import { VueSvgIcon } from '@yzfe/vue-svgicon'
 
 // 引入 css 样式
 import '@yzfe/svgicon/lib/svgicon.css'
