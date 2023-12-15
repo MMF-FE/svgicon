@@ -27,14 +27,9 @@
         "registry": "https://registry.npmjs.org",
         "access": "public"
     },
-    "directories": {
-        "lib": "lib",
-        "dist": "dist"
-    },
     "files": [
         "dist",
-        "typings",
-        "postcss.config.js"
+        "scripts"
     ],
     "peerDependencies": {
         "@vue/composition-api": "^1.0.0-rc.1",
