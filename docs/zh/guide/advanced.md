@@ -56,7 +56,7 @@ export default defineConfig({
             component: 'custom',
             customCode: `
                 import Vue from 'vue'
-                import { VueSvgIcon } from '@yzfe/vue2-svgicon'
+                import { VueSvgIcon } from '@yzfe/vue-svgicon'
 
                 export default {
                     functional: true,
@@ -76,7 +76,7 @@ export default defineConfig({
 ```js
 const data = {/*iconData*/}
 import Vue from 'vue'
-import { VueSvgIcon } from '@yzfe/vue2-svgicon'
+import { VueSvgIcon } from '@yzfe/vue-svgicon'
 
 export default {
     functional: true,
@@ -170,4 +170,21 @@ vue invoke @yzfe/svgicon
 
 成功调用后，会自动添加必要的依赖和代码，另外还会生成 `.vue-svgicon.config.js` 文件，用来配置 `@yzfe/svgicon-loader` 和 `webpack` 别名，还有 `transformAssetUrls` 等。
 
-<<<../../../demo/vue2-webpack/.vue-svgicon.config.js
+```js
+const path = require('path')
+const svgFilePaths = ['src/assets/svgicon'].map((v) => path.resolve(v))
+const tagName = 'icon'
+
+module.exports = {
+    tagName,
+    svgFilePath: svgFilePaths,
+    svgoConfig: {},
+    pathAlias: {
+        '@icon': svgFilePaths[0],
+    },
+    transformAssetUrls: {
+        [tagName]: ['data'],
+    },
+    loaderOptions: {},
+}
+```

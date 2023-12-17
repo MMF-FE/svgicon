@@ -56,7 +56,7 @@ export default defineConfig({
             component: 'custom',
             customCode: `
                 import Vue from 'vue'
-                import { VueSvgIcon } from '@yzfe/vue2-svgicon'
+                import { VueSvgIcon } from '@yzfe/vue-svgicon'
 
                 export default {
                     functional: true,
@@ -77,7 +77,7 @@ The above configuration loads the svg file as the code below
 ```js
 const data = {/*iconData*/}
 import Vue from 'vue'
-import { VueSvgIcon } from '@yzfe/vue2-svgicon'
+import { VueSvgIcon } from '@yzfe/vue-svgicon'
 
 export default {
     functional: true,
@@ -172,4 +172,21 @@ vue invoke @yzfe/svgicon
 
 After a successful invoke, the necessary dependencies and code will be automatically added, and a `.vue-svgicon.config.js` file will be generated to configure `@yzfe/svgicon-loader` and webpack aliases, as well as transformAssetUrls, etc.
 
-<<<../../demo/vue2-webpack/.vue-svgicon.config.js
+```js
+const path = require('path')
+const svgFilePaths = ['src/assets/svgicon'].map((v) => path.resolve(v))
+const tagName = 'icon'
+
+module.exports = {
+    tagName,
+    svgFilePath: svgFilePaths,
+    svgoConfig: {},
+    pathAlias: {
+        '@icon': svgFilePaths[0],
+    },
+    transformAssetUrls: {
+        [tagName]: ['data'],
+    },
+    loaderOptions: {},
+}
+```

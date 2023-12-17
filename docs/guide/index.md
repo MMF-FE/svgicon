@@ -10,8 +10,7 @@ This section provides a brief introduction to the configuration and usage of `sv
 svgicon is SVG icon component and tool set. It turns SVG files into icon data (vue) or icon components (react), allowing you to happily use SVG icons in your projects, whether you are using vue, react, vue3.x or Other js frameworks. svgicon includes the following npm packages:
 
 - @yzfe/svgicon `Generate the data required by the SVG icon component according to the incoming parameters (props)`
-- @yzfe/vue-svgicon `SVG icon component for vue ^2.7 || >=3.0.0`
-- @yzfe/vue2-svgicon `SVG icon component for vue < 2.7`
+- @yzfe/vue-svgicon `SVG icon component for vue`
 - @yzfe/react-svgicon `SVG icon component for react `
 - @yzfe/svgicon-gen `Generate icon data (icon name and processed SVG content) based on the content of the SVG file`
 - @yzfe/svgicon-loader `Load the SVG file as icon data (vue) or SVG icon component (react), the generated code can be customized`
@@ -95,13 +94,13 @@ console.log(arrowData)
 ## Vue 2.x
 ### Install dependencies
 ```bash
-npm install @yzfe/svgicon @yzfe/vue2-svgicon  --save
+npm install @yzfe/svgicon @yzfe/vue-svgicon  --save
 ```
 
 ### Usage
 ```js
 // main.js
-import { VueSvgIcon } from '@yzfe/vue2-svgicon'
+import { VueSvgIcon } from '@yzfe/vue-svgicon'
 
 // Import style
 import '@yzfe/svgicon/lib/svgicon.css'

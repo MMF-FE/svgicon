@@ -6,7 +6,7 @@ set -e
 # 生成静态文件
 yarn build:doc
 
-cp -R demo/v3 docs/.vitepress/dist
+cp -R docs/v3 docs/.vitepress/dist
 
 # 进入生成的文件夹
 cd docs/.vitepress/dist
