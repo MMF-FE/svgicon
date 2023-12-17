@@ -17,7 +17,7 @@
 - @yzfe/svgicon-polyfill `SVG innerHTML compatible (IE)`
 
 ## Documentation
-Refer to the [documentation](https://mmf-fe.github.io/svgicon/en/)
+Refer to the [documentation](https://mmf-fe.github.io/svgicon)
 
 ## License
 [MIT](http://opensource.org/licenses/MIT)
