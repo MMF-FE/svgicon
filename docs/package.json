@@ -8,13 +8,13 @@
         "docs:preview": "vitepress preview"
     },
     "dependencies": {
-        "@yzfe/svgicon": "*",
-        "@yzfe/vue-svgicon": "*",
+        "@yzfe/svgicon": "^1.2.0-alpha.1",
+        "@yzfe/vue-svgicon": "^5.0.0-alpha.1",
         "sass": "^1.69.5",
         "vitepress": "1.0.0-rc.30"
     },
     "devDependencies": {
         "@types/node": "^20.10.0",
-        "vite-plugin-svgicon": "*"
+        "vite-plugin-svgicon": "^2.1.0-alpha.0"
     }
 }
