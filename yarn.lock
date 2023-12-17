@@ -3810,17 +3810,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yzfe/svgicon-gen@npm:^1.2.2":
-  version: 1.2.2
-  resolution: "@yzfe/svgicon-gen@npm:1.2.2"
-  dependencies:
-    "@types/svgo": "npm:^2.6.3"
-    lodash: "npm:^4.17.21"
-    svgo: "npm:^2.8.0"
-  checksum: f289c941219abada22c40455d7a5fb4237c5b35a4025a9bdfa0bf3faee3f2b144894d9d2abd8b3b788759bee2cf3670a133454a9331aa24d0329b972669d63f9
-  languageName: node
-  linkType: hard
-
 "@yzfe/svgicon-gen@npm:^1.3.0-alpha.0, @yzfe/svgicon-gen@workspace:packages/svgicon-gen":
   version: 0.0.0-use.local
   resolution: "@yzfe/svgicon-gen@workspace:packages/svgicon-gen"
@@ -3886,13 +3875,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@yzfe/svgicon@npm:*":
-  version: 1.1.1
-  resolution: "@yzfe/svgicon@npm:1.1.1"
-  checksum: 6871796e032068981107093d4141d948952f387c65b81c3022e03a21c8b5e7d40e2e151f7be4e3cc50adbc6648df74be47e1bb81a361b23c67df1a9ceeea3f7f
-  languageName: node
-  linkType: hard
-
 "@yzfe/svgicon@npm:^1.2.0-alpha.1, @yzfe/svgicon@workspace:packages/svgicon":
   version: 0.0.0-use.local
   resolution: "@yzfe/svgicon@workspace:packages/svgicon"
@@ -3951,16 +3933,6 @@ __metadata:
     lodash: "npm:^4.17.20"
   languageName: unknown
   linkType: soft
-
-"@yzfe/vue-svgicon@npm:*":
-  version: 4.0.4
-  resolution: "@yzfe/vue-svgicon@npm:4.0.4"
-  peerDependencies:
-    "@yzfe/svgicon": ">=1.0.0"
-    vue: ">=2.5.11"
-  checksum: 11a247981c80341abbf2ce55b816ef78a4282372b13cd0e6ff33b4ac44b2333db13dab5bea6c2b6f98c551a791dfbeda58431ba9c2f570be1427ae8bb0ddc924
-  languageName: node
-  linkType: hard
 
 "@yzfe/vue-svgicon@npm:^5.0.0-alpha.1, @yzfe/vue-svgicon@workspace:packages/vue-svgicon":
   version: 0.0.0-use.local
@@ -6461,10 +6433,10 @@ __metadata:
   resolution: "docs@workspace:docs"
   dependencies:
     "@types/node": "npm:^20.10.0"
-    "@yzfe/svgicon": "npm:*"
-    "@yzfe/vue-svgicon": "npm:*"
+    "@yzfe/svgicon": "npm:^1.2.0-alpha.1"
+    "@yzfe/vue-svgicon": "npm:^5.0.0-alpha.1"
     sass: "npm:^1.69.5"
-    vite-plugin-svgicon: "npm:*"
+    vite-plugin-svgicon: "npm:^2.1.0-alpha.0"
     vitepress: "npm:1.0.0-rc.30"
   languageName: unknown
   linkType: soft
@@ -16397,18 +16369,6 @@ __metadata:
   bin:
     vite-node: vite-node.mjs
   checksum: 3be4f8045a2c39afb57fdf83450791f872b10f883728eb58495640eed8d370f062a8bf25622afd005be8b375a1b4ac5731ca4fa0ae7c962742acf8f904f7748a
-  languageName: node
-  linkType: hard
-
-"vite-plugin-svgicon@npm:*":
-  version: 2.0.0
-  resolution: "vite-plugin-svgicon@npm:2.0.0"
-  dependencies:
-    "@types/svgo": "npm:^2.6.3"
-    "@yzfe/svgicon-gen": "npm:^1.2.2"
-  peerDependencies:
-    vite: ">=2.0.0-beta.1"
-  checksum: 784977aa185392cd3089175d58993a7a3707e3da770244471642b6357a86f1612eec5b2109eef12c81789aafb210db66e325b871f38cf8d6d529cdb9dc527443
   languageName: node
   linkType: hard
 
