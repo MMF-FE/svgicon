@@ -5,9 +5,7 @@
     "workspaces": {
         "packages": [
             "packages/*",
-            "demo/*",
-            "docs",
-            "docs-backup"
+            "docs"
         ]
     },
     "scripts": {
