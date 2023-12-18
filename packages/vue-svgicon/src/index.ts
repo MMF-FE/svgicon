@@ -94,6 +94,7 @@ function createIconComponent(data: Icon) {
                 return createElement(VueSvgIcon, {
                     attrs: this.$attrs,
                     props: {
+                        data,
                         ...this.$attrs,
                     },
                     // @ts-ignore
