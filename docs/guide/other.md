@@ -18,7 +18,7 @@ yarn global add @yzfe/svgicon-viewer
 svgicon-viewer ./src/assets/svg
 ```
 
-![svgicon-viewer](../../images/svgicon-viewer.png)
+![svgicon-viewer](../svgicon-viewer.png)
 
 Use meta.json to add additional information. Currently, only one name field is supported, which can be used to describe the icon.
 
@@ -35,7 +35,7 @@ Use meta.json to add additional information. Currently, only one name field is s
 svgicon-viewer ./src/assets/svg ./src/assets/svg/meta.json
 ```
 
-![svgicon-viewer](../../images/svgicon-viewer-meta.png)
+![svgicon-viewer](../svgicon-viewer-meta.png)
 
 ### Generate static html page
 
