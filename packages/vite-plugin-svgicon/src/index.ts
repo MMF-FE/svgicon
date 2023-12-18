@@ -66,36 +66,14 @@ async function genSvgIcon(
     switch (options.component) {
         case 'react':
             result += `
-            import React from 'react'
-            import { ReactSvgIcon } from '@yzfe/react-svgicon'
-            function SvgIconFC (props) {
-                return React.createElement(ReactSvgIcon, {
-                    ...props,
-                    data
-                })
-            }
-
-            SvgIconFC.iconName = data.name
-            SvgIconFC.iconData = data.data
-            export default SvgIconFC
+            import { createIconComponent } from '@yzfe/react-svgicon'
+            export default createIconComponent(data)
         `
             break
         case 'vue':
             result += `
-            import { defineComponent, h} from 'vue'
-            import { VueSvgIcon } from '@yzfe/vue-svgicon'
-            const name = (data.name.split('/').pop() || '').replace(/^[\\d_]+/, '')
-            const componentName = name || 'SvgIcon'
-
-            export default defineComponent({
-                name: componentName,
-                setup() {
-                    return {}
-                },
-                render() {
-                    return h(VueSvgIcon, {...this.$attrs, data})
-                }
-            })
+            import { createIconComponent } from '@yzfe/vue-svgicon'
+            export default createIconComponent(data)
         `
             break
         case 'custom':

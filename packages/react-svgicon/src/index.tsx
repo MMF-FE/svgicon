@@ -44,6 +44,20 @@ class ReactSvgIcon extends React.PureComponent<ComponentProps> {
     }
 }
 
+function createIconComponent(data: Icon) {
+    const name = (data.name.split('/').pop() || '').replace(/^[\\d_]+/, '')
+
+    const Component: ReactSvgIconFC = (props) => {
+        return <ReactSvgIcon {...props} data={data} />
+    }
+
+    Component.displayName = name
+    Component.iconName = data.name
+    Component.iconData = data.data
+
+    return Component
+}
+
 /** SvgIcon function component, define in @yzfe/svgicon-loader compile */
 interface ReactSvgIconFC extends React.FC<ComponentProps> {
     iconName: string
@@ -53,6 +67,7 @@ interface ReactSvgIconFC extends React.FC<ComponentProps> {
 export {
     ReactSvgIcon,
     ReactSvgIconFC,
+    createIconComponent,
     Props,
     Options,
     Icon,
