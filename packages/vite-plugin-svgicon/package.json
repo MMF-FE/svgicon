@@ -20,6 +20,9 @@
     ],
     "author": "Allenice Mo <994298628@qq.com>",
     "homepage": "https://github.com/MMF-FE/svgicon",
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "dev": "rollup -c --bundleConfigAsCjs -w",
         "build": "rm -rf dist && rollup -c --bundleConfigAsCjs",

@@ -2,7 +2,6 @@ import { defineComponent, h, App, PropType, isVue2 } from 'vue-demi'
 
 import {
     svgIcon,
-    Props,
     Options,
     setOptions,
     getOptions,
@@ -87,12 +86,36 @@ const VueSvgIconPlugin = {
     },
 }
 
+function createIconComponent(data: Icon) {
+    const name = (data.name.split('/').pop() || '').replace(/^[\\d_]+/, '')
+    const componentName = name || 'SvgIcon'
+
+    return defineComponent({
+        name: componentName,
+        setup() {
+            return {}
+        },
+        render(createElement: any) {
+            if (isVue2) {
+                return createElement(VueSvgIcon, {
+                    arrts: this.$attrs,
+                    props: {
+                        data,
+                        ...this.$props,
+                    },
+                    // @ts-ignore
+                    on: this.$listeners,
+                })
+            }
+            return h(VueSvgIcon, { ...this.$attrs, data })
+        },
+    })
+}
+
+export type { Props, Options, Icon, IconData } from '@yzfe/svgicon'
 export {
     VueSvgIcon,
     VueSvgIconPlugin,
+    createIconComponent as createVueComponent,
     setOptions,
-    Props,
-    Options,
-    Icon,
-    IconData,
 }
