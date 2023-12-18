@@ -1,6 +1,6 @@
 {
     "name": "@yzfe/svgicon-polyfill",
-    "version": "1.0.2-alpha.1",
+    "version": "1.0.2",
     "description": "SVGElement innerHTML polyfill",
     "keywords": [
         "SVG",

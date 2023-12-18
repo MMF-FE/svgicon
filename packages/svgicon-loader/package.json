@@ -1,6 +1,6 @@
 {
     "name": "@yzfe/svgicon-loader",
-    "version": "1.3.1-alpha.1",
+    "version": "1.3.1",
     "description": "Webpack loader to load svg icon",
     "scripts": {
         "dev": "tsc -w",
@@ -46,7 +46,7 @@
         "webpack": "4"
     },
     "dependencies": {
-        "@yzfe/svgicon-gen": "^1.3.1-alpha.1",
+        "@yzfe/svgicon-gen": "^1.3.1",
         "loader-utils": "^2.0.0"
     },
     "publishConfig": {
