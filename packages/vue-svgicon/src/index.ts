@@ -1,13 +1,6 @@
 import { defineComponent, h, App, PropType, isVue2 } from 'vue-demi'
 
-import {
-    svgIcon,
-    Options,
-    setOptions,
-    getOptions,
-    Icon,
-    IconData,
-} from '@yzfe/svgicon'
+import { svgIcon, Options, setOptions, getOptions, Icon } from '@yzfe/svgicon'
 
 const VueSvgIcon = defineComponent({
     props: {
@@ -113,9 +106,4 @@ function createIconComponent(data: Icon) {
 }
 
 export type { Props, Options, Icon, IconData } from '@yzfe/svgicon'
-export {
-    VueSvgIcon,
-    VueSvgIconPlugin,
-    createIconComponent as createVueComponent,
-    setOptions,
-}
+export { VueSvgIcon, VueSvgIconPlugin, createIconComponent, setOptions }

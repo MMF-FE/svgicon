@@ -33,17 +33,7 @@
         "access": "public"
     },
     "peerDependencies": {
-        "@yzfe/react-svgicon": ">=1.0.0",
-        "@yzfe/vue-svgicon": ">=1.0.0",
         "vite": ">=2.0.0-beta.1"
-    },
-    "peerDependenciesMeta": {
-        "@yzfe/react-svgicon": {
-            "optional": true
-        },
-        "@yzfe/vue-svgicon": {
-            "optional": true
-        }
     },
     "devDependencies": {
         "@rollup/plugin-commonjs": "^25.0.5",
