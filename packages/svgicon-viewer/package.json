@@ -2,9 +2,7 @@
     "name": "@yzfe/svgicon-viewer",
     "version": "1.3.0-alpha.1",
     "description": "Preview SVG Icon",
-    "bin": {
-        "svgicon-viewer": "bin/index.js"
-    },
+    "bin": "bin/index.js",
     "scripts": {
         "dev": "vite ",
         "build": "vite build",
