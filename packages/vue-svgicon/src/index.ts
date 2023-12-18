@@ -46,6 +46,7 @@ const VueSvgIcon = defineComponent({
         const result = svgIcon(this.$props)
 
         if (isVue2) {
+            // https://v3-migration.vuejs.org/breaking-changes/render-function-api.html#vnode-props-format
             return createElement('svg', {
                 attrs: {
                     viewBox: result.box,
@@ -91,10 +92,9 @@ function createIconComponent(data: Icon) {
         render(createElement: any) {
             if (isVue2) {
                 return createElement(VueSvgIcon, {
-                    arrts: this.$attrs,
+                    attrs: this.$attrs,
                     props: {
-                        data,
-                        ...this.$props,
+                        ...this.$attrs,
                     },
                     // @ts-ignore
                     on: this.$listeners,
