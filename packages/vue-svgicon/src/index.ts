@@ -1,14 +1,6 @@
 import { defineComponent, h, App, PropType, isVue2 } from 'vue-demi'
 
-import {
-    svgIcon,
-    Props,
-    Options,
-    setOptions,
-    getOptions,
-    Icon,
-    IconData,
-} from '@yzfe/svgicon'
+import { svgIcon, Options, setOptions, getOptions, Icon } from '@yzfe/svgicon'
 
 const VueSvgIcon = defineComponent({
     props: {
@@ -54,6 +46,7 @@ const VueSvgIcon = defineComponent({
         const result = svgIcon(this.$props)
 
         if (isVue2) {
+            // https://v3-migration.vuejs.org/breaking-changes/render-function-api.html#vnode-props-format
             return createElement('svg', {
                 attrs: {
                     viewBox: result.box,
@@ -87,12 +80,31 @@ const VueSvgIconPlugin = {
     },
 }
 
-export {
-    VueSvgIcon,
-    VueSvgIconPlugin,
-    setOptions,
-    Props,
-    Options,
-    Icon,
-    IconData,
+function createIconComponent(data: Icon) {
+    const name = (data.name.split('/').pop() || '').replace(/^[\\d_]+/, '')
+    const componentName = name || 'SvgIcon'
+
+    return defineComponent({
+        name: componentName,
+        setup() {
+            return {}
+        },
+        render(createElement: any) {
+            if (isVue2) {
+                return createElement(VueSvgIcon, {
+                    attrs: this.$attrs,
+                    props: {
+                        data,
+                        ...this.$attrs,
+                    },
+                    // @ts-ignore
+                    on: this.$listeners,
+                })
+            }
+            return h(VueSvgIcon, { ...this.$attrs, data })
+        },
+    })
 }
+
+export type { Props, Options, Icon, IconData } from '@yzfe/svgicon'
+export { VueSvgIcon, VueSvgIconPlugin, createIconComponent, setOptions }
