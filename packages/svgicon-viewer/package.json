@@ -36,7 +36,7 @@
         "fs-extra": "^11.1.1",
         "glob": "^7.1.6",
         "portfinder": "^1.0.28",
-        "yargs": "^13.2.1"
+        "yargs": "^17.0.1"
     },
     "devDependencies": {
         "@types/react": "^18.2.15",
