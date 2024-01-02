@@ -1,6 +1,6 @@
 {
     "name": "@yzfe/react-svgicon",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "description": "SVG icon component for react",
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
@@ -27,7 +27,7 @@
         "@rollup/plugin-terser": "^0.4.4",
         "@rollup/plugin-typescript": "^11.1.5",
         "@types/react": "^18.2.15",
-        "@yzfe/svgicon": "^1.2.1",
+        "@yzfe/svgicon": "^1.2.2",
         "rollup": "^4.0.2",
         "tslib": "^2.6.2",
         "typescript": "^5.2.2"
