@@ -3,6 +3,7 @@ import { defineComponent, h, App, PropType, isVue2 } from 'vue-demi'
 import { svgIcon, Options, setOptions, getOptions, Icon } from '@yzfe/svgicon'
 
 const VueSvgIcon = defineComponent({
+    name: 'VueSvgIcon',
     props: {
         /** icon data */
         data: {
@@ -82,7 +83,7 @@ const VueSvgIconPlugin = {
 
 function createIconComponent(data: Icon) {
     const name = (data.name.split('/').pop() || '').replace(/^[\\d_]+/, '')
-    const componentName = name || 'SvgIcon'
+    const componentName = `SvgIcon${name}`
 
     return defineComponent({
         name: componentName,
