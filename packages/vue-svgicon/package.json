@@ -1,6 +1,6 @@
 {
     "name": "@yzfe/vue-svgicon",
-    "version": "5.0.2",
+    "version": "5.0.3",
     "description": "SVG icon component for vue",
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
