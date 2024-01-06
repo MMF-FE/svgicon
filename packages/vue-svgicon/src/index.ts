@@ -73,6 +73,7 @@ const VueSvgIcon = defineComponent({
             style: result.style,
             class: result.className,
             innerHTML: result.path,
+            onClick: (evt: MouseEvent) => this.$emit('click', evt),
         })
     },
 })
