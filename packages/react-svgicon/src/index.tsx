@@ -10,6 +10,7 @@ import {
 } from '@yzfe/svgicon'
 
 interface ComponentProps extends Props {
+    onClick?: React.MouseEventHandler<SVGSVGElement>
     [key: string]: unknown
 }
 

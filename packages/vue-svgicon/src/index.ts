@@ -42,6 +42,9 @@ const VueSvgIcon = defineComponent({
             type: Function as PropType<(svgInnerContent: string) => string>,
         },
     },
+    emits: {
+        click: (evt: MouseEvent) => evt instanceof MouseEvent,
+    },
     render(createElement: any) {
         // @ts-ignore
         const result = svgIcon(this.$props)
